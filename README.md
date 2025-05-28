@@ -14,3 +14,4 @@ Project now has:
 - JWT-based login
 - Protected endpoints
 - Stored tokens in cookies (for web apps)
+- Added role-based aut
