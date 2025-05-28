@@ -1,0 +1,13 @@
+﻿using AuthNet.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace AuthNet.Data
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options) { }
+
+        public DbSet<User> Users { get; set; }
+    }
+}
