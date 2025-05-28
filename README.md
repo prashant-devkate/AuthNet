@@ -12,3 +12,4 @@ Project now has:
 - SQL Server + EF Core integration
 - Secure password hashing
 - JWT-based login
+- Protected endpoints
