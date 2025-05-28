@@ -13,3 +13,4 @@ Project now has:
 - Secure password hashing
 - JWT-based login
 - Protected endpoints
+- Stored tokens in cookies (for web apps)
