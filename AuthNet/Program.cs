@@ -1,12 +1,24 @@
 using AuthNet.Data;
 using AuthNet.Helpers;
 using AuthNet.Services;
+using AuthNet.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("logs/myapp.log",
+                  rollingInterval: RollingInterval.Day,  // Creates a new log file daily
+                  retainedFileCountLimit: 7)  // Keeps 7 days of log files
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
@@ -46,6 +58,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var jwtKey = builder.Configuration["JwtSettings:securityKey"];
 builder.Services.AddSingleton(new JwtHelper(jwtKey));
@@ -61,6 +74,38 @@ builder.Services.AddAuthentication("Bearer")
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
+
+        // Add events to return custom messages
+        options.Events = new JwtBearerEvents
+        {
+            OnChallenge = context =>
+            {
+                var logger = context.HttpContext.RequestServices
+                    .GetRequiredService<ILoggerFactory>()
+                    .CreateLogger("JWT");
+
+                logger.LogWarning("401 Unauthorized: Token is missing or invalid. Path: {Path}", context.Request.Path);
+
+                context.HandleResponse();
+                context.Response.StatusCode = 401;
+                context.Response.ContentType = "application/json";
+                return context.Response.WriteAsync("{\"message\": \"Unauthorized: Invalid or missing token.\"}");
+            },
+            OnForbidden = context =>
+            {
+
+                var logger = context.HttpContext.RequestServices
+                    .GetRequiredService<ILoggerFactory>()
+                    .CreateLogger("JWT");
+
+                logger.LogWarning("403 Forbidden: Insufficient role for accessing {Path}", context.Request.Path);
+
+                context.Response.StatusCode = 403;
+                context.Response.ContentType = "application/json";
+                return context.Response.WriteAsync("{\"message\": \"Forbidden: You do not have permission to access this resource.\"}");
+            }
+        };
+
     });
 
 builder.Services.AddAuthorization();

@@ -14,9 +14,13 @@ namespace AuthNet.Helpers
             _key = key;
         }
 
-        public string GenerateToken(string username)
+        public string GenerateToken(string username, string role)
         {
-            var claims = new[] { new Claim(ClaimTypes.Name, username) };
+            var claims = new List<Claim>
+            { 
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Role, role)
+            };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

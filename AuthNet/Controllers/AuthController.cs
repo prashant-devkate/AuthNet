@@ -20,23 +20,23 @@ namespace AuthNet.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register(UserDto dto)
+        public IActionResult Register(RegisterDto dto)
         {
             var hashedPwd = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-            var user = new User { Username = dto.Username, PasswordHash = hashedPwd };
+            var user = new User { Username = dto.Username, PasswordHash = hashedPwd, Role = dto.Role };
 
             var success = _userService.Register(user);
             return success ? Ok("User registered successfully") : BadRequest("User already exists");
         }
 
         [HttpPost("login")]
-        public IActionResult Login(UserDto dto)
+        public IActionResult Login(LoginDto dto)
         {
             var user = _userService.Authenticate(dto.Username, dto.Password);
             if (user == null)
                 return Unauthorized("Invalid credentials");
 
-            var token = _jwtHelper.GenerateToken(user.Username);
+            var token = _jwtHelper.GenerateToken(user.Username, user.Role);
             return Ok(new { token });
         }
 
