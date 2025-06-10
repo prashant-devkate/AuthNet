@@ -8,6 +8,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package BCrypt.Net-Next
 ```
 
+
 Project now has:
 - SQL Server + EF Core integration
 - Secure password hashing
