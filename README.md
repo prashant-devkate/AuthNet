@@ -16,4 +16,5 @@ Project now has:
 - Stored tokens in cookies (for web apps)
 - Added role-based auth
 - Logging
+- Image Upload
   
