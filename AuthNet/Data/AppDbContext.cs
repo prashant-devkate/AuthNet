@@ -1,4 +1,4 @@
-﻿using AuthNet.Models;
+﻿using AuthNet.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthNet.Data
@@ -10,5 +10,6 @@ namespace AuthNet.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

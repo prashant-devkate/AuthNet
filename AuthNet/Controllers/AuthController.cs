@@ -1,5 +1,6 @@
 ﻿using AuthNet.Helpers;
-using AuthNet.Models;
+using AuthNet.Models.Domain;
+using AuthNet.Models.DTO;
 using AuthNet.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

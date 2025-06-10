@@ -1,4 +1,4 @@
-﻿using AuthNet.Models;
+﻿using AuthNet.Models.Domain;
 
 namespace AuthNet.Services.Interfaces
 {

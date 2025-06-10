@@ -1,4 +1,4 @@
-﻿namespace AuthNet.Models
+﻿namespace AuthNet.Models.DTO
 {
     public class RegisterDto
     {

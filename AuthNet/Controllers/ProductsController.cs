@@ -1,5 +1,5 @@
 ﻿using AuthNet.Enums;
-using AuthNet.Models;
+using AuthNet.Models.Domain;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

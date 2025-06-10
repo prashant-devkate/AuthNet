@@ -1,5 +1,5 @@
 ﻿using AuthNet.Data;
-using AuthNet.Models;
+using AuthNet.Models.Domain;
 using AuthNet.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
