@@ -18,4 +18,5 @@ Project now has:
 - Added role-based auth
 - Logging
 - Image Upload
+- Add Global Exception Handler Middleware
   
