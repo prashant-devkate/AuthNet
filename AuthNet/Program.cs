@@ -1,5 +1,6 @@
 using AuthNet.Data;
 using AuthNet.Helpers;
+using AuthNet.Middlewares;
 using AuthNet.Services;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -121,6 +122,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
