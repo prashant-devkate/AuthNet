@@ -8,6 +8,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package BCrypt.Net-Next
 ```
 
+
 Project now has:
 - SQL Server + EF Core integration
 - Secure password hashing
@@ -16,4 +17,5 @@ Project now has:
 - Stored tokens in cookies (for web apps)
 - Added role-based auth
 - Logging
+- Image Upload
   
