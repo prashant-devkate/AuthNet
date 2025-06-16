@@ -1,6 +1,7 @@
 ﻿using AuthNet.Data;
 using AuthNet.Models.Domain;
 using AuthNet.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthNet.Services
@@ -13,81 +14,53 @@ namespace AuthNet.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync()
-        {
-            return await _context.Products.ToListAsync();
-        }
+        public async Task<IEnumerable<Product>> GetAllAsync() =>
+        await _context.Products.ToListAsync();
 
         public async Task<Product?> GetByIdAsync(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await _context.Products
+                .FirstOrDefaultAsync(p => p.ProductId == id);
         }
 
-        public async Task<Product?> GetByProductCodeAsync(string productCode)
+        public async Task<int> GetProductCountAsync()
         {
-            return await _context.Products.FindAsync(productCode);
+            return await _context.Products.CountAsync();
         }
 
-        public async Task<ServiceResponse<int>> CreateAsync(Product product)
+        public async Task<Product> AddAsync(Product product)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-            return new ServiceResponse<int>
+            try
             {
-                Message = "Product created successfully.",
-                Data = product.Id
-            };
-        }
-
-        public async Task<ServiceResponse<Product>> UpdateAsync(Product product)
-        {
-            var existing = await _context.Products.FindAsync(product.Id);
-            if (existing == null)
-            {
-                return new ServiceResponse<Product>
-                {
-                    Status = "Failed",
-                    Message = "Product not found.",
-                    Data = null
-                };
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+                return product;
             }
-
-            existing.Name = product.Name;
-            existing.Description = product.Description;
-            existing.Quantity = product.Quantity;
-            existing.Price = product.Price;
-            existing.ProductCode = product.ProductCode;
-
-            await _context.SaveChangesAsync();
-
-            return new ServiceResponse<Product>
+            catch (Exception ex)
             {
-                Message = "Product updated successfully.",
-                Data = existing
-            };
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
-        public async Task<ServiceResponse<bool>> DeleteAsync(int id)
+        public async Task<Product?> UpdateAsync(int id, Product product)
+        {
+            var existing = await _context.Products.FindAsync(id);
+            if (existing == null) return null;
+
+            _context.Entry(existing).CurrentValues.SetValues(product);
+            await _context.SaveChangesAsync();
+            return existing;
+        }
+
+        public async Task<bool> DeleteAsync(int id)
         {
             var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return new ServiceResponse<bool>
-                {
-                    Status = "Failed",
-                    Message = "Product not found.",
-                    Data = false
-                };
-            }
+            if (product == null) return false;
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
-
-            return new ServiceResponse<bool>
-            {
-                Message = "Product deleted successfully.",
-                Data = true
-            };
+            return true;
         }
     }
 }

@@ -1,0 +1,153 @@
+﻿using AuthNet.UI.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace AuthNet.UI.Controllers
+{
+    public class ProductsController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public ProductsController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            List<ProductDto> products = new();
+
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Products");
+
+                response.EnsureSuccessStatusCode();
+
+                var data = await response.Content.ReadFromJsonAsync<IEnumerable<ProductDto>>();
+                if (data != null)
+                {
+                    products.AddRange(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Failed to load products.");
+            }
+
+
+            return View(products);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            var model = new AddProductViewModel();
+
+            var categoriesResponse = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/Categories");
+            ViewBag.Categories = new SelectList(categoriesResponse, "CategoryId", "Name");
+
+            var suppliersResponse = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/Suppliers");
+            ViewBag.Suppliers = new SelectList(suppliersResponse, "SupplierId", "CompanyName");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddProductViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Re-populate dropdowns before returning view
+                var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/categories");
+                ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
+
+                //var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
+                //ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+
+                return View(model);
+            }
+
+            var response = await _httpClient.PostAsJsonAsync("api/products", model);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Failed to save product.");
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var product = await _httpClient.GetFromJsonAsync<ProductDto>($"api/Products/{id}");
+            if (product == null) return NotFound();
+
+            var model = new EditProductViewModel
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                ProductCode = product.ProductCode,
+                CategoryId = product.CategoryId,
+                SupplierId = product.SupplierId,
+                //Inventory = new InventoryData
+                //{
+                //    QuantityInStock = product.Inventory?.QuantityInStock ?? 0,
+                //    ReorderLevel = product.Inventory?.ReorderLevel ?? 0,
+                //    LastUpdated = product.Inventory?.LastUpdated ?? DateTime.UtcNow
+                //}
+            };
+
+            var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/Categories");
+            ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
+
+            var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
+            ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditProductViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/Categories");
+                ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
+
+                var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
+                ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+
+                return View(model);
+            }
+
+            var response = await _httpClient.PutAsJsonAsync($"api/Products/{model.ProductId}", model);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Failed to update product.");
+
+            return View(model);
+           
+        }
+
+        [HttpPost("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var httpResponseMessage = await _httpClient.DeleteAsync($"api/Products/{id}");
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Products");
+            }
+
+            return View("Edit");
+        }
+    }
+}

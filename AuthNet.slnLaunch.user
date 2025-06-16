@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "AuthNet\\AuthNet.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AuthNet.UI\\AuthNet.UI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

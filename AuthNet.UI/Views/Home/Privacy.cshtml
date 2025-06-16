@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<style>
+    .privacy-container {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .privacy-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        padding: 2rem;
+        transition: 0.3s ease;
+    }
+
+        .privacy-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+    .privacy-icon {
+        font-size: 2.5rem;
+        color: #0d6efd;
+    }
+</style>
+
+<div class="container py-5 privacy-container">
+    <div class="text-center mb-4">
+        <i class="bi bi-shield-lock privacy-icon"></i>
+        <h1 class="fw-bold mt-2">@ViewData["Title"]</h1>
+        <p class="text-muted">Your privacy matters to us. Here's how we protect your data.</p>
+    </div>
+
+    <div class="privacy-card">
+        <h4 class="fw-semibold mb-3">1. Data Collection</h4>
+        <p>We collect only essential information to provide our services, such as your name, email, and preferences.</p>
+
+        <h4 class="fw-semibold mt-4 mb-3">2. Data Usage</h4>
+        <p>Your data is used solely to enhance your experience and improve our offerings. We never sell your data to third parties.</p>
+
+        <h4 class="fw-semibold mt-4 mb-3">3. Cookies</h4>
+        <p>We use cookies for functionality and analytics. You can control cookie settings through your browser.</p>
+
+        <h4 class="fw-semibold mt-4 mb-3">4. Data Security</h4>
+        <p>We implement industry-standard security measures to safeguard your information.</p>
+
+        <h4 class="fw-semibold mt-4 mb-3">5. Your Rights</h4>
+        <p>You have the right to access, update, or delete your personal data. Contact us for any data-related requests.</p>
+
+        <div class="text-end mt-4">
+            <small class="text-muted">Last updated: June 11, 2025</small>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35818.85 d17.13
+VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthNet", "AuthNet\AuthNet.csproj", "{40B53B56-1BF3-418C-B997-928722D8CBD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthNet.UI", "AuthNet.UI\AuthNet.UI.csproj", "{642A2681-2430-4A52-855C-43E8713DA0D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{40B53B56-1BF3-418C-B997-928722D8CBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B53B56-1BF3-418C-B997-928722D8CBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40B53B56-1BF3-418C-B997-928722D8CBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642A2681-2430-4A52-855C-43E8713DA0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642A2681-2430-4A52-855C-43E8713DA0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642A2681-2430-4A52-855C-43E8713DA0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642A2681-2430-4A52-855C-43E8713DA0D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

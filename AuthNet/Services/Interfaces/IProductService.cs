@@ -6,9 +6,9 @@ namespace AuthNet.Services.Interfaces
     {
         Task<IEnumerable<Product>> GetAllAsync();
         Task<Product?> GetByIdAsync(int id);
-        Task<Product?> GetByProductCodeAsync(string productCode);
-        Task<ServiceResponse<int>> CreateAsync(Product product);
-        Task<ServiceResponse<Product>> UpdateAsync(Product product);
-        Task<ServiceResponse<bool>> DeleteAsync(int id);
+        Task<int> GetProductCountAsync();
+        Task<Product> AddAsync(Product product);
+        Task<Product?> UpdateAsync(int id, Product product);
+        Task<bool> DeleteAsync(int id);
     }
 }

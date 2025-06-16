@@ -1,0 +1,158 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | InventoryPro</title>
+
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+        body {
+        background-color: #f4f6fa;
+        font-family: 'Segoe UI', sans-serif;
+        }
+
+        .sidebar {
+        height: 100vh;
+        background-color: #343a40;
+        padding: 1rem;
+        color: #fff;
+        }
+
+        .sidebar .nav-link {
+        color: #adb5bd;
+        }
+
+        .sidebar .nav-link.active,
+        .sidebar .nav-link:hover {
+        color: #fff;
+        }
+
+        .dashboard-cards .card {
+        color: #fff;
+        }
+
+        .bg-product {
+        background-color: #00c0ef;
+        }
+
+        .bg-category {
+        background-color: #00a65a;
+        }
+
+        .bg-supplier {
+        background-color: #f39c12;
+        }
+
+        .bg-month {
+        background-color: #dd4b39;
+        }
+
+        .chart-box {
+        height: 300px;
+        }
+    </style>
+</head>
+<body>
+    @{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+        Func<string, string, string> isActive = (controller, action) =>
+        currentController == controller && currentAction == action ? "active" : "";
+
+        // ✅ Safely access session values
+        var token = Context?.Session?.GetString("JWT");
+        var username = Context?.Session?.GetString("Username");
+        var isLoggedIn = !string.IsNullOrEmpty(token);
+    }
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            @if (isLoggedIn)
+            {
+                <nav class="col-md-2 sidebar">
+                    <div class="text-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=@username&background=0D8ABC&color=fff&size=60" class="rounded-circle mb-2" width="60" alt="Profile" />
+                        <h6 class="mb-0">@username</h6>
+                        <span class="text-success small">Online</span>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link @isActive("Home", "Index")" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i> Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @isActive("Products", "Index")" asp-controller="Products" asp-action="Index"><i class="bi bi-box"></i> Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @isActive("Categories", "Index")" asp-controller="Categories" asp-action="Index"><i class="bi bi-tags"></i> Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @isActive("Suppliers", "Index")" asp-controller="Suppliers" asp-action="Index"><i class="bi bi-truck"></i> Suppliers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" asp-controller="Auth" asp-action="Logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            }
+
+            <!-- Main -->
+            <main class="@(isLoggedIn ? "col-md-10 py-4" : "col-md-12 mt-5")">
+                <div class="container-fluid">
+                    @if (!isLoggedIn && currentController == "Home" && currentAction == "Index")
+                    {
+                        <div class="text-center">
+                            <h2>Welcome to InventoryPro</h2>
+                            <p class="lead">Please login or register to continue.</p>
+                            <a class="btn btn-primary m-2" asp-controller="Auth" asp-action="Login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                            <a class="btn btn-outline-primary m-2" asp-controller="Auth" asp-action="Register"><i class="bi bi-person-plus"></i> Register</a>
+                        </div>
+                    }
+                    else
+                    {
+                        @RenderBody()
+                    }
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @if (Model is AuthNet.UI.Models.DTO.DashboardViewModel dashboardModel)
+    {
+        <script>
+            const ctx = document.getElementById('donutChart')?.getContext('2d');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Products', 'Categories', 'Suppliers'],
+                    datasets: [{
+                        label: 'Inventory Stats',
+                                    data: [@dashboardModel.TotalProducts, @dashboardModel.TotalCategories, @dashboardModel.TotalSuppliers],
+                        backgroundColor: ['#00c0ef', '#00a65a', '#f39c12']
+                    }]
+                },
+                options: {
+                    cutout: '70%',
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { enabled: true }
+                    }
+                }
+            });
+        }
+    </script>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

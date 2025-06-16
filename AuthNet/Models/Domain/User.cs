@@ -1,10 +1,20 @@
-﻿namespace AuthNet.Models.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AuthNet.Models.Domain
 {
     public class User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
+
+        [Required, StringLength(100)]
         public string Username { get; set; }
-        public string PasswordHash { get; set; }
+
+        [Required]
+        public string PasswordHash { get; set; } = string.Empty;
+
+        [Required, StringLength(50)]
         public string Role { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public ICollection<Order> Orders { get; set; }
     }
 }

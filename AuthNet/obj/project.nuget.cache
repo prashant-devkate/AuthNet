@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tdF5GF2Vtnc=",
+  "dgSpecHash": "cRK7C2H+cQg=",
   "success": true,
   "projectFilePath": "C:\\Users\\prashant\\source\\repos\\AuthNet\\AuthNet\\AuthNet.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\prashant\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\prashant\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\prashant\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\prashant\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",

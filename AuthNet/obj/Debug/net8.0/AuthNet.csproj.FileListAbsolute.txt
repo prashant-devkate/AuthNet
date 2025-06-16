@@ -133,7 +133,6 @@ C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets\
 C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.AuthNet.props
 C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AuthNet.props
 C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\AuthNet.csproj.Up2Date
 C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\AuthNet.dll
 C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\refint\AuthNet.dll
@@ -165,3 +164,5 @@ C:\Users\prashant\source\repos\AuthNet\AuthNet\bin\Debug\net8.0\System.IO.Pipeli
 C:\Users\prashant\source\repos\AuthNet\AuthNet\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\prashant\source\repos\AuthNet\AuthNet\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\prashant\source\repos\AuthNet\AuthNet\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\prashant\source\repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\prashant\source\repos\AuthNet\AuthNet\bin\Debug\net8.0\AutoMapper.dll
