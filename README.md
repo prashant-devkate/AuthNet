@@ -22,4 +22,7 @@ Project now has:
 - Toast messages
 - MVC UI
 - Session storage
+
+  ![image](https://github.com/user-attachments/assets/6671c1b9-6e6a-48b6-8135-e43073e6cecd)
+
   
