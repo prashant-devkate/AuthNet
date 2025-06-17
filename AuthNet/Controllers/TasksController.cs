@@ -2,6 +2,7 @@
 using AuthNet.Services;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthNet.Controllers
@@ -23,13 +24,13 @@ namespace AuthNet.Controllers
             return Ok(tasks);
         }
 
-        // GET: api/Tasks/{id}
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var task = _service.GetTaskById(id);
-            if (task == null) return NotFound();
-            return Ok(task);
+            return task == null
+                ? NotFound(new { Message = $"Task with ID {id} not found." })
+                : Ok(task);
         }
 
         [HttpGet("count")]
@@ -39,31 +40,34 @@ namespace AuthNet.Controllers
             return Ok(count);
         }
 
-        // POST: api/Tasks
         [HttpPost]
         public IActionResult Create([FromBody] TaskItemDto dto)
         {
-            var success = _service.AddTask(dto);
-            if (!success) return BadRequest("Failed to add task.");
-            return Ok();
+            var result = _service.AddTask(dto);
+            if (!result.Success)
+                return BadRequest(new { result.Message });
+
+            return Ok(new { result.Message });
         }
 
-        // PUT: api/Tasks/{id}
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] TaskItemDto dto)
         {
-            var success = _service.UpdateTask(id, dto);
-            if (!success) return NotFound("Task not found.");
-            return Ok();
+            var result = _service.UpdateTask(id, dto);
+            if (!result.Success)
+                return NotFound(new { result.Message });
+
+            return Ok(new { result.Message });
         }
 
-        // DELETE: api/Tasks/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var success = _service.DeleteTask(id);
-            if (!success) return NotFound("Task not found.");
-            return Ok();
+            var result = _service.DeleteTask(id);
+            if (!result.Success)
+                return NotFound(new { result.Message });
+
+            return Ok(new { result.Message });
         }
     }
 }

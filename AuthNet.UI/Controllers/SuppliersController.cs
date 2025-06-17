@@ -12,6 +12,7 @@ namespace AuthNet.UI.Controllers
         {
             _httpClient = httpClientFactory.CreateClient("ApiClient");
         }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -26,7 +27,7 @@ namespace AuthNet.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public IActionResult Add()
         {
             return View();
         }
@@ -43,13 +44,17 @@ namespace AuthNet.UI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Supplier added successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Failed to save supplier.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to add supplier.";
+
+            ModelState.AddModelError("", errorMsg);
             return View(model);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -72,17 +77,25 @@ namespace AuthNet.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditSupplierViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var response = await _httpClient.PutAsJsonAsync($"api/Suppliers/{model.SupplierId}", model);
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Supplier updated successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Failed to update supplier.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update supplier.";
 
+            ModelState.AddModelError("", errorMsg);
             return View(model);
-
         }
 
         [HttpPost("Supplier/Delete/{id}")]
@@ -94,14 +107,13 @@ namespace AuthNet.UI.Controllers
             {
                 var content = await httpResponseMessage.Content.ReadAsStringAsync();
                 var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
-                var errorMsg = errorObj["message"];
+                var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to delete supplier.";
 
                 TempData["ErrorMessage"] = errorMsg;
                 return RedirectToAction("Index", "Suppliers");
             }
 
             TempData["SuccessMessage"] = "Supplier deleted successfully.";
-
             return RedirectToAction("Index");
         }
     }

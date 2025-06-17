@@ -8,8 +8,8 @@ namespace AuthNet.Services.Interfaces
         List<TaskItemDto> GetAllTasks();
         TaskItem? GetTaskById(int id);
         Task<int> GetTaskCountAsync();
-        bool AddTask(TaskItemDto dto);
-        bool UpdateTask(int id, TaskItemDto dto);
-        bool DeleteTask(int id);
+        OperationResponse AddTask(TaskItemDto dto);
+        OperationResponse UpdateTask(int id, TaskItemDto dto);
+        OperationResponse DeleteTask(int id);
     }
 }

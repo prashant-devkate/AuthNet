@@ -2,6 +2,7 @@
 using AuthNet.Services;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthNet.Controllers
@@ -12,7 +13,10 @@ namespace AuthNet.Controllers
     {
         private readonly ISupplierService _service;
 
-        public SuppliersController(ISupplierService service) => _service = service;
+        public SuppliersController(ISupplierService service)
+        {
+            _service = service;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -38,15 +42,26 @@ namespace AuthNet.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Supplier supplier)
         {
-            var created = await _service.AddAsync(supplier);
-            return CreatedAtAction(nameof(GetById), new { id = created.SupplierId }, created);
+            var result = await _service.AddAsync(supplier);
+            if (!result.response.Success)
+            {
+                return BadRequest(new { result.response.Message });
+            }
+            var addedSupplier = await _service.GetByIdAsync(supplier.SupplierId);
+            return CreatedAtAction(nameof(GetById), new { id = supplier.SupplierId }, addedSupplier);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Supplier supplier)
         {
-            var updated = await _service.UpdateAsync(id, supplier);
-            return updated == null ? NotFound() : Ok(updated);
+            var result = await _service.UpdateAsync(id, supplier);
+
+            if (!result.response.Success)
+            {
+                return NotFound(new { result.response.Message });
+            }
+
+            return Ok(new { result.response.Message });
         }
 
         [HttpDelete("{id}")]

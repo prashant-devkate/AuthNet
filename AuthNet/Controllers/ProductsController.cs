@@ -22,13 +22,19 @@ namespace AuthNet.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _service.GetAllAsync();
+            return Ok(products);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var item = await _service.GetByIdAsync(id);
-            return item == null ? NotFound() : Ok(item);
+            return item == null
+                ? NotFound(new { Message = $"Product with ID {id} not found." })
+                : Ok(item);
         }
 
         [HttpGet("count")]
@@ -41,32 +47,31 @@ namespace AuthNet.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Product product)
         {
-            try
-            {
-                var created = await _service.AddAsync(product);
-                return CreatedAtAction(nameof(GetById), new { id = created.ProductId }, created);
-            }
-            catch(DbUpdateException ex)
-            {
-                return StatusCode(500, "Database error: " + ex.InnerException?.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An unexpected error occurred: " + ex.Message);
-            }
+            var result = await _service.AddAsync(product);
+            if (!result.Success)
+                return BadRequest(new { result.Message });
+
+            return CreatedAtAction(nameof(GetById), new { id = product.ProductId }, product);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Product product)
         {
-            var updated = await _service.UpdateAsync(id, product);
-            return updated == null ? NotFound() : Ok(updated);
+            var result = await _service.UpdateAsync(id, product);
+            if (!result.Success)
+                return NotFound(new { result.Message });
+
+            return Ok(new { result.Message });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return await _service.DeleteAsync(id) ? NoContent() : NotFound();
+            var result = await _service.DeleteAsync(id);
+            if (!result.Success)
+                return BadRequest(new { result.Message });
+
+            return Ok(new { result.Message });
         }
     }
 

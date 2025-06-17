@@ -26,6 +26,7 @@ public class HomeController : Controller
             model.TotalCategories = await GetCountFromApi("api/Categories/count");
             model.TotalSuppliers = await GetCountFromApi("api/Suppliers/count");
             model.TotalTasks = await GetCountFromApi("api/Tasks/count");
+            model.TotalOrders = await GetCountFromApi("api/Orders/count");
             model.Tasks = await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/Tasks");
         }
         catch (Exception)

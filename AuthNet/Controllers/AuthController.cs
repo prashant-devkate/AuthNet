@@ -11,10 +11,10 @@ namespace AuthNet.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly AuthService _userService;
         private readonly JwtHelper _jwtHelper;
 
-        public AuthController(UserService userService, JwtHelper jwtHelper)
+        public AuthController(AuthService userService, JwtHelper jwtHelper)
         {
             _userService = userService;
             _jwtHelper = jwtHelper;

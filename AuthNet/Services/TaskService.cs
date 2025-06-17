@@ -44,39 +44,98 @@ namespace AuthNet.Services
             return await _context.Tasks.CountAsync();
         }
 
-        public bool AddTask(TaskItemDto dto)
+        public OperationResponse AddTask(TaskItemDto dto)
         {
-            var task = new TaskItem
+            try
             {
-                Title = dto.Title,
-                DueDate = dto.DueDate
-            };
+                var task = new TaskItem
+                {
+                    Title = dto.Title,
+                    DueDate = dto.DueDate
+                };
 
-            _context.Tasks.Add(task);
-            _context.SaveChanges();
-            return true;
+                _context.Tasks.Add(task);
+                _context.SaveChanges();
+                return new OperationResponse
+                {
+                    Success = true,
+                    Message = "Task added successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An error occurred while adding task: {ex.Message}"
+                };
+            }
         }
 
-        public bool UpdateTask(int id, TaskItemDto dto)
+        public OperationResponse UpdateTask(int id, TaskItemDto dto)
         {
             var task = _context.Tasks.Find(id);
-            if (task == null) return false;
+            if (task == null)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Task with ID {id} not found."
+                };
+            }
 
-            task.Title = dto.Title;
-            task.DueDate = dto.DueDate;
+            try
+            {
+                task.Title = dto.Title;
+                task.DueDate = dto.DueDate;
+                _context.SaveChanges();
 
-            _context.SaveChanges();
-            return true;
+                return new OperationResponse
+                {
+                    Success = true,
+                    Message = "Task updated successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An error occurred while updating task: {ex.Message}"
+                };
+            }
         }
 
-        public bool DeleteTask(int id)
+        public OperationResponse DeleteTask(int id)
         {
             var task = _context.Tasks.Find(id);
-            if (task == null) return false;
+            if (task == null)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Task with ID {id} not found."
+                };
+            }
 
-            _context.Tasks.Remove(task);
-            _context.SaveChanges();
-            return true;
+            try
+            {
+                _context.Tasks.Remove(task);
+                _context.SaveChanges();
+                return new OperationResponse
+                {
+                    Success = true,
+                    Message = "Task deleted successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An error occurred while deleting task: {ex.Message}"
+                };
+            }
         }
 
         private string GetDueLabel(DateTime dueDate, DateTime today)

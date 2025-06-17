@@ -1,6 +1,7 @@
 ﻿using AuthNet.UI.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System.Net.Http;
 
 namespace AuthNet.UI.Controllers
@@ -44,10 +45,15 @@ namespace AuthNet.UI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Category added successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Failed to save category.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to add category.";
+
+            ModelState.AddModelError("", errorMsg);
             return View(model);
         }
 
@@ -71,15 +77,24 @@ namespace AuthNet.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditCategoryViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var response = await _httpClient.PutAsJsonAsync($"api/Categories/{model.CategoryId}", model);
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Category updated successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Failed to update category.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update category.";
 
+            ModelState.AddModelError("", errorMsg);
             return View(model);
 
         }
@@ -89,12 +104,19 @@ namespace AuthNet.UI.Controllers
         {
             var httpResponseMessage = await _httpClient.DeleteAsync($"api/Categories/{id}");
 
-            if (httpResponseMessage.IsSuccessStatusCode)
+            if (!httpResponseMessage.IsSuccessStatusCode)
             {
+                var content = await httpResponseMessage.Content.ReadAsStringAsync();
+                var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+                var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to delete category.";
+
+                TempData["ErrorMessage"] = errorMsg;
                 return RedirectToAction("Index", "Categories");
             }
 
-            return View("Edit");
+            TempData["SuccessMessage"] = "Category deleted successfully.";
+            return View("Index");
+
         }
     }
 }

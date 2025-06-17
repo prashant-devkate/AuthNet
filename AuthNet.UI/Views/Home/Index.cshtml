@@ -32,7 +32,7 @@
 
 <div class="row dashboard-cards mb-4">
     <div class="col-md-3">
-        <div class="card text-white bg-info mb-3">
+        <div class="card text-white bg-primary mb-3">
             <div class="card-body text-center">
                 <h3 class="card-title">@Model.TotalProducts</h3>
                 <p class="card-text">Products</p>
@@ -63,7 +63,16 @@
             </div>
         </div>
     </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body text-center">
+                <h3 class="card-title">@Model.TotalOrders</h3>
+                <p class="card-text">Orders</p>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div class="row">
     <!-- Inventory Overview Chart -->
@@ -130,11 +139,11 @@
             new Chart(chartCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Products', 'Categories', 'Suppliers', 'Tasks'],
+                    labels: ['Products', 'Categories', 'Suppliers', 'Tasks', 'Order'],
                     datasets: [{
                         label: 'Inventory Stats',
-                        data: [@Model.TotalProducts, @Model.TotalCategories, @Model.TotalSuppliers, @Model.TotalTasks],
-                            backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#FF0000' ]
+                        data: [@Model.TotalProducts, @Model.TotalCategories, @Model.TotalSuppliers, @Model.TotalTasks, @Model.TotalOrders],
+                                backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#FF0000', '#28a745' ]
                     }]
                 },
                 options: {

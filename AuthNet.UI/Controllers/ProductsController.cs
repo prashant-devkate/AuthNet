@@ -1,6 +1,7 @@
 ﻿using AuthNet.UI.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace AuthNet.UI.Controllers
 {
@@ -32,9 +33,13 @@ namespace AuthNet.UI.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Failed to load products.");
+                TempData["ErrorMessage"] = "Failed to load products.";
             }
 
+            if (TempData.ContainsKey("SuccessMessage"))
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            if (TempData.ContainsKey("ErrorMessage"))
+                ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
             return View(products);
         }
@@ -62,8 +67,8 @@ namespace AuthNet.UI.Controllers
                 var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/categories");
                 ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
 
-                //var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
-                //ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+                var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
+                ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
 
                 return View(model);
             }
@@ -71,10 +76,15 @@ namespace AuthNet.UI.Controllers
             var response = await _httpClient.PostAsJsonAsync("api/products", model);
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Product added successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Failed to save product.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to add product.";
+
+            ModelState.AddModelError("", errorMsg);
             return View(model);
         }
 
@@ -128,11 +138,15 @@ namespace AuthNet.UI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Product updated successfully.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Failed to update product.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update product.";
 
+            ModelState.AddModelError("", errorMsg);
             return View(model);
            
         }
@@ -142,12 +156,19 @@ namespace AuthNet.UI.Controllers
         {
             var httpResponseMessage = await _httpClient.DeleteAsync($"api/Products/{id}");
 
-            if (httpResponseMessage.IsSuccessStatusCode)
+            if (!httpResponseMessage.IsSuccessStatusCode)
             {
+                var content = await httpResponseMessage.Content.ReadAsStringAsync();
+                var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+                var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to delete product.";
+
+                TempData["ErrorMessage"] = errorMsg;
                 return RedirectToAction("Index", "Products");
             }
 
-            return View("Edit");
+            TempData["SuccessMessage"] = "Product deleted successfully.";
+            return RedirectToAction("Index");
+            
         }
     }
 }

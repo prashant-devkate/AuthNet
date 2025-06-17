@@ -8,8 +8,8 @@ namespace AuthNet.Services.Interfaces
         Task<IEnumerable<Category>> GetAllAsync();
         Task<CategoryDto?> GetByIdAsync(int id);
         Task<int> GetCategoryCountAsync();
-        Task<Category> AddAsync(Category category);
-        Task<Category?> UpdateAsync(int id, Category category);
-        Task<bool> DeleteAsync(int id);
+        Task<OperationResponse> AddAsync(Category category);
+        Task<OperationResponse> UpdateAsync(int id, Category category);
+        Task<OperationResponse> DeleteAsync(int id);
     }
 }

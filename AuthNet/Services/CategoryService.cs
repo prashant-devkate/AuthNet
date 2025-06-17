@@ -9,9 +9,15 @@ namespace AuthNet.Services
     public class CategoryService : ICategoryService
     {
         private readonly AppDbContext _context;
-        public CategoryService(AppDbContext context) => _context = context;
+        public CategoryService(AppDbContext context)
+        {
+            _context = context;
+        }
 
-        public async Task<IEnumerable<Category>> GetAllAsync() => await _context.Categories.ToListAsync();
+        public async Task<IEnumerable<Category>> GetAllAsync()
+        {
+            return await _context.Categories.ToListAsync();
+        }
 
         public async Task<CategoryDto?> GetByIdAsync(int id)
         {
@@ -31,31 +37,114 @@ namespace AuthNet.Services
             return await _context.Categories.CountAsync();
         }
 
-        public async Task<Category> AddAsync(Category category)
+        public async Task<OperationResponse> AddAsync(Category category)
         {
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
-            return category;
+            try
+            {
+                _context.Categories.Add(category);
+                await _context.SaveChangesAsync();
+                return new OperationResponse
+                {
+                    Success = true,
+                    Message = "Category added successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An error occurred while adding the category: {ex.Message}"
+                };
+            }
         }
 
-        public async Task<Category?> UpdateAsync(int id, Category category)
+        public async Task<OperationResponse> UpdateAsync(int id, Category category)
         {
             var existing = await _context.Categories.FindAsync(id);
-            if (existing == null) return null;
+            if (existing == null)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Category with ID {id} not found."
+                };
+            }
 
-            _context.Entry(existing).CurrentValues.SetValues(category);
-            await _context.SaveChangesAsync();
-            return existing;
+            try
+            {
+                _context.Entry(existing).CurrentValues.SetValues(category);
+                await _context.SaveChangesAsync();
+                return new OperationResponse
+                {
+                    Success = true,
+                    Message = "Category updated successfully."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An error occurred while updating the category: {ex.Message}"
+                };
+            }
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<OperationResponse> DeleteAsync(int id)
         {
             var category = await _context.Categories.FindAsync(id);
-            if (category == null) return false;
+            if (category == null)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Category with ID {id} not found."
+                };
+            }
 
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-            return true;
+            try
+            {
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+                return new OperationResponse
+                {
+                    Success = true,
+                    Message = "Category deleted successfully."
+                };
+            }
+            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("FK_") == true)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = "Delete failed: The category is referenced by other records (e.g., products)."
+                };
+            }
+            catch (DbUpdateException ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Database update error: {ex.Message}"
+                };
+            }
+            catch (InvalidOperationException ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Invalid operation: {ex.Message}"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An unexpected error occurred: {ex.Message}"
+                };
+            }
         }
     }
 }

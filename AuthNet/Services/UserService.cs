@@ -1,34 +1,35 @@
 ﻿using AuthNet.Data;
-using AuthNet.Models.Domain;
+using AuthNet.Models.DTO;
+using AuthNet.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthNet.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly AppDbContext _context;
-
         public UserService(AppDbContext context)
         {
             _context = context;
         }
 
-        public bool Register(User user)
+        public async Task<IEnumerable<UserViewModel>> GetAllAsync()
         {
-            if (_context.Users.Any(u => u.Username == user.Username))
-                return false;
-
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return true;
-        }
-
-        public User Authenticate(string username, string password)
-        {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
-                return null;
-
-            return user;
+            try
+            {
+                return await _context.Users
+                    .Select(s => new UserViewModel
+                    {
+                        UserId = s.UserId,
+                        Username = s.Username,
+                        Role = s.Role,
+                        CreatedAt = s.CreatedAt
+                    }).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                return Enumerable.Empty<UserViewModel>();
+            }
         }
     }
 }

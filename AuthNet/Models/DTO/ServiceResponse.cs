@@ -1,4 +1,4 @@
-﻿namespace AuthNet.Models.Domain
+﻿namespace AuthNet.Models.DTO
 {
     public class ServiceResponse<T>
     {

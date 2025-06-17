@@ -1,6 +1,7 @@
 ﻿using AuthNet.UI.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Reflection;
@@ -31,9 +32,16 @@ namespace AuthNet.UI.Controllers
             var response = await _httpClient.PostAsJsonAsync("api/Tasks", task);
 
             if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Task added successfully.";
                 return RedirectToAction("Index", "Home");
+            }
 
-            ModelState.AddModelError("", "Failed to create task.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to add task.";
+
+            ModelState.AddModelError("", errorMsg);
             return View(task);
         }
 
@@ -66,11 +74,15 @@ namespace AuthNet.UI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Task updated successfully.";
                 return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError("", "Failed to update product.");
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update task.";
 
+            ModelState.AddModelError("", errorMsg);
             return View(model);
         }
 
@@ -79,12 +91,19 @@ namespace AuthNet.UI.Controllers
         {
             var httpResponseMessage = await _httpClient.DeleteAsync($"api/Tasks/{id}");
 
-            if (httpResponseMessage.IsSuccessStatusCode)
+            if (!httpResponseMessage.IsSuccessStatusCode)
             {
+                var content = await httpResponseMessage.Content.ReadAsStringAsync();
+                var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+                var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to delete task.";
+
+                TempData["ErrorMessage"] = errorMsg;
                 return RedirectToAction("Index", "Home");
             }
 
-            return View("Index", "Home");
+            TempData["SuccessMessage"] = "Task deleted successfully.";
+            return RedirectToAction("Index", "Home");
+
         }
 
     }

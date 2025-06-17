@@ -18,6 +18,6 @@ namespace AuthNet.Models.Domain
         [StringLength(500)]
         public string Address { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order>? Orders { get; set; }
     }
 }
