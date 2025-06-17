@@ -19,6 +19,7 @@ Project now has:
 - Logging
 - Image Upload
 - Add Global Exception Handler Middleware
+- Exception handling
 - Toast messages
 - MVC UI
 - Session storage
