@@ -1,0 +1,1398 @@
+2025-06-24 10:31:57.838 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.860 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.860 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.860 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.961 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.961 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.961 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:31:57.961 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:32:06.247 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:32:06.265 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:32:06.265 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:32:06.265 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:33:55.927 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:33:55.946 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:33:55.946 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:33:55.946 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.362 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.380 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.380 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.380 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.604 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.604 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.604 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.604 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:14.742 +05:30 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [YourDatabaseName];
+2025-06-24 10:36:14.785 +05:30 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [YourDatabaseName] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-06-24 10:36:14.796 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-24 10:36:14.836 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2025-06-24 10:36:14.837 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-24 10:36:14.846 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-24 10:36:14.865 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-24 10:36:14.874 +05:30 [INF] Applying migration '20250624050158_InitialCreate'.
+2025-06-24 10:36:14.921 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [CategoryId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([CategoryId])
+);
+2025-06-24 10:36:14.922 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Customers] (
+    [CustomerId] int NOT NULL IDENTITY,
+    [Name] nvarchar(100) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Phone] nvarchar(max) NOT NULL,
+    [Address] nvarchar(500) NOT NULL,
+    CONSTRAINT [PK_Customers] PRIMARY KEY ([CustomerId])
+);
+2025-06-24 10:36:14.923 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Images] (
+    [Id] uniqueidentifier NOT NULL,
+    [FileName] nvarchar(max) NOT NULL,
+    [FileDescription] nvarchar(max) NULL,
+    [FileExtension] nvarchar(max) NOT NULL,
+    [FileSizeInBytes] bigint NOT NULL,
+    [FilePath] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Images] PRIMARY KEY ([Id])
+);
+2025-06-24 10:36:14.924 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Suppliers] (
+    [SupplierId] int NOT NULL IDENTITY,
+    [CompanyName] nvarchar(max) NOT NULL,
+    [ContactName] nvarchar(max) NOT NULL,
+    [Phone] nvarchar(max) NOT NULL,
+    [Address] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Suppliers] PRIMARY KEY ([SupplierId])
+);
+2025-06-24 10:36:14.925 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Tasks] (
+    [Id] int NOT NULL IDENTITY,
+    [Title] nvarchar(max) NOT NULL,
+    [DueDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Tasks] PRIMARY KEY ([Id])
+);
+2025-06-24 10:36:14.926 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserId] int NOT NULL IDENTITY,
+    [Username] nvarchar(100) NOT NULL,
+    [PasswordHash] nvarchar(max) NOT NULL,
+    [Role] nvarchar(50) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserId])
+);
+2025-06-24 10:36:14.928 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [ProductId] int NOT NULL IDENTITY,
+    [Name] nvarchar(100) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Price] decimal(18,2) NOT NULL,
+    [ProductCode] nvarchar(max) NULL,
+    [CategoryId] int NULL,
+    [SupplierId] int NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([ProductId]),
+    CONSTRAINT [FK_Products_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([CategoryId]),
+    CONSTRAINT [FK_Products_Suppliers_SupplierId] FOREIGN KEY ([SupplierId]) REFERENCES [Suppliers] ([SupplierId])
+);
+2025-06-24 10:36:14.929 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [auditLogs] (
+    [LogId] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [Action] nvarchar(100) NOT NULL,
+    [TableName] nvarchar(max) NOT NULL,
+    [EntityId] int NULL,
+    [Timestamp] datetime2 NOT NULL,
+    CONSTRAINT [PK_auditLogs] PRIMARY KEY ([LogId]),
+    CONSTRAINT [FK_auditLogs_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:14.931 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Orders] (
+    [OrderId] int NOT NULL IDENTITY,
+    [CustomerId] int NOT NULL,
+    [UserId] int NOT NULL,
+    [OrderDate] datetime2 NOT NULL,
+    [TotalAmount] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_Orders] PRIMARY KEY ([OrderId]),
+    CONSTRAINT [FK_Orders_Customers_CustomerId] FOREIGN KEY ([CustomerId]) REFERENCES [Customers] ([CustomerId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Orders_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:14.933 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [purchaseOrders] (
+    [PurchaseOrderId] int NOT NULL IDENTITY,
+    [SupplierId] int NOT NULL,
+    [OrderDate] datetime2 NOT NULL,
+    [TotalAmount] decimal(18,2) NOT NULL,
+    [CreatedByUserId] int NULL,
+    CONSTRAINT [PK_purchaseOrders] PRIMARY KEY ([PurchaseOrderId]),
+    CONSTRAINT [FK_purchaseOrders_Suppliers_SupplierId] FOREIGN KEY ([SupplierId]) REFERENCES [Suppliers] ([SupplierId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_purchaseOrders_Users_CreatedByUserId] FOREIGN KEY ([CreatedByUserId]) REFERENCES [Users] ([UserId])
+);
+2025-06-24 10:36:14.934 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Inventories] (
+    [InventoryId] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [QuantityInStock] int NOT NULL,
+    [ReorderLevel] int NOT NULL,
+    [LastUpdated] datetime2 NOT NULL,
+    CONSTRAINT [PK_Inventories] PRIMARY KEY ([InventoryId]),
+    CONSTRAINT [FK_Inventories_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:14.935 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OrderItems] (
+    [OrderItemId] int NOT NULL IDENTITY,
+    [OrderId] int NOT NULL,
+    [ProductId] int NOT NULL,
+    [Quantity] int NOT NULL,
+    [UnitPrice] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_OrderItems] PRIMARY KEY ([OrderItemId]),
+    CONSTRAINT [FK_OrderItems_Orders_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [Orders] ([OrderId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_OrderItems_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:14.975 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'CategoryId', N'Description', N'Name') AND [object_id] = OBJECT_ID(N'[Categories]'))
+    SET IDENTITY_INSERT [Categories] ON;
+INSERT INTO [Categories] ([CategoryId], [Description], [Name])
+VALUES (1, N'Electronic items', N'Electronics'),
+(2, N'Books and Stationery', N'Books');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'CategoryId', N'Description', N'Name') AND [object_id] = OBJECT_ID(N'[Categories]'))
+    SET IDENTITY_INSERT [Categories] OFF;
+2025-06-24 10:36:14.990 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'SupplierId', N'Address', N'CompanyName', N'ContactName', N'Phone') AND [object_id] = OBJECT_ID(N'[Suppliers]'))
+    SET IDENTITY_INSERT [Suppliers] ON;
+INSERT INTO [Suppliers] ([SupplierId], [Address], [CompanyName], [ContactName], [Phone])
+VALUES (1, N'NYC', N'Tech Supplies Inc', N'Alice', N'111-111'),
+(2, N'LA', N'BookMart', N'Bob', N'222-222');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'SupplierId', N'Address', N'CompanyName', N'ContactName', N'Phone') AND [object_id] = OBJECT_ID(N'[Suppliers]'))
+    SET IDENTITY_INSERT [Suppliers] OFF;
+2025-06-24 10:36:15.005 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'UserId', N'CreatedAt', N'PasswordHash', N'Role', N'Username') AND [object_id] = OBJECT_ID(N'[Users]'))
+    SET IDENTITY_INSERT [Users] ON;
+INSERT INTO [Users] ([UserId], [CreatedAt], [PasswordHash], [Role], [Username])
+VALUES (1, '2025-06-24T05:01:57.9467020Z', N'hashed-password', N'Admin', N'admin');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'UserId', N'CreatedAt', N'PasswordHash', N'Role', N'Username') AND [object_id] = OBJECT_ID(N'[Users]'))
+    SET IDENTITY_INSERT [Users] OFF;
+2025-06-24 10:36:15.007 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_auditLogs_UserId] ON [auditLogs] ([UserId]);
+2025-06-24 10:36:15.008 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Inventories_ProductId] ON [Inventories] ([ProductId]);
+2025-06-24 10:36:15.009 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_OrderItems_OrderId] ON [OrderItems] ([OrderId]);
+2025-06-24 10:36:15.009 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_OrderItems_ProductId] ON [OrderItems] ([ProductId]);
+2025-06-24 10:36:15.010 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Orders_CustomerId] ON [Orders] ([CustomerId]);
+2025-06-24 10:36:15.010 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Orders_UserId] ON [Orders] ([UserId]);
+2025-06-24 10:36:15.011 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);
+2025-06-24 10:36:15.012 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_SupplierId] ON [Products] ([SupplierId]);
+2025-06-24 10:36:15.012 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_purchaseOrders_CreatedByUserId] ON [purchaseOrders] ([CreatedByUserId]);
+2025-06-24 10:36:15.013 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_purchaseOrders_SupplierId] ON [purchaseOrders] ([SupplierId]);
+2025-06-24 10:36:15.014 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250624050158_InitialCreate', N'8.0.5');
+2025-06-24 10:36:49.692 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.710 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.710 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.710 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.912 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.912 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.913 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:49.913 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:36:50.025 +05:30 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [Mudraa];
+2025-06-24 10:36:50.059 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Mudraa] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2025-06-24 10:36:50.069 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-24 10:36:50.108 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2025-06-24 10:36:50.110 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-06-24 10:36:50.117 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-06-24 10:36:50.129 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-06-24 10:36:50.137 +05:30 [INF] Applying migration '20250624050158_InitialCreate'.
+2025-06-24 10:36:50.179 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Categories] (
+    [CategoryId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([CategoryId])
+);
+2025-06-24 10:36:50.180 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Customers] (
+    [CustomerId] int NOT NULL IDENTITY,
+    [Name] nvarchar(100) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Phone] nvarchar(max) NOT NULL,
+    [Address] nvarchar(500) NOT NULL,
+    CONSTRAINT [PK_Customers] PRIMARY KEY ([CustomerId])
+);
+2025-06-24 10:36:50.181 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Images] (
+    [Id] uniqueidentifier NOT NULL,
+    [FileName] nvarchar(max) NOT NULL,
+    [FileDescription] nvarchar(max) NULL,
+    [FileExtension] nvarchar(max) NOT NULL,
+    [FileSizeInBytes] bigint NOT NULL,
+    [FilePath] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Images] PRIMARY KEY ([Id])
+);
+2025-06-24 10:36:50.182 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Suppliers] (
+    [SupplierId] int NOT NULL IDENTITY,
+    [CompanyName] nvarchar(max) NOT NULL,
+    [ContactName] nvarchar(max) NOT NULL,
+    [Phone] nvarchar(max) NOT NULL,
+    [Address] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Suppliers] PRIMARY KEY ([SupplierId])
+);
+2025-06-24 10:36:50.184 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Tasks] (
+    [Id] int NOT NULL IDENTITY,
+    [Title] nvarchar(max) NOT NULL,
+    [DueDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Tasks] PRIMARY KEY ([Id])
+);
+2025-06-24 10:36:50.185 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserId] int NOT NULL IDENTITY,
+    [Username] nvarchar(100) NOT NULL,
+    [PasswordHash] nvarchar(max) NOT NULL,
+    [Role] nvarchar(50) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserId])
+);
+2025-06-24 10:36:50.186 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Products] (
+    [ProductId] int NOT NULL IDENTITY,
+    [Name] nvarchar(100) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [Price] decimal(18,2) NOT NULL,
+    [ProductCode] nvarchar(max) NULL,
+    [CategoryId] int NULL,
+    [SupplierId] int NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([ProductId]),
+    CONSTRAINT [FK_Products_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([CategoryId]),
+    CONSTRAINT [FK_Products_Suppliers_SupplierId] FOREIGN KEY ([SupplierId]) REFERENCES [Suppliers] ([SupplierId])
+);
+2025-06-24 10:36:50.187 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [auditLogs] (
+    [LogId] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [Action] nvarchar(100) NOT NULL,
+    [TableName] nvarchar(max) NOT NULL,
+    [EntityId] int NULL,
+    [Timestamp] datetime2 NOT NULL,
+    CONSTRAINT [PK_auditLogs] PRIMARY KEY ([LogId]),
+    CONSTRAINT [FK_auditLogs_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:50.190 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Orders] (
+    [OrderId] int NOT NULL IDENTITY,
+    [CustomerId] int NOT NULL,
+    [UserId] int NOT NULL,
+    [OrderDate] datetime2 NOT NULL,
+    [TotalAmount] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_Orders] PRIMARY KEY ([OrderId]),
+    CONSTRAINT [FK_Orders_Customers_CustomerId] FOREIGN KEY ([CustomerId]) REFERENCES [Customers] ([CustomerId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Orders_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:50.192 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [purchaseOrders] (
+    [PurchaseOrderId] int NOT NULL IDENTITY,
+    [SupplierId] int NOT NULL,
+    [OrderDate] datetime2 NOT NULL,
+    [TotalAmount] decimal(18,2) NOT NULL,
+    [CreatedByUserId] int NULL,
+    CONSTRAINT [PK_purchaseOrders] PRIMARY KEY ([PurchaseOrderId]),
+    CONSTRAINT [FK_purchaseOrders_Suppliers_SupplierId] FOREIGN KEY ([SupplierId]) REFERENCES [Suppliers] ([SupplierId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_purchaseOrders_Users_CreatedByUserId] FOREIGN KEY ([CreatedByUserId]) REFERENCES [Users] ([UserId])
+);
+2025-06-24 10:36:50.193 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Inventories] (
+    [InventoryId] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [QuantityInStock] int NOT NULL,
+    [ReorderLevel] int NOT NULL,
+    [LastUpdated] datetime2 NOT NULL,
+    CONSTRAINT [PK_Inventories] PRIMARY KEY ([InventoryId]),
+    CONSTRAINT [FK_Inventories_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:50.194 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [OrderItems] (
+    [OrderItemId] int NOT NULL IDENTITY,
+    [OrderId] int NOT NULL,
+    [ProductId] int NOT NULL,
+    [Quantity] int NOT NULL,
+    [UnitPrice] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_OrderItems] PRIMARY KEY ([OrderItemId]),
+    CONSTRAINT [FK_OrderItems_Orders_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [Orders] ([OrderId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_OrderItems_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId]) ON DELETE CASCADE
+);
+2025-06-24 10:36:50.234 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'CategoryId', N'Description', N'Name') AND [object_id] = OBJECT_ID(N'[Categories]'))
+    SET IDENTITY_INSERT [Categories] ON;
+INSERT INTO [Categories] ([CategoryId], [Description], [Name])
+VALUES (1, N'Electronic items', N'Electronics'),
+(2, N'Books and Stationery', N'Books');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'CategoryId', N'Description', N'Name') AND [object_id] = OBJECT_ID(N'[Categories]'))
+    SET IDENTITY_INSERT [Categories] OFF;
+2025-06-24 10:36:50.251 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'SupplierId', N'Address', N'CompanyName', N'ContactName', N'Phone') AND [object_id] = OBJECT_ID(N'[Suppliers]'))
+    SET IDENTITY_INSERT [Suppliers] ON;
+INSERT INTO [Suppliers] ([SupplierId], [Address], [CompanyName], [ContactName], [Phone])
+VALUES (1, N'NYC', N'Tech Supplies Inc', N'Alice', N'111-111'),
+(2, N'LA', N'BookMart', N'Bob', N'222-222');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'SupplierId', N'Address', N'CompanyName', N'ContactName', N'Phone') AND [object_id] = OBJECT_ID(N'[Suppliers]'))
+    SET IDENTITY_INSERT [Suppliers] OFF;
+2025-06-24 10:36:50.269 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'UserId', N'CreatedAt', N'PasswordHash', N'Role', N'Username') AND [object_id] = OBJECT_ID(N'[Users]'))
+    SET IDENTITY_INSERT [Users] ON;
+INSERT INTO [Users] ([UserId], [CreatedAt], [PasswordHash], [Role], [Username])
+VALUES (1, '2025-06-24T05:01:57.9467020Z', N'hashed-password', N'Admin', N'admin');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'UserId', N'CreatedAt', N'PasswordHash', N'Role', N'Username') AND [object_id] = OBJECT_ID(N'[Users]'))
+    SET IDENTITY_INSERT [Users] OFF;
+2025-06-24 10:36:50.271 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_auditLogs_UserId] ON [auditLogs] ([UserId]);
+2025-06-24 10:36:50.272 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Inventories_ProductId] ON [Inventories] ([ProductId]);
+2025-06-24 10:36:50.273 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_OrderItems_OrderId] ON [OrderItems] ([OrderId]);
+2025-06-24 10:36:50.273 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_OrderItems_ProductId] ON [OrderItems] ([ProductId]);
+2025-06-24 10:36:50.274 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Orders_CustomerId] ON [Orders] ([CustomerId]);
+2025-06-24 10:36:50.275 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Orders_UserId] ON [Orders] ([UserId]);
+2025-06-24 10:36:50.275 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);
+2025-06-24 10:36:50.276 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Products_SupplierId] ON [Products] ([SupplierId]);
+2025-06-24 10:36:50.277 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_purchaseOrders_CreatedByUserId] ON [purchaseOrders] ([CreatedByUserId]);
+2025-06-24 10:36:50.277 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_purchaseOrders_SupplierId] ON [purchaseOrders] ([SupplierId]);
+2025-06-24 10:36:50.278 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250624050158_InitialCreate', N'8.0.5');
+2025-06-24 10:38:03.725 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 10:38:03.770 +05:30 [INF] Creating key {5300dbe0-5042-4e33-a600-762a26115a12} with creation date 2025-06-24 05:08:03Z, activation date 2025-06-24 05:08:03Z, and expiration date 2025-09-22 05:08:03Z.
+2025-06-24 10:38:03.793 +05:30 [INF] Writing data to file 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys\key-5300dbe0-5042-4e33-a600-762a26115a12.xml'.
+2025-06-24 10:38:04.141 +05:30 [INF] Now listening on: https://localhost:7165
+2025-06-24 10:38:04.142 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 10:38:04.218 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 10:38:04.218 +05:30 [INF] Hosting environment: Development
+2025-06-24 10:38:04.218 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 10:38:18.501 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 10:38:18.682 +05:30 [INF] Now listening on: https://localhost:7165
+2025-06-24 10:38:18.682 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 10:38:18.748 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 10:38:18.748 +05:30 [INF] Hosting environment: Development
+2025-06-24 10:38:18.748 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 10:39:35.088 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 10:39:35.285 +05:30 [INF] Now listening on: https://localhost:7165
+2025-06-24 10:39:35.286 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 10:39:35.353 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 10:39:35.354 +05:30 [INF] Hosting environment: Development
+2025-06-24 10:39:35.354 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 10:41:30.621 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 10:41:30.761 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 10:41:30.828 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 10:41:30.828 +05:30 [INF] Hosting environment: Development
+2025-06-24 10:41:30.828 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 10:41:31.361 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger - null null
+2025-06-24 10:41:31.503 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger - 301 0 null 150.2118ms
+2025-06-24 10:41:31.505 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 10:41:31.553 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 200 null text/html;charset=utf-8 47.9953ms
+2025-06-24 10:41:31.555 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/swagger-ui.css - null null
+2025-06-24 10:41:31.555 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/swagger-ui-bundle.js - null null
+2025-06-24 10:41:31.555 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 10:41:31.555 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-24 10:41:31.561 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 5.806ms
+2025-06-24 10:41:31.588 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-24 10:41:31.588 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-24 10:41:31.588 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-06-24 10:41:31.589 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 33.7383ms
+2025-06-24 10:41:31.589 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/swagger-ui.css - 200 152034 text/css 33.8758ms
+2025-06-24 10:41:31.589 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 33.9714ms
+2025-06-24 10:41:31.589 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_vs/browserLink - null null
+2025-06-24 10:41:31.646 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_vs/browserLink - 200 null text/javascript; charset=UTF-8 56.21ms
+2025-06-24 10:41:31.721 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - null null
+2025-06-24 10:41:31.737 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.8739ms
+2025-06-24 10:41:31.739 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/favicon-32x32.png - null null
+2025-06-24 10:41:31.740 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-24 10:41:31.740 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/favicon-32x32.png - 200 628 image/png 0.8023ms
+2025-06-24 10:42:10.570 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 10:42:10.767 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 10:42:10.844 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 10:42:10.844 +05:30 [INF] Hosting environment: Development
+2025-06-24 10:42:10.845 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 10:42:11.260 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 10:42:11.407 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 200 null text/html;charset=utf-8 154.7291ms
+2025-06-24 10:42:11.409 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 10:42:11.410 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_vs/browserLink - null null
+2025-06-24 10:42:11.414 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 5.5366ms
+2025-06-24 10:42:11.435 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.8695ms
+2025-06-24 10:42:11.552 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - null null
+2025-06-24 10:42:11.568 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.3552ms
+2025-06-24 10:43:15.868 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 10:43:16.108 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 10:43:16.176 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 10:43:16.176 +05:30 [INF] Hosting environment: Development
+2025-06-24 10:43:16.176 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 10:43:16.866 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 10:43:17.039 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 200 null text/html;charset=utf-8 180.0369ms
+2025-06-24 10:43:17.046 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 10:43:17.048 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_vs/browserLink - null null
+2025-06-24 10:43:17.049 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 4.2262ms
+2025-06-24 10:43:17.073 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.5981ms
+2025-06-24 10:43:17.115 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - null null
+2025-06-24 10:43:17.128 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.1931ms
+2025-06-24 10:43:38.335 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 10:43:38.342 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 200 null text/html;charset=utf-8 6.2766ms
+2025-06-24 10:43:38.355 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_vs/browserLink - null null
+2025-06-24 10:43:38.355 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 10:43:38.357 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 2.0914ms
+2025-06-24 10:43:38.371 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_vs/browserLink - 200 null text/javascript; charset=UTF-8 15.799ms
+2025-06-24 10:43:38.439 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - null null
+2025-06-24 10:43:38.460 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.7113ms
+2025-06-24 10:51:02.447 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 10:51:02.476 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 200 null text/html;charset=utf-8 29.1746ms
+2025-06-24 10:51:02.502 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 10:51:02.503 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 0.6632ms
+2025-06-24 10:51:02.507 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/_vs/browserLink - null null
+2025-06-24 10:51:02.525 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.9427ms
+2025-06-24 10:51:02.626 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - null null
+2025-06-24 10:51:02.641 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.1435ms
+2025-06-24 10:51:02.703 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/Auth/register - application/json; charset=utf-8 null
+2025-06-24 10:51:02.718 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 10:51:02.809 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.AuthController.Register (AuthNet)'
+2025-06-24 10:51:02.860 +05:30 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register(AuthNet.Models.DTO.RegisterDto) on controller AuthNet.Controllers.AuthController (AuthNet).
+2025-06-24 10:51:05.258 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:51:05.258 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:51:05.258 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:51:05.258 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 10:51:06.641 +05:30 [INF] Executed DbCommand (83ms) [Parameters=[@__user_Username_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Username] = @__user_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-24 10:51:06.995 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000), @p2='?' (Size = 50), @p3='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedAt], [PasswordHash], [Role], [Username])
+OUTPUT INSERTED.[UserId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-24 10:51:07.040 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-06-24 10:51:07.047 +05:30 [INF] Executed action AuthNet.Controllers.AuthController.Register (AuthNet) in 4181.1529ms
+2025-06-24 10:51:07.047 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.AuthController.Register (AuthNet)'
+2025-06-24 10:51:07.059 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/Auth/register - 200 null text/plain; charset=utf-8 4357.6693ms
+2025-06-24 10:52:24.114 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/Auth/login - application/json; charset=utf-8 null
+2025-06-24 10:52:24.128 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.AuthController.Login (AuthNet)'
+2025-06-24 10:52:24.133 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthNet.Models.DTO.LoginDto) on controller AuthNet.Controllers.AuthController (AuthNet).
+2025-06-24 10:52:24.241 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__username_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-06-24 10:52:24.912 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 10:52:24.924 +05:30 [INF] Executed action AuthNet.Controllers.AuthController.Login (AuthNet) in 790.6124ms
+2025-06-24 10:52:24.924 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.AuthController.Login (AuthNet)'
+2025-06-24 10:52:24.925 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/Auth/login - 200 null application/json; charset=utf-8 810.2646ms
+2025-06-24 10:52:24.953 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 10:52:24.957 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:52:24.965 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:52:25.205 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 10:52:25.233 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:25.238 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 272.8983ms
+2025-06-24 10:52:25.239 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:52:25.242 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 288.6644ms
+2025-06-24 10:52:25.252 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 10:52:25.253 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:52:25.258 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:52:25.279 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 10:52:25.280 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:25.280 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 22.6486ms
+2025-06-24 10:52:25.281 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:52:25.281 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 28.6085ms
+2025-06-24 10:52:25.296 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 10:52:25.297 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:52:25.301 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:52:25.314 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 10:52:25.315 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:25.315 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 13.6907ms
+2025-06-24 10:52:25.315 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:52:25.316 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 19.9766ms
+2025-06-24 10:52:25.327 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 10:52:25.327 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:52:25.333 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:52:25.349 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 10:52:25.349 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:25.350 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 16.2227ms
+2025-06-24 10:52:25.350 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:52:25.350 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 23.5491ms
+2025-06-24 10:52:25.362 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 10:52:25.362 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:52:25.370 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 10:52:25.384 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 10:52:25.384 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:25.385 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 14.8785ms
+2025-06-24 10:52:25.385 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:52:25.385 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 23.5262ms
+2025-06-24 10:52:25.395 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 10:52:25.396 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:52:25.398 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:52:25.423 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 10:52:25.424 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:52:25.433 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 35.0934ms
+2025-06-24 10:52:25.433 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:52:25.433 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 37.9485ms
+2025-06-24 10:52:58.046 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 10:52:58.047 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:52:58.050 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:52:58.063 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 10:52:58.063 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:58.063 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 11.3954ms
+2025-06-24 10:52:58.064 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:52:58.064 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 18.3944ms
+2025-06-24 10:52:58.079 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 10:52:58.080 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:52:58.080 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:52:58.084 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 10:52:58.084 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:58.085 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 4.8483ms
+2025-06-24 10:52:58.085 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:52:58.085 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 5.8479ms
+2025-06-24 10:52:58.094 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 10:52:58.094 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:52:58.094 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:52:58.098 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 10:52:58.099 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:58.099 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 4.8604ms
+2025-06-24 10:52:58.099 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:52:58.099 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 5.7039ms
+2025-06-24 10:52:58.108 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 10:52:58.108 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:52:58.108 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:52:58.117 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 10:52:58.122 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:58.125 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 16.978ms
+2025-06-24 10:52:58.125 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:52:58.126 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 17.8931ms
+2025-06-24 10:52:58.133 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 10:52:58.133 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:52:58.133 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 10:52:58.138 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 10:52:58.139 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:52:58.139 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 5.5782ms
+2025-06-24 10:52:58.139 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:52:58.139 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 6.3352ms
+2025-06-24 10:52:58.145 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 10:52:58.146 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:52:58.146 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:52:58.153 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 10:52:58.153 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:52:58.153 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 7.2334ms
+2025-06-24 10:52:58.153 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:52:58.153 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 7.7638ms
+2025-06-24 10:53:10.307 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories - null null
+2025-06-24 10:53:10.307 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetAll (AuthNet)'
+2025-06-24 10:53:10.312 +05:30 [INF] Route matched with {action = "GetAll", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:53:10.340 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+2025-06-24 10:53:10.359 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.Domain.Category, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:53:10.375 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetAll (AuthNet) in 62.695ms
+2025-06-24 10:53:10.375 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetAll (AuthNet)'
+2025-06-24 10:53:10.375 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories - 200 null application/json; charset=utf-8 68.6317ms
+2025-06-24 10:53:13.872 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products - null null
+2025-06-24 10:53:13.872 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetAll (AuthNet)'
+2025-06-24 10:53:13.878 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:53:13.899 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[ProductCode], [p].[SupplierId]
+FROM [Products] AS [p]
+2025-06-24 10:53:13.900 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.Domain.Product, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:53:13.901 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetAll (AuthNet) in 22.5781ms
+2025-06-24 10:53:13.901 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetAll (AuthNet)'
+2025-06-24 10:53:13.901 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products - 200 null application/json; charset=utf-8 30.0516ms
+2025-06-24 10:53:16.747 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories - null null
+2025-06-24 10:53:16.748 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetAll (AuthNet)'
+2025-06-24 10:53:16.748 +05:30 [INF] Route matched with {action = "GetAll", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:53:16.754 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+2025-06-24 10:53:16.755 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.Domain.Category, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:53:16.755 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetAll (AuthNet) in 7.0459ms
+2025-06-24 10:53:16.755 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetAll (AuthNet)'
+2025-06-24 10:53:16.755 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories - 200 null application/json; charset=utf-8 8.2444ms
+2025-06-24 10:53:16.796 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers - null null
+2025-06-24 10:53:16.797 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetAll (AuthNet)'
+2025-06-24 10:53:16.801 +05:30 [INF] Route matched with {action = "GetAll", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:53:16.824 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[SupplierId], [s].[CompanyName], [s].[ContactName], [s].[Phone], [s].[Address]
+FROM [Suppliers] AS [s]
+2025-06-24 10:53:16.826 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.SupplierViewModel, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:53:16.829 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetAll (AuthNet) in 27.3325ms
+2025-06-24 10:53:16.829 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetAll (AuthNet)'
+2025-06-24 10:53:16.829 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers - 200 null application/json; charset=utf-8 32.9639ms
+2025-06-24 10:54:09.650 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/products - application/json; charset=utf-8 null
+2025-06-24 10:54:09.651 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.Create (AuthNet)'
+2025-06-24 10:54:09.657 +05:30 [INF] Route matched with {action = "Create", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(AuthNet.Models.Domain.Product) on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:54:09.786 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 100), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (Size = 4000), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([CategoryId], [Description], [Name], [Price], [ProductCode], [SupplierId])
+OUTPUT INSERTED.[ProductId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-06-24 10:54:09.821 +05:30 [INF] Executing CreatedAtActionResult, writing value of type 'AuthNet.Models.Domain.Product'.
+2025-06-24 10:54:09.856 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.Create (AuthNet) in 198.5564ms
+2025-06-24 10:54:09.856 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.Create (AuthNet)'
+2025-06-24 10:54:09.856 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/products - 201 null application/json; charset=utf-8 206.0281ms
+2025-06-24 10:54:09.885 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products - null null
+2025-06-24 10:54:09.886 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetAll (AuthNet)'
+2025-06-24 10:54:09.886 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:54:09.891 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[ProductCode], [p].[SupplierId]
+FROM [Products] AS [p]
+2025-06-24 10:54:09.903 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.Domain.Product, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:54:09.904 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetAll (AuthNet) in 17.5956ms
+2025-06-24 10:54:09.904 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetAll (AuthNet)'
+2025-06-24 10:54:09.904 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products - 200 null application/json; charset=utf-8 18.6758ms
+2025-06-24 10:55:18.422 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 10:55:18.422 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:55:18.423 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:55:18.428 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 10:55:18.429 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:18.429 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 6.6667ms
+2025-06-24 10:55:18.429 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:55:18.430 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 8.0293ms
+2025-06-24 10:55:18.445 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 10:55:18.446 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:55:18.446 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:55:18.460 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 10:55:18.460 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:18.461 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 13.5591ms
+2025-06-24 10:55:18.461 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:55:18.461 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 15.6192ms
+2025-06-24 10:55:18.474 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 10:55:18.475 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:55:18.475 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:55:18.479 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 10:55:18.479 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:18.480 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 4.9073ms
+2025-06-24 10:55:18.480 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:55:18.480 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 5.5529ms
+2025-06-24 10:55:18.487 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 10:55:18.487 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:55:18.487 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:55:18.492 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 10:55:18.492 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:18.492 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 4.8758ms
+2025-06-24 10:55:18.492 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:55:18.493 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 5.6522ms
+2025-06-24 10:55:18.499 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 10:55:18.500 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:55:18.500 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 10:55:18.505 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 10:55:18.505 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:18.505 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 5.3695ms
+2025-06-24 10:55:18.505 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:55:18.506 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 6.4097ms
+2025-06-24 10:55:18.512 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 10:55:18.512 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:55:18.512 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:55:18.515 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 10:55:18.515 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:55:18.515 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 2.906ms
+2025-06-24 10:55:18.515 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:55:18.516 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 3.6122ms
+2025-06-24 10:55:38.372 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/Tasks - application/json; charset=utf-8 null
+2025-06-24 10:55:38.373 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.Create (AuthNet)'
+2025-06-24 10:55:38.375 +05:30 [INF] Route matched with {action = "Create", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create(AuthNet.Models.DTO.TaskItemDto) on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:55:38.408 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Tasks] ([DueDate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2025-06-24 10:55:38.410 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 10:55:38.411 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.Create (AuthNet) in 35.6148ms
+2025-06-24 10:55:38.411 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.Create (AuthNet)'
+2025-06-24 10:55:38.411 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 39.2666ms
+2025-06-24 10:55:38.438 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 10:55:38.438 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:55:38.439 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:55:38.443 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 10:55:38.443 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:38.444 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 5.0121ms
+2025-06-24 10:55:38.444 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:55:38.444 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 5.7476ms
+2025-06-24 10:55:38.461 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 10:55:38.461 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:55:38.461 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:55:38.465 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 10:55:38.465 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:38.465 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 4.2591ms
+2025-06-24 10:55:38.465 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:55:38.466 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 4.9259ms
+2025-06-24 10:55:38.475 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 10:55:38.475 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:55:38.475 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:55:38.479 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 10:55:38.479 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:38.479 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 4.2488ms
+2025-06-24 10:55:38.479 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:55:38.480 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 4.8904ms
+2025-06-24 10:55:38.488 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 10:55:38.488 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:55:38.488 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:55:38.492 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 10:55:38.493 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:38.493 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 4.868ms
+2025-06-24 10:55:38.493 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:55:38.493 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 5.5732ms
+2025-06-24 10:55:38.502 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 10:55:38.502 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:55:38.502 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 10:55:38.506 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 10:55:38.507 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:55:38.507 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 4.4141ms
+2025-06-24 10:55:38.507 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:55:38.507 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 5.0322ms
+2025-06-24 10:55:38.515 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 10:55:38.515 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:55:38.515 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:55:38.518 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 10:55:38.520 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:55:38.524 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 9.1967ms
+2025-06-24 10:55:38.524 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:55:38.525 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 9.8318ms
+2025-06-24 10:56:07.978 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/Tasks - application/json; charset=utf-8 null
+2025-06-24 10:56:07.978 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.Create (AuthNet)'
+2025-06-24 10:56:07.979 +05:30 [INF] Route matched with {action = "Create", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create(AuthNet.Models.DTO.TaskItemDto) on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:56:08.007 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Tasks] ([DueDate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2025-06-24 10:56:08.007 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 10:56:08.008 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.Create (AuthNet) in 29.137ms
+2025-06-24 10:56:08.008 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.Create (AuthNet)'
+2025-06-24 10:56:08.008 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 30.5049ms
+2025-06-24 10:56:08.029 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 10:56:08.029 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:56:08.029 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:56:08.033 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 10:56:08.034 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:56:08.034 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 4.2709ms
+2025-06-24 10:56:08.034 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 10:56:08.034 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 4.9229ms
+2025-06-24 10:56:08.044 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 10:56:08.044 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:56:08.044 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 10:56:08.048 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 10:56:08.048 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:56:08.048 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 4.2757ms
+2025-06-24 10:56:08.048 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 10:56:08.049 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 4.9025ms
+2025-06-24 10:56:08.056 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 10:56:08.056 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:56:08.056 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:56:08.061 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 10:56:08.062 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:56:08.066 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 9.952ms
+2025-06-24 10:56:08.070 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 10:56:08.070 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 14.2808ms
+2025-06-24 10:56:08.076 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 10:56:08.076 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:56:08.076 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:56:08.080 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 10:56:08.080 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:56:08.080 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 3.7494ms
+2025-06-24 10:56:08.080 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 10:56:08.080 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 4.2424ms
+2025-06-24 10:56:08.089 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 10:56:08.090 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:56:08.090 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 10:56:08.093 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 10:56:08.093 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 10:56:08.094 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 3.9527ms
+2025-06-24 10:56:08.094 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 10:56:08.094 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 4.4549ms
+2025-06-24 10:56:08.102 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 10:56:08.102 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:56:08.102 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 10:56:08.105 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 10:56:08.105 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:56:08.105 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 3.0552ms
+2025-06-24 10:56:08.105 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 10:56:08.105 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 3.5881ms
+2025-06-24 10:56:15.908 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products - null null
+2025-06-24 10:56:15.908 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetAll (AuthNet)'
+2025-06-24 10:56:15.908 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 10:56:15.914 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[ProductCode], [p].[SupplierId]
+FROM [Products] AS [p]
+2025-06-24 10:56:15.914 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.Domain.Product, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:56:15.914 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetAll (AuthNet) in 6.1022ms
+2025-06-24 10:56:15.914 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetAll (AuthNet)'
+2025-06-24 10:56:15.915 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products - 200 null application/json; charset=utf-8 6.7735ms
+2025-06-24 10:56:28.391 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers - null null
+2025-06-24 10:56:28.391 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetAll (AuthNet)'
+2025-06-24 10:56:28.391 +05:30 [INF] Route matched with {action = "GetAll", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 10:56:28.398 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[SupplierId], [s].[CompanyName], [s].[ContactName], [s].[Phone], [s].[Address]
+FROM [Suppliers] AS [s]
+2025-06-24 10:56:28.398 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.SupplierViewModel, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:56:28.398 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetAll (AuthNet) in 6.8828ms
+2025-06-24 10:56:28.398 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetAll (AuthNet)'
+2025-06-24 10:56:28.398 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers - 200 null application/json; charset=utf-8 7.6662ms
+2025-06-24 10:56:32.451 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Customers - null null
+2025-06-24 10:56:32.451 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CustomersController.GetAll (AuthNet)'
+2025-06-24 10:56:32.457 +05:30 [INF] Route matched with {action = "GetAll", controller = "Customers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.CustomersController (AuthNet).
+2025-06-24 10:56:32.471 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CustomerId], [c].[Name], [c].[Email], [c].[Phone], [c].[Address]
+FROM [Customers] AS [c]
+2025-06-24 10:56:32.472 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.CustomerViewModel, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:56:32.473 +05:30 [INF] Executed action AuthNet.Controllers.CustomersController.GetAll (AuthNet) in 16.8942ms
+2025-06-24 10:56:32.474 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CustomersController.GetAll (AuthNet)'
+2025-06-24 10:56:32.474 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Customers - 200 null application/json; charset=utf-8 22.9311ms
+2025-06-24 10:56:42.922 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders - null null
+2025-06-24 10:56:42.923 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetAll (AuthNet)'
+2025-06-24 10:56:42.928 +05:30 [INF] Route matched with {action = "GetAll", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 10:56:42.947 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderId], [o].[CustomerId], [o].[UserId], [o].[OrderDate], [o].[TotalAmount]
+FROM [Orders] AS [o]
+2025-06-24 10:56:42.948 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.OrderViewModel, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 10:56:42.950 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetAll (AuthNet) in 21.2379ms
+2025-06-24 10:56:42.950 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetAll (AuthNet)'
+2025-06-24 10:56:42.950 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders - 200 null application/json; charset=utf-8 27.8356ms
+2025-06-24 11:51:33.834 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 11:51:34.118 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 11:51:34.204 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 11:51:34.205 +05:30 [INF] Hosting environment: Development
+2025-06-24 11:51:34.205 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 11:51:35.601 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 11:51:35.835 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 11:51:35.917 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 404 0 null 326.5322ms
+2025-06-24 11:51:35.922 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/swagger/index.html, Response status code: 404
+2025-06-24 11:51:41.660 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 11:51:41.679 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 11:51:41.725 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 11:51:43.316 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 11:51:43.316 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 11:51:43.317 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 11:51:43.317 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 11:51:44.731 +05:30 [INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 11:51:44.788 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:44.813 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 3080.2807ms
+2025-06-24 11:51:44.815 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 11:51:44.832 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 3174.1395ms
+2025-06-24 11:51:44.842 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 11:51:44.849 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 11:51:44.857 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 11:51:44.898 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 11:51:44.899 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:44.899 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 42.3941ms
+2025-06-24 11:51:44.900 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 11:51:44.900 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 58.5598ms
+2025-06-24 11:51:44.915 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 11:51:44.916 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 11:51:44.925 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 11:51:45.051 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 11:51:45.052 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:45.052 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 126.886ms
+2025-06-24 11:51:45.052 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 11:51:45.052 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 137.1529ms
+2025-06-24 11:51:45.067 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 11:51:45.068 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 11:51:45.075 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 11:51:45.086 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 11:51:45.087 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:45.087 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 12.3991ms
+2025-06-24 11:51:45.087 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 11:51:45.088 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 20.702ms
+2025-06-24 11:51:45.101 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 11:51:45.102 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 11:51:45.107 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 11:51:45.147 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 11:51:45.148 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:45.148 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 40.6688ms
+2025-06-24 11:51:45.148 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 11:51:45.149 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 47.4401ms
+2025-06-24 11:51:45.164 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 11:51:45.165 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 11:51:45.167 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 11:51:45.241 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 11:51:45.254 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:51:45.274 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 106.6866ms
+2025-06-24 11:51:45.274 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 11:51:45.275 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 110.8251ms
+2025-06-24 11:51:49.497 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/Auth/login - application/json; charset=utf-8 null
+2025-06-24 11:51:49.499 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.AuthController.Login (AuthNet)'
+2025-06-24 11:51:49.511 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthNet.Models.DTO.LoginDto) on controller AuthNet.Controllers.AuthController (AuthNet).
+2025-06-24 11:51:49.759 +05:30 [INF] Executed DbCommand (38ms) [Parameters=[@__username_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-06-24 11:51:50.683 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 11:51:50.691 +05:30 [INF] Executed action AuthNet.Controllers.AuthController.Login (AuthNet) in 1180.0165ms
+2025-06-24 11:51:50.691 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.AuthController.Login (AuthNet)'
+2025-06-24 11:51:50.692 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/Auth/login - 200 null application/json; charset=utf-8 1194.8174ms
+2025-06-24 11:51:50.720 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 11:51:50.721 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 11:51:50.721 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 11:51:50.728 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 11:51:50.729 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:50.729 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 7.6947ms
+2025-06-24 11:51:50.729 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 11:51:50.730 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 9.4085ms
+2025-06-24 11:51:50.744 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 11:51:50.744 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 11:51:50.745 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 11:51:50.749 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 11:51:50.750 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:50.751 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 5.7435ms
+2025-06-24 11:51:50.751 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 11:51:50.751 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 7.3696ms
+2025-06-24 11:51:50.762 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 11:51:50.762 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 11:51:50.762 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 11:51:50.766 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 11:51:50.767 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:50.768 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 5.5296ms
+2025-06-24 11:51:50.768 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 11:51:50.768 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 6.8546ms
+2025-06-24 11:51:50.779 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 11:51:50.780 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 11:51:50.780 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 11:51:50.787 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 11:51:50.789 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:50.789 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 9.1866ms
+2025-06-24 11:51:50.789 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 11:51:50.790 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 10.7531ms
+2025-06-24 11:51:50.801 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 11:51:50.801 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 11:51:50.802 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 11:51:50.806 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 11:51:50.808 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 11:51:50.808 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 6.3862ms
+2025-06-24 11:51:50.808 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 11:51:50.808 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 7.6512ms
+2025-06-24 11:51:50.821 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 11:51:50.822 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 11:51:50.822 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 11:51:50.829 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 11:51:50.829 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 11:51:50.830 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 7.0067ms
+2025-06-24 11:51:50.830 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 11:51:50.830 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 8.7432ms
+2025-06-24 20:28:46.906 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 20:28:47.234 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 20:28:47.362 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 20:28:47.363 +05:30 [INF] Hosting environment: Development
+2025-06-24 20:28:47.363 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 20:28:48.506 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 20:28:48.874 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-24 20:28:48.987 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 404 0 null 496.1241ms
+2025-06-24 20:28:48.990 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/swagger/index.html, Response status code: 404
+2025-06-24 20:28:58.425 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 20:28:58.435 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 20:28:58.503 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 20:29:00.070 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:29:00.071 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:29:00.071 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:29:00.072 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:29:01.534 +05:30 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 20:29:01.591 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:29:01.618 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 3107.5205ms
+2025-06-24 20:29:01.619 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 20:29:01.639 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 200 null application/json; charset=utf-8 3217.5065ms
+2025-06-24 20:29:01.642 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 20:29:01.649 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 20:29:01.656 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 20:29:01.696 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 20:29:01.697 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:29:01.698 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 41.4901ms
+2025-06-24 20:29:01.698 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 20:29:01.699 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 200 null application/json; charset=utf-8 57.2158ms
+2025-06-24 20:29:01.711 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 20:29:01.712 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 20:29:01.720 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 20:29:01.871 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 20:29:01.872 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:29:01.872 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 152.2939ms
+2025-06-24 20:29:01.873 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 20:29:01.873 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 200 null application/json; charset=utf-8 162.1446ms
+2025-06-24 20:29:01.898 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 20:29:01.899 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 20:29:01.907 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 20:29:01.919 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 20:29:01.920 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:29:01.920 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 12.7162ms
+2025-06-24 20:29:01.920 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 20:29:01.920 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 200 null application/json; charset=utf-8 22.2971ms
+2025-06-24 20:29:01.935 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 20:29:01.936 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 20:29:01.941 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 20:29:01.956 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 20:29:01.957 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:29:01.957 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 16.1849ms
+2025-06-24 20:29:01.957 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 20:29:01.958 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 200 null application/json; charset=utf-8 22.7928ms
+2025-06-24 20:29:01.972 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 20:29:01.972 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 20:29:01.976 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 20:29:02.041 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 20:29:02.056 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 20:29:02.076 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 99.9661ms
+2025-06-24 20:29:02.077 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 20:29:02.077 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 200 null application/json; charset=utf-8 105.4663ms
+2025-06-24 20:29:24.220 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/swagger/index.html - null null
+2025-06-24 20:29:24.247 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/swagger/index.html - 404 0 null 27.5305ms
+2025-06-24 20:29:24.248 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5008/swagger/index.html, Response status code: 404
+2025-06-24 20:31:11.473 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 20:31:11.787 +05:30 [INF] Now listening on: https://localhost:7165
+2025-06-24 20:31:11.788 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 20:31:11.878 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 20:31:11.878 +05:30 [INF] Hosting environment: Development
+2025-06-24 20:31:11.878 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 20:31:12.783 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger - null null
+2025-06-24 20:31:12.988 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger - 404 0 null 215.0521ms
+2025-06-24 20:31:12.991 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7165/swagger, Response status code: 404
+2025-06-24 20:31:55.911 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger - null null
+2025-06-24 20:31:55.926 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger - 404 0 null 15.8262ms
+2025-06-24 20:31:55.929 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7165/swagger, Response status code: 404
+2025-06-24 20:32:10.892 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 20:32:11.186 +05:30 [INF] Now listening on: https://localhost:7165
+2025-06-24 20:32:11.187 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 20:32:11.318 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 20:32:11.318 +05:30 [INF] Hosting environment: Development
+2025-06-24 20:32:11.318 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 20:32:11.990 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger - null null
+2025-06-24 20:32:12.151 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger - 301 0 null 174.2538ms
+2025-06-24 20:32:12.156 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/index.html - null null
+2025-06-24 20:32:12.256 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/index.html - 200 null text/html;charset=utf-8 99.7857ms
+2025-06-24 20:32:12.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/swagger-ui.css - null null
+2025-06-24 20:32:12.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/swagger-ui-bundle.js - null null
+2025-06-24 20:32:12.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-24 20:32:12.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 20:32:12.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/_vs/browserLink - null null
+2025-06-24 20:32:12.273 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 13.2033ms
+2025-06-24 20:32:12.314 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-06-24 20:32:12.314 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-24 20:32:12.316 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 56.3257ms
+2025-06-24 20:32:12.316 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/swagger-ui.css - 200 152034 text/css 56.3525ms
+2025-06-24 20:32:12.327 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-24 20:32:12.327 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 67.5007ms
+2025-06-24 20:32:12.337 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.2527ms
+2025-06-24 20:32:12.498 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/v1/swagger.json - null null
+2025-06-24 20:32:12.533 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.6728ms
+2025-06-24 20:32:12.538 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/favicon-32x32.png - null null
+2025-06-24 20:32:12.538 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-24 20:32:12.538 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/favicon-32x32.png - 200 628 image/png 1.3233ms
+2025-06-24 20:35:31.693 +05:30 [INF] User profile is available. Using 'C:\Users\RD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-24 20:35:31.966 +05:30 [INF] Now listening on: https://localhost:7165
+2025-06-24 20:35:31.967 +05:30 [INF] Now listening on: http://localhost:5008
+2025-06-24 20:35:32.060 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-24 20:35:32.060 +05:30 [INF] Hosting environment: Development
+2025-06-24 20:35:32.060 +05:30 [INF] Content root path: C:\Users\RD\Source\Repos\AuthNet\AuthNet
+2025-06-24 20:35:32.785 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/index.html - null null
+2025-06-24 20:35:33.020 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/index.html - 200 null text/html;charset=utf-8 242.2643ms
+2025-06-24 20:35:33.023 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 20:35:33.028 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-24 20:35:33.040 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 12.362ms
+2025-06-24 20:35:33.054 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/_vs/browserLink - null null
+2025-06-24 20:35:33.054 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 307 0 null 34.4674ms
+2025-06-24 20:35:33.078 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Products/count - null null
+2025-06-24 20:35:33.147 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.211ms
+2025-06-24 20:35:33.161 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 20:35:33.185 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 20:35:33.290 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/v1/swagger.json - null null
+2025-06-24 20:35:33.333 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.1545ms
+2025-06-24 20:35:34.048 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:35:34.048 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:35:34.048 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:35:34.048 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-24 20:35:34.837 +05:30 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 20:35:34.869 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:34.881 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 1692.4069ms
+2025-06-24 20:35:34.881 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 20:35:34.887 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Products/count - 200 null application/json; charset=utf-8 1809.592ms
+2025-06-24 20:35:34.899 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 20:35:34.900 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 307 0 null 0.7208ms
+2025-06-24 20:35:34.901 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Categories/count - null null
+2025-06-24 20:35:34.903 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 20:35:34.906 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 20:35:34.931 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 20:35:34.932 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:34.932 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 25.7198ms
+2025-06-24 20:35:34.932 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 20:35:34.933 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Categories/count - 200 null application/json; charset=utf-8 31.4186ms
+2025-06-24 20:35:34.941 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 20:35:34.942 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 307 0 null 1.0889ms
+2025-06-24 20:35:34.943 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Suppliers/count - null null
+2025-06-24 20:35:34.946 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 20:35:34.949 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 20:35:34.999 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 20:35:35.000 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:35.000 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 51.2884ms
+2025-06-24 20:35:35.000 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 20:35:35.000 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Suppliers/count - 200 null application/json; charset=utf-8 57.1903ms
+2025-06-24 20:35:35.009 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 20:35:35.009 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 307 0 null 0.5691ms
+2025-06-24 20:35:35.011 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Tasks/count - null null
+2025-06-24 20:35:35.011 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 20:35:35.014 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 20:35:35.023 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 20:35:35.023 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:35.023 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 8.886ms
+2025-06-24 20:35:35.023 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 20:35:35.024 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Tasks/count - 200 null application/json; charset=utf-8 12.9352ms
+2025-06-24 20:35:35.033 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 20:35:35.034 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 307 0 null 0.5154ms
+2025-06-24 20:35:35.034 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Orders/count - null null
+2025-06-24 20:35:35.035 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 20:35:35.038 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 20:35:35.047 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 20:35:35.047 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:35.047 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 9.0436ms
+2025-06-24 20:35:35.047 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 20:35:35.048 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Orders/count - 200 null application/json; charset=utf-8 13.1863ms
+2025-06-24 20:35:35.055 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 20:35:35.056 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 307 0 null 0.5767ms
+2025-06-24 20:35:35.057 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Tasks - null null
+2025-06-24 20:35:35.057 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 20:35:35.059 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 20:35:35.094 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 20:35:35.100 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 20:35:35.109 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 49.908ms
+2025-06-24 20:35:35.110 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 20:35:35.110 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Tasks - 200 null application/json; charset=utf-8 53.053ms
+2025-06-24 20:35:39.164 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5008/api/Auth/login - application/json; charset=utf-8 null
+2025-06-24 20:35:39.165 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5008/api/Auth/login - 307 0 null 1.2937ms
+2025-06-24 20:35:39.166 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7165/api/Auth/login - application/json; charset=utf-8 null
+2025-06-24 20:35:39.168 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.AuthController.Login (AuthNet)'
+2025-06-24 20:35:39.182 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(AuthNet.Models.DTO.LoginDto) on controller AuthNet.Controllers.AuthController (AuthNet).
+2025-06-24 20:35:39.417 +05:30 [INF] Executed DbCommand (56ms) [Parameters=[@__username_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[CreatedAt], [u].[PasswordHash], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__username_0
+2025-06-24 20:35:40.432 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-24 20:35:40.439 +05:30 [INF] Executed action AuthNet.Controllers.AuthController.Login (AuthNet) in 1256.2367ms
+2025-06-24 20:35:40.439 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.AuthController.Login (AuthNet)'
+2025-06-24 20:35:40.439 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7165/api/Auth/login - 200 null application/json; charset=utf-8 1272.815ms
+2025-06-24 20:35:40.456 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Products/count - null null
+2025-06-24 20:35:40.457 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Products/count - 307 0 null 0.851ms
+2025-06-24 20:35:40.459 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Products/count - null null
+2025-06-24 20:35:40.459 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 20:35:40.460 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-06-24 20:35:40.468 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-24 20:35:40.469 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:40.469 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 9.4049ms
+2025-06-24 20:35:40.470 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-06-24 20:35:40.470 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Products/count - 200 null application/json; charset=utf-8 11.196ms
+2025-06-24 20:35:40.478 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Categories/count - null null
+2025-06-24 20:35:40.479 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Categories/count - 307 0 null 0.7502ms
+2025-06-24 20:35:40.480 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Categories/count - null null
+2025-06-24 20:35:40.480 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 20:35:40.480 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-06-24 20:35:40.485 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-06-24 20:35:40.486 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:40.486 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 6.2184ms
+2025-06-24 20:35:40.486 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-06-24 20:35:40.487 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Categories/count - 200 null application/json; charset=utf-8 7.0668ms
+2025-06-24 20:35:40.495 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - null null
+2025-06-24 20:35:40.495 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Suppliers/count - 307 0 null 0.6313ms
+2025-06-24 20:35:40.496 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Suppliers/count - null null
+2025-06-24 20:35:40.496 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 20:35:40.496 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-06-24 20:35:40.502 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-06-24 20:35:40.503 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:40.503 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 6.5094ms
+2025-06-24 20:35:40.503 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-06-24 20:35:40.503 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Suppliers/count - 200 null application/json; charset=utf-8 7.2859ms
+2025-06-24 20:35:40.510 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks/count - null null
+2025-06-24 20:35:40.511 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks/count - 307 0 null 0.5039ms
+2025-06-24 20:35:40.511 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Tasks/count - null null
+2025-06-24 20:35:40.512 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 20:35:40.512 +05:30 [INF] Route matched with {action = "GetTaskCount", controller = "Tasks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskCount() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 20:35:40.520 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-06-24 20:35:40.521 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:40.521 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTaskCount (AuthNet) in 8.9387ms
+2025-06-24 20:35:40.521 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTaskCount (AuthNet)'
+2025-06-24 20:35:40.522 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Tasks/count - 200 null application/json; charset=utf-8 10.0951ms
+2025-06-24 20:35:40.528 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Orders/count - null null
+2025-06-24 20:35:40.529 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Orders/count - 307 0 null 0.4463ms
+2025-06-24 20:35:40.529 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Orders/count - null null
+2025-06-24 20:35:40.530 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 20:35:40.530 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-06-24 20:35:40.535 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-06-24 20:35:40.536 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-06-24 20:35:40.536 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 6.379ms
+2025-06-24 20:35:40.536 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-06-24 20:35:40.537 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Orders/count - 200 null application/json; charset=utf-8 7.4364ms
+2025-06-24 20:35:40.544 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5008/api/Tasks - null null
+2025-06-24 20:35:40.544 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5008/api/Tasks - 307 0 null 0.4932ms
+2025-06-24 20:35:40.545 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Tasks - null null
+2025-06-24 20:35:40.545 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 20:35:40.546 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-06-24 20:35:40.553 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-06-24 20:35:40.553 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-24 20:35:40.553 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 7.8464ms
+2025-06-24 20:35:40.554 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-06-24 20:35:40.554 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Tasks - 200 null application/json; charset=utf-8 8.7205ms

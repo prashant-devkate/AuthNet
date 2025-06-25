@@ -402,7 +402,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 6, 17, 10, 59, 13, 577, DateTimeKind.Utc).AddTicks(1404),
+                            CreatedAt = new DateTime(2025, 6, 24, 5, 1, 57, 946, DateTimeKind.Utc).AddTicks(7020),
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"

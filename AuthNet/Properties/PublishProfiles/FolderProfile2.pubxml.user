@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Publish\API</_PublishTargetUrl>
+    <History>True|2025-06-25T05:34:28.3198895Z||;True|2025-06-25T10:57:12.2891946+05:30||;True|2025-06-25T10:53:16.8532395+05:30||;True|2025-06-24T11:45:03.9245035+05:30||;True|2025-06-24T11:14:37.0852696+05:30||;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=localhost\SQLEXPRESS%3bDatabase=Mudraa%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bEncrypt=True%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="AuthNet.Data.AppDbContext">
+      <Value>Server=localhost\SQLEXPRESS%3bDatabase=Mudraa%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bEncrypt=True%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

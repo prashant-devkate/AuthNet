@@ -1,0 +1,8 @@
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\AuthNet.UI.exe
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\AuthNet.UI.dll
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\AuthNet.UI.deps.json
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\AuthNet.UI.runtimeconfig.json
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\AuthNet.UI.pdb
+C:\Users\RD\Source\Repos\AuthNet\AuthNet.UI\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
