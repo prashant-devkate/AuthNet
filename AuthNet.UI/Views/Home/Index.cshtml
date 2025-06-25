@@ -8,6 +8,7 @@
         border-radius: 10px;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
         transition: transform 0.3s;
+        height: 100%;
     }
 
         .dashboard-cards .card:hover {
@@ -26,56 +27,66 @@
         font-weight: 600;
     }
 
+    .counter {
+        font-size: 2rem;
+        font-weight: bold;
+    }
 </style>
 
-<h4 class="mb-4">Dashboard <small class="text-muted">Control panel</small></h4>
+@{
+    var token = Context?.Session?.GetString("JWT");
+    var username = Context?.Session?.GetString("Username");
+    var isLoggedIn = !string.IsNullOrEmpty(token);
+}
 
-<div class="row dashboard-cards mb-4">
-    <div class="col-md-3">
-        <div class="card text-white bg-primary mb-3">
+<h4 class="mb-4">Welcome back, @username</h4>
+
+<!-- Responsive Cards with Animated Counters -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3 dashboard-cards mb-4">
+    <div class="col">
+        <div class="card text-white bg-primary">
             <div class="card-body text-center">
-                <h3 class="card-title">@Model.TotalProducts</h3>
+                <div class="counter" data-target="@Model.TotalProducts">0</div>
                 <p class="card-text">Products</p>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-success mb-3">
+    <div class="col">
+        <div class="card text-white bg-success">
             <div class="card-body text-center">
-                <h3 class="card-title">@Model.TotalCategories</h3>
+                <div class="counter" data-target="@Model.TotalCategories">0</div>
                 <p class="card-text">Categories</p>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-warning mb-3">
+    <div class="col">
+        <div class="card text-white bg-warning">
             <div class="card-body text-center">
-                <h3 class="card-title">@Model.TotalSuppliers</h3>
+                <div class="counter" data-target="@Model.TotalSuppliers">0</div>
                 <p class="card-text">Suppliers</p>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-danger mb-3">
+    <div class="col">
+        <div class="card text-white bg-danger">
             <div class="card-body text-center">
-                <h3 class="card-title">@Model.TotalTasks</h3>
+                <div class="counter" data-target="@Model.TotalTasks">0</div>
                 <p class="card-text">Tasks</p>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-info mb-3">
+    <div class="col">
+        <div class="card text-white bg-info">
             <div class="card-body text-center">
-                <h3 class="card-title">@Model.TotalOrders</h3>
+                <div class="counter" data-target="@Model.TotalOrders">0</div>
                 <p class="card-text">Orders</p>
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- Chart & Task Panel -->
 <div class="row">
-    <!-- Inventory Overview Chart -->
     <div class="col-md-6 mb-4">
         <div class="card">
             <div class="card-header">Inventory Overview</div>
@@ -130,20 +141,24 @@
             </div>
         </div>
     </div>
+</div>
+
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
+        // Chart rendering
         const chartElement = document.getElementById('donutChart');
         if (chartElement) {
             const chartCtx = chartElement.getContext('2d');
             new Chart(chartCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Products', 'Categories', 'Suppliers', 'Tasks', 'Order'],
+                    labels: ['Products', 'Categories', 'Suppliers', 'Tasks', 'Orders'],
                     datasets: [{
                         label: 'Inventory Stats',
                         data: [@Model.TotalProducts, @Model.TotalCategories, @Model.TotalSuppliers, @Model.TotalTasks, @Model.TotalOrders],
-                                backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#FF0000', '#28a745' ]
+                        backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#dc3545', '#6610f2']
                     }]
                 },
                 options: {
@@ -158,5 +173,23 @@
                 }
             });
         }
+
+        // Counter animation
+        document.querySelectorAll('.counter').forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / 60);
+
+                if (count < target) {
+                    counter.innerText = count + increment;
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
     </script>
 }

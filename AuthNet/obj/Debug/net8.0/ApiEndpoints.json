@@ -168,7 +168,7 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.InventoryController",
-    "Method": "AddOrUpdate",
+    "Method": "Create",
     "RelativePath": "api/Inventory",
     "HttpMethod": "POST",
     "IsController": true,
@@ -184,14 +184,14 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.InventoryController",
-    "Method": "GetByProductId",
-    "RelativePath": "api/Inventory/{productId}",
+    "Method": "GetById",
+    "RelativePath": "api/Inventory/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "productId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -200,18 +200,138 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.InventoryController",
+    "Method": "Update",
+    "RelativePath": "api/Inventory/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "inventory",
+        "Type": "AuthNet.Models.Domain.Inventory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InventoryController",
     "Method": "Delete",
-    "RelativePath": "api/Inventory/{productId}",
+    "RelativePath": "api/Inventory/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "productId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InventoryController",
+    "Method": "GetInventoryCount",
+    "RelativePath": "api/Inventory/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InvoiceTemplatesController",
+    "Method": "GetAll",
+    "RelativePath": "api/InvoiceTemplates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InvoiceTemplatesController",
+    "Method": "Create",
+    "RelativePath": "api/InvoiceTemplates",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "template",
+        "Type": "AuthNet.Models.Domain.InvoiceTemplate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InvoiceTemplatesController",
+    "Method": "GetById",
+    "RelativePath": "api/InvoiceTemplates/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InvoiceTemplatesController",
+    "Method": "Update",
+    "RelativePath": "api/InvoiceTemplates/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "template",
+        "Type": "AuthNet.Models.Domain.InvoiceTemplate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InvoiceTemplatesController",
+    "Method": "Delete",
+    "RelativePath": "api/InvoiceTemplates/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.InvoiceTemplatesController",
+    "Method": "GetCategoryCount",
+    "RelativePath": "api/InvoiceTemplates/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -469,6 +589,148 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SettingsController",
+    "Method": "GetCompanyInfo",
+    "RelativePath": "api/Settings/Get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SettingsController",
+    "Method": "GetCompanyHistoryInfo",
+    "RelativePath": "api/Settings/Get-History",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SettingsController",
+    "Method": "GetCompanyInfoHistory",
+    "RelativePath": "api/Settings/History",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SettingsController",
+    "Method": "SaveCompanyInfo",
+    "RelativePath": "api/Settings/Save",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "GSTIN",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LogoUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "LogoName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SignatureUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "SignName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SettingsController",
+    "Method": "SoftReset",
+    "RelativePath": "api/Settings/SoftReset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SettingsController",
+    "Method": "Update",
+    "RelativePath": "api/Settings/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "GSTIN",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LogoUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "LogoName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SignatureUrl",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "SignName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

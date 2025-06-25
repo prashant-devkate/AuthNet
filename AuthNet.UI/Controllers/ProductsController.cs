@@ -15,34 +15,52 @@ namespace AuthNet.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
+            int pageSize = 5;
             List<ProductDto> products = new();
+            int totalProducts = 0;
 
             try
             {
                 var response = await _httpClient.GetAsync("api/Products");
-
                 response.EnsureSuccessStatusCode();
 
                 var data = await response.Content.ReadFromJsonAsync<IEnumerable<ProductDto>>();
                 if (data != null)
                 {
                     products.AddRange(data);
+                    totalProducts = products.Count;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TempData["ErrorMessage"] = "Failed to load products.";
             }
+
+            // Apply pagination
+            var paginated = products
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+
+            var viewModel = new ProductListViewModel
+            {
+                Products = paginated,
+                CurrentPage = page,
+                TotalPages = totalPages
+            };
 
             if (TempData.ContainsKey("SuccessMessage"))
                 ViewBag.SuccessMessage = TempData["SuccessMessage"];
             if (TempData.ContainsKey("ErrorMessage"))
                 ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
-            return View(products);
+            return View(viewModel);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Add()

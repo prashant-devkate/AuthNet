@@ -1,0 +1,184 @@
+﻿@using AuthNet.UI.Models.DTO
+@model CompanyInfoViewModel
+
+@{
+    ViewData["Title"] = "Settings";
+}
+
+@section Styles {
+    <style>
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+        }
+
+        .settings-tab-content {
+            border-left: 1px solid #dee2e6;
+            padding-left: 2rem;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-label {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+            .info-label i {
+                margin-right: 0.5rem;
+                color: #007bff;
+            }
+
+        .tab-section-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+}
+
+<h4 class="mb-4">
+    <i class="bi bi-gear-fill text-primary me-2"></i> Settings
+</h4>
+
+<div class="row">
+    <!-- Nav Pills -->
+    <div class="col-md-3">
+        <div class="nav flex-column nav-pills" id="settings-tabs" role="tablist">
+            <a class="nav-link active" id="company-tab" data-bs-toggle="pill" href="#company" role="tab">
+                <i class="bi bi-building me-1"></i> Company Info
+            </a>
+            <a class="nav-link" id="invoice-tab" data-bs-toggle="pill" href="#invoice" role="tab">
+                <i class="bi bi-file-earmark-text me-1"></i> Invoice Template
+            </a>
+            <a class="nav-link" id="tax-tab" data-bs-toggle="pill" href="#tax" role="tab">
+                <i class="bi bi-percent me-1"></i> Tax Settings
+            </a>
+            <a class="nav-link" id="user-tab" data-bs-toggle="pill" href="#users" role="tab">
+                <i class="bi bi-people-fill me-1"></i> User Management
+            </a>
+        </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="col-md-9 tab-content settings-tab-content" id="settings-content">
+        <!-- Company Info -->
+        <div class="tab-pane fade show active" id="company" role="tabpanel">
+            <div class="tab-section-title"><i class="bi bi-building me-2"></i> Company Information</div>
+            <div class="card shadow-sm p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5 class="mb-0 text-primary">Company Info</h5>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        @if (!string.IsNullOrEmpty(Model.logoUrl))
+                        {
+                            <img src="@Model.logoUrl" alt="Company Logo" class="company-logo" />
+                        }
+                        <a asp-controller="Settings" asp-action="Edit" class="btn btn-outline-primary">
+                            <i class="bi bi-pencil-square me-1"></i> Edit
+                        </a>
+                        <a asp-controller="Settings" asp-action="Add" class="btn btn-outline-primary">
+                            <i class="bi bi-plus-circle me-1"></i> Add
+                        </a>
+                        <a asp-controller="Settings" asp-action="History" class="btn btn-outline-secondary">
+                            <i class="bi bi-clock-history me-1"></i> History
+                        </a>
+                    </div>
+                </div>
+
+                <dl class="row">
+                    <dt class="col-sm-4 info-label"><i class="bi bi-building"></i> Company Name</dt>
+                    <dd class="col-sm-8">@Model.Name</dd>
+
+                    <dt class="col-sm-4 info-label"><i class="bi bi-geo-alt"></i> Address</dt>
+                    <dd class="col-sm-8">@Model.Address</dd>
+
+                    <dt class="col-sm-4 info-label"><i class="bi bi-file-earmark-text"></i> GSTIN</dt>
+                    <dd class="col-sm-8">@Model.GSTIN</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Invoice Template Settings -->
+        <div class="tab-pane fade" id="invoice" role="tabpanel">
+            <div class="tab-section-title"><i class="bi bi-file-earmark-text me-2"></i> Invoice Template Settings</div>
+            <div class="card shadow-sm p-4">
+                <form>
+                    <div class="mb-3">
+                        <label for="layoutSelect" class="form-label">Select Layout</label>
+                        <select id="layoutSelect" class="form-select">
+                            <option>Classic</option>
+                            <option>Modern</option>
+                            <option>Compact</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Footer Notes</label>
+                        <textarea class="form-control" rows="3" placeholder="Thank you for your business!"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Terms & Conditions</label>
+                        <textarea class="form-control" rows="3" placeholder="Returns must be within 15 days."></textarea>
+                    </div>
+                    <button class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tax Settings -->
+        <div class="tab-pane fade" id="tax" role="tabpanel">
+            <div class="tab-section-title"><i class="bi bi-percent me-2"></i> Tax Settings</div>
+            <div class="card shadow-sm p-4">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label>CGST (%)</label>
+                            <input type="number" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>SGST (%)</label>
+                            <input type="number" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>IGST (%)</label>
+                            <input type="number" class="form-control" />
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- User Management -->
+        <div class="tab-pane fade" id="users" role="tabpanel">
+            <div class="tab-section-title"><i class="bi bi-people-fill me-2"></i> User Management</div>
+            <div class="card shadow-sm p-4">
+                <div class="mb-4">
+                    <h6>User Roles</h6>
+                    <ul>
+                        <li><strong>Admin:</strong> Full access</li>
+                        <li><strong>Cashier:</strong> Can bill and view reports</li>
+                        <li><strong>Salesperson:</strong> Limited to sales tasks</li>
+                    </ul>
+                </div>
+
+                <h6 class="mt-3">Account Settings</h6>
+                <div class="d-flex flex-column flex-md-row gap-3">
+                    <a asp-controller="Profile" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-person-circle me-1"></i> Edit Profile
+                    </a>
+                    <a asp-controller="Auth" asp-action="ChangePassword" class="btn btn-outline-danger">
+                        <i class="bi bi-key me-1"></i> Change Password
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

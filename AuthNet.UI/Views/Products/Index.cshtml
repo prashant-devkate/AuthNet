@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AuthNet.UI.Models.DTO.ProductDto>
+﻿@model AuthNet.UI.Models.DTO.ProductListViewModel
 
 @{
     ViewData["Title"] = "Products";
@@ -94,16 +94,6 @@
             background-color: #b91c1c;
         }
 
-    .btn-info {
-        background-color: #0ea5e9;
-        color: white;
-        border: none;
-    }
-
-        .btn-info:hover {
-            background-color: #0284c7;
-        }
-
     .badge-code {
         font-size: 0.85rem;
         padding: 0.4rem 0.6rem;
@@ -136,7 +126,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var product in Model)
+                @foreach (var product in Model.Products)
                 {
                     <tr>
                         <td class="fw-semibold">@product.Name</td>
@@ -161,4 +151,20 @@
             </tbody>
         </table>
     </div>
+
+    @if (Model.TotalPages > 1)
+    {
+        <div class="d-flex justify-content-end mt-4">
+            <nav>
+                <ul class="pagination mb-0">
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-controller="Products" asp-action="Index" asp-route-page="@i">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
 </div>

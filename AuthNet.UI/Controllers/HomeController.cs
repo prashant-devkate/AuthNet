@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AuthNet.UI.Models;
 using AuthNet.UI.Models.DTO;
+using Newtonsoft.Json;
 
 namespace AuthNet.UI.Controllers;
 
@@ -28,6 +29,18 @@ public class HomeController : Controller
             model.TotalTasks = await GetCountFromApi("api/Tasks/count");
             model.TotalOrders = await GetCountFromApi("api/Orders/count");
             model.Tasks = await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/Tasks");
+
+            // Fetch and set company logo
+            var companyResp = await _httpClient.GetAsync("api/Settings/Get");
+            if (companyResp.IsSuccessStatusCode)
+            {
+                var content = await companyResp.Content.ReadAsStringAsync();
+                var company = JsonConvert.DeserializeObject<CompanyInfoViewModel>(content);
+                ViewBag.CompanyLogo = company?.logoUrl;
+            }
+
+            // Set user avatar (optional)
+            ViewBag.UserImage = $"https://ui-avatars.com/api/?name={HttpContext.Session.GetString("Username")}&background=0D8ABC&color=fff";
         }
         catch (Exception)
         {
