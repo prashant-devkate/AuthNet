@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250624050158_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250626131240_InitCreate")]
+    partial class InitCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,6 +91,87 @@ namespace AuthNet.Migrations
                             Description = "Books and Stationery",
                             Name = "Books"
                         });
+                });
+
+            modelBuilder.Entity("AuthNet.Models.Domain.CompanyInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GSTIN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoFileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("LogoFileSizeInBytes")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LogoName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignFileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SignFilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("SignFileSizeInBytes")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("SignName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyInfos");
+                });
+
+            modelBuilder.Entity("AuthNet.Models.Domain.CompanyInfoHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ArchivedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GSTIN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyInfoHistories");
                 });
 
             modelBuilder.Entity("AuthNet.Models.Domain.Customer", b =>
@@ -180,6 +261,31 @@ namespace AuthNet.Migrations
                     b.ToTable("Inventories");
                 });
 
+            modelBuilder.Entity("AuthNet.Models.Domain.InvoiceTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Layout")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TermsAndConditions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InvoiceTemplates");
+                });
+
             modelBuilder.Entity("AuthNet.Models.Domain.Order", b =>
                 {
                     b.Property<int>("OrderId")
@@ -250,6 +356,10 @@ namespace AuthNet.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HotKey")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -372,6 +482,28 @@ namespace AuthNet.Migrations
                     b.ToTable("Tasks");
                 });
 
+            modelBuilder.Entity("AuthNet.Models.Domain.TaxSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CGST")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("IGST")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SGST")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaxSettings");
+                });
+
             modelBuilder.Entity("AuthNet.Models.Domain.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -405,7 +537,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 6, 24, 5, 1, 57, 946, DateTimeKind.Utc).AddTicks(7020),
+                            CreatedAt = new DateTime(2025, 6, 26, 13, 12, 39, 847, DateTimeKind.Utc).AddTicks(9386),
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"

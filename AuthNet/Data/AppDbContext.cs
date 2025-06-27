@@ -20,6 +20,12 @@ namespace AuthNet.Data
         public DbSet<PurchaseOrder> purchaseOrders { get; set; }
         public DbSet<AuditLog> auditLogs { get; set; }
         public DbSet<TaskItem> Tasks { get; set; }
+        public DbSet<CompanyInfo> CompanyInfos { get; set; }
+        public DbSet<InvoiceTemplate> InvoiceTemplates { get; set; }
+        public DbSet<CompanyInfoHistory> CompanyInfoHistories { get; set; }
+
+        public DbSet<TaxSetting> TaxSettings { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

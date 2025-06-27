@@ -1,0 +1,90 @@
+﻿<div style="max-width:800px;margin:auto;border:1px solid #ccc;padding:20px;font-family:'Segoe UI',sans-serif;">
+
+    <!-- Centered Invoice Title -->
+    <div style="text-align:center;border-bottom:2px solid #d4af37;padding-bottom:10px;margin-bottom:15px;">
+        <h1 style="color:#b8860b;margin:0;">Invoice</h1>
+    </div>
+
+    <!-- Business Info -->
+    <div style="margin-bottom:10px;">
+        <strong>{{shopName}}</strong><br />
+        {{shopAddress}}<br />
+        {{shopContact}}<br />
+        GSTIN: {{gstNumber}}
+    </div>
+
+    <!-- Invoice Info -->
+    <table style="width:100%;margin-bottom:15px;">
+        <tr>
+            <td><strong>INVOICE NO.:</strong> {{invoiceNumber}}</td>
+            <td style="text-align:right;"><strong>Invoice Date:</strong> {{invoiceDate}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="text-align:right;"><strong>Due Date:</strong> {{dueDate}}</td>
+        </tr>
+    </table>
+
+    <!-- Bill & Ship To Info -->
+    <table style="width:100%;margin-bottom:15px;">
+        <tr>
+            <td style="width:48%;vertical-align:top;">
+                <strong>Bill To:</strong><br />
+                {{billName}}<br />
+                {{billCompany}}<br />
+                {{billAddress}}<br />
+                GSTIN: {{billGST}}
+            </td>
+            <td style="width:48%;vertical-align:top;">
+                <strong>Ship To:</strong><br />
+                {{shipName}}<br />
+                {{shipCompany}}<br />
+                {{shipAddress}}<br />
+                GSTIN: {{shipGST}}
+            </td>
+        </tr>
+    </table>
+
+    <!-- Product Table -->
+    <table class="table table-bordered w-100">
+        <thead class="table-light">
+            <tr>
+                <th>Product</th>
+                <th class="text-end">Qty</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{rows}}
+        </tbody>
+    </table>
+
+        <!-- Summary -->
+        <table width="100%" style="margin-top:15px;">
+            <tr>
+                <td style="width:50%;vertical-align:top;">
+                    <p><strong>Terms & Instructions</strong><br />{{terms}}</p>
+                    <p><strong>Payment Mode:</strong> {{paymentMode}}</p>
+                </td>
+                <td style="width:50%;text-align:right;">
+                    <table width="100%" border="0" cellpadding="6">
+                        <tr><td>Subtotal</td><td>₹{{subtotal}}</td></tr>
+                        <tr><td>Discount</td><td>₹{{discount}}</td></tr>
+                        <tr><td><strong>Subtotal After Discount</strong></td><td>₹{{subtotalAfterDiscount}}</td></tr>
+                        <tr><td>CGST @ 5%</td><td>₹{{cgst}}</td></tr>
+                        <tr><td>SGST @ 5%</td><td>₹{{sgst}}</td></tr>
+                        <tr><td>Received</td><td>₹{{received}}</td></tr>
+                        <tr><td style="color:red;"><strong>Balance Due</strong></td><td style="color:red;"><strong>₹{{balance}}</strong></td></tr>
+                        <tr><td style="background:#d4af37;"><strong>GRAND TOTAL</strong></td><td style="background:#d4af37;"><strong>{{grandTotal}}</strong></td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Footer -->
+        <div style="margin-top:40px;">
+            <p><strong>Seal & Signature</strong></p>
+            <p style="font-size:10px;color:#999;text-align:right;">Powered by InventoryPro</p>
+        </div>
+</div>

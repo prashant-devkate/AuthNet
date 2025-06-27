@@ -1,0 +1,28 @@
+﻿<!-- invoice-modern.html -->
+<div style="max-width: 700px; margin: auto; font-family: Arial, sans-serif;">
+    <h2 class="text-center border-bottom pb-2 mb-3">INVOICE</h2>
+
+    <table class="table table-bordered w-100">
+        <thead class="table-light">
+            <tr>
+                <th>Product</th>
+                <th class="text-end">Qty</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{rows}}
+        </tbody>
+        <tfoot>
+            <tr class="fw-bold">
+                <td colspan="3" class="text-end">Grand Total</td>
+                <td class="text-end">{{grandTotal}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <p class="mt-4"><strong>Notes:</strong><br>{{notes}}</p>
+    <p><strong>Terms & Conditions:</strong><br>{{terms}}</p>
+    <p class="text-end small mt-4">Date: {{date}}</p>
+</div>

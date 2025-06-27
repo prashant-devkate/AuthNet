@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AuthNet.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,45 @@ namespace AuthNet.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompanyInfoHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ArchivedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GSTIN = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompanyInfoHistories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompanyInfos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GSTIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LogoName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoFileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LogoFileSizeInBytes = table.Column<long>(type: "bigint", nullable: false),
+                    LogoFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SignName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SignFileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SignFileSizeInBytes = table.Column<long>(type: "bigint", nullable: false),
+                    SignFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompanyInfos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,6 +99,21 @@ namespace AuthNet.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "InvoiceTemplates",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Layout = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TermsAndConditions = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InvoiceTemplates", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Suppliers",
                 columns: table => new
                 {
@@ -90,6 +144,21 @@ namespace AuthNet.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TaxSettings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CGST = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SGST = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IGST = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaxSettings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -114,6 +183,7 @@ namespace AuthNet.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    HotKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: true),
                     SupplierId = table.Column<int>(type: "int", nullable: true)
@@ -282,7 +352,7 @@ namespace AuthNet.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedAt", "PasswordHash", "Role", "Username" },
-                values: new object[] { 1, new DateTime(2025, 6, 24, 5, 1, 57, 946, DateTimeKind.Utc).AddTicks(7020), "hashed-password", "Admin", "admin" });
+                values: new object[] { 1, new DateTime(2025, 6, 26, 13, 12, 39, 847, DateTimeKind.Utc).AddTicks(9386), "hashed-password", "Admin", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_auditLogs_UserId",
@@ -342,10 +412,19 @@ namespace AuthNet.Migrations
                 name: "auditLogs");
 
             migrationBuilder.DropTable(
+                name: "CompanyInfoHistories");
+
+            migrationBuilder.DropTable(
+                name: "CompanyInfos");
+
+            migrationBuilder.DropTable(
                 name: "Images");
 
             migrationBuilder.DropTable(
                 name: "Inventories");
+
+            migrationBuilder.DropTable(
+                name: "InvoiceTemplates");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");
@@ -355,6 +434,9 @@ namespace AuthNet.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tasks");
+
+            migrationBuilder.DropTable(
+                name: "TaxSettings");
 
             migrationBuilder.DropTable(
                 name: "Orders");

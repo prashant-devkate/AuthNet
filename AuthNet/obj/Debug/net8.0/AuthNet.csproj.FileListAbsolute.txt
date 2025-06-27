@@ -333,3 +333,4 @@ C:\Users\RD\Source\Repos\AuthNet\AuthNet\obj\Debug\net8.0\refint\AuthNet.dll
 C:\Users\RD\Source\Repos\AuthNet\AuthNet\obj\Debug\net8.0\AuthNet.pdb
 C:\Users\RD\Source\Repos\AuthNet\AuthNet\obj\Debug\net8.0\AuthNet.genruntimeconfig.cache
 C:\Users\RD\Source\Repos\AuthNet\AuthNet\obj\Debug\net8.0\ref\AuthNet.dll
+C:\Users\RD\Source\Repos\AuthNet\AuthNet\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

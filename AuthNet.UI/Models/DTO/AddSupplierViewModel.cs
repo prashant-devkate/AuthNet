@@ -14,6 +14,8 @@ namespace AuthNet.UI.Models.DTO
 
         [Required(ErrorMessage = "Phone is required")]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
     }
 }

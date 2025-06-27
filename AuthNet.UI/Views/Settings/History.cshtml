@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AuthNet.UI.Models.DTO.CompanyHistoryInfoViewModel>
+
+@{
+    ViewData["Title"] = "Company Info History";
+}
+
+<!-- Back Button -->
+<div class="mb-3">
+    <a asp-controller="Settings" asp-action="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left-circle me-1"></i> Back to Settings
+    </a>
+</div>
+
+<h4 class="mb-4 text-primary">
+    <i class="bi bi-clock-history me-2"></i> Company Info History
+</h4>
+
+<div class="card shadow-sm p-4">
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col"><i class="bi bi-calendar-week me-1"></i> Archived At</th>
+                        <th scope="col"><i class="bi bi-building me-1"></i> Name</th>
+                        <th scope="col"><i class="bi bi-geo-alt me-1"></i> Address</th>
+                        <th scope="col"><i class="bi bi-receipt me-1"></i> GSTIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ArchivedAt.ToString("dd MMM yyyy, hh:mm tt")</td>
+                            <td>@item.Name</td>
+                            <td>@item.Address</td>
+                            <td>@item.GSTIN</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">No history records found.</p>
+    }
+</div>

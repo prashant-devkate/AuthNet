@@ -1,0 +1,241 @@
+﻿@model List<AuthNet.UI.Models.DTO.ProductListViewModel>
+
+@{
+    ViewBag.Title = "Sales Panel";
+
+    var allProducts = Model?
+        .Where(m => m?.Products != null)
+        .SelectMany(m => m.Products)
+        .ToList() ?? new List<AuthNet.UI.Models.DTO.ProductDto>();
+
+    var allTemplates = Model?
+        .Where(m => m?.Invoices != null)
+        .SelectMany(m => m.Invoices)
+        .ToList() ?? new List<AuthNet.UI.Models.DTO.InvoiceTemplateDto>();
+
+    var templateMap = allTemplates.ToDictionary(
+        t => t.Id,
+        t => new
+        {
+            layout = t.Layout,  // For file name like: invoice-modern.html
+            notes = t.Notes,
+            terms = t.TermsAndConditions
+        });
+}
+<!-- 🖸️ Print-Only CSS -->
+<style media="print">
+    @@page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    #printArea, #printArea * {
+        visibility: visible;
+    }
+
+    #printArea {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        page-break-inside: avoid;
+    }
+
+    table, tr, td, th {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .btn, .card-title {
+        display: none !important;
+    }
+</style>
+
+
+<div class="container py-4">
+    <h4 class="mb-4 fw-semibold"><i class="bi bi-cash-coin me-2"></i> Sales Panel</h4>
+
+    <!-- Template Selector -->
+    <div class="d-flex align-items-center gap-3 mb-3">
+        <label class="form-label mb-0">Invoice template:</label>
+        <select id="tplSelect" class="form-select w-auto">
+            @foreach (var t in allTemplates)
+            {
+                <option value="@t.Id">@t.Layout</option>
+            }
+        </select>
+    </div>
+
+    <div class="row">
+        <!-- Product List -->
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm rounded-3 border-0">
+                <div class="card-body">
+                    <h5 class="card-title text-primary mb-3">🛒 Products (Press HotKey)</h5>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var product in allProducts)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-3">
+                                <div>
+                                    <strong>@product.Name</strong>
+                                    <small class="text-muted ms-1">(@product.HotKey)</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill fs-6">₹@product.Price</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Display (to be printed) -->
+        <div class="col-md-8" id="printArea">
+            <div class="card shadow-sm rounded-3 border-0">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <h5 class="card-title text-success m-0 flex-grow-1">🧾 Selected Products</h5>
+                        <button class="btn btn-outline-dark ms-auto" onclick="printCart()">🖨️ Print</button>
+                    </div>
+                    <table class="table table-hover align-middle text-center" id="cartTable">
+                        <thead class="table-light">
+                            <tr><th>Product</th><th>Price (₹)</th><th style="width:180px;">Qty</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr class="table-light fw-bold">
+                                <td colspan="2" class="text-end">Grand Total (₹):</td>
+                                <td id="grandTotal">₹0.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(allProducts));
+        const templates = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(templateMap));
+        const cart = {};
+
+        document.addEventListener('keydown', function (e) {
+            const tag = (e.target || {}).tagName;
+            if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+            if (e.key.length !== 1) return;
+
+            const key = e.key.toUpperCase();
+            const prod = products.find(p => (p.HotKey || '').toUpperCase() === key);
+            if (!prod) return;
+
+            cart[key] ? cart[key].qty++ : cart[key] = { name: prod.Name, price: prod.Price, qty: 1 };
+            renderCart();
+        });
+
+        function renderCart() {
+            const tbody = document.querySelector('#cartTable tbody');
+            const grandTotalCell = document.getElementById('grandTotal');
+            tbody.innerHTML = '';
+            let total = 0;
+            for (const key in cart) {
+                const item = cart[key];
+                total += item.price * item.qty;
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>₹${item.price}</td>
+                        <td>
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <button class="btn btn-sm btn-outline-danger" onclick="decreaseQty('${key}')">−</button>
+                                <span class="fw-bold">${item.qty}</span>
+                                <button class="btn btn-sm btn-outline-success" onclick="increaseQty('${key}')">+</button>
+                            </div>
+                        </td>
+                    </tr>`;
+            }
+            grandTotalCell.textContent = `₹${total.toFixed(2)}`;
+        }
+
+        function increaseQty(key) {
+            if (cart[key]) {
+                cart[key].qty += 1;
+                renderCart();
+            }
+        }
+
+        function decreaseQty(key) {
+            if (cart[key]) {
+                cart[key].qty -= 1;
+                if (cart[key].qty <= 0) delete cart[key];
+                renderCart();
+            }
+        }
+
+        async function loadTemplateFromLocal(filename) {
+            const res = await fetch(`/templates/${filename}`);
+            if (!res.ok) throw new Error("Failed to load template: " + res.status);
+            return await res.text();
+        }
+
+        async function printCart() {
+            const tplId = document.getElementById('tplSelect').value;
+            const tpl = templates[tplId];
+            if (!tpl) return alert('Template not found');
+
+            const layout = (tpl.layout || '').toLowerCase();
+            const fileName = `invoice-${layout}.html`;
+
+            let html;
+            try {
+                html = await loadTemplateFromLocal(fileName);
+            } catch (err) {
+                alert("Could not load template file: " + fileName);
+                console.error(err);
+                return;
+            }
+
+            let rows = '', total = 0;
+            for (const k in cart) {
+                const i = cart[k];
+                const amt = i.qty * i.price;
+                rows += `<tr>
+                            <td>${i.name}</td>
+                            <td class="text-end">${i.qty}</td>
+                            <td class="text-end">₹${i.price.toFixed(2)}</td>
+                            <td class="text-end">₹${amt.toFixed(2)}</td>
+                        </tr>`;
+                total += amt;
+            }
+
+            const filledHtml = html
+                .replace('{{rows}}', rows)
+                .replace('{{grandTotal}}', `₹${total.toFixed(2)}`)
+                .replace('{{notes}}', tpl.notes ?? '')
+                .replace('{{terms}}', tpl.terms ?? '')
+                .replace('{{date}}', new Date().toLocaleDateString())
+                .replace('{{shopName}}', 'My Electronics Hub')
+                .replace('{{gstNumber}}', '27ABCDE1234F1Z5')
+                .replace('{{customerName}}', 'John Doe')
+                .replace('{{customerPhone}}', '9876543210')
+                .replace('{{invoiceNumber}}', 'INV-1023');
+
+            const area = document.getElementById('printArea');
+            const keep = area.innerHTML;
+            area.innerHTML = filledHtml;
+            window.print();
+            area.innerHTML = keep;
+        }
+    </script>
+}

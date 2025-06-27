@@ -79,6 +79,9 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISettingsService, SettingsService>();
+builder.Services.AddScoped<IInvoiceTemplateService, InvoiceTemplateService>();
+builder.Services.AddScoped<ITaxSettingService, TaxSettingService>();
 
 
 

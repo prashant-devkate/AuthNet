@@ -15,45 +15,59 @@ namespace AuthNet.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
+            int pageSize = 5;
             List<ProductDto> products = new();
+            int totalProducts = 0;
 
             try
             {
                 var response = await _httpClient.GetAsync("api/Products");
-
                 response.EnsureSuccessStatusCode();
 
                 var data = await response.Content.ReadFromJsonAsync<IEnumerable<ProductDto>>();
                 if (data != null)
                 {
                     products.AddRange(data);
+                    totalProducts = products.Count;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TempData["ErrorMessage"] = "Failed to load products.";
             }
+
+            // Apply pagination
+            var paginated = products
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+
+            var viewModel = new ProductListViewModel
+            {
+                Products = paginated,
+                CurrentPage = page,
+                TotalPages = totalPages
+            };
 
             if (TempData.ContainsKey("SuccessMessage"))
                 ViewBag.SuccessMessage = TempData["SuccessMessage"];
             if (TempData.ContainsKey("ErrorMessage"))
                 ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
-            return View(products);
+            return View(viewModel);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Add()
         {
             var model = new AddProductViewModel();
 
-            var categoriesResponse = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/Categories");
-            ViewBag.Categories = new SelectList(categoriesResponse, "CategoryId", "Name");
-
-            var suppliersResponse = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/Suppliers");
-            ViewBag.Suppliers = new SelectList(suppliersResponse, "SupplierId", "CompanyName");
+            await LoadLookupsAsync();
 
             return View(model);
         }
@@ -63,17 +77,12 @@ namespace AuthNet.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Re-populate dropdowns before returning view
-                var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/categories");
-                ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
-
-                var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
-                ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+                await LoadLookupsAsync();
 
                 return View(model);
             }
 
-            var response = await _httpClient.PostAsJsonAsync("api/products", model);
+            var response = await _httpClient.PostAsJsonAsync("api/Products", model);
             if (response.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Product added successfully.";
@@ -85,7 +94,19 @@ namespace AuthNet.UI.Controllers
             var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to add product.";
 
             ModelState.AddModelError("", errorMsg);
+
+            await LoadLookupsAsync();
+
             return View(model);
+        }
+
+        private async Task LoadLookupsAsync()
+        {
+            var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/categories");
+            ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
+
+            var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
+            ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "CompanyName");
         }
 
         [HttpGet]
@@ -100,6 +121,7 @@ namespace AuthNet.UI.Controllers
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
+                HotKey = product.HotKey,
                 ProductCode = product.ProductCode,
                 CategoryId = product.CategoryId,
                 SupplierId = product.SupplierId,
@@ -111,11 +133,7 @@ namespace AuthNet.UI.Controllers
                 //}
             };
 
-            var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/Categories");
-            ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
-
-            var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
-            ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+            await LoadLookupsAsync();
 
             return View(model);
         }
@@ -125,11 +143,7 @@ namespace AuthNet.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/Categories");
-                ViewBag.Categories = new SelectList(categories, "CategoryId", "Name");
-
-                var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
-                ViewBag.Suppliers = new SelectList(suppliers, "SupplierId", "Name");
+                await LoadLookupsAsync();
 
                 return View(model);
             }

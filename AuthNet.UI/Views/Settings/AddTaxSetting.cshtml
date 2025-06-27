@@ -1,0 +1,52 @@
+﻿@using AuthNet.UI.Models.DTO
+@model AddTaxSettingViewModel
+
+@{
+    ViewData["Title"] = "Add Tax Settings";
+}
+
+<style>
+    .form-wrapper {
+        max-width: 600px;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="card shadow-sm border-0 mx-auto form-wrapper">
+        <div class="card-body p-4">
+            <h3 class="text-center mb-4 text-primary fw-bold">
+                <i class="bi bi-percent me-2"></i> Add Tax Settings
+            </h3>
+
+            <form method="post" asp-action="AddTaxSetting" id="taxForm">
+                <div class="form-floating mb-3">
+                    <input asp-for="CGST" class="form-control" placeholder="CGST" />
+                    <label asp-for="CGST">CGST (%)</label>
+                    <span asp-validation-for="CGST" class="text-danger small"></span>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="SGST" class="form-control" placeholder="SGST" />
+                    <label asp-for="SGST">SGST (%)</label>
+                    <span asp-validation-for="SGST" class="text-danger small"></span>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input asp-for="IGST" class="form-control" placeholder="IGST" />
+                    <label asp-for="IGST">IGST (%)</label>
+                    <span asp-validation-for="IGST" class="text-danger small"></span>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="bi bi-save me-1"></i> Save
+                    </button>
+
+                    <a asp-controller="Settings" asp-action="Index" class="btn btn-outline-secondary px-4">
+                        <i class="bi bi-arrow-left me-1"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
