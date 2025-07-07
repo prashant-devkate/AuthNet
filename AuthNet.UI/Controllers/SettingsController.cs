@@ -21,16 +21,27 @@ namespace AuthNet.UI.Controllers
             var templateResponse = await _httpClient.GetAsync("/api/InvoiceTemplates");
             var taxResponse = await _httpClient.GetAsync("/api/TaxSettings");
 
-            if (!companyResponse.IsSuccessStatusCode && !taxResponse.IsSuccessStatusCode)
-                return View(new SettingsViewModel());
-
-            var companyContent = await companyResponse.Content.ReadAsStringAsync();
-            var company = JsonConvert.DeserializeObject<CompanyInfoViewModel>(companyContent);
-
-            var taxContent = await taxResponse.Content.ReadAsStringAsync();
-            var tax = JsonConvert.DeserializeObject<TaxSettingViewModel>(taxContent);
-
+            CompanyInfoViewModel? company = null;
+            TaxSettingViewModel? tax = null;
             var templateList = new List<UiTemplateVm>();
+
+            if (companyResponse.IsSuccessStatusCode)
+            {
+                var companyContent = await companyResponse.Content.ReadAsStringAsync();
+                if (!string.IsNullOrWhiteSpace(companyContent) && companyContent != "NaN")
+                {
+                    company = JsonConvert.DeserializeObject<CompanyInfoViewModel>(companyContent);
+                }
+            }
+
+            if (taxResponse.IsSuccessStatusCode)
+            {
+                var taxContent = await taxResponse.Content.ReadAsStringAsync();
+                if (!string.IsNullOrWhiteSpace(taxContent) && taxContent != "NaN")
+                {
+                    tax = JsonConvert.DeserializeObject<TaxSettingViewModel>(taxContent);
+                }
+            }
 
             if (templateResponse.IsSuccessStatusCode)
             {
@@ -46,7 +57,21 @@ namespace AuthNet.UI.Controllers
                 }).ToList();
             }
 
-            ViewBag.CompanyLogo = company.logoUrl;
+            if (templateResponse.IsSuccessStatusCode)
+            {
+                var templateContent = await templateResponse.Content.ReadAsStringAsync();
+                var templates = JsonConvert.DeserializeObject<List<InvoiceTemplateDto>>(templateContent);
+
+                templateList = templates.Select(t => new UiTemplateVm
+                {
+                    Id = t.Id,
+                    Layout = t.Layout,
+                    Notes = t.Notes,
+                    TermsAndConditions = t.TermsAndConditions
+                }).ToList();
+            }
+
+            ViewBag.CompanyLogo = company?.logoUrl ?? "/default-logo.png";
             ViewBag.UserImage = $"https://ui-avatars.com/api/?name={HttpContext.Session.GetString("Username")}&background=0D8ABC&color=fff";
 
             var settingsVm = new SettingsViewModel

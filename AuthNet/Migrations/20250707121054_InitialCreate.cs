@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AuthNet.Migrations
 {
     /// <inheritdoc />
-    public partial class InitCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -352,7 +352,7 @@ namespace AuthNet.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedAt", "PasswordHash", "Role", "Username" },
-                values: new object[] { 1, new DateTime(2025, 6, 26, 13, 12, 39, 847, DateTimeKind.Utc).AddTicks(9386), "hashed-password", "Admin", "admin" });
+                values: new object[] { 1, new DateTime(2025, 7, 7, 12, 10, 53, 743, DateTimeKind.Utc).AddTicks(5674), "hashed-password", "Admin", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_auditLogs_UserId",

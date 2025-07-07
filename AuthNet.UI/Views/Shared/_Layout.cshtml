@@ -9,12 +9,9 @@
 
     <!-- Bootstrap CSS & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 
     @RenderSection("Styles", required: false)
-
 
     <style>
         :root {
@@ -25,74 +22,219 @@
             --sidebar-link-hover: #fff;
             --sidebar-link-bg-hover: #495057;
             --header-bg: #ffffff;
+            --transition-speed: 0.3s;
+            --sidebar-collapsed-width: 70px;
+            --sidebar-expanded-width: 220px;
+            --icon-size-collapsed: 1.5rem;
+            --icon-size-expanded: 1.2rem;
         }
-
-        .user-dropdown-toggle span {
-            color: #212529; /* dark text for light mode */
-        }
-
-        body.dark-mode .user-dropdown-toggle span {
-            color: #f8f9fa; /* light text for dark mode */
-        }
-
-        body.dark-mode .dropdown-menu-dark {
-            background-color: #1f1f1f;
-            border-color: #333;
-        }
-
-            body.dark-mode .dropdown-menu-dark .dropdown-item {
-                color: #dee2e6;
-            }
-
-                body.dark-mode .dropdown-menu-dark .dropdown-item:hover {
-                    background-color: #343a40;
-                    color: #fff;
-                }
-
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
         }
 
+        /* Fixed Sidebar */
         .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
             height: 100vh;
+            width: var(--sidebar-collapsed-width);
             background-color: var(--sidebar-bg);
-            padding: 1rem;
+            padding: 1rem 0;
             color: #fff;
+            overflow-y: auto;
+            transition: width var(--transition-speed) ease;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
+
+            .sidebar.pinned {
+                width: var(--sidebar-expanded-width);
+            }
+
+            .sidebar:not(.pinned):hover {
+                width: var(--sidebar-expanded-width);
+            }
 
             .sidebar .nav-link {
                 color: var(--sidebar-link);
-                transition: background-color 0.3s, color 0.3s;
+                border-radius: 0.375rem;
+                padding: 0.5rem;
+                transition: all var(--transition-speed);
+                display: flex;
+                align-items: center;
+                justify-content: center; /* Center icons in collapsed state */
             }
 
-                .sidebar .nav-link.active,
-                .sidebar .nav-link:hover {
-                    color: var(--sidebar-link-hover);
-                    background-color: var(--sidebar-link-bg-hover);
-                    border-radius: 0.375rem;
-                }
+            .sidebar.pinned .nav-link,
+            .sidebar:hover .nav-link {
+                justify-content: flex-start; /* Align left in expanded state */
+            }
 
+            .sidebar .nav-link:hover,
+            .sidebar .nav-link.active {
+                color: var(--sidebar-link-hover);
+                background-color: var(--sidebar-link-bg-hover);
+                transform: translateX(5px);
+            }
+
+            .sidebar .nav-link i {
+                font-size: var(--icon-size-collapsed);
+                transition: font-size var(--transition-speed);
+                min-width: 1.5rem; /* Ensure consistent icon alignment */
+                text-align: center;
+            }
+
+            .sidebar.pinned .nav-link i,
+            .sidebar:hover .nav-link i {
+                font-size: var(--icon-size-expanded);
+            }
+
+            .sidebar .nav-text {
+                display: none;
+                margin-left: 0.5rem;
+                white-space: nowrap;
+            }
+
+            .sidebar:hover .nav-text,
+            .sidebar.pinned .nav-text {
+                display: inline;
+            }
+
+        /* Pin Button */
+        .pin-button {
+            background: none;
+            border: none;
+            color: var(--sidebar-link);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color var(--transition-speed);
+            align-self: flex-end;
+            margin: 0.5rem 1rem;
+        }
+
+            .pin-button:hover {
+                color: var(--sidebar-link-hover);
+            }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-collapsed-width);
+            padding: 1rem;
+            min-height: 100vh;
+            transition: margin-left var(--transition-speed);
+        }
+
+        .sidebar.pinned ~ .main-content,
+        .sidebar:not(.pinned):hover ~ .main-content {
+            margin-left: var(--sidebar-expanded-width);
+        }
+
+        /* Compact Top Header */
         .top-header {
             position: sticky;
             top: 0;
-            z-index: 1040;
             background-color: var(--header-bg);
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 1rem;
             border-bottom: 1px solid #dee2e6;
+            z-index: 1040;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .header-logo img {
+                max-height: 40px;
+                transition: transform var(--transition-speed);
+            }
+
+            .header-logo:hover img {
+                transform: scale(1.1);
+            }
+
+        /* Enhance Dropdown Toggle Visibility */
+        .user-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color var(--transition-speed);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+            .user-dropdown-toggle:hover {
+                background-color: #f0f0f0; /* Keep background hover effect */
+            }
+
+            .user-dropdown-toggle.show .dropdown-toggle-text,
+            .user-dropdown-toggle:focus-within .dropdown-toggle-text {
+                display: none; /* Hide username when dropdown is open or focused */
+            }
+
+            .user-dropdown-toggle .dropdown-toggle-text {
+                display: flex;
+                align-items: center;
+                color: var(--text-color); /* Default state color */
+            }
+
+            .user-dropdown-toggle img {
+                transition: transform var(--transition-speed);
+                width: 30px;
+                height: 30px;
+            }
+
+            .user-dropdown-toggle:hover img {
+                transform: scale(1.1);
+            }
+
+        body.dark-mode .user-dropdown-toggle:hover {
+            background-color: #2a2a2a; /* Keep dark mode hover effect */
+        }
+
+        body.dark-mode .user-dropdown-toggle .dropdown-toggle-text {
+            color: #e9ecef; /* Default state color in dark mode */
+        }
+
+        /* Ensure caret-down icon is visible */
+        .bi-caret-down {
+            font-size: 0.9rem;
+            margin-left: 0.25rem;
+        }
+
+        .dropdown-menu {
+            min-width: 180px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 0.5rem;
+            background-color: var(--header-bg);
+        }
+
+        /* Dashboard Cards */
         .dashboard-cards .card {
             color: #fff;
             border-radius: 1rem;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed);
         }
 
             .dashboard-cards .card:hover {
                 transform: translateY(-5px);
+                box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
             }
 
         .bg-product {
@@ -125,6 +267,80 @@
             --sidebar-link-bg-hover: #333;
             --header-bg: #1c1c1c;
         }
+
+            body.dark-mode .user-dropdown-toggle,
+            body.dark-mode .header-logo {
+                color: #f8f9fa;
+            }
+
+            body.dark-mode .dropdown-menu {
+                background-color: #1f1f1f;
+                border-color: #333;
+            }
+
+                body.dark-mode .dropdown-menu .dropdown-item {
+                    color: #dee2e6;
+                }
+
+                    body.dark-mode .dropdown-menu .dropdown-item:hover {
+                        background-color: #343a40;
+                        color: #fff;
+                    }
+
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .sidebar
+
+        {
+            transform: translateX(-100%);
+            width: var(--sidebar-expanded-width);
+        }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
+        .main-content {
+            margin-left: 0;
+        }
+
+        .sidebar.show ~ .main-content {
+            margin-left: 0;
+        }
+
+        .sidebar .nav-text {
+            display: inline;
+        }
+
+        .sidebar .nav-link i {
+            font-size: var(--icon-size-expanded);
+        }
+
+        .sidebar .nav-link {
+            justify-content: flex-start;
+        }
+
+        .sidebar-toggle {
+            display: block;
+            position: fixed;
+            top: 0.5rem;
+            left: 0.5rem;
+            z-index: 1060;
+        }
+
+        .top-header {
+            height: 45px;
+        }
+
+        .pin-button {
+            display: none;
+        }
+
+        .header-logo img {
+            max-height: 35px;
+        }
+
+        }
     </style>
 </head>
 <body>
@@ -139,135 +355,144 @@
         var isLoggedIn = !string.IsNullOrEmpty(token);
     }
 
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid p-0">
+        @if (isLoggedIn)
+        {
+            <nav class="sidebar bg-dark text-white d-flex flex-column justify-content-start py-3 shadow-sm">
+                <div class="w-100 d-flex flex-column align-items-center">
+                    <!-- Pin Button at Top Right -->
+                    <div class="d-flex justify-content-end w-100 mb-2">
+                        <button class="pin-button" title="Pin Sidebar">
+                            <i class="bi bi-pin-angle"></i>
+                        </button>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <ul class="nav flex-column w-100 px-2">
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Home", "Index")" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house-door me-2"></i>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Products", "Index")" asp-controller="Products" asp-action="Index">
+                                <i class="bi bi-box-seam me-2"></i>
+                                <span class="nav-text">Products</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Sales", "Index")" asp-controller="Sales" asp-action="Index">
+                                <i class="bi bi-currency-dollar me-2"></i>
+                                <span class="nav-text">Sales</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Categories", "Index")" asp-controller="Categories" asp-action="Index">
+                                <i class="bi bi-tags me-2"></i>
+                                <span class="nav-text">Categories</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Suppliers", "Index")" asp-controller="Suppliers" asp-action="Index">
+                                <i class="bi bi-truck me-2"></i>
+                                <span class="nav-text">Suppliers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Customers", "Index")" asp-controller="Customers" asp-action="Index">
+                                <i class="bi bi-people me-2"></i>
+                                <span class="nav-text">Customers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Orders", "Index")" asp-controller="Orders" asp-action="Index">
+                                <i class="bi bi-basket me-2"></i>
+                                <span class="nav-text">Orders</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("Inventories", "Index")" asp-controller="Inventories" asp-action="Index">
+                                <i class="bi bi-boxes me-2"></i>
+                                <span class="nav-text">Inventory</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("OrderItems", "Index")" asp-controller="OrderItems" asp-action="Index">
+                                <i class="bi bi-list-check me-2"></i>
+                                <span class="nav-text">Order Items</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("PurchaseOrders", "Index")" asp-controller="PurchaseOrders" asp-action="Index">
+                                <i class="bi bi-receipt me-2"></i>
+                                <span class="nav-text">Purchase Orders</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white @isActive("AuditLogs", "Index")" asp-controller="AuditLogs" asp-action="Index">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                <span class="nav-text">Audit Logs</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Sidebar Toggle for Mobile -->
+            <button class="btn btn-dark sidebar-toggle d-none" type="button" data-bs-toggle="collapse" data-bs-target=".sidebar" aria-expanded="false">
+                <i class="bi bi-list"></i>
+            </button>
+        }
+
+        <main class="main-content">
             @if (isLoggedIn)
             {
-                <nav class="col-md-2 sidebar bg-dark text-white d-flex flex-column justify-content-between py-4 min-vh-100 shadow-sm">
-                    <!-- Sidebar Content -->
-                    <div class="w-100 d-flex flex-column align-items-center">
-                        <!-- Logo -->
-                        <div class="text-center mb-2">
-                            @if (ViewBag.CompanyLogo != null)
-                            {
-                                <img src="@ViewBag.CompanyLogo" alt="Company Logo" class="img-fluid rounded-circle border border-light shadow-sm" style="max-height: 70px;" />
-                            }
-                        </div>
-
-                        <!-- App Title -->
-                        <div class="text-center mb-4">
-                            <h5 class="fw-semibold m-0">InventoryPro</h5>
-                        </div>
-
-                        <!-- Navigation Links -->
-                        <ul class="nav flex-column w-100 px-2">
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Home", "Index")" asp-controller="Home" asp-action="Index">
-                                    <i class="bi bi-house-door me-2"></i> Dashboard
-                                </a>
+                <div class="top-header d-flex align-items-center">
+                    <div class="header-logo">
+                        @if (ViewBag.CompanyLogo != null)
+                        {
+                            <img src="@ViewBag.CompanyLogo" alt="Company Logo" class="img-fluid rounded-circle border border-light shadow-sm" />
+                        }
+                        <h5 class="fw-semibold m-0">InventoryPro</h5>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Menu">
+                            <img src="https://ui-avatars.com/api/?name=@username&background=0D8ABC&color=fff&size=30" alt="User" class="rounded-circle shadow-sm me-2" />
+                            <span class="dropdown-toggle-text">@username <i class="bi bi-caret-down ms-1"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                            <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index"><i class="bi bi-person-circle me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" asp-controller="Settings" asp-action="Index"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                            <li>
+                                <button id="darkModeToggle" class="dropdown-item d-flex align-items-center gap-2">
+                                    <i id="darkModeIcon" class="bi bi-moon"></i> <span id="darkModeLabel">Dark Mode</span>
+                                </button>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Products", "Index")" asp-controller="Products" asp-action="Index">
-                                    <i class="bi bi-box-seam me-2"></i> Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Sales", "Index")" asp-controller="Sales" asp-action="Index">
-                                    <i class="bi bi-currency-dollar me-2"></i> Sales
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Categories", "Index")" asp-controller="Categories" asp-action="Index">
-                                    <i class="bi bi-tags me-2"></i> Categories
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Suppliers", "Index")" asp-controller="Suppliers" asp-action="Index">
-                                    <i class="bi bi-truck me-2"></i> Suppliers
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Customers", "Index")" asp-controller="Customers" asp-action="Index">
-                                    <i class="bi bi-people me-2"></i> Customers
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Orders", "Index")" asp-controller="Orders" asp-action="Index">
-                                    <i class="bi bi-basket me-2"></i> Orders
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("Inventories", "Index")" asp-controller="Inventories" asp-action="Index">
-                                    <i class="bi bi-boxes me-2"></i> Inventory
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("OrderItems", "Index")" asp-controller="OrderItems" asp-action="Index">
-                                    <i class="bi bi-list-check me-2"></i> Order Items
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("PurchaseOrders", "Index")" asp-controller="PurchaseOrders" asp-action="Index">
-                                    <i class="bi bi-receipt me-2"></i> Purchase Orders
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white @isActive("AuditLogs", "Index")" asp-controller="AuditLogs" asp-action="Index">
-                                    <i class="bi bi-clipboard-data me-2"></i> Audit Logs
-                                </a>
-                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item text-danger" asp-controller="Auth" asp-action="Logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
                         </ul>
                     </div>
-                </nav>
-
+                </div>
             }
 
-            <main class="@(isLoggedIn ? "col-md-10 ms-auto px-0" : "col-md-12 mt-5")">
-                @if (isLoggedIn)
+            <div class="container-fluid pt-3">
+                @if (!isLoggedIn && currentController == "Home" && currentAction == "Index")
                 {
-                    <div class="position-absolute top-0 end-0 pe-4 pt-3 d-flex align-items-center gap-3 z-3">
-                        <div class="dropdown">
-                            <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://ui-avatars.com/api/?name=@username&background=0D8ABC&color=fff&size=36" alt="User" class="rounded-circle shadow-sm me-2" />
-                                <span>@username</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow-sm mt-2">
-                                <li class="px-3 pt-2 pb-1 text-light small">Account</li>
-                                <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index"><i class="bi bi-person-circle me-2"></i> My Profile</a></li>
-                                <li><a class="dropdown-item" asp-controller="Settings" asp-action="Index"><i class="bi bi-gear me-2"></i> Settings</a></li>
-
-                                <li>
-                                    <button id="darkModeToggle" class="dropdown-item d-flex align-items-center gap-2">
-                                        <i id="darkModeIcon" class="bi bi-moon"></i> <span id="darkModeLabel">Dark Mode</span>
-                                    </button>
-                                </li>
-
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item text-danger" asp-controller="Auth" asp-action="Logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
-                            </ul>
-                        </div>
+                    <div class="text-center mt-4">
+                        <h2>Welcome to InventoryPro</h2>
+                        <p class="lead">Please login or register to continue.</p>
+                        <a class="btn btn-primary m-2" asp-controller="Auth" asp-action="Login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                        <a class="btn btn-outline-primary m-2" asp-controller="Auth" asp-action="Register"><i class="bi bi-person-plus"></i> Register</a>
                     </div>
-
                 }
-                <div class="container-fluid pt-4">
-                    @if (!isLoggedIn && currentController == "Home" && currentAction == "Index")
-                    {
-                        <div class="text-center mt-5">
-                            <h2>Welcome to InventoryPro</h2>
-                            <p class="lead">Please login or register to continue.</p>
-                            <a class="btn btn-primary m-2" asp-controller="Auth" asp-action="Login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
-                            <a class="btn btn-outline-primary m-2" asp-controller="Auth" asp-action="Register"><i class="bi bi-person-plus"></i> Register</a>
-                        </div>
-                    }
-                    else
-                    {
-                        @await Html.PartialAsync("_Alerts")
-                        @RenderBody()
-                    }
-                </div>
-            </main>
-        </div>
+                else
+                {
+                    @await Html.PartialAsync("_Alerts")
+                    @RenderBody()
+                }
+            </div>
+        </main>
     </div>
 
     <!-- Scripts -->
@@ -278,13 +503,18 @@
             const toggle = document.getElementById("darkModeToggle");
             const icon = document.getElementById("darkModeIcon");
             const label = document.getElementById("darkModeLabel");
+            const sidebarToggle = document.querySelector(".sidebar-toggle");
+            const sidebar = document.querySelector(".sidebar");
+            const pinButton = document.querySelector(".pin-button");
 
+            // Dark Mode Toggle
             const updateToggleUI = (isDark) => {
                 document.body.classList.toggle("dark-mode", isDark);
                 localStorage.setItem("darkMode", isDark);
                 icon.className = isDark ? "bi bi-sun" : "bi bi-moon";
                 label.textContent = isDark ? "Light Mode" : "Dark Mode";
             };
+
             const prefersDark = localStorage.getItem("darkMode") === "true";
             updateToggleUI(prefersDark);
 
@@ -292,14 +522,29 @@
                 const isDark = !document.body.classList.contains("dark-mode");
                 updateToggleUI(isDark);
             });
+
+            // Sidebar Pin Toggle
+            const updatePinUI = (isPinned) => {
+                sidebar.classList.toggle("pinned", isPinned);
+                localStorage.setItem("sidebarPinned", isPinned);
+                pinButton.querySelector("i").className = isPinned ? "bi bi-pin-angle-fill" : "bi bi-pin-angle";
+            };
+
+            const isPinned = localStorage.getItem("sidebarPinned") === "true";
+            updatePinUI(isPinned);
+
+            pinButton?.addEventListener("click", () => {
+                const isPinned = !sidebar.classList.contains("pinned");
+                updatePinUI(isPinned);
+            });
+
+            // Sidebar Toggle for Mobile
+            sidebarToggle?.addEventListener("click", () => {
+                sidebar.classList.toggle("show");
+            });
         });
     </script>
 
-
     @await RenderSectionAsync("Scripts", required: false)
-
-
-
-
 </body>
 </html>

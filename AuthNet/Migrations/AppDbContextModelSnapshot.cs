@@ -534,7 +534,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 6, 26, 13, 12, 39, 847, DateTimeKind.Utc).AddTicks(9386),
+                            CreatedAt = new DateTime(2025, 7, 7, 12, 10, 53, 743, DateTimeKind.Utc).AddTicks(5674),
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"
