@@ -25,6 +25,9 @@ namespace AuthNet.Data
         public DbSet<CompanyInfoHistory> CompanyInfoHistories { get; set; }
 
         public DbSet<TaxSetting> TaxSettings { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleItem> SaleItems { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

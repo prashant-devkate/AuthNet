@@ -257,6 +257,12 @@
             height: 300px;
         }
 
+        .dropdown-menu {
+            position: static;
+            float: none;
+        }
+
+
         /* Dark Mode */
         body.dark-mode {
             --bg-color: #121212;
@@ -387,6 +393,33 @@
                                 <span class="nav-text">Sales</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#salesSubmenu" role="button" aria-expanded="false" aria-controls="salesSubmenu">
+                                <div>
+                                    <i class="bi bi-clipboard-data me-2"></i>
+                                    <span class="nav-text">Reports</span>
+                                </div>
+                                <i class="bi bi-chevron-down"></i>
+                            </a>
+
+                            <div class="collapse ps-4" id="salesSubmenu">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Reports" asp-action="Index">Sales Report</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Reports" asp-action="Monthly">Monthly Summary</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Reports" asp-action="Yearly">Yearly Summary</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
                         <li class="nav-item">
                             <a class="nav-link text-white @isActive("Categories", "Index")" asp-controller="Categories" asp-action="Index">
                                 <i class="bi bi-tags me-2"></i>
@@ -411,30 +444,40 @@
                                 <span class="nav-text">Orders</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-white @isActive("Inventories", "Index")" asp-controller="Inventories" asp-action="Index">
-                                <i class="bi bi-boxes me-2"></i>
-                                <span class="nav-text">Inventory</span>
+                            <a class="nav-link text-white d-flex justify-content-between align-items-center"
+                               data-bs-toggle="collapse" href="#inventorySubmenu" role="button" aria-expanded="false" aria-controls="inventorySubmenu">
+                                <div>
+                                    <i class="bi bi-box-seam me-2"></i>
+                                    <span class="nav-text">Inventory</span>
+                                </div>
+                                <i class="bi bi-chevron-down"></i>
                             </a>
+
+                            <div class="collapse ps-4" id="inventorySubmenu">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Inventories" asp-action="Index">Inventory</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="OrderItems" asp-action="Index">Order Items</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="PurchaseOrders" asp-action="Index">Purchase Orders</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white @isActive("OrderItems", "Index")" asp-controller="OrderItems" asp-action="Index">
-                                <i class="bi bi-list-check me-2"></i>
-                                <span class="nav-text">Order Items</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white @isActive("PurchaseOrders", "Index")" asp-controller="PurchaseOrders" asp-action="Index">
-                                <i class="bi bi-receipt me-2"></i>
-                                <span class="nav-text">Purchase Orders</span>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-white @isActive("AuditLogs", "Index")" asp-controller="AuditLogs" asp-action="Index">
                                 <i class="bi bi-clipboard-data me-2"></i>
                                 <span class="nav-text">Audit Logs</span>
                             </a>
                         </li>
+                        
+
                     </ul>
                 </div>
             </nav>

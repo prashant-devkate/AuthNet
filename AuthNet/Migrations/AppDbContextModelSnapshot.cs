@@ -412,6 +412,70 @@ namespace AuthNet.Migrations
                     b.ToTable("purchaseOrders");
                 });
 
+            modelBuilder.Entity("AuthNet.Models.Domain.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("InvoiceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InvoiceNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Template")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("AuthNet.Models.Domain.SaleItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SaleId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SaleId");
+
+                    b.ToTable("SaleItems");
+                });
+
             modelBuilder.Entity("AuthNet.Models.Domain.Supplier", b =>
                 {
                     b.Property<int>("SupplierId")
@@ -534,7 +598,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 7, 7, 12, 10, 53, 743, DateTimeKind.Utc).AddTicks(5674),
+                            CreatedAt = new DateTime(2025, 7, 10, 17, 30, 58, 598, DateTimeKind.Utc).AddTicks(8843),
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"
@@ -633,6 +697,17 @@ namespace AuthNet.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("AuthNet.Models.Domain.SaleItem", b =>
+                {
+                    b.HasOne("AuthNet.Models.Domain.Sale", "Sale")
+                        .WithMany("SaleItems")
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Sale");
+                });
+
             modelBuilder.Entity("AuthNet.Models.Domain.Category", b =>
                 {
                     b.Navigation("Products");
@@ -646,6 +721,11 @@ namespace AuthNet.Migrations
             modelBuilder.Entity("AuthNet.Models.Domain.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("AuthNet.Models.Domain.Sale", b =>
+                {
+                    b.Navigation("SaleItems");
                 });
 
             modelBuilder.Entity("AuthNet.Models.Domain.Supplier", b =>

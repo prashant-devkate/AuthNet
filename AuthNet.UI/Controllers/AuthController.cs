@@ -47,11 +47,17 @@ namespace AuthNet.UI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                HttpContext.Session.SetString("JWT", result.Token);
-                HttpContext.Session.SetString("Username", model.Username);
+                var result = await response.Content.ReadFromJsonAsync<ServiceResponse<LoginResponse>>();
 
-                return RedirectToAction("Index", "Home");
+                if (result != null && !string.IsNullOrWhiteSpace(result.Data.Token))
+                {
+                    HttpContext.Session.SetString("JWT", result.Data.Token);
+                    HttpContext.Session.SetString("Username", result.Data.username);
+                    HttpContext.Session.SetInt32("UserId", result.Data.userId);
+                    HttpContext.Session.SetString("Role", result.Data.role);
+
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login.");

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuthNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad6da349f2936591b341848f39fe404c49fdda07")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f55326bf25b6b679f90115d3f52298bc4fe75a3d")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuthNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuthNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

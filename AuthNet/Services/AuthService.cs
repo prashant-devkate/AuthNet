@@ -1,5 +1,6 @@
 ﻿using AuthNet.Data;
 using AuthNet.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthNet.Services
 {
@@ -12,19 +13,19 @@ namespace AuthNet.Services
             _context = context;
         }
 
-        public bool Register(User user)
+        public async Task<bool> Register(User user)
         {
-            if (_context.Users.Any(u => u.Username == user.Username))
+            if (await _context.Users.AnyAsync(u => u.Username == user.Username))
                 return false;
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
             return true;
         }
 
-        public User Authenticate(string username, string password)
+        public async Task<User?> Authenticate(string username, string password)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
                 return null;
 

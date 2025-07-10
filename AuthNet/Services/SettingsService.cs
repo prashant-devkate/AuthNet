@@ -94,7 +94,9 @@ namespace AuthNet.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[SaveCompanyInfoAsync] Error: {ex.Message}");
+                if (ex.InnerException != null)
+                    Console.WriteLine($"Inner: {ex.InnerException.Message}");
+
                 return new OperationResponse
                 {
                     Success = false,

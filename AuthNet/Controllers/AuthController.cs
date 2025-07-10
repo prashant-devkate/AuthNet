@@ -19,27 +19,55 @@ namespace AuthNet.Controllers
             _userService = userService;
             _jwtHelper = jwtHelper;
         }
-
         [HttpPost("register")]
-        public IActionResult Register(RegisterDto dto)
+        public async Task<IActionResult> Register(RegisterDto dto)
         {
-            var hashedPwd = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-            var user = new User { Username = dto.Username, PasswordHash = hashedPwd, Role = dto.Role };
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            var success = _userService.Register(user);
-            return success ? Ok("User registered successfully") : BadRequest("User already exists");
+            var hashedPwd = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+            var user = new User
+            {
+                Username = dto.Username,
+                PasswordHash = hashedPwd,
+                Role = dto.Role
+            };
+
+            var success = await _userService.Register(user);
+            return success
+                ? Ok("User registered successfully")
+                : BadRequest("User already exists");
         }
 
         [HttpPost("login")]
-        public IActionResult Login(LoginDto dto)
+        public async Task<IActionResult> Login(LoginDto dto)
         {
-            var user = _userService.Authenticate(dto.Username, dto.Password);
+            var user = await _userService.Authenticate(dto.Username, dto.Password);
             if (user == null)
-                return Unauthorized("Invalid credentials");
+            {
+                return Unauthorized(new ServiceResponse<string>
+                {
+                    Status = "Failed",
+                    Message = "Invalid credentials"
+                });
+            }
 
-            var token = _jwtHelper.GenerateToken(user.Username, user.Role);
-            return Ok(new { token });
+            var token = _jwtHelper.GenerateToken(user.UserId, user.Username, user.Role);
+
+            return Ok(new ServiceResponse<LoginResponseDto>
+            {
+                Status = "Success",
+                Message = "Login successful",
+                Data = new LoginResponseDto
+                {
+                    Token = token,
+                    UserId = user.UserId,
+                    Username = user.Username,
+                    Role = user.Role
+                }
+            });
         }
+
 
     }
 }
