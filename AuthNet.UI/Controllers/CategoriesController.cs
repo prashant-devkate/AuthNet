@@ -24,7 +24,7 @@ namespace AuthNet.UI.Controllers
                 categories = new List<CategoryDto>();
             }
 
-            return View(categories);
+            return View(categories ?? new List<CategoryDto>());
         }
 
         [HttpGet]
@@ -115,7 +115,7 @@ namespace AuthNet.UI.Controllers
             }
 
             TempData["SuccessMessage"] = "Category deleted successfully.";
-            return View("Index");
+            return RedirectToAction("Index", "Categories");
 
         }
     }

@@ -4,152 +4,50 @@
     ViewData["Title"] = "Edit Task";
 }
 
-<style>
-    :root {
-        --primary-color: #1e3a8a;
-        --accent-color: #f59e0b;
-        --bg-light: #f9fafb;
-        --text-muted: #6b7280;
-    }
+<div class="container py-4" style="max-width:540px">
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-3">
+            <h4 class="text-center text-primary fw-semibold mb-3">
+                <i class="bi bi-pencil-square me-1"></i> Edit Task
+            </h4>
 
-    body {
-        background-color: var(--bg-light);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+            <div asp-validation-summary="ModelOnly" class="text-danger small mb-2"></div>
 
-    .glass-form {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px);
-        padding: 2.5rem;
-        border-radius: 1.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        max-width: 600px;
-        margin: auto;
-    }
+            @if (Model != null)
+            {
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="TaskId" />
 
-    .form-title {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: var(--primary-color);
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+                    <div class="form-floating mb-3">
+                        <input asp-for="Title" class="form-control" placeholder="Title" />
+                        <label asp-for="Title"></label>
+                        <span asp-validation-for="Title" class="text-danger small"></span>
+                    </div>
 
-    .form-floating > label {
-        color: var(--text-muted);
-    }
+                    <div class="form-floating mb-4">
+                        <input asp-for="DueDate" type="date" class="form-control" placeholder="Due Date" />
+                        <label asp-for="DueDate"></label>
+                        <span asp-validation-for="DueDate" class="text-danger small"></span>
+                    </div>
 
-    .form-control {
-        border-radius: 0.75rem;
-        border: 1px solid #d1d5db;
-    }
-
-    .btn-save {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 0.6rem 1.8rem;
-        font-weight: 600;
-        border-radius: 0.75rem;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-        .btn-save:hover {
-            background-color: #172554;
-            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
-            transform: translateY(-2px);
-        }
-
-    .btn-cancel, .btn-reset {
-        padding: 0.6rem 1.5rem;
-        border-radius: 0.75rem;
-        font-weight: 500;
-        border: none;
-        transition: all 0.3s ease;
-    }
-
-    .btn-cancel {
-        background-color: #e5e7eb;
-        color: #374151;
-    }
-
-        .btn-cancel:hover {
-            background-color: #d1d5db;
-        }
-
-    .btn-reset {
-        background-color: #f59e0b;
-        color: white;
-    }
-
-        .btn-reset:hover {
-            background-color: #d97706;
-        }
-
-    .btn-group-custom {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-top: 1.5rem;
-    }
-
-    .text-danger {
-        font-size: 0.875rem;
-    }
-
-    @@media (max-width: 576px) {
-        .glass-form {
-            padding: 1.5rem;
-            margin: 1rem;
-        }
-
-        .btn-group-custom {
-            flex-direction: column;
-        }
-    }
-</style>
-
-@if (Model != null)
-{
-    <div class="container py-5">
-        <div class="form-title">Edit Task</div>
-
-        <form method="post" class="glass-form" asp-action="Edit">
-            <input type="hidden" asp-for="TaskId" />
-
-            <div class="form-floating mb-3">
-                <input asp-for="TaskId" class="form-control" readonly />
-                <label asp-for="TaskId">Task ID</label>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input asp-for="Title" class="form-control" />
-                <label asp-for="Title">Title</label>
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input asp-for="DueDate" class="form-control" />
-                <label asp-for="DueDate">Due Date</label>
-                <span asp-validation-for="DueDate" class="text-danger"></span>
-            </div>
-
-            <hr class="my-4" />
-
-            <div class="btn-group-custom">
-                <button type="submit" class="btn btn-save">
-                    <i class="bi bi-save-fill me-1"></i> Save Changes
-                </button>
-
-                <a asp-controller="Home" asp-action="Index" class="btn btn-cancel">
-                    <i class="bi bi-arrow-left me-1"></i> Cancel
-                </a>
-
-                <button type="reset" class="btn btn-reset">
-                    <i class="bi bi-arrow-repeat me-1"></i> Reset Form
-                </button>
-            </div>
-        </form>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-primary px-4" type="submit">
+                            <i class="bi bi-save-fill me-1"></i> Save
+                        </button>
+                        <button type="reset" class="btn btn-outline-secondary px-4">
+                            <i class="bi bi-arrow-repeat me-1"></i> Reset
+                        </button>
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary px-4">
+                            <i class="bi bi-arrow-left me-1"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            }
+        </div>
     </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

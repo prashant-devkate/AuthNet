@@ -50,6 +50,9 @@ namespace AuthNet.Data
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, Username = "admin", PasswordHash = "hashed-password", Role = "Admin", CreatedAt = DateTime.UtcNow }
             );
+
+            modelBuilder.Entity<Inventory>().HasIndex(i => i.ProductId).IsUnique();
+
         }
     }
 }

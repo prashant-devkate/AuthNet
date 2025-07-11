@@ -121,6 +121,8 @@
                             <tr><th>Layout</th><th>Notes</th><th>Terms &amp; Conditions</th><th>Actions</th></tr>
                         </thead>
                         <tbody>
+                            @if (Model != null)
+                            {
                             @foreach (var tpl in Model.Template.InvoiceTemplates)
                             {
                                 <tr>
@@ -137,6 +139,7 @@
                                         </form>
                                     </td>
                                 </tr>
+                            }
                             }
                         </tbody>
                     </table>

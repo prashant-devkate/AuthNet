@@ -18,10 +18,7 @@
                 <form asp-action="Edit" method="post">
                     @Html.AntiForgeryToken()
 
-                    <div class="form-floating mb-3">
-                        <input asp-for="SupplierId" class="form-control" readonly />
-                        <label asp-for="SupplierId"></label>
-                    </div>
+                        <input asp-for="SupplierId" hidden />
 
                     <div class="form-floating mb-3">
                         <input asp-for="CompanyName" class="form-control" />

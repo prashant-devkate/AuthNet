@@ -58,7 +58,7 @@ namespace AuthNet.UI.Controllers
             if (TempData.ContainsKey("ErrorMessage"))
                 ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
-            return View(viewModel);
+            return View(viewModel ?? new ProductListViewModel());
         }
 
 

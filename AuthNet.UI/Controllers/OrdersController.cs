@@ -18,13 +18,22 @@ namespace AuthNet.UI.Controllers
         public async Task<IActionResult> Index()
         {
             var orders = await _httpClient.GetFromJsonAsync<List<OrderDto>>("api/Orders");
+            var user = await _httpClient.GetFromJsonAsync<List<UserDto>>("api/Users");
+            var customer = await _httpClient.GetFromJsonAsync<List<CustomerDto>>("api/Customers");
+
+            foreach (var order in orders)
+            {
+                order.Username = user.FirstOrDefault(p => p.UserId == order.UserId)?.Username ?? "Unknown";
+                order.Customername = customer.FirstOrDefault(c => c.CustomerId == order.CustomerId)?.Name ?? "Unknown";
+            }
+
 
             if (orders == null)
             {
                 orders = new List<OrderDto>();
             }
 
-            return View(orders);
+            return View(orders ?? new List<OrderDto>());
         }
 
         [HttpGet]

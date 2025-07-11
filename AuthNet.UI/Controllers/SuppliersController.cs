@@ -23,7 +23,7 @@ namespace AuthNet.UI.Controllers
                 suppliers = new List<SupplierDto>();
             }
 
-            return View(suppliers);
+            return View(suppliers ?? new List<SupplierDto>());
         }
 
         [HttpGet]
@@ -114,7 +114,7 @@ namespace AuthNet.UI.Controllers
             }
 
             TempData["SuccessMessage"] = "Supplier deleted successfully.";
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Suppliers");
         }
     }
 }

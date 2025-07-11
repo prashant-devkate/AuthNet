@@ -43,7 +43,7 @@ namespace AuthNet.UI.Controllers
                 viewModelList.Add(vm);
             }
 
-            return View(viewModelList);
+            return View(viewModelList ?? new List<ProductListViewModel>());
         }
 
         public async Task<IActionResult> DailySalesReport(int page = 1)

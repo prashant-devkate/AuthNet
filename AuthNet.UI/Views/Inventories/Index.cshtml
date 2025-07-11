@@ -18,17 +18,33 @@
         <table class="table table-hover align-middle mb-0">
             <thead class="table-light">
                 <tr>
-                    <th>Quantity In Stock</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
                     <th>Reorder Level</th>
+                    <th>Status</th>
                     <th class="text-center" style="width: 160px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
+                @if (Model != null)
+                {
                 @foreach (var inventory in Model)
                 {
                     <tr>
-                        <td class="fw-semibold">@inventory.QuantityInStock</td>
+                        <td class="fw-semibold">@inventory.ProductName</td>
+                        <td class="text-muted">@inventory.QuantityInStock</td>
                         <td class="text-muted">@inventory.ReorderLevel</td>
+                            <td>
+                                @if (inventory.QuantityInStock <= inventory.ReorderLevel)
+                                {
+                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-circle"></i> Low Stock</span>
+
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">OK</span>
+                                }
+                            </td>
                         <td class="text-center">
                             <a asp-action="Edit" asp-route-id="@inventory.InventoryId"
                                class="btn btn-sm btn-outline-warning me-1 rounded-2">
@@ -43,6 +59,7 @@
                             </form>
                         </td>
                     </tr>
+                }
                 }
             </tbody>
         </table>

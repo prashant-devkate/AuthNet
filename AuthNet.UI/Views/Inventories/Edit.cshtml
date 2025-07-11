@@ -1,0 +1,55 @@
+﻿@model AuthNet.UI.Models.DTO.EditInventoryViewModel
+
+@{
+    ViewData["Title"] = "Edit Inventory";
+}
+
+@if (Model != null)
+{
+    <div class="container py-4" style="max-width:540px">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-3">
+                <h4 class="text-center text-primary fw-semibold mb-3">
+                    <i class="bi bi-pencil-square me-1"></i> Edit Inventory
+                </h4>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-2"></div>
+
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <input asp-for="InventoryId" hidden />
+
+                    <div class="form-floating mb-2">
+                        <select asp-for="ProductId" asp-items="ViewBag.Products" class="form-select">
+                            <option value="">-- Select Product --</option>
+                        </select>
+                        <label asp-for="ProductId"></label>
+                        <span asp-validation-for="ProductId" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="QuantityInStock" class="form-control" />
+                        <label asp-for="QuantityInStock"></label>
+                        <span asp-validation-for="QuantityInStock" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input asp-for="ReorderLevel" class="form-control" />
+                        <label asp-for="ReorderLevel"></label>
+                        <span asp-validation-for="ReorderLevel" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-primary px-4" type="submit">Save</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

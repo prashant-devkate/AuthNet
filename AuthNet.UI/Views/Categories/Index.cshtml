@@ -23,6 +23,8 @@
                 </tr>
             </thead>
             <tbody>
+                @if (Model != null)
+                {
                 @foreach (var c in Model)
                 {
                     <tr>
@@ -41,6 +43,7 @@
                             </form>
                         </td>
                     </tr>
+                }
                 }
             </tbody>
         </table>

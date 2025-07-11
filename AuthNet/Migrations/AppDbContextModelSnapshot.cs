@@ -253,7 +253,8 @@ namespace AuthNet.Migrations
 
                     b.HasKey("InventoryId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("Inventories");
                 });
@@ -598,7 +599,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 7, 10, 17, 30, 58, 598, DateTimeKind.Utc).AddTicks(8843),
+                            CreatedAt = new DateTime(2025, 7, 11, 14, 33, 4, 746, DateTimeKind.Utc).AddTicks(997),
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"
