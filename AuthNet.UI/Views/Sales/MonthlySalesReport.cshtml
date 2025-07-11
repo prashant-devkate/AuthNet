@@ -1,0 +1,68 @@
+﻿@model AuthNet.UI.Models.DTO.SalesListViewModel
+
+<h3 class="mb-3 text-primary">
+    <i class="bi bi-calendar-event me-2"></i> Monthly Sales Report
+</h3>
+
+@foreach (var day in Model.DailySales)
+{
+    <div class="card shadow-sm p-4 mb-4">
+        <h5 class="text-secondary mb-2">@day.Title</h5>
+        <p>
+            <strong>Total Sales:</strong> ₹@day.TotalSales <br />
+            <strong>Invoices:</strong> @day.InvoiceCount
+        </p>
+
+        @foreach (var sale in day.Sales)
+        {
+            <div class="border rounded p-3 mb-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>Invoice No:</strong> @sale.InvoiceNo<br />
+                        <strong>Date:</strong> @sale.InvoiceDate.ToString("dd MMM yyyy, hh:mm tt")
+                    </div>
+                    <div class="text-end fw-semibold">
+                        <span class="text-success">₹@sale.TotalAmount</span>
+                    </div>
+                </div>
+
+                <table class="table table-sm table-bordered mt-3 mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in sale.Items)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>₹@item.UnitPrice</td>
+                                <td>₹@item.TotalPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+}
+
+<!-- Pagination -->
+@if (Model.TotalPages > 1)
+{
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                    <a class="page-link" asp-action="DailySalesReport" asp-route-page="@i">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

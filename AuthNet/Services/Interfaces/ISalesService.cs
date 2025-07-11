@@ -8,7 +8,7 @@ namespace AuthNet.Services.Interfaces
         Task<IEnumerable<Sale>> GetAllAsync();
         Task<Sale?> GetByIdAsync(int id);
         Task<int> GetSaleCountAsync();
-        Task<OperationResponse> AddAsync(Sale sale);
+        Task<OperationResponse> AddAsync(SaleDto sale);
         Task<OperationResponse> UpdateAsync(int id, Sale sale);
         Task<OperationResponse> DeleteAsync(int id);
         Task<ReportResultDto> GetDailySalesAsync();

@@ -592,6 +592,125 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Sales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "Create",
+    "RelativePath": "api/Sales",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sale",
+        "Type": "AuthNet.Models.DTO.SaleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetById",
+    "RelativePath": "api/Sales/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "Update",
+    "RelativePath": "api/Sales/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "sale",
+        "Type": "AuthNet.Models.Domain.Sale",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "Delete",
+    "RelativePath": "api/Sales/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetSaleCount",
+    "RelativePath": "api/Sales/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetDailySales",
+    "RelativePath": "api/Sales/Daily",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetMonthlySales",
+    "RelativePath": "api/Sales/Monthly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetYearlySales",
+    "RelativePath": "api/Sales/Yearly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthNet.Controllers.SettingsController",
     "Method": "GetCompanyInfo",
     "RelativePath": "api/Settings/Get",

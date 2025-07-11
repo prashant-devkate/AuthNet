@@ -1,5 +1,6 @@
 ﻿using AuthNet.UI.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Net.Http;
 
 namespace AuthNet.UI.Controllers
@@ -14,6 +15,8 @@ namespace AuthNet.UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.ApiBaseUrl = _httpClient.BaseAddress?.ToString() ?? "https://localhost:7165/"; // Fallback
+     
             var allProducts = await _httpClient.GetFromJsonAsync<List<ProductDto>>("api/Products")
                               ?? new List<ProductDto>();
             var allTemplates = await _httpClient.GetFromJsonAsync<List<InvoiceTemplateDto>>("api/InvoiceTemplates")
@@ -42,5 +45,150 @@ namespace AuthNet.UI.Controllers
 
             return View(viewModelList);
         }
+
+        public async Task<IActionResult> DailySalesReport(int page = 1)
+        {
+            int pageSize = 2;
+            SalesReportDto fullReport = null;
+
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Sales/Daily");
+                response.EnsureSuccessStatusCode();
+
+                fullReport = await response.Content.ReadFromJsonAsync<SalesReportDto>();
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Failed to load daily sales.";
+                return View(new SalesListViewModel());
+            }
+
+            if (fullReport == null || fullReport.Sales == null)
+            {
+                TempData["ErrorMessage"] = "No data received.";
+                return View(new SalesListViewModel());
+            }
+
+            var totalSales = fullReport.Sales.Count;
+            var paginatedSales = fullReport.Sales
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var pagedReport = new SalesReportDto
+            {
+                Title = fullReport.Title,
+                TotalSales = fullReport.TotalSales,
+                InvoiceCount = fullReport.InvoiceCount,
+                Sales = paginatedSales
+            };
+
+            var viewModel = new SalesListViewModel
+            {
+                DailySales = new List<SalesReportDto> { pagedReport },
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling(totalSales / (double)pageSize)
+            };
+
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> MonthlySalesReport(int page = 1)
+        {
+            int pageSize = 2;
+            SalesReportDto fullReport = null;
+
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Sales/Monthly");
+                response.EnsureSuccessStatusCode();
+
+                fullReport = await response.Content.ReadFromJsonAsync<SalesReportDto>();
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Failed to load daily sales.";
+                return View(new SalesListViewModel());
+            }
+
+            if (fullReport == null || fullReport.Sales == null)
+            {
+                TempData["ErrorMessage"] = "No data received.";
+                return View(new SalesListViewModel());
+            }
+
+            var totalSales = fullReport.Sales.Count;
+            var paginatedSales = fullReport.Sales
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var pagedReport = new SalesReportDto
+            {
+                Title = fullReport.Title,
+                TotalSales = fullReport.TotalSales,
+                InvoiceCount = fullReport.InvoiceCount,
+                Sales = paginatedSales
+            };
+
+            var viewModel = new SalesListViewModel
+            {
+                DailySales = new List<SalesReportDto> { pagedReport },
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling(totalSales / (double)pageSize)
+            };
+
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> YearlySalesReport(int page = 1)
+        {
+            int pageSize = 2;
+            SalesReportDto fullReport = null;
+
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Sales/Yearly");
+                response.EnsureSuccessStatusCode();
+
+                fullReport = await response.Content.ReadFromJsonAsync<SalesReportDto>();
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Failed to load daily sales.";
+                return View(new SalesListViewModel());
+            }
+
+            if (fullReport == null || fullReport.Sales == null)
+            {
+                TempData["ErrorMessage"] = "No data received.";
+                return View(new SalesListViewModel());
+            }
+
+            var totalSales = fullReport.Sales.Count;
+            var paginatedSales = fullReport.Sales
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var pagedReport = new SalesReportDto
+            {
+                Title = fullReport.Title,
+                TotalSales = fullReport.TotalSales,
+                InvoiceCount = fullReport.InvoiceCount,
+                Sales = paginatedSales
+            };
+
+            var viewModel = new SalesListViewModel
+            {
+                DailySales = new List<SalesReportDto> { pagedReport },
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling(totalSales / (double)pageSize)
+            };
+
+            return View(viewModel);
+        }
+
     }
 }

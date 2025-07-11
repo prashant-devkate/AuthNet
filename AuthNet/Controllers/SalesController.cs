@@ -1,4 +1,5 @@
 ﻿using AuthNet.Models.Domain;
+using AuthNet.Models.DTO;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -59,16 +60,17 @@ namespace AuthNet.Controllers
             var count = await _reportService.GetSaleCountAsync();
             return Ok(count);
         }
-
         [HttpPost]
-        public async Task<IActionResult> Create(Sale sale)
+        public async Task<IActionResult> Create(SaleDto sale)
         {
             var result = await _reportService.AddAsync(sale);
+
             if (!result.Success)
                 return BadRequest(new { result.Message });
 
-            return CreatedAtAction(nameof(GetById), new { id = sale.Id }, sale);
+            return Ok(new { result.Message });
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Sale sale)

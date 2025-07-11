@@ -25,6 +25,16 @@ builder.Host.UseSerilog();
 
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.WithOrigins("https://localhost:5198", "http://localhost:5198")
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddControllers()
     .AddJsonOptions(opt =>
     {
@@ -169,6 +179,7 @@ app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseSession();
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();

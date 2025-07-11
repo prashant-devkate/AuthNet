@@ -64,18 +64,29 @@
 
 
 <div class="container py-4">
-    <h4 class="mb-4 fw-semibold"><i class="bi bi-cash-coin me-2"></i> Sales Panel</h4>
+    
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
-    <!-- Template Selector -->
-    <div class="d-flex align-items-center gap-3 mb-3">
-        <label class="form-label mb-0">Invoice template:</label>
-        <select id="tplSelect" class="form-select w-auto">
-            @foreach (var t in allTemplates)
-            {
-                <option value="@t.Id">@t.Layout</option>
-            }
-        </select>
+        <!-- 1. Heading -->
+        <div class="flex-grow-1">
+            <h4 class="mb-0 fw-semibold d-flex align-items-center">
+                <i class="bi bi-cash-coin me-2"></i> Sales Panel
+            </h4>
+        </div>
+
+            <!-- 2. Template Dropdown -->
+            <label class="form-label mb-0">Invoice template:</label>
+            <select id="tplSelect" class="form-select w-auto" name="Template" required>
+                @foreach (var t in allTemplates)
+                {
+                    <option value="@t.Id">@t.Layout</option>
+                }
+            </select>
+
     </div>
+
+
+
 
     <div class="row">
         <!-- Product List -->
@@ -105,6 +116,10 @@
                 <div class="card-body">
                     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                         <h5 class="card-title text-success m-0 flex-grow-1">🧾 Selected Products</h5>
+                        <form id="sellForm">
+                            <input type="hidden" id="cartData" name="cartData" value="" />
+                            <button type="submit" class="btn btn-outline-success ms-2" onclick="sellCart(event)">Sell</button>
+                        </form>
                         <button class="btn btn-outline-dark ms-auto" onclick="printCart()">🖨️ Print</button>
                     </div>
                     <table class="table table-hover align-middle text-center" id="cartTable">
@@ -127,6 +142,7 @@
 
 @section Scripts {
     <script>
+        const apiBaseUrl = '@ViewBag.ApiBaseUrl';
         const products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(allProducts));
         const templates = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(templateMap));
         const cart = {};
@@ -236,6 +252,64 @@
             area.innerHTML = filledHtml;
             window.print();
             area.innerHTML = keep;
+        }
+
+        let invoiceSequence = 1;
+
+        function sellCart(event) {
+            event.preventDefault();
+            if (Object.keys(cart).length === 0) {
+                alert('No items in cart to sell!');
+                return;
+            }
+
+            const invoiceNo = `INV-${invoiceSequence++}`;
+
+            const saleData = {
+                InvoiceNo: invoiceNo,
+                Template: document.getElementById('tplSelect').value || 'Classic',
+                TotalAmount: parseFloat(document.getElementById('grandTotal').textContent.replace('₹', '')) || 0,
+                SaleItems: Object.values(cart).map(item => ({
+                    ProductId: products.find(p => p.Name === item.name)?.Id || 0,
+                    ProductName: item.name,
+                    Quantity: item.qty,
+                    UnitPrice: item.price,
+                    TotalPrice: item.qty * item.price
+                }))
+            };
+
+           const apiUrl = `${apiBaseUrl}api/Sales`;
+            
+            console.log('Sending sale data:', JSON.stringify(saleData));
+
+                   fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(saleData)
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            if (!response.ok) {
+                return response.text().then(error => { throw new Error(error || 'Unknown error'); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                Object.keys(cart).forEach(key => delete cart[key]);
+                renderCart();
+                alert(data.message);
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            alert('Error submitting sale: ' + error.message);
+            console.error('Error:', error);
+        });
+
         }
     </script>
 }

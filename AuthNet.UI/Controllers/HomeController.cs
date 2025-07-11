@@ -28,6 +28,7 @@ public class HomeController : Controller
             model.TotalSuppliers = await GetCountFromApi("api/Suppliers/count");
             model.TotalTasks = await GetCountFromApi("api/Tasks/count");
             model.TotalOrders = await GetCountFromApi("api/Orders/count");
+            model.TotalDailySales = await GetCountFromApi("api/Sales/count");
             model.Tasks = await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/Tasks");
 
             // Fetch and set company logo

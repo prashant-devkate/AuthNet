@@ -30,9 +30,8 @@ namespace AuthNet.Services
             return await _context.Sales.CountAsync();
         }
 
-        public async Task<OperationResponse> AddAsync(Sale saleDto)
+        public async Task<OperationResponse> AddAsync(SaleDto saleDto)
         {
-
             var sale = new Sale
             {
                 InvoiceNo = Guid.NewGuid().ToString().Substring(0, 8).ToUpper(),
@@ -46,14 +45,15 @@ namespace AuthNet.Services
                     ProductName = i.ProductName,
                     Quantity = i.Quantity,
                     UnitPrice = i.UnitPrice,
-                    TotalPrice = i.Quantity * i.UnitPrice
+                    TotalPrice = i.TotalPrice > 0 ? i.TotalPrice : i.Quantity * i.UnitPrice
                 }).ToList()
             };
 
             try
             {
-                _context.Sales.Add(sale);
+                await _context.Sales.AddAsync(sale);
                 await _context.SaveChangesAsync();
+
                 return new OperationResponse
                 {
                     Success = true,
