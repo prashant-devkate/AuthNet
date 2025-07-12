@@ -68,7 +68,7 @@ namespace AuthNet.Controllers
             if (!result.Success)
                 return BadRequest(new { result.Message });
 
-            return Ok(new { result.Message });
+            return Ok(new { result.Success, result.Message });
         }
 
 

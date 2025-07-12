@@ -1,55 +1,46 @@
-﻿@if (TempData["SuccessMessage"] != null || TempData["ErrorMessage"] != null)
-{
-    <div aria-live="polite" aria-atomic="true"
-         class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+﻿<div aria-live="polite" aria-atomic="true"
+     class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
 
-        @* ── Success toast ───────────────────────────── *@
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div id="toastSuccess"
-                 class="toast align-items-center text-bg-success border-0"
-                 role="alert" aria-live="assertive" aria-atomic="true"
-                 data-bs-autohide="true" data-bs-delay="4000">
-                @* 4 s *@
-                <div class="d-flex">
-                    <div class="toast-body">
-                        <i class="bi bi-check-circle me-2"></i>
-                        @TempData["SuccessMessage"]
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto"
-                            data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
+    <!-- Success toast -->
+    <div id="toastSuccess"
+         class="toast align-items-center text-bg-success border-0"
+         role="alert" aria-live="assertive" aria-atomic="true"
+         data-bs-autohide="true" data-bs-delay="4000">
+        <div class="d-flex">
+            <div class="toast-body">
+                @TempData["SuccessMessage"]
             </div>
-        }
-
-        @* ── Error toast ─────────────────────────────── *@
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div id="toastError"
-                 class="toast align-items-center text-bg-danger border-0"
-                 role="alert" aria-live="assertive" aria-atomic="true"
-                 data-bs-autohide="true" data-bs-delay="6000">
-                @* 6 s *@
-                <div class="d-flex">
-                    <div class="toast-body">
-                        <i class="bi bi-exclamation-triangle me-2"></i>
-                        @TempData["ErrorMessage"]
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto"
-                            data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>
-        }
+            <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
     </div>
 
-    <script>
-        // Initialise any toast that exists
-        document.addEventListener('DOMContentLoaded', () => {
-            const s = document.getElementById('toastSuccess');
-            if (s) new bootstrap.Toast(s).show();
+    <!-- Error toast -->
+    <div id="toastError"
+         class="toast align-items-center text-bg-danger border-0"
+         role="alert" aria-live="assertive" aria-atomic="true"
+         data-bs-autohide="true" data-bs-delay="6000">
+        <div class="d-flex">
+            <div class="toast-body">
+                @TempData["ErrorMessage"]
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
 
-            const e = document.getElementById('toastError');
-            if (e) new bootstrap.Toast(e).show();
-        });
-    </script>
-}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const s = document.getElementById('toastSuccess');
+        if (s && s.querySelector('.toast-body')?.textContent.trim()) {
+            new bootstrap.Toast(s).show();
+        }
+
+        const e = document.getElementById('toastError');
+        if (e && e.querySelector('.toast-body')?.textContent.trim()) {
+            new bootstrap.Toast(e).show();
+        }
+    });
+</script>
+    

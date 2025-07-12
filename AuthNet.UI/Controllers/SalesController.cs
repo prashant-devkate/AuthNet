@@ -1,5 +1,6 @@
 ﻿using AuthNet.UI.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -24,6 +25,10 @@ namespace AuthNet.UI.Controllers
 
             ViewBag.Templates = allTemplates;
 
+            var allCats = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/categories")
+                                ?? new List<CategoryViewModel>();
+            ViewBag.UniqueCategories = allCats;
+
             int pageSize = 10;
             int totalPages = (int)Math.Ceiling(allProducts.Count / (double)pageSize);
             var viewModelList = new List<ProductListViewModel>();
@@ -36,6 +41,7 @@ namespace AuthNet.UI.Controllers
                 {
                     Products = productsPage,
                     Invoices = allTemplates,
+                    Cats = allCats,
                     CurrentPage = i + 1,
                     TotalPages = totalPages
                 };

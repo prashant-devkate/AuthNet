@@ -97,12 +97,6 @@ C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets\msbuild.AuthNet.UI.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets\msbuild.AuthNet.UI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets\msbuild.build.AuthNet.UI.props
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.AuthNet.UI.props
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AuthNet.UI.props
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\AuthNet.UI.csproj.Up2Date
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\AuthNet.UI.dll
@@ -110,3 +104,10 @@ C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\AuthNet.UI.pdb
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\AuthNet.UI.genruntimeconfig.cache
 C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\ref\AuthNet.UI.dll
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\bin\Debug\net8.0\SendGrid.dll
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\bin\Debug\net8.0\StarkbankEcdsa.dll
