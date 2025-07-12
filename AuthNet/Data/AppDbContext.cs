@@ -27,6 +27,7 @@ namespace AuthNet.Data
         public DbSet<TaxSetting> TaxSettings { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleItem> SaleItems { get; set; }
+        public DbSet<PurchaseOrderItems> PurchaseOrderItems { get; set; }
 
 
 

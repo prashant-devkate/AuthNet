@@ -1,5 +1,6 @@
 ﻿using AuthNet.Data;
 using AuthNet.Models.Domain;
+using AuthNet.Models.DTO;
 using AuthNet.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +11,78 @@ namespace AuthNet.Services
         private readonly AppDbContext _context;
         public OrderItemService(AppDbContext context) => _context = context;
 
-        public async Task<IEnumerable<OrderItem>> GetAllAsync() => await _context.OrderItems.Include(o => o.Product).Include(o => o.Order).ToListAsync();
+        public async Task<IEnumerable<OrderItemDto>> GetAllAsync()
+        {
+            return await _context.OrderItems
+                .Include(oi => oi.Product)
+                .Include(oi => oi.Order)
+                    .ThenInclude(o => o.Customer)
+                .AsNoTracking()
+                .Select(oi => new OrderItemDto
+                {
+                    OrderItemId = oi.OrderItemId,
+                    OrderId = oi.OrderId,
+                    ProductId = oi.ProductId,
+                    ProductName = oi.Product != null ? oi.Product.Name : string.Empty,
+                    UnitPrice = oi.UnitPrice,
+                    Quantity = oi.Quantity,
+                    CustomerName = oi.Order != null && oi.Order.Customer != null ? oi.Order.Customer.Name : string.Empty
+                })
+                .ToListAsync();
+        }
 
-        public async Task<OrderItem?> GetByIdAsync(int id) => await _context.OrderItems.Include(o => o.Product).Include(o => o.Order).FirstOrDefaultAsync(o => o.OrderItemId == id);
+        public async Task<IEnumerable<OrderWithItemsDto>> GetGroupedOrderItemsAsync()
+        {
+            var data = await _context.OrderItems
+                .Include(oi => oi.Product)
+                .Include(oi => oi.Order)
+                    .ThenInclude(o => o.Customer)
+                .AsNoTracking()
+                .ToListAsync();
+
+            var grouped = data
+                .GroupBy(oi => oi.OrderId)
+                .Select(group => new OrderWithItemsDto
+                {
+                    OrderId = group.Key,
+                    CustomerName = group.First().Order?.Customer?.Name ?? string.Empty,
+                    OrderDate = group.First().Order?.OrderDate ?? DateTime.MinValue,
+                    OrderItems = group.Select(oi => new OrderItemDto
+                    {
+                        OrderItemId = oi.OrderItemId,
+                        OrderId = oi.OrderId,
+                        ProductId = oi.ProductId,
+                        ProductName = oi.Product?.Name ?? string.Empty,
+                        Quantity = oi.Quantity,
+                        UnitPrice = oi.UnitPrice
+                    }).ToList()
+                });
+
+            return grouped;
+        }
+
+
+        public async Task<OrderItemDto?> GetByIdAsync(int id)
+        {
+            return await _context.OrderItems
+                .Include(oi => oi.Product)
+                .Include(oi => oi.Order)
+                    .ThenInclude(o => o.Customer)
+                .AsNoTracking()
+                .Where(oi => oi.OrderItemId == id)
+                .Select(oi => new OrderItemDto
+                {
+                    OrderItemId = oi.OrderItemId,
+                    OrderId = oi.OrderId,
+                    ProductId = oi.ProductId,
+                    ProductName = oi.Product != null ? oi.Product.Name : string.Empty,
+                    UnitPrice = oi.UnitPrice,
+                    Quantity = oi.Quantity,
+                    CustomerName = oi.Order != null && oi.Order.Customer != null ? oi.Order.Customer.Name : string.Empty
+                })
+                .FirstOrDefaultAsync();
+        }
+
 
         public async Task<OrderItem> AddAsync(OrderItem item)
         {

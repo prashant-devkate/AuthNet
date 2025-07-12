@@ -415,7 +415,7 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.OrderItemsController",
-    "Method": "GetAll",
+    "Method": "GetAllOrderItems",
     "RelativePath": "api/OrderItems",
     "HttpMethod": "GET",
     "IsController": true,
@@ -490,6 +490,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.OrderItemsController",
+    "Method": "GetGroupedOrderItems",
+    "RelativePath": "api/OrderItems/grouped",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -664,6 +674,184 @@
     "ContainingType": "AuthNet.Controllers.ProductsController",
     "Method": "GetProductCount",
     "RelativePath": "api/Products/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseController",
+    "Method": "GetAll",
+    "RelativePath": "api/Purchase",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseController",
+    "Method": "Create",
+    "RelativePath": "api/Purchase",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "purchase",
+        "Type": "AuthNet.Models.Domain.PurchaseOrder",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseController",
+    "Method": "GetById",
+    "RelativePath": "api/Purchase/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseController",
+    "Method": "Update",
+    "RelativePath": "api/Purchase/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "purchase",
+        "Type": "AuthNet.Models.Domain.PurchaseOrder",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseController",
+    "Method": "Delete",
+    "RelativePath": "api/Purchase/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseController",
+    "Method": "GetPurchaseOrderCount",
+    "RelativePath": "api/Purchase/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseOrderItemsController",
+    "Method": "GetAllPurchaseOrderItems",
+    "RelativePath": "api/PurchaseOrderItems",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseOrderItemsController",
+    "Method": "Create",
+    "RelativePath": "api/PurchaseOrderItems",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderItem",
+        "Type": "AuthNet.Models.Domain.PurchaseOrderItems",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseOrderItemsController",
+    "Method": "GetById",
+    "RelativePath": "api/PurchaseOrderItems/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseOrderItemsController",
+    "Method": "Update",
+    "RelativePath": "api/PurchaseOrderItems/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "orderItem",
+        "Type": "AuthNet.Models.Domain.PurchaseOrderItems",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseOrderItemsController",
+    "Method": "Delete",
+    "RelativePath": "api/PurchaseOrderItems/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.PurchaseOrderItemsController",
+    "Method": "GetGroupedPurchaseOrderItems",
+    "RelativePath": "api/PurchaseOrderItems/grouped",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

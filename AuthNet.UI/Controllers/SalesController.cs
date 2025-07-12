@@ -86,7 +86,7 @@ namespace AuthNet.UI.Controllers
 
             var viewModel = new SalesListViewModel
             {
-                DailySales = new List<SalesReportDto> { pagedReport },
+                Sales = new List<SalesReportDto> { pagedReport },
                 CurrentPage = page,
                 TotalPages = (int)Math.Ceiling(totalSales / (double)pageSize)
             };
@@ -134,7 +134,7 @@ namespace AuthNet.UI.Controllers
 
             var viewModel = new SalesListViewModel
             {
-                DailySales = new List<SalesReportDto> { pagedReport },
+                Sales = new List<SalesReportDto> { pagedReport },
                 CurrentPage = page,
                 TotalPages = (int)Math.Ceiling(totalSales / (double)pageSize)
             };
@@ -182,7 +182,7 @@ namespace AuthNet.UI.Controllers
 
             var viewModel = new SalesListViewModel
             {
-                DailySales = new List<SalesReportDto> { pagedReport },
+                Sales = new List<SalesReportDto> { pagedReport },
                 CurrentPage = page,
                 TotalPages = (int)Math.Ceiling(totalSales / (double)pageSize)
             };

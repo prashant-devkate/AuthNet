@@ -96,7 +96,6 @@ namespace AuthNet.UI.Controllers
         private async Task LoadLookupsAsync()
         {
             var products = await _httpClient.GetFromJsonAsync<List<ProductDto>>("api/Products");
-
             ViewBag.Products = new SelectList(products, "ProductId", "Name");
         }
 

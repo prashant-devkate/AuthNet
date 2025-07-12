@@ -446,6 +446,13 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link text-white @isActive("PurchaseOrders", "Index")" asp-controller="PurchaseOrders" asp-action="Index">
+                                <i class="bi bi-basket me-2"></i>
+                                <span class="nav-text">PurchaseOrders</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link text-white d-flex justify-content-between align-items-center"
                                data-bs-toggle="collapse" href="#inventorySubmenu" role="button" aria-expanded="false" aria-controls="inventorySubmenu">
                                 <div>
@@ -461,10 +468,11 @@
                                         <a class="nav-link text-white" asp-controller="Inventories" asp-action="Index">Inventory</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-white" asp-controller="OrderItems" asp-action="Index">Order Items</a>
+                                        <a class="nav-link text-white" asp-controller="OrderItems" asp-action="GroupedItems">Order Items</a>
                                     </li>
+                                    
                                     <li class="nav-item">
-                                        <a class="nav-link text-white" asp-controller="PurchaseOrders" asp-action="Index">Purchase Orders</a>
+                                        <a class="nav-link text-white" asp-controller="PurchaseItems" asp-action="GroupedItems">Purchase Orders Items</a>
                                     </li>
                                 </ul>
                             </div>

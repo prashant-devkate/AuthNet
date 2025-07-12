@@ -1,4 +1,5 @@
 ﻿using AuthNet.Models.Domain;
+using AuthNet.Services;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,19 @@ namespace AuthNet.Controllers
         public OrderItemsController(IOrderItemService service) => _service = service;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
+        public async Task<IActionResult> GetAllOrderItems()
+        {
+            var items = await _service.GetAllAsync();
+            return Ok(items);
+        }
+
+        [HttpGet("grouped")]
+        public async Task<IActionResult> GetGroupedOrderItems()
+        {
+            var items = await _service.GetGroupedOrderItemsAsync();
+            return Ok(items);
+        }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)

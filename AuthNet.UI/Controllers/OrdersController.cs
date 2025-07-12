@@ -41,11 +41,7 @@ namespace AuthNet.UI.Controllers
         {
             var model = new AddOrderViewModel();
 
-            var customersResponse = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
-            ViewBag.Customers = new SelectList(customersResponse, "CustomerId", "Name");
-
-            var usersResponse = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
-            ViewBag.Users = new SelectList(usersResponse, "UserId", "Username");
+            await LoadLookupsAsync();
 
             return View(model);
         }
@@ -55,14 +51,15 @@ namespace AuthNet.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Re-populate dropdowns before returning view
-                var customers = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
-                ViewBag.Customers = new SelectList(customers, "CustomerId", "Name");
-
-                var users = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
-                ViewBag.Users = new SelectList(users, "UserId", "Username");
+                // Re-populate dropdowns
+                await LoadLookupsAsync();
 
                 return View(model);
+            }
+
+            if (model.OrderItems != null && model.OrderItems.Any())
+            {
+                model.TotalAmount = model.OrderItems.Sum(item => item.Quantity * item.UnitPrice);
             }
 
             var response = await _httpClient.PostAsJsonAsync("api/Orders", model);
@@ -78,7 +75,23 @@ namespace AuthNet.UI.Controllers
             var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to add order.";
 
             ModelState.AddModelError("", errorMsg);
+            await LoadLookupsAsync();
             return View(model);
+        }
+
+        private async Task LoadLookupsAsync()
+        {
+            var customers = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
+            ViewBag.Customers = new SelectList(customers, "CustomerId", "Name");
+
+            var users = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
+            ViewBag.Users = new SelectList(users, "UserId", "Username");
+
+            var productResponse = await _httpClient.GetFromJsonAsync<List<ProductDto>>("api/Products");
+            ViewBag.Products = new SelectList(productResponse, "ProductId", "Name");
+            ViewBag.ProductPrices = productResponse.ToDictionary(p => p.ProductId, p => p.Price);
+
+
         }
 
         [HttpGet]
@@ -93,14 +106,17 @@ namespace AuthNet.UI.Controllers
                 UserId = order.UserId,
                 CustomerId = order.CustomerId,
                 OrderDate = order.OrderDate,
-                TotalAmount = order.TotalAmount
+                TotalAmount = order.TotalAmount,
+                OrderItems = order.OrderItems.Select(oi => new AddOrderItemViewModel
+                {
+                    OrderItemId = oi.OrderItemId,
+                    ProductId = oi.ProductId,
+                    Quantity = oi.Quantity,
+                    UnitPrice = oi.UnitPrice
+                }).ToList()
             };
 
-            var customersResponse = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
-            ViewBag.Customers = new SelectList(customersResponse, "CustomerId", "Name");
-
-            var usersResponse = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
-            ViewBag.Users = new SelectList(usersResponse, "UserId", "Username");
+            await LoadLookupsAsync();
 
             return View(model);
         }
@@ -110,11 +126,7 @@ namespace AuthNet.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var customersResponse = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
-                ViewBag.Customers = new SelectList(customersResponse, "CustomerId", "Name");
-
-                var usersResponse = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
-                ViewBag.Users = new SelectList(usersResponse, "UserId", "Username");
+                await LoadLookupsAsync();
 
                 return View(model);
             }
@@ -123,14 +135,12 @@ namespace AuthNet.UI.Controllers
             {
                 ModelState.AddModelError("", "Invalid Order ID.");
 
-                var customersResponse = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
-                ViewBag.Customers = new SelectList(customersResponse, "CustomerId", "Name");
-
-                var usersResponse = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
-                ViewBag.Users = new SelectList(usersResponse, "UserId", "Username");
+                await LoadLookupsAsync();
 
                 return View(model);
             }
+
+            model.TotalAmount = model.OrderItems.Sum(i => i.Quantity * i.UnitPrice);
 
             var updatePayload = new
             {
@@ -138,7 +148,14 @@ namespace AuthNet.UI.Controllers
                 customerId = model.CustomerId,
                 userId = model.UserId,
                 orderDate = model.OrderDate,
-                totalAmount = model.TotalAmount
+                totalAmount = model.TotalAmount,
+                orderItems = model.OrderItems.Select(i => new
+                {
+                    orderItemId = i.OrderItemId,
+                    productId = i.ProductId,
+                    quantity = i.Quantity,
+                    unitPrice = i.UnitPrice
+                }).ToList()
             };
 
             var response = await _httpClient.PutAsJsonAsync($"api/Orders/{model.OrderId}", updatePayload);
@@ -155,11 +172,7 @@ namespace AuthNet.UI.Controllers
 
             ModelState.AddModelError("", errorMsg);
 
-            var customers = await _httpClient.GetFromJsonAsync<List<CustomerViewModel>>("api/Customers");
-            ViewBag.Customers = new SelectList(customers, "CustomerId", "Name");
-
-            var users = await _httpClient.GetFromJsonAsync<List<UserViewModel>>("api/Users");
-            ViewBag.Users = new SelectList(users, "UserId", "Username");
+            await LoadLookupsAsync();
 
             return View(model);
         }

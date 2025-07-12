@@ -2,7 +2,7 @@
 {
     public class SalesListViewModel
     {
-        public List<SalesReportDto> DailySales { get; set; }
+        public List<SalesReportDto> Sales { get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
     }

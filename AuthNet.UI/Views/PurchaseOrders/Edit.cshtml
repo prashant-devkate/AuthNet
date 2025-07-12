@@ -1,0 +1,168 @@
+﻿@model AuthNet.UI.Models.DTO.EditPurchaseOrderViewModel
+
+@{
+    ViewData["Title"] = "Edit Purchase Order";
+    var productList = ViewBag.Products as SelectList;
+}
+
+<div class="container py-4" style="max-width: 720px">
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-3">
+            <h4 class="text-center text-primary fw-semibold mb-3">
+                <i class="bi bi-pencil-square me-1"></i> Edit Purchase Order
+            </h4>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger small mb-2"></div>
+
+            @if (Model != null)
+            {
+                <form method="post" asp-action="Edit">
+                    @Html.AntiForgeryToken()
+                    <input asp-for="PurchaseOrderId" type="hidden" />
+
+                    <div class="form-floating mb-3">
+                        <select asp-for="SupplierId" class="form-select" asp-items="ViewBag.Suppliers">
+                            <option value="">-- Select Supplier --</option>
+                        </select>
+                        <label asp-for="SupplierId"></label>
+                        <span asp-validation-for="SupplierId" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select asp-for="CreatedByUserId" class="form-select" asp-items="ViewBag.Users">
+                            <option value="">-- Select User --</option>
+                        </select>
+                        <label asp-for="CreatedByUserId"></label>
+                        <span asp-validation-for="CreatedByUserId" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input asp-for="OrderDate" class="form-control" type="datetime-local"
+                               value="@Model.OrderDate.ToString("yyyy-MM-ddTHH:mm")" />
+                        <label asp-for="OrderDate"></label>
+                        <span asp-validation-for="OrderDate" class="text-danger small"></span>
+                    </div>
+
+                    <hr />
+                    <h5 class="text-secondary">Order Items</h5>
+
+                    <div id="orderItemsContainer">
+                     @for (int i = 0; i < Model.OrderItems.Count; i++)
+                     {
+                         <div class="row g-2 mb-2 order-item-row">
+                             <input type="hidden" name="OrderItems[@i].OrderItemId" value="@Model.OrderItems[i].PurchaseOrderItemId" />
+                             <div class="col-md-5">
+                                 <select name="OrderItems[@i].ProductId" class="form-select">
+                                     <option value="">-- Select Product --</option>
+                                     @foreach (var product in productList)
+                                     {
+                                         var isSelected = product.Value == Model.OrderItems[i].ProductId.ToString() ? "selected" : "";
+                                         @:<option value="@product.Value" @(isSelected)>@product.Text</option>
+
+                                     }
+                                 </select>
+                             </div>
+                             <div class="col-md-2">
+                                 <input name="OrderItems[@i].Quantity" class="form-control" value="@Model.OrderItems[i].Quantity" placeholder="Qty" />
+                             </div>
+                             <div class="col-md-3">
+                                 <input name="OrderItems[@i].UnitPrice" class="form-control" value="@Model.OrderItems[i].UnitPrice.ToString("0.##")" placeholder="Price" />
+                             </div>
+                             <div class="col-md-2 d-flex align-items-center">
+                                 <button type="button" class="btn btn-danger btn-sm remove-item">X</button>
+                             </div>
+                         </div>
+                     }
+                </div>
+
+                    <div class="mb-3 text-end">
+                        <label class="fw-semibold">Total Amount:</label>
+                        <span id="totalAmountDisplay" class="ms-2 text-primary fw-bold">₹0.00</span>
+                    </div>
+
+                    <button type="button" class="btn btn-outline-primary btn-sm mb-3" id="addItem">+ Add Item</button>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-save-fill me-1"></i> Save
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                            <i class="bi bi-arrow-left me-1"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        let index = @Model.OrderItems.Count;
+
+        const productOptions = `@Html.Raw(string.Join("", ((IEnumerable<SelectListItem>)ViewBag.Products).Select(p => $"<option value='{p.Value}'>{p.Text}</option>")))`;
+
+        document.getElementById('addItem').addEventListener('click', function () {
+            const container = document.getElementById('orderItemsContainer');
+
+            const row = document.createElement('div');
+            row.className = 'row g-2 mb-2 order-item-row';
+
+            row.innerHTML = `
+                <div class="col-md-5">
+                    <select name="OrderItems[${index}].ProductId" class="form-select">
+                        <option value="">-- Select Product --</option>
+                        ${productOptions}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input name="OrderItems[${index}].Quantity" class="form-control" placeholder="Qty" />
+                </div>
+                <div class="col-md-3">
+                    <input name="OrderItems[${index}].UnitPrice" class="form-control" placeholder="Price" />
+                </div>
+                <div class="col-md-2 d-flex align-items-center">
+                    <button type="button" class="btn btn-danger btn-sm remove-item">X</button>
+                </div>
+            `;
+            container.appendChild(row);
+            index++;
+            updateTotal();
+        });
+
+        document.addEventListener('click', function (e) {
+            if (e.target && e.target.classList.contains('remove-item')) {
+                e.target.closest('.order-item-row').remove();
+                updateTotal();
+            }
+        });
+
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll(".order-item-row").forEach(row => {
+                const qtyInput = row.querySelector("input[name*='Quantity']");
+                const priceInput = row.querySelector("input[name*='UnitPrice']");
+                const qty = parseFloat(qtyInput?.value || 0);
+                const price = parseFloat(priceInput?.value || 0);
+                total += qty * price;
+            });
+            const display = document.getElementById("totalAmountDisplay");
+            if (display) {
+                display.textContent = `₹${total.toFixed(2)}`;
+            }
+        }
+
+        document.addEventListener('input', function (e) {
+            if (
+                e.target.name?.includes("Quantity") ||
+                e.target.name?.includes("UnitPrice")
+            ) {
+                updateTotal();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', updateTotal);
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AuthNet.UI.Models.DTO.PurchaseOrderItemViewModel>
+
+@{
+    ViewData["Title"] = "Purchase Order Items";
+}
+
+<div class="container py-4">
+    <h4 class="text-primary mb-3">
+        <i class="bi bi-list-check me-1"></i> Purchase Order Items
+    </h4>
+
+    <div class="card shadow-sm p-3">
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th> Purchase Order ID</th>
+                            <th>Supplier</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.PurchaseOrderId</td>
+                                <td>@item.SupplierName</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Quantity</td>
+                                <td>₹@item.UnitPrice.ToString("0.##")</td>
+                                <td class="fw-semibold text-success">₹@item.TotalPrice.ToString("0.##")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No purchase order items found.</p>
+        }
+    </div>
+</div>

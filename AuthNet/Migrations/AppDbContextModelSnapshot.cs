@@ -413,6 +413,35 @@ namespace AuthNet.Migrations
                     b.ToTable("purchaseOrders");
                 });
 
+            modelBuilder.Entity("AuthNet.Models.Domain.PurchaseOrderItems", b =>
+                {
+                    b.Property<int>("PurchaseOrderItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PurchaseOrderItemId"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PurchaseOrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("PurchaseOrderItemId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("PurchaseOrderId");
+
+                    b.ToTable("PurchaseOrderItems");
+                });
+
             modelBuilder.Entity("AuthNet.Models.Domain.Sale", b =>
                 {
                     b.Property<int>("Id")
@@ -599,7 +628,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 7, 11, 14, 33, 4, 746, DateTimeKind.Utc).AddTicks(997),
+                            CreatedAt = new DateTime(2025, 7, 12, 4, 42, 16, 423, DateTimeKind.Utc).AddTicks(7744),
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"
@@ -698,6 +727,25 @@ namespace AuthNet.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("AuthNet.Models.Domain.PurchaseOrderItems", b =>
+                {
+                    b.HasOne("AuthNet.Models.Domain.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AuthNet.Models.Domain.PurchaseOrder", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("PurchaseOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("AuthNet.Models.Domain.SaleItem", b =>
                 {
                     b.HasOne("AuthNet.Models.Domain.Sale", "Sale")
@@ -720,6 +768,11 @@ namespace AuthNet.Migrations
                 });
 
             modelBuilder.Entity("AuthNet.Models.Domain.Order", b =>
+                {
+                    b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("AuthNet.Models.Domain.PurchaseOrder", b =>
                 {
                     b.Navigation("OrderItems");
                 });

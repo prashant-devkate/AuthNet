@@ -111,7 +111,8 @@ builder.Services.AddScoped<ISettingsService, SettingsService>();
 builder.Services.AddScoped<IInvoiceTemplateService, InvoiceTemplateService>();
 builder.Services.AddScoped<ITaxSettingService, TaxSettingService>();
 builder.Services.AddScoped<ISalesService, SalesService>();
-
+builder.Services.AddScoped<IPurchaseService,PurchaseService>();
+builder.Services.AddScoped<IPurchaseItemService, PurchaseItemService>();
 
 
 

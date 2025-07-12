@@ -4,7 +4,7 @@
     <i class="bi bi-calendar-event me-2"></i> Monthly Sales Report
 </h3>
 
-@foreach (var day in Model.DailySales)
+@foreach (var day in Model.Sales)
 {
     <div class="card shadow-sm p-4 mb-4">
         <h5 class="text-secondary mb-2">@day.Title</h5>
@@ -60,7 +60,7 @@
             @for (int i = 1; i <= Model.TotalPages; i++)
             {
                 <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
-                    <a class="page-link" asp-action="DailySalesReport" asp-route-page="@i">@i</a>
+                    <a class="page-link" asp-action="MonthlySalesReport" asp-route-page="@i">@i</a>
                 </li>
             }
         </ul>

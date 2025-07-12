@@ -2,9 +2,10 @@
 
 @{
     ViewData["Title"] = "Add Order";
+    var productList = ViewBag.Products as SelectList;
 }
 
-<div class="container py-4" style="max-width:540px">
+<div class="container py-4" style="max-width: 720px">
     <div class="card shadow-sm border-0">
         <div class="card-body p-3">
             <h4 class="text-center text-primary fw-semibold mb-3">
@@ -17,15 +18,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-floating mb-3">
-                    <input asp-for="OrderDate" class="form-control" placeholder="Order Date" />
+                    <input asp-for="OrderDate" class="form-control" />
                     <label asp-for="OrderDate"></label>
-                    <span asp-validation-for="OrderDate" class="text-danger small"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="TotalAmount" class="form-control" placeholder="Total Amount" />
-                    <label asp-for="TotalAmount"></label>
-                    <span asp-validation-for="TotalAmount" class="text-danger small"></span>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -33,7 +27,6 @@
                         <option value="">-- Select Customer --</option>
                     </select>
                     <label asp-for="CustomerId"></label>
-                    <span asp-validation-for="CustomerId" class="text-danger small"></span>
                 </div>
 
                 <div class="form-floating mb-4">
@@ -41,8 +34,41 @@
                         <option value="">-- Select User --</option>
                     </select>
                     <label asp-for="UserId"></label>
-                    <span asp-validation-for="UserId" class="text-danger small"></span>
                 </div>
+
+                <hr />
+                <h5 class="text-secondary">Order Items</h5>
+
+                <div id="orderItemsContainer">
+                    @for (int i = 0; i < Model.OrderItems.Count; i++)
+                    {
+                        <div class="row g-2 mb-2 order-item-row">
+                            <div class="col-md-5">
+                                <select asp-for="@Model.OrderItems[i].ProductId" class="form-select" asp-items="ViewBag.Products">
+                                    <option value="">-- Select Product --</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input asp-for="@Model.OrderItems[i].Quantity" class="form-control" placeholder="Qty" />
+                            </div>
+                            <div class="col-md-3">
+                                <input asp-for="@Model.OrderItems[i].UnitPrice" class="form-control" placeholder="Price" />
+                            </div>
+                            <div class="col-md-2 d-flex align-items-center">
+                                <button type="button" class="btn btn-danger btn-sm remove-item">X</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="mb-3 text-end">
+                    <label class="fw-semibold">Total Amount:</label>
+                    <span id="totalAmountDisplay" class="ms-2 text-primary fw-bold">₹0.00</span>
+                </div>
+
+
+
+                <button type="button" class="btn btn-outline-primary btn-sm mb-3" id="addItem">+ Add Item</button>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button class="btn btn-primary px-4" type="submit">Save</button>
@@ -55,4 +81,101 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        let index = @Model.OrderItems.Count;
+
+        // Store Razor-generated <option> HTML in a JS variable
+        const productOptions = `@Html.Raw(string.Join("", ((IEnumerable<SelectListItem>)ViewBag.Products).Select(p => $"<option value='{p.Value}'>{p.Text}</option>")))`;
+
+        document.getElementById('addItem').addEventListener('click', function () {
+            const container = document.getElementById('orderItemsContainer');
+
+            const row = document.createElement('div');
+            row.className = 'row g-2 mb-2 order-item-row';
+
+            row.innerHTML = `
+                <div class="col-md-5">
+                    <select name="OrderItems[${index}].ProductId" class="form-select">
+                        <option value="">-- Select Product --</option>
+                        ${productOptions}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input name="OrderItems[${index}].Quantity" class="form-control" placeholder="Qty" />
+                </div>
+                <div class="col-md-3">
+                    <input name="OrderItems[${index}].UnitPrice" class="form-control" placeholder="Price" />
+                </div>
+                <div class="col-md-2 d-flex align-items-center">
+                    <button type="button" class="btn btn-danger btn-sm remove-item">X</button>
+                </div>
+            `;
+            container.appendChild(row);
+            index++;
+        });
+
+        document.addEventListener('click', function (e) {
+            if (e.target && e.target.classList.contains('remove-item')) {
+                e.target.closest('.order-item-row').remove();
+            }
+        });
+
+        //To display the total amount
+        function updateTotal() {
+            let total = 0;
+
+            document.querySelectorAll(".order-item-row").forEach(row => {
+                const qtyInput = row.querySelector("input[name*='Quantity']");
+                const priceInput = row.querySelector("input[name*='UnitPrice']");
+
+                const qty = parseFloat(qtyInput?.value || 0);
+                const price = parseFloat(priceInput?.value || 0);
+
+                total += qty * price;
+            });
+
+            const display = document.getElementById("totalAmountDisplay");
+            if (display) {
+                display.textContent = `₹${total.toFixed(2)}`;
+            }
+        }
+
+        // Trigger total update on relevant input changes
+        document.addEventListener('input', function (e) {
+            if (
+                e.target.name?.includes("Quantity") ||
+                e.target.name?.includes("UnitPrice")
+            ) {
+                updateTotal();
+            }
+        });
+
+        // Initial call in case any default rows exist
+        window.addEventListener('DOMContentLoaded', updateTotal);
+
+
+            const productPrices = @Html.Raw(Json.Serialize(ViewBag.ProductPrices));
+
+        document.addEventListener('change', function (e) {
+            if (e.target && e.target.name.includes("ProductId")) {
+                const selectedProductId = e.target.value;
+
+                if (productPrices[selectedProductId]) {
+                    // Find the UnitPrice input in the same row
+                    const row = e.target.closest(".order-item-row");
+                    const unitPriceInput = row.querySelector("input[name*='UnitPrice']");
+
+                    if (unitPriceInput) {
+                        unitPriceInput.value = productPrices[selectedProductId];
+                        updateTotal(); 
+                    }
+                }
+            }
+        });
+
+
+
+    </script>
 }
+

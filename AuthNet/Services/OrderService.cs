@@ -109,7 +109,7 @@ namespace AuthNet.Services
         }
         public async Task<(Order? order, OperationResponse response)> UpdateAsync(int id, Order order)
         {
-            var existing = await _context.Orders.FindAsync(id);
+            var existing = await _context.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.OrderId == id);
             if (existing == null)
             {
                 return (null, new OperationResponse
@@ -123,9 +123,36 @@ namespace AuthNet.Services
                 existing.CustomerId = order.CustomerId;
                 existing.UserId = order.UserId;
                 existing.OrderDate = order.OrderDate;
-                existing.TotalAmount = order.TotalAmount;
+                existing.TotalAmount = order.OrderItems.Sum(i => i.UnitPrice * i.Quantity);
 
-                //_context.Entry(existing).CurrentValues.SetValues(order);
+                var incomingItemIds = order.OrderItems?.Select(oi => oi.OrderItemId).ToList() ?? new List<int>();
+                var removedItems = existing.OrderItems.Where(existingItem => !incomingItemIds.Contains(existingItem.OrderItemId)).ToList();
+
+                _context.OrderItems.RemoveRange(removedItems);
+
+                foreach (var item in order.OrderItems ?? Enumerable.Empty<OrderItem>())
+                {
+                    var existingItem = existing.OrderItems.FirstOrDefault(oi => oi.OrderItemId == item.OrderItemId);
+
+                    if (existingItem != null)
+                    {
+                        // Update
+                        existingItem.ProductId = item.ProductId;
+                        existingItem.Quantity = item.Quantity;
+                        existingItem.UnitPrice = item.UnitPrice;
+                    }
+                    else
+                    {
+                        // Add new item
+                        existing.OrderItems.Add(new OrderItem
+                        {
+                            ProductId = item.ProductId,
+                            Quantity = item.Quantity,
+                            UnitPrice = item.UnitPrice
+                        });
+                    }
+                }
+
                 await _context.SaveChangesAsync();
 
                 return (existing, new OperationResponse
