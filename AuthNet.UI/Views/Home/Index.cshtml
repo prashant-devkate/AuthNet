@@ -1,256 +1,244 @@
-﻿@model AuthNet.UI.Models.DTO.DashboardViewModel
-@{
-    ViewData["Title"] = "Dashboard";
-    var token = Context?.Session?.GetString("JWT");
-    var username = Context?.Session?.GetString("Username");
-    var firstname = Context?.Session?.GetString("Firstname");
-    var isLoggedIn = !string.IsNullOrEmpty(token);
+﻿@{
+    ViewBag.Title = "Dashboard";
 }
 
-<style>
-    :root {
-        --primary-color: #17a2b8;
-        --success-color: #28a745;
-        --warning-color: #ffc107;
-        --danger-color: #dc3545;
-        --info-color: #6610f2;
-        --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        --border-radius: 8px;
-        --transition: all 0.2s ease;
-    }
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+    </a>
+</div>
 
-    .dashboard-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 1rem;
-    }
-
-    .dashboard-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .dashboard-card {
-        border-radius: var(--border-radius);
-        box-shadow: var(--card-shadow);
-        transition: var(--transition);
-        overflow: hidden;
-        color: white;
-        text-align: center;
-        padding: 1rem;
-    }
-
-        .dashboard-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-    .counter {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-    }
-
-    .card-text {
-        font-size: 0.9rem;
-        opacity: 0.9;
-    }
-
-    .chart-container {
-        position: relative;
-        height: 280px;
-        width: 100%;
-        max-width: 360px;
-        margin: 0 auto;
-    }
-
-    .card-header {
-        font-weight: 500;
-        font-size: 1.1rem;
-        padding: 0.75rem 1rem;
-        background: #f8f9fa;
-    }
-
-    .task-list {
-        max-height: 300px;
-        overflow-y: auto;
-    }
-
-    .task-item {
-        padding: 0.75rem 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-        .task-item .badge {
-            font-size: 0.85rem;
-        }
-
-    .task-actions {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .btn-sm {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.85rem;
-    }
-</style>
-
-<div class="dashboard-container">
-    <h4 class="mb-3">Welcome back, @firstname</h4>
-
-    <!-- Dashboard Cards -->
-    <div class="dashboard-cards">
-        <partial name="_DashboardCard" model='new { Count = Model.TotalProducts, Title = "Products", Color = "bg-primary" }' />
-        <partial name="_DashboardCard" model='new { Count = Model.TotalCategories, Title = "Categories", Color = "bg-success" }' />
-        <partial name="_DashboardCard" model='new { Count = Model.TotalSuppliers, Title = "Suppliers", Color = "bg-warning" }' />
-        <partial name="_DashboardCard" model='new { Count = Model.TotalTasks, Title = "Tasks", Color = "bg-danger" }' />
-        <partial name="_DashboardCard" model='new { Count = Model.TotalOrders, Title = "Orders", Color = "bg-info" }' />
-        <partial name="_DashboardCard" model='new { Count = Model.TotalDailySales, Title = "Total Sales", Color = "bg-info" }' />
-    </div>
-
-    <!-- Donut chart & Task Panel -->
-    <div class="row g-3">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Inventory Overview</div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="donutChart"></canvas>
+<!-- Content Row -->
+<div class="row">
+    <!-- Earnings (Monthly) Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Earnings (Monthly)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Tasks</span>
-                    <a asp-controller="Tasks" asp-action="Add" class="btn btn-sm btn-outline-primary">
-                        <i class="bi bi-plus-circle me-1"></i> Add
-                    </a>
+    </div>
+    <!-- Earnings (Annual) Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Earnings (Annual)
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
                 </div>
-                <div class="card-body task-list">
-                    @if (Model.Tasks != null && Model.Tasks.Any())
-                    {
-                        @foreach (var task in Model.Tasks)
-                        {
-                            <div class="task-item list-group-item">
-                                <span class="fw-semibold flex-grow-1">@task.Title</span>
-                                <span class="badge bg-@task.BadgeColor @(task.BadgeColor == "warning" ? "text-dark" : "")">
-                                    @task.DueLabel
-                                </span>
-                                <div class="task-actions ms-auto">
-                                    <a asp-controller="Tasks" asp-action="Edit" asp-route-id="@task.Id"
-                                       class="btn btn-sm btn-outline-secondary" title="Edit Task">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <form asp-controller="Tasks" asp-action="Delete" asp-route-id="@task.Id" method="post"
-                                          onsubmit="return confirm('Are you sure you want to delete this task?');" class="d-inline">
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete Task">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
-                                    </form>
+            </div>
+        </div>
+    </div>
+    <!-- Tasks Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Tasks
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                            </div>
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                        }
-                    }
-                    else
-                    {
-                        <div class="list-group-item text-muted">No tasks available</div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        <!-- Bar Chart -->
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Sales Overview</div>
-                    <div class="card-body">
-                        <div class="chart-container mt-3">
-                            <canvas id="barChart"></canvas>
                         </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <!-- Pending Requests Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Pending Requests
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Donut Chart rendering
-        const donutChartElement = document.getElementById('donutChart');
-        if (donutChartElement) {
-            new Chart(donutChartElement.getContext('2d'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Products', 'Categories', 'Suppliers', 'Tasks', 'Orders'],
-                    datasets: [{
-                        label: 'Inventory Stats',
-                        data: [@Model.TotalProducts, @Model.TotalCategories, @Model.TotalSuppliers, @Model.TotalTasks, @Model.TotalOrders],
-                        backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#dc3545', '#6610f2']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
-                    plugins: {
-                        legend: { position: 'bottom' }
-                    }
-                }
-            });
-        }
+<!-- Content Row -->
+<div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pie Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                </div>
+                <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                        <i class="fas fa-circle text-primary"></i> Direct
+                    </span>
+                    <span class="mr-2">
+                        <i class="fas fa-circle text-success"></i> Social
+                    </span>
+                    <span class="mr-2">
+                        <i class="fas fa-circle text-info"></i> Referral
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // Bar Chart rendering
-        const barChartElement = document.getElementById('barChart');
-        if (barChartElement) {
-            new Chart(barChartElement.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['Products', 'Categories', 'Suppliers', 'Tasks', 'Orders'],
-                    datasets: [{
-                        label: 'Inventory Stats',
-                        data: [@Model.TotalProducts, @Model.TotalCategories, @Model.TotalSuppliers, @Model.TotalTasks, @Model.TotalOrders],
-                        backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#dc3545', '#6610f2']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    plugins: {
-                        legend: { position: 'bottom' }
-                    }
-                }
-            });
-        }
-
-        // Counter animation
-        document.querySelectorAll('.counter').forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            let count = 0;
-            const increment = Math.ceil(target / 50);
-            const updateCount = () => {
-                if (count < target) {
-                    count += increment;
-                    counter.innerText = Math.min(count, target);
-                    requestAnimationFrame(updateCount);
-                }
-            };
-            requestAnimationFrame(updateCount);
-        });
-    </script>
-}
+<!-- Content Row -->
+<div class="row">
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+        <!-- Project Card -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+            </div>
+            <div class="card-body">
+                <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Color System -->
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                        Primary
+                        <div class="text-white-50 small">#4e73df</div>
+                    </div>
+                </div>
+            </div>
+            <!-- ... (rest of the color system cards) -->
+        </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+        <!-- Illustrations -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/img/undraw_posting_photo.svg" alt="...">
+                </div>
+                <p>
+                    Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                    constantly updated collection of beautiful svg images that you can use
+                    completely free and without attribution!
+                </p>
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a>
+            </div>
+        </div>
+        <!-- Approach -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+            </div>
+            <div class="card-body">
+                <p>
+                    SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                    CSS bloat and poor page performance. Custom CSS classes are used to create
+                    custom components and custom utility classes.
+                </p>
+                <p class="mb-0">
+                    Before working with this theme, you should become familiar with the
+                    Bootstrap framework, especially the utility classes.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

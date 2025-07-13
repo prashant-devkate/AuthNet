@@ -1,1 +1,1 @@
-C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\wwwroot\invTemplates\invoice-classic1.html
+C:\Users\Admin\source\repos\prashant-devkate\AuthNet\AuthNet.UI\wwwroot\css\site.css
