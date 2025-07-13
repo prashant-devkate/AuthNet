@@ -15,140 +15,120 @@
 
     <style>
         :root {
-            --bg-color: #f4f6fa;
-            --text-color: #212529;
-            --sidebar-bg: #343a40;
-            --sidebar-link: #adb5bd;
-            --sidebar-link-hover: #fff;
-            --sidebar-link-bg-hover: #495057;
+            --bg-color: #f7fafc;
+            --text-color: #2d3748;
+            --sidebar-bg: linear-gradient(180deg, #4c6a8e 0%, #2e4970 100%);
+            --sidebar-link: #e6eef9;
+            --sidebar-link-hover: #ffffff;
+            --sidebar-link-bg-hover: rgba(255, 255, 255, 0.15);
             --header-bg: #ffffff;
-            --transition-speed: 0.3s;
-            --sidebar-collapsed-width: 70px;
-            --sidebar-expanded-width: 220px;
-            --icon-size-collapsed: 1.5rem;
-            --icon-size-expanded: 1.2rem;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --primary-color: #4dabf5;
+            --accent-color: #a3bffa;
+            --transition-speed: 0.25s;
+            --sidebar-width: 220px;
+            --icon-size: 1.1rem;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             overflow-x: hidden;
         }
 
-        /* Fixed Sidebar */
+        /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             height: 100vh;
-            width: var(--sidebar-collapsed-width);
-            background-color: var(--sidebar-bg);
-            padding: 1rem 0;
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            padding: 0.5rem 0;
             color: #fff;
             overflow-y: auto;
-            transition: width var(--transition-speed) ease;
             z-index: 1050;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            scrollbar-width: thin;
+            scrollbar-color: var(--sidebar-link) transparent;
         }
-
-            .sidebar.pinned {
-                width: var(--sidebar-expanded-width);
-            }
-
-            .sidebar:not(.pinned):hover {
-                width: var(--sidebar-expanded-width);
-            }
 
             .sidebar .nav-link {
                 color: var(--sidebar-link);
-                border-radius: 0.375rem;
-                padding: 0.5rem;
+                border-radius: 8px;
+                padding: 0.5rem 0.75rem;
+                margin: 0.15rem 0.5rem;
                 transition: all var(--transition-speed);
                 display: flex;
                 align-items: center;
-                justify-content: center; /* Center icons in collapsed state */
+                justify-content: flex-start;
+                font-size: 0.9rem;
             }
 
-            .sidebar.pinned .nav-link,
-            .sidebar:hover .nav-link {
-                justify-content: flex-start; /* Align left in expanded state */
-            }
+                .sidebar .nav-link:hover,
+                .sidebar .nav-link.active {
+                    color: var(--sidebar-link-hover);
+                    background: var(--sidebar-link-bg-hover);
+                    transform: translateX(4px);
+                }
 
-            .sidebar .nav-link:hover,
-            .sidebar .nav-link.active {
-                color: var(--sidebar-link-hover);
-                background-color: var(--sidebar-link-bg-hover);
-                transform: translateX(5px);
-            }
-
-            .sidebar .nav-link i {
-                font-size: var(--icon-size-collapsed);
-                transition: font-size var(--transition-speed);
-                min-width: 1.5rem; /* Ensure consistent icon alignment */
-                text-align: center;
-            }
-
-            .sidebar.pinned .nav-link i,
-            .sidebar:hover .nav-link i {
-                font-size: var(--icon-size-expanded);
-            }
+                .sidebar .nav-link i {
+                    font-size: var(--icon-size);
+                    min-width: 1.4rem;
+                    text-align: center;
+                }
 
             .sidebar .nav-text {
-                display: none;
                 margin-left: 0.5rem;
-                white-space: nowrap;
+                font-weight: 500;
             }
 
-            .sidebar:hover .nav-text,
-            .sidebar.pinned .nav-text {
-                display: inline;
-            }
-
-        /* Pin Button */
-        .pin-button {
-            background: none;
-            border: none;
+        /* Submenu Styling */
+        .collapse .nav-link {
+            font-size: 0.85rem;
+            padding-left: 1.5rem;
             color: var(--sidebar-link);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: color var(--transition-speed);
-            align-self: flex-end;
-            margin: 0.5rem 1rem;
         }
 
-            .pin-button:hover {
+            .collapse .nav-link:hover {
+                background: var(--sidebar-link-bg-hover);
                 color: var(--sidebar-link-hover);
             }
+
+        .chevron-icon {
+            transition: transform var(--transition-speed);
+        }
+
+        .nav-link[aria-expanded="true"] .chevron-icon {
+            transform: rotate(180deg);
+        }
 
         /* Main Content */
         .main-content {
-            margin-left: var(--sidebar-collapsed-width);
+            margin-left: var(--sidebar-width);
             padding: 1rem;
             min-height: 100vh;
-            transition: margin-left var(--transition-speed);
         }
 
-        .sidebar.pinned ~ .main-content,
-        .sidebar:not(.pinned):hover ~ .main-content {
-            margin-left: var(--sidebar-expanded-width);
-        }
-
-        /* Compact Top Header */
+        /* Top Header */
         .top-header {
             position: sticky;
             top: 0;
-            background-color: var(--header-bg);
+            background: var(--header-bg);
             padding: 0.5rem 1rem;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid #e2e8f0;
             z-index: 1040;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: var(--card-shadow);
         }
 
         .header-logo {
@@ -158,194 +138,161 @@
         }
 
             .header-logo img {
-                max-height: 40px;
+                max-height: 36px;
                 transition: transform var(--transition-speed);
+                border-radius: 50%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             .header-logo:hover img {
-                transform: scale(1.1);
+                transform: scale(1.05);
             }
 
-        /* Enhance Dropdown Toggle Visibility */
+            .header-logo h5 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin: 0;
+                color: var(--primary-color);
+            }
+
+        /* User Dropdown */
         .user-dropdown-toggle {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: var(--text-color);
-            transition: color var(--transition-speed);
             padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
+            border-radius: 8px;
+            transition: background var(--transition-speed);
         }
 
             .user-dropdown-toggle:hover {
-                background-color: #f0f0f0; /* Keep background hover effect */
-            }
-
-            .user-dropdown-toggle.show .dropdown-toggle-text,
-            .user-dropdown-toggle:focus-within .dropdown-toggle-text {
-                display: none; /* Hide username when dropdown is open or focused */
-            }
-
-            .user-dropdown-toggle .dropdown-toggle-text {
-                display: flex;
-                align-items: center;
-                color: var(--text-color); /* Default state color */
+                background: #edf2f7;
             }
 
             .user-dropdown-toggle img {
-                transition: transform var(--transition-speed);
                 width: 30px;
                 height: 30px;
+                border-radius: 50%;
+                transition: transform var(--transition-speed);
             }
 
             .user-dropdown-toggle:hover img {
-                transform: scale(1.1);
+                transform: scale(1.05);
             }
 
-        body.dark-mode .user-dropdown-toggle:hover {
-            background-color: #2a2a2a; /* Keep dark mode hover effect */
-        }
+            .user-dropdown-toggle .dropdown-toggle-text {
+                font-size: 0.9rem;
+                font-weight: 500;
+                margin-left: 0.5rem;
+                color: var(--text-color);
+            }
 
-        body.dark-mode .user-dropdown-toggle .dropdown-toggle-text {
-            color: #e9ecef; /* Default state color in dark mode */
-        }
-
-        /* Ensure caret-down icon is visible */
         .bi-caret-down {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-left: 0.25rem;
         }
 
         .dropdown-menu {
             min-width: 180px;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
             margin-top: 0.5rem;
-            background-color: var(--header-bg);
+            background: var(--header-bg);
         }
+
+        .dropdown-item {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            color: var(--text-color);
+        }
+
+            .dropdown-item:hover {
+                background: #edf2f7;
+                color: var(--primary-color);
+            }
 
         /* Dashboard Cards */
         .dashboard-cards .card {
-            color: #fff;
-            border-radius: 1rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
             transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed);
+            background: var(--card-bg);
         }
 
             .dashboard-cards .card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+                transform: translateY(-4px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
             }
 
         .bg-product {
-            background-color: #00c0ef;
+            background: linear-gradient(135deg, #4dabf5, #6cb2eb);
         }
 
         .bg-category {
-            background-color: #00a65a;
+            background: linear-gradient(135deg, #a3bffa, #8faadc);
         }
 
         .bg-supplier {
-            background-color: #f39c12;
+            background: linear-gradient(135deg, #ecc94b, #d69e2e);
         }
 
         .bg-month {
-            background-color: #dd4b39;
+            background: linear-gradient(135deg, #f6ad55, #ed8936);
         }
 
         .chart-box {
             height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
         }
-
-        .dropdown-menu {
-            position: static;
-            float: none;
-        }
-
 
         /* Dark Mode */
         body.dark-mode {
-            --bg-color: #121212;
-            --text-color: #e9ecef;
-            --sidebar-bg: #1f1f1f;
-            --sidebar-link: #ced4da;
-            --sidebar-link-hover: #fff;
-            --sidebar-link-bg-hover: #333;
-            --header-bg: #1c1c1c;
+            --bg-color: #1e2a44;
+            --text-color: #e2e8f0;
+            --sidebar-bg: linear-gradient(180deg, #2e4970 0%, #1e2a44 100%);
+            --sidebar-link: #a0aec0;
+            --sidebar-link-hover: #ffffff;
+            --sidebar-link-bg-hover: rgba(255, 255, 255, 0.15);
+            --header-bg: #2e4970;
+            --card-bg: #2e4970;
+            --primary-color: #6cb2eb;
+            --accent-color: #8faadc;
         }
 
-            body.dark-mode .user-dropdown-toggle,
-            body.dark-mode .header-logo {
-                color: #f8f9fa;
+            body.dark-mode .user-dropdown-toggle:hover {
+                background: #2a3a5a;
             }
 
             body.dark-mode .dropdown-menu {
-                background-color: #1f1f1f;
-                border-color: #333;
+                background: #2e4970;
+                border-color: #4c6a8e;
             }
 
-                body.dark-mode .dropdown-menu .dropdown-item {
-                    color: #dee2e6;
+            body.dark-mode .dropdown-item {
+                color: #e2e8f0;
+            }
+
+                body.dark-mode .dropdown-item:hover {
+                    background: #2a3a5a;
+                    color: #6cb2eb;
                 }
 
-                    body.dark-mode .dropdown-menu .dropdown-item:hover {
-                        background-color: #343a40;
-                        color: #fff;
-                    }
+            body.dark-mode .header-logo h5 {
+                color: var(--primary-color);
+            }
 
         /* Responsive Design */
         @@media (max-width: 768px) {
-            .sidebar
+            .sidebar {
+                display: none;
+            }
 
-        {
-            transform: translateX(-100%);
-            width: var(--sidebar-expanded-width);
-        }
-
-        .sidebar.show {
-            transform: translateX(0);
-        }
-
-        .main-content {
-            margin-left: 0;
-        }
-
-        .sidebar.show ~ .main-content {
-            margin-left: 0;
-        }
-
-        .sidebar .nav-text {
-            display: inline;
-        }
-
-        .sidebar .nav-link i {
-            font-size: var(--icon-size-expanded);
-        }
-
-        .sidebar .nav-link {
-            justify-content: flex-start;
-        }
-
-        .sidebar-toggle {
-            display: block;
-            position: fixed;
-            top: 0.5rem;
-            left: 0.5rem;
-            z-index: 1060;
-        }
-
-        .top-header {
-            height: 45px;
-        }
-
-        .pin-button {
-            display: none;
-        }
-
-        .header-logo img {
-            max-height: 35px;
-        }
-
+            .main-content {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -366,13 +313,6 @@
         {
             <nav class="sidebar bg-dark text-white d-flex flex-column justify-content-start py-3 shadow-sm">
                 <div class="w-100 d-flex flex-column align-items-center">
-                    <!-- Pin Button at Top Right -->
-                    <div class="d-flex justify-content-end w-100 mb-2">
-                        <button class="pin-button" title="Pin Sidebar">
-                            <i class="bi bi-pin-angle"></i>
-                        </button>
-                    </div>
-
                     <!-- Navigation Links -->
                     <ul class="nav flex-column w-100 px-2">
                         <li class="nav-item">
@@ -397,15 +337,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-white d-flex justify-content-between align-items-center"
                                data-bs-toggle="collapse" href="#salesSubmenu" role="button" aria-expanded="false" aria-controls="salesSubmenu">
-                                <div>
+                                <div class="d-flex align-items-center">
                                     <i class="bi bi-clipboard-data me-2"></i>
                                     <span class="nav-text">Reports</span>
                                 </div>
-                                <i class="bi bi-chevron-down"></i>
+                                <i class="bi bi-chevron-down chevron-icon transition"></i>
                             </a>
 
                             <div class="collapse ps-4" id="salesSubmenu">
-                                <ul class="nav flex-column">
+                                <ul class="nav flex-column pt-2">
                                     <li class="nav-item">
                                         <a class="nav-link text-white" asp-controller="Sales" asp-action="DailySalesReport">Daily Sales</a>
                                     </li>
@@ -418,7 +358,6 @@
                                 </ul>
                             </div>
                         </li>
-
 
                         <li class="nav-item">
                             <a class="nav-link text-white @isActive("Categories", "Index")" asp-controller="Categories" asp-action="Index">
@@ -455,45 +394,30 @@
                         <li class="nav-item">
                             <a class="nav-link text-white d-flex justify-content-between align-items-center"
                                data-bs-toggle="collapse" href="#inventorySubmenu" role="button" aria-expanded="false" aria-controls="inventorySubmenu">
-                                <div>
+                                <div class="d-flex align-items-center">
                                     <i class="bi bi-box-seam me-2"></i>
                                     <span class="nav-text">Inventory</span>
                                 </div>
-                                <i class="bi bi-chevron-down"></i>
+                                <i class="bi bi-chevron-down chevron-icon transition"></i>
                             </a>
 
                             <div class="collapse ps-4" id="inventorySubmenu">
-                                <ul class="nav flex-column">
+                                <ul class="nav flex-column pt-2">
                                     <li class="nav-item">
                                         <a class="nav-link text-white" asp-controller="Inventories" asp-action="Index">Inventory</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-white" asp-controller="OrderItems" asp-action="GroupedItems">Order Items</a>
                                     </li>
-                                    
                                     <li class="nav-item">
                                         <a class="nav-link text-white" asp-controller="PurchaseItems" asp-action="GroupedItems">Purchase Orders Items</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white @isActive("Email", "Send")" asp-controller="Email" asp-action="Send">
-                                <i class="bi bi-clipboard-data me-2"></i>
-                                <span class="nav-text">Send and email</span>
-                            </a>
-                        </li>
-                        
-
                     </ul>
                 </div>
             </nav>
-
-            <!-- Sidebar Toggle for Mobile -->
-            <button class="btn btn-dark sidebar-toggle d-none" type="button" data-bs-toggle="collapse" data-bs-target=".sidebar" aria-expanded="false">
-                <i class="bi bi-list"></i>
-            </button>
         }
 
         <main class="main-content">
@@ -528,23 +452,23 @@
                             </ul>
                         </div>
 
-                    <div class="dropdown">
-                        <a href="#" class="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Menu">
-                            <img src="https://ui-avatars.com/api/?name=@username&background=0D8ABC&color=fff&size=30" alt="User" class="rounded-circle shadow-sm me-2" />
-                            <span class="dropdown-toggle-text">@username <i class="bi bi-caret-down ms-1"></i></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-                            <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index"><i class="bi bi-person-circle me-2"></i> My Profile</a></li>
-                            <li><a class="dropdown-item" asp-controller="Settings" asp-action="Index"><i class="bi bi-gear me-2"></i> Settings</a></li>
-                            <li>
-                                <button id="darkModeToggle" class="dropdown-item d-flex align-items-center gap-2">
-                                    <i id="darkModeIcon" class="bi bi-moon"></i> <span id="darkModeLabel">Dark Mode</span>
-                                </button>
-                            </li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item text-danger" asp-controller="Auth" asp-action="Logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
-                        </ul>
-                    </div>
+                        <div class="dropdown">
+                            <a href="#" class="user-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="User Menu">
+                                <img src="https://ui-avatars.com/api/?name=@username&background=0D8ABC&color=fff&size=30" alt="User" class="rounded-circle shadow-sm me-2" />
+                                <span class="dropdown-toggle-text">@username <i class="bi bi-caret-down ms-1"></i></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                <li><a class="dropdown-item" asp-controller="Profile" asp-action="Index"><i class="bi bi-person-circle me-2"></i> My Profile</a></li>
+                                <li><a class="dropdown-item" asp-controller="Settings" asp-action="Index"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                                <li>
+                                    <button id="darkModeToggle" class="dropdown-item d-flex align-items-center gap-2">
+                                        <i id="darkModeIcon" class="bi bi-moon"></i> <span id="darkModeLabel">Dark Mode</span>
+                                    </button>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item text-danger" asp-controller="Auth" asp-action="Logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             }
@@ -576,9 +500,6 @@
             const toggle = document.getElementById("darkModeToggle");
             const icon = document.getElementById("darkModeIcon");
             const label = document.getElementById("darkModeLabel");
-            const sidebarToggle = document.querySelector(".sidebar-toggle");
-            const sidebar = document.querySelector(".sidebar");
-            const pinButton = document.querySelector(".pin-button");
 
             // Dark Mode Toggle
             const updateToggleUI = (isDark) => {
@@ -594,26 +515,6 @@
             toggle?.addEventListener("click", () => {
                 const isDark = !document.body.classList.contains("dark-mode");
                 updateToggleUI(isDark);
-            });
-
-            // Sidebar Pin Toggle
-            const updatePinUI = (isPinned) => {
-                sidebar.classList.toggle("pinned", isPinned);
-                localStorage.setItem("sidebarPinned", isPinned);
-                pinButton.querySelector("i").className = isPinned ? "bi bi-pin-angle-fill" : "bi bi-pin-angle";
-            };
-
-            const isPinned = localStorage.getItem("sidebarPinned") === "true";
-            updatePinUI(isPinned);
-
-            pinButton?.addEventListener("click", () => {
-                const isPinned = !sidebar.classList.contains("pinned");
-                updatePinUI(isPinned);
-            });
-
-            // Sidebar Toggle for Mobile
-            sidebarToggle?.addEventListener("click", () => {
-                sidebar.classList.toggle("show");
             });
         });
     </script>

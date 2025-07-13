@@ -1,30 +1,95 @@
 ﻿@using AuthNet.UI.Models.DTO
 @model RegisterViewModel
+
 @{
     ViewData["Title"] = "Register";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h3 class="card-title mb-4 text-center">Register</h3>
+<style>
+    .form-label {
+        font-weight: 500;
+    }
 
-                    <form asp-action="Register" method="post">
+    .form-control, .form-select {
+        font-size: 0.92rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .btn-primary {
+        background-color: #1e3a8a;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #2b46a1;
+        }
+
+    .form-text-link {
+        font-size: 0.88rem;
+        color: #6b7280;
+    }
+
+        .form-text-link a {
+            text-decoration: none;
+            color: #1e3a8a;
+        }
+
+            .form-text-link a:hover {
+                text-decoration: underline;
+            }
+
+    @@media (max-width: 576px) {
+        .form-inline .col
+
+    {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    }
+</style>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body px-4 py-4">
+                    <h5 class="text-center mb-4">Create Account</h5>
+
+                    <form asp-action="Register" method="post" novalidate>
+
                         <div class="mb-3">
                             <label asp-for="Username" class="form-label"></label>
-                            <input asp-for="Username" class="form-control" placeholder="Enter username" />
+                            <input asp-for="Username" class="form-control" placeholder="Username" />
                             <span asp-validation-for="Username" class="text-danger small"></span>
+                        </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col">
+                                <label asp-for="Firstname" class="form-label"></label>
+                                <input asp-for="Firstname" class="form-control" placeholder="First name" />
+                                <span asp-validation-for="Firstname" class="text-danger small"></span>
+                            </div>
+                            <div class="col">
+                                <label asp-for="Lastname" class="form-label"></label>
+                                <input asp-for="Lastname" class="form-control" placeholder="Last name" />
+                                <span asp-validation-for="Lastname" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Email address" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-3">
                             <label asp-for="Password" class="form-label"></label>
-                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
                             <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-3">
                             <label asp-for="Role" class="form-label"></label>
                             <select asp-for="Role" class="form-select">
                                 <option value="">Select Role</option>
@@ -37,8 +102,8 @@
                         <button type="submit" class="btn btn-primary w-100">Register</button>
                     </form>
 
-                    <div class="mt-3 text-center">
-                        <a href="/Auth/Login">Already have an account? Login</a>
+                    <div class="form-text-link text-center mt-3">
+                        Already have an account? <a href="/Auth/Login">Login</a>
                     </div>
                 </div>
             </div>

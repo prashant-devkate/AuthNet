@@ -26,40 +26,49 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null)
+                @if (Model != null && Model.Any())
                 {
-                @foreach (var inventory in Model)
-                {
-                    <tr>
-                        <td class="fw-semibold">@inventory.ProductName</td>
-                        <td class="text-muted">@inventory.QuantityInStock</td>
-                        <td class="text-muted">@inventory.ReorderLevel</td>
+                    @foreach (var inventory in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@inventory.ProductName</td>
+                            <td class="text-muted">@inventory.QuantityInStock</td>
+                            <td class="text-muted">@inventory.ReorderLevel</td>
                             <td>
                                 @if (inventory.QuantityInStock <= inventory.ReorderLevel)
                                 {
-                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-circle"></i> Low Stock</span>
-
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="bi bi-exclamation-circle"></i> Low Stock
+                                    </span>
                                 }
                                 else
                                 {
                                     <span class="badge bg-success">OK</span>
                                 }
                             </td>
-                        <td class="text-center">
-                            <a asp-action="Edit" asp-route-id="@inventory.InventoryId"
-                               class="btn btn-sm btn-outline-warning me-1 rounded-2">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <form asp-action="Delete" asp-route-id="@inventory.InventoryId"
-                                  method="post" class="d-inline"
-                                  onsubmit="return confirm('Delete this inventory record?');">
-                                <button class="btn btn-sm btn-outline-danger rounded-2">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@inventory.InventoryId"
+                                   class="btn btn-sm btn-outline-warning me-1 rounded-2">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <form asp-action="Delete" asp-route-id="@inventory.InventoryId"
+                                      method="post" class="d-inline"
+                                      onsubmit="return confirm('Delete this inventory record?');">
+                                    <button class="btn btn-sm btn-outline-danger rounded-2">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            <i class="bi bi-info-circle me-2"></i>No records available.
                         </td>
                     </tr>
-                }
                 }
             </tbody>
         </table>

@@ -27,6 +27,16 @@
         .SelectMany( c => c.Cats)
         .ToList() ?? new List<AuthNet.UI.Models.DTO.CategoryViewModel>();
 
+    var companyInfo = Model?
+    .Where(m => m?.company != null)
+    .Select(m => m.company)
+    .FirstOrDefault() ?? new AuthNet.UI.Models.DTO.CompanyInfoDto();
+
+    var taxSetting = Model?
+   .Where(m => m?.tax != null)
+   .Select(m => m.tax)
+   .FirstOrDefault() ?? new AuthNet.UI.Models.DTO.TaxDto();
+
 }
 
 <!-- 🖸 Print-Only CSS -->
@@ -165,6 +175,16 @@
     .action-buttons .btn {
         font-size: 0.85rem;
         padding: 5px 10px;
+    }
+
+    .no-spinner::-webkit-inner-spin-button,
+    .no-spinner::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .no-spinner[type="number"] {
+        -moz-appearance: textfield;
     }
 
     /* ✅ ENHANCED PRODUCT GRID AND CARD */
@@ -365,7 +385,20 @@
                         <h5 class="card-title text-success m-0 flex-grow-1">
                             <i class="bi bi-receipt me-2"></i> Cart
                         </h5>
-                        <div class="action-buttons d-flex gap-2">
+                        <div class="action-buttons d-flex  gap-2">
+
+                            <!-- Discount Input -->
+                            <div class="input-group input-group-sm" style="max-width: 60px;">
+                                <input type="number"
+                                       id="discountPercent"
+                                       class="form-control no-spinner text-end"
+                                       placeholder="%"
+                                       min="0"
+                                       max="100"
+                                       step="0.1"
+                                       onchange="renderCart()" />
+                            </div>
+
                             <form id="sellForm">
                                 <input type="hidden" id="cartData" name="cartData" value="" />
                                 <button type="submit" class="btn btn-success" onclick="sellCart(event)">
@@ -390,11 +423,14 @@
                         </thead>
                         <tbody></tbody>
                         <tfoot>
+                            
                             <tr class="table-light fw-bold">
                                 <td colspan="2" class="text-end">Grand Total (₹):</td>
                                 <td id="grandTotal">₹0.00</td>
                             </tr>
                         </tfoot>
+
+
                     </table>
                 </div>
             </div>
@@ -420,6 +456,15 @@
 
 @section Scripts {
     <script>
+        const companyName = '@(companyInfo.Name ?? "InventoryPro")';
+        const companyAddress = '@(companyInfo.Address ?? "Pune")';
+        const companyGstNo = '@(companyInfo.GSTIN ?? "GSTXXXXXXX")';
+        const companyContact = '@(companyInfo.ContactNumber ?? "XXXXXXXXXX")';
+
+        const cgstTax = '@(taxSetting.CGST)';
+        const sgstTax = '@(taxSetting.SGST)';
+        const igstTax = '@(taxSetting.IGST)';
+
         const apiBaseUrl = '@ViewBag.ApiBaseUrl';
         const products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(allProducts));
         const templates = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(templateMap));
@@ -468,8 +513,11 @@
             addToCart(key);
         });
 
-        function addToCart(keyOrId) {
-            const prod = products.find(p => (p.HotKey || '').toUpperCase() === keyOrId || p.ProductId.toString() === keyOrId);
+               function addToCart(keyOrId) {
+            const prod = products.find(p =>
+                (p.HotKey || '').toUpperCase() === keyOrId.toUpperCase() ||
+                p.ProductId == keyOrId
+            );
             if (!prod) {
                 console.log('Product not found for key or ID:', keyOrId);
                 showToast('Product not found.', 'error');
@@ -481,9 +529,12 @@
             renderCart();
         }
 
-        function renderCart() {
+
+            function renderCart() {
             const tbody = document.querySelector('#cartTable tbody');
             const grandTotalCell = document.getElementById('grandTotal');
+            const discountPercent = parseFloat(document.getElementById('discountPercent')?.value) || 0;
+
             tbody.innerHTML = '';
             let total = 0;
             for (const key in cart) {
@@ -502,8 +553,18 @@
                         </td>
                     </tr>`;
             }
-            grandTotalCell.textContent = `₹${total.toFixed(2)}`;
+
+            const discountAmount = total * discountPercent / 100;
+            const finalTotalAfterDiscount = Math.max(total - discountAmount, 0);
+
+            const cgstAmount = finalTotalAfterDiscount * cgstTax / 100;
+            const sgstAmount = finalTotalAfterDiscount * sgstTax / 100;
+
+            const finalTotal = Math.max(finalTotalAfterDiscount + sgstAmount + cgstAmount, 0);
+
+            grandTotalCell.textContent = `₹${finalTotal.toFixed(2)}`;
         }
+
 
         function increaseQty(key) {
             if (cart[key]) {
@@ -521,7 +582,7 @@
         }
 
         async function loadTemplateFromLocal(filename) {
-            const res = await fetch(`/templates/${filename}`);
+            const res = await fetch(`/invTemplates/${filename}`);
             if (!res.ok) throw new Error("Failed to load template: " + res.status);
             return await res.text();
         }
@@ -556,14 +617,34 @@
                 total += amt;
             }
 
+            const discountPercent = parseFloat(document.getElementById('discountPercent')?.value) || 0;
+            const discountAmount = total * discountPercent / 100;
+            const finalTotalAfterDiscount = Math.max(total - discountAmount, 0);
+
+            const cgstAmount = finalTotalAfterDiscount * cgstTax / 100;
+            const sgstAmount = finalTotalAfterDiscount * sgstTax / 100;
+            const igstAmount = finalTotalAfterDiscount * igstTax / 100;
+
+            const finalTotalAfterDiscountAndTaxes = Math.max(finalTotalAfterDiscount + sgstAmount + cgstAmount, 0);
+
             const filledHtml = html
                 .replace('{{rows}}', rows)
-                .replace('{{grandTotal}}', `₹${total.toFixed(2)}`)
+                .replace('{{grandTotal}}', `₹${finalTotalAfterDiscount.toFixed(2)}`)
+                .replace('{{grandTotalAfterDiscountAndTaxes}}', finalTotalAfterDiscountAndTaxes)
+                .replace('{{total}}', total)
                 .replace('{{notes}}', tpl.notes ?? '')
                 .replace('{{terms}}', tpl.terms ?? '')
                 .replace('{{date}}', new Date().toLocaleDateString())
-                .replace('{{shopName}}', 'My Electronics Hub')
-                .replace('{{gstNumber}}', '27ABCDE1234F1Z5')
+                .replace('{{shopName}}', companyName)
+                .replace('{{shopAddress}}',companyAddress )
+                .replace('{{shopContact}}', companyContact)
+                .replace('{{gstNumber}}', companyGstNo)
+                .replace('{{cgst}}', cgstTax)
+                .replace('{{sgst}}', sgstTax)
+                .replace('{{cgstAmount}}', cgstAmount)
+                .replace('{{sgstAmount}}', sgstAmount)
+                .replace('{{discountAmount}}', `₹${discountAmount.toFixed(2)}`)
+                .replace('{{discountPercent}}', discountPercent)
                 .replace('{{customerName}}', 'John Doe')
                 .replace('{{customerPhone}}', '9876543210')
                 .replace('{{invoiceNumber}}', 'INV-1023');

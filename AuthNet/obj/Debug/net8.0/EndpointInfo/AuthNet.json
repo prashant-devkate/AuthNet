@@ -341,6 +341,89 @@
         }
       }
     },
+    "/api/Email/send": {
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Email/send-forgot-password": {
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Email/send-new-user": {
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserEmailDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserEmailDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Images/Upload": {
       "post": {
         "tags": [
@@ -1545,6 +1628,9 @@
                   "GSTIN": {
                     "type": "string"
                   },
+                  "ContactNumber": {
+                    "type": "string"
+                  },
                   "LogoUrl": {
                     "type": "string",
                     "format": "binary"
@@ -1572,6 +1658,9 @@
                   "style": "form"
                 },
                 "GSTIN": {
+                  "style": "form"
+                },
+                "ContactNumber": {
                   "style": "form"
                 },
                 "LogoUrl": {
@@ -1645,6 +1734,9 @@
                   "GSTIN": {
                     "type": "string"
                   },
+                  "ContactNumber": {
+                    "type": "string"
+                  },
                   "LogoUrl": {
                     "type": "string",
                     "format": "binary"
@@ -1672,6 +1764,9 @@
                   "style": "form"
                 },
                 "GSTIN": {
+                  "style": "form"
+                },
+                "ContactNumber": {
                   "style": "form"
                 },
                 "LogoUrl": {
@@ -2260,6 +2355,24 @@
         },
         "additionalProperties": false
       },
+      "EmailRequestDto": {
+        "type": "object",
+        "properties": {
+          "toEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "subject": {
+            "type": "string",
+            "nullable": true
+          },
+          "body": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Inventory": {
         "type": "object",
         "properties": {
@@ -2319,6 +2432,20 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NewUserEmailDto": {
+        "type": "object",
+        "properties": {
+          "toEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
             "type": "string",
             "nullable": true
           }
@@ -2538,6 +2665,18 @@
         "type": "object",
         "properties": {
           "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstname": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastname": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
             "type": "string",
             "nullable": true
           },
@@ -2782,6 +2921,8 @@
       },
       "User": {
         "required": [
+          "firstname",
+          "lastname",
           "passwordHash",
           "role",
           "username"
@@ -2796,6 +2937,21 @@
             "maxLength": 100,
             "minLength": 0,
             "type": "string"
+          },
+          "firstname": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "lastname": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
           },
           "passwordHash": {
             "minLength": 1,

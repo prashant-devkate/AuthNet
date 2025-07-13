@@ -25,6 +25,9 @@ namespace AuthNet.Services
                     {
                         UserId = s.UserId,
                         Username = s.Username,
+                        Firstname = s.Firstname,
+                        Lastname = s.Lastname,
+                        Email = s.Email,
                         Role = s.Role,
                         CreatedAt = s.CreatedAt
                     }).ToListAsync();

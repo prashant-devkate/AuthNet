@@ -3,6 +3,7 @@
     ViewData["Title"] = "Dashboard";
     var token = Context?.Session?.GetString("JWT");
     var username = Context?.Session?.GetString("Username");
+    var firstname = Context?.Session?.GetString("Firstname");
     var isLoggedIn = !string.IsNullOrEmpty(token);
 }
 
@@ -100,7 +101,7 @@
 </style>
 
 <div class="dashboard-container">
-    <h4 class="mb-3">Welcome back, @username</h4>
+    <h4 class="mb-3">Welcome back, @firstname</h4>
 
     <!-- Dashboard Cards -->
     <div class="dashboard-cards">

@@ -13,14 +13,17 @@ namespace AuthNet.Services
             _context = context;
         }
 
-        public async Task<bool> Register(User user)
+        public async Task<string> Register(User user)
         {
             if (await _context.Users.AnyAsync(u => u.Username == user.Username))
-                return false;
+                return "Username already exists";
+
+            if (await _context.Users.AnyAsync(u => u.Email == user.Email))
+                return "Email already exists";
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-            return true;
+            return "Success";
         }
 
         public async Task<User?> Authenticate(string username, string password)

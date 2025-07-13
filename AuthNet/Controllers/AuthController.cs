@@ -19,6 +19,7 @@ namespace AuthNet.Controllers
             _userService = userService;
             _jwtHelper = jwtHelper;
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
@@ -29,15 +30,24 @@ namespace AuthNet.Controllers
             var user = new User
             {
                 Username = dto.Username,
+                Firstname = dto.Firstname,
+                Lastname = dto.Lastname,
+                Email = dto.Email,
                 PasswordHash = hashedPwd,
                 Role = dto.Role
             };
 
-            var success = await _userService.Register(user);
-            return success
-                ? Ok("User registered successfully")
-                : BadRequest("User already exists");
+            var result = await _userService.Register(user);
+
+            return result switch
+            {
+                "Success" => Ok("User registered successfully"),
+                "Username already exists" => BadRequest("Username already exists"),
+                "Email already exists" => BadRequest("Email already exists"),
+                _ => BadRequest("Registration failed")
+            };
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto dto)
@@ -63,6 +73,9 @@ namespace AuthNet.Controllers
                     Token = token,
                     UserId = user.UserId,
                     Username = user.Username,
+                    Firstname = user.Firstname,
+                    Lastname = user.Lastname,
+                    Email = user.Email,
                     Role = user.Role
                 }
             });

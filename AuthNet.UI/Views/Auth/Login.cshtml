@@ -1,34 +1,69 @@
 ﻿@using AuthNet.UI.Models.DTO
 @model LoginViewModel
+
 @{
     ViewData["Title"] = "Login";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h3 class="card-title mb-4 text-center">Login</h3>
+<style>
+    .form-label {
+        font-weight: 500;
+    }
 
-                    <form asp-action="Login" method="post">
+    .form-control {
+        font-size: 0.92rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .btn-primary {
+        background-color: #1e3a8a;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #2742a3;
+        }
+
+    .form-text-link {
+        font-size: 0.88rem;
+        color: #6b7280;
+    }
+
+        .form-text-link a {
+            text-decoration: none;
+            color: #1e3a8a;
+        }
+
+            .form-text-link a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body px-4 py-4">
+                    <h5 class="text-center mb-4">Login to Your Account</h5>
+
+                    <form asp-action="Login" method="post" novalidate>
                         <div class="mb-3">
                             <label asp-for="Username" class="form-label"></label>
-                            <input asp-for="Username" class="form-control" placeholder="Enter username" />
+                            <input asp-for="Username" class="form-control" placeholder="Username" />
                             <span asp-validation-for="Username" class="text-danger small"></span>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-3">
                             <label asp-for="Password" class="form-label"></label>
-                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
                             <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-success w-100">Login</button>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
 
-                    <div class="mt-3 text-center">
-                        <a href="/Auth/Register">Don't have an account? Register</a>
+                    <div class="form-text-link text-center mt-3">
+                        Don’t have an account? <a href="/Auth/Register">Register</a>
                     </div>
                 </div>
             </div>

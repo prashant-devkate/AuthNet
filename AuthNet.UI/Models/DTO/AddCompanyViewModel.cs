@@ -14,6 +14,9 @@ namespace AuthNet.UI.Models.DTO
 
         [Required(ErrorMessage = "GST number is required")]
         public string GSTIN { get; set; }
+
+        [Phone, Required(ErrorMessage = "Phone number is required")]
+        public string ContactNumber { get; set; }
         public IFormFile? LogoUrl { get; set; }
         public IFormFile? SignatureUrl { get; set; }
 

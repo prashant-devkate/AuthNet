@@ -210,6 +210,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AuthNet.Controllers.EmailController",
+    "Method": "SendEmail",
+    "RelativePath": "api/Email/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AuthNet.Models.DTO.EmailRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.EmailController",
+    "Method": "SendForgotPasswordEmail",
+    "RelativePath": "api/Email/send-forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.EmailController",
+    "Method": "SendNewUserEmail",
+    "RelativePath": "api/Email/send-new-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AuthNet.Models.DTO.NewUserEmailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthNet.Controllers.ImagesController",
     "Method": "Upload",
     "RelativePath": "api/Images/Upload",
@@ -1036,6 +1084,11 @@
         "IsRequired": false
       },
       {
+        "Name": "ContactNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "LogoUrl",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
@@ -1093,6 +1146,11 @@
       },
       {
         "Name": "GSTIN",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactNumber",
         "Type": "System.String",
         "IsRequired": false
       },

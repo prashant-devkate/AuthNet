@@ -60,31 +60,31 @@
         </tbody>
     </table>
 
-        <!-- Summary -->
-        <table width="100%" style="margin-top:15px;">
-            <tr>
-                <td style="width:50%;vertical-align:top;">
-                    <p><strong>Terms & Instructions</strong><br />{{terms}}</p>
-                    <p><strong>Payment Mode:</strong> {{paymentMode}}</p>
-                </td>
-                <td style="width:50%;text-align:right;">
-                    <table width="100%" border="0" cellpadding="6">
-                        <tr><td>Subtotal</td><td>₹{{subtotal}}</td></tr>
-                        <tr><td>Discount</td><td>₹{{discount}}</td></tr>
-                        <tr><td><strong>Subtotal After Discount</strong></td><td>₹{{subtotalAfterDiscount}}</td></tr>
-                        <tr><td>CGST @ 5%</td><td>₹{{cgst}}</td></tr>
-                        <tr><td>SGST @ 5%</td><td>₹{{sgst}}</td></tr>
-                        <tr><td>Received</td><td>₹{{received}}</td></tr>
-                        <tr><td style="color:red;"><strong>Balance Due</strong></td><td style="color:red;"><strong>₹{{balance}}</strong></td></tr>
-                        <tr><td style="background:#d4af37;"><strong>GRAND TOTAL</strong></td><td style="background:#d4af37;"><strong>{{grandTotal}}</strong></td></tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+    <!-- Summary -->
+    <table width="100%" style="margin-top:15px;">
+        <tr>
+            <td style="width:50%;vertical-align:top;">
+                <p><strong>Terms & Instructions</strong><br />{{terms}}</p>
+                <p><strong>Payment Mode:</strong> {{paymentMode}}</p>
+            </td>
+            <td style="width:50%;text-align:right;">
+                <table width="100%" border="0" cellpadding="6">
+                    <tr><td>Principal Amount</td><td>₹{{total}}</td></tr>
+                    <tr><td>Discount ({{discountPercent}}%)</td><td>{{discountAmount}}</td></tr>
+                    <tr><td><strong>Subtotal After Discount</strong></td><td>{{grandTotal}}</td></tr>
+                    <tr><td>CGST {{cgst}}%</td><td>₹{{cgstAmount}}</td></tr>
+                    <tr><td>SGST {{sgst}}%</td><td>₹{{sgstAmount}}</td></tr>
+                    <tr><td>Received</td><td>₹{{received}}</td></tr>
+                    <tr><td style="color:red;"><strong>Balance Due</strong></td><td style="color:red;"><strong>₹{{balance}}</strong></td></tr>
+                    <tr><td style="background:#d4af37;"><strong>GRAND TOTAL</strong></td><td style="background:#d4af37;"><strong>{{grandTotalAfterDiscountAndTaxes}}</strong></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 
-        <!-- Footer -->
-        <div style="margin-top:40px;">
-            <p><strong>Seal & Signature</strong></p>
-            <p style="font-size:10px;color:#999;text-align:right;">Powered by InventoryPro</p>
-        </div>
+    <!-- Footer -->
+    <div style="margin-top:40px;">
+        <p><strong>Seal & Signature</strong></p>
+        <p style="font-size:10px;color:#999;text-align:right;">Powered by InventoryPro</p>
+    </div>
 </div>

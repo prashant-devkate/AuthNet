@@ -25,29 +25,37 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null)
+                @if (Model != null && Model.Any())
                 {
-                @foreach (var s in Model)
+                    @foreach (var s in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@s.CompanyName</td>
+                            <td class="text-muted">@s.ContactName</td>
+                            <td class="text-muted">@s.Phone</td>
+                            <td class="text-muted">@s.Address</td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@s.SupplierId" class="btn btn-sm btn-outline-warning me-1 rounded-2">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <form asp-action="Delete" asp-route-id="@s.SupplierId"
+                                      method="post" class="d-inline"
+                                      onsubmit="return confirm('Delete this supplier?');">
+                                    <button class="btn btn-sm btn-outline-danger rounded-2">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td class="fw-semibold">@s.CompanyName</td>
-                        <td class="text-muted">@s.ContactName</td>
-                        <td class="text-muted">@s.Phone</td>
-                        <td class="text-muted">@s.Address</td>
-                        <td class="text-center">
-                            <a asp-action="Edit" asp-route-id="@s.SupplierId" class="btn btn-sm btn-outline-warning me-1 rounded-2">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <form asp-action="Delete" asp-route-id="@s.SupplierId"
-                                  method="post" class="d-inline"
-                                  onsubmit="return confirm('Delete this supplier?');">
-                                <button class="btn btn-sm btn-outline-danger rounded-2">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            <i class="bi bi-info-circle me-2"></i>No suppliers found.
                         </td>
                     </tr>
-                }
                 }
             </tbody>
         </table>

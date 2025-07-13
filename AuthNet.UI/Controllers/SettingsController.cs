@@ -357,7 +357,7 @@ namespace AuthNet.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> EditTaxSetting(int id)
         {
-            var tax = await _httpClient.GetFromJsonAsync<TaxSettingDto>("api/TaxSettings/2");
+            var tax = await _httpClient.GetFromJsonAsync<TaxSettingDto>("api/TaxSettings");
             if (tax == null) return NotFound();
 
             var model = new EditTaxSettingViewModel
@@ -378,7 +378,7 @@ namespace AuthNet.UI.Controllers
                 return View(model);
             }
 
-            var response = await _httpClient.PutAsJsonAsync("api/TaxSettings/2", model);
+            var response = await _httpClient.PutAsJsonAsync($"api/TaxSettings/{model.Id}", model);
 
             if (response.IsSuccessStatusCode)
             {

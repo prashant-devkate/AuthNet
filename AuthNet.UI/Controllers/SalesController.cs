@@ -29,6 +29,14 @@ namespace AuthNet.UI.Controllers
                                 ?? new List<CategoryViewModel>();
             ViewBag.UniqueCategories = allCats;
 
+            var companyInfo = await _httpClient.GetFromJsonAsync<CompanyInfoDto>("api/Settings/Get");
+            ViewBag.CompanyInfo = companyInfo;
+
+            var taxSetting = await _httpClient.GetFromJsonAsync<TaxDto>("api/TaxSettings");
+            ViewBag.TaxSetting = taxSetting;
+
+
+
             int pageSize = 10;
             int totalPages = (int)Math.Ceiling(allProducts.Count / (double)pageSize);
             var viewModelList = new List<ProductListViewModel>();
@@ -42,6 +50,8 @@ namespace AuthNet.UI.Controllers
                     Products = productsPage,
                     Invoices = allTemplates,
                     Cats = allCats,
+                    company = companyInfo,
+                    tax = taxSetting,
                     CurrentPage = i + 1,
                     TotalPages = totalPages
                 };

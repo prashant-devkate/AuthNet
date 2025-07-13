@@ -1,5 +1,7 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\invTemplates\invoice-classic.html
+wwwroot\invTemplates\invoice-modern.html
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -58,19 +60,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\MailTemplates\ApprovalEmail.html
-wwwroot\MailTemplates\ApprovalStatus.html
-wwwroot\MailTemplates\DeploymentStatus.html
-wwwroot\MailTemplates\EmailOTP.html
-wwwroot\MailTemplates\ForgetIpin.html
-wwwroot\MailTemplates\ForgetPassword.html
-wwwroot\MailTemplates\NewCustomer.html
-wwwroot\MailTemplates\NewRoleMap.html
-wwwroot\MailTemplates\NewRoleMapApproval.html
-wwwroot\MailTemplates\NewUserGoogle.html
-wwwroot\MailTemplates\NewUserLocal.html
-wwwroot\MailTemplates\RegenerateIpinSuperAdmin.html
-wwwroot\MailTemplates\RegenerateIpinUser.html
-wwwroot\MailTemplates\RegeneratePasswordUser.html
-wwwroot\templates\invoice-classic.html
-wwwroot\templates\invoice-modern.html

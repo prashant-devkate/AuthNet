@@ -24,6 +24,7 @@ namespace AuthNet.Services
 
             return new TaxSettingResponseDto
             {
+                Id = tax.Id,
                 CGST = tax.CGST,
                 SGST = tax.SGST,
                 IGST = tax.IGST

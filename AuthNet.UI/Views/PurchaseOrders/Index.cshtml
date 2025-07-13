@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null)
+                @if (Model != null && Model.Any())
                 {
                     @foreach (var order in Model)
                     {
@@ -48,6 +48,14 @@
                             </td>
                         </tr>
                     }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            <i class="bi bi-info-circle me-2"></i>No purchase orders found.
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

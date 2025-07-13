@@ -102,6 +102,10 @@ namespace AuthNet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GSTIN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -606,6 +610,20 @@ namespace AuthNet.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Firstname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Lastname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -628,7 +646,10 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 7, 12, 4, 42, 16, 423, DateTimeKind.Utc).AddTicks(7744),
+                            CreatedAt = new DateTime(2025, 7, 13, 4, 10, 54, 709, DateTimeKind.Utc).AddTicks(2057),
+                            Email = "admin.helpdesk@gmail.com",
+                            Firstname = "Admin",
+                            Lastname = "Admin",
                             PasswordHash = "hashed-password",
                             Role = "Admin",
                             Username = "admin"
