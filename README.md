@@ -24,7 +24,8 @@ Project now has:
 - MVC UI
 - Session storage
 
-  ![image](https://github.com/user-attachments/assets/eb74f1e0-a336-4d4b-aebd-142a36b7dc41)
+  <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/e0f5f5ad-b242-4027-9d87-3cc8718c5df5" />
+
 
 
   
