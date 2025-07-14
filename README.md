@@ -26,5 +26,8 @@ Project now has:
 
   ![image](https://github.com/user-attachments/assets/eb74f1e0-a336-4d4b-aebd-142a36b7dc41)
 
+  <img width="1360" height="730" alt="image" src="https://github.com/user-attachments/assets/cfa35156-1f70-479f-943e-66c319fda78d" />
+
+
 
   
