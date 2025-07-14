@@ -15,11 +15,9 @@ namespace AuthNet.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(int pagenumber)
         {
-            int pageSize = 5;
             List<ProductDto> products = new();
-            int totalProducts = 0;
 
             try
             {
@@ -30,7 +28,6 @@ namespace AuthNet.UI.Controllers
                 if (data != null)
                 {
                     products.AddRange(data);
-                    totalProducts = products.Count;
                 }
             }
             catch (Exception)
@@ -38,19 +35,9 @@ namespace AuthNet.UI.Controllers
                 TempData["ErrorMessage"] = "Failed to load products.";
             }
 
-            // Apply pagination
-            var paginated = products
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-
-            var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
-
             var viewModel = new ProductListViewModel
             {
-                Products = paginated,
-                CurrentPage = page,
-                TotalPages = totalPages
+                Products = products
             };
 
             if (TempData.ContainsKey("SuccessMessage"))
@@ -58,8 +45,9 @@ namespace AuthNet.UI.Controllers
             if (TempData.ContainsKey("ErrorMessage"))
                 ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
-            return View(viewModel ?? new ProductListViewModel());
+            return View(viewModel);
         }
+
 
 
         [HttpGet]

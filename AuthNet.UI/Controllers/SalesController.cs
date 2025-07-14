@@ -51,9 +51,7 @@ namespace AuthNet.UI.Controllers
                     Invoices = allTemplates,
                     Cats = allCats,
                     company = companyInfo,
-                    tax = taxSetting,
-                    CurrentPage = i + 1,
-                    TotalPages = totalPages
+                    tax = taxSetting
                 };
 
                 viewModelList.Add(vm);

@@ -7,7 +7,5 @@
         public List<CategoryViewModel>? Cats { get; set; }
         public CompanyInfoDto? company { get; set; }
         public TaxDto? tax { get; set; }
-        public int CurrentPage { get; set; }
-        public int TotalPages { get; set; }
     }
 }

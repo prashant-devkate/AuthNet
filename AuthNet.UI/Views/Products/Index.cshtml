@@ -3,11 +3,23 @@
     ViewData["Title"] = "Products";
 }
 
+<!-- Custom CSS for Product Code Badge -->
+<style>
+    .badge-product-code {
+        background-color: #ebedef; /* Light gray from SB Admin 2 */
+        color: #3a3b45; /* Dark gray from SB Admin 2 for contrast */
+        font-weight: 500; /* Slightly bolder for readability */
+    }
+</style>
+
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Products</h1>
-    <a asp-controller="Products" asp-action="Add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add Product
+    <h1 class="h3 mb-0 text-gray-800"><i class="fas me-2"></i> Products</h1>
+    <a asp-controller="Products" asp-action="Add" class="d-none d-sm-inline-block btn btn-primary btn-icon-split btn-sm shadow-sm">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus-circle"></i>
+        </span>
+        <span class="text">Add Product</span>
     </a>
 </div>
 
@@ -15,9 +27,12 @@
 <div class="row">
     <div class="col-12">
         <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -30,6 +45,18 @@
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price </th>
+                                <th>Hot Key</th>
+                                <th>Code</th>
+                                <th>Category</th>
+                                <th>Supplier</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </tfoot>
                         <tbody>
                             @if (Model != null && Model.Products.Any())
                             {
@@ -40,18 +67,24 @@
                                         <td class="text-muted">@p.Description</td>
                                         <td>₹@p.Price</td>
                                         <td class="text-muted">@p.HotKey</td>
-                                        <td><span class="badge bg-secondary">@p.ProductCode</span></td>
+                                        <td><span class="badge badge-product-code">@p.ProductCode</span></td>
                                         <td>@p.CategoryId</td>
                                         <td>@p.SupplierId</td>
                                         <td class="text-center">
-                                            <a asp-action="Edit" asp-route-id="@p.ProductId" class="btn btn-sm btn-outline-warning me-1 rounded-2">
-                                                <i class="bi bi-pencil"></i>
+                                            <a asp-action="Edit" asp-route-id="@p.ProductId" class="btn btn-warning btn-icon-split btn-sm me-1">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </span>
+                                                
                                             </a>
                                             <form asp-action="Delete" asp-route-id="@p.ProductId"
                                                   method="post" class="d-inline"
                                                   onsubmit="return confirm('Delete this product?');">
-                                                <button class="btn btn-sm btn-outline-danger rounded-2">
-                                                    <i class="bi bi-trash"></i>
+                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    
                                                 </button>
                                             </form>
                                         </td>
@@ -62,7 +95,7 @@
                             {
                                 <tr>
                                     <td colspan="8" class="text-center text-muted py-4">
-                                        <i class="bi bi-info-circle me-2"></i>No products found.
+                                        <i class="fas fa-info-circle me-2"></i>No products found.
                                     </td>
                                 </tr>
                             }
@@ -74,16 +107,18 @@
     </div>
 </div>
 
-@if (Model.TotalPages > 1)
-{
-    <nav class="mt-4">
-        <ul class="pagination pagination-sm justify-content-center">
-            @for (int i = 1; i <= Model.TotalPages; i++)
-            {
-                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                    <a asp-action="Index" asp-route-page="@i" class="page-link">@i</a>
-                </li>
-            }
-        </ul>
-    </nav>
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "columnDefs": [
+                    { "orderable": false, "targets": 7 } // Disable sorting on Actions column
+                ]
+            });
+        });
+    </script>
 }
