@@ -5,127 +5,64 @@
     ViewData["Title"] = "Settings";
 }
 
-@section Styles {
-    <style>
-        .nav-pills .nav-link.active {
-            background-color: #0d6efd;
-        }
-
-        .settings-tab-content {
-            border-left: 1px solid #dee2e6;
-            padding-left: 2rem;
-        }
-
-        .company-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: .5rem;
-            box-shadow: 0 0 5px rgba(0,0,0,.3);
-        }
-
-        .info-label {
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-
-            .info-label i {
-                margin-right: .5rem;
-                color: #007bff;
-            }
-
-        .tab-section-title {
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-    </style>
-}
-
-<h4 class="mb-4"><i class="bi bi-gear-fill text-primary me-2"></i> Settings</h4>
+<h4>Settings</h4>
 
 <div class="row">
-    <!-- Nav Pills -->
+    <!-- Navigation Pills -->
     <div class="col-md-3">
-        <div class="nav flex-column nav-pills" id="settings-tabs" role="tablist">
-            <a class="nav-link active" id="company-tab" data-bs-toggle="pill" href="#company" role="tab">
-                <i class="bi bi-building me-1"></i> Company Info
-            </a>
-            <a class="nav-link" id="invoice-tab" data-bs-toggle="pill" href="#invoice" role="tab">
-                <i class="bi bi-file-earmark-text me-1"></i> Invoice Template
-            </a>
-            <a class="nav-link" id="tax-tab" data-bs-toggle="pill" href="#tax" role="tab">
-                <i class="bi bi-percent me-1"></i> Tax Settings
-            </a>
-            <a class="nav-link" id="user-tab" data-bs-toggle="pill" href="#users" role="tab">
-                <i class="bi bi-people-fill me-1"></i> User Management
-            </a>
+        <div class="nav flex-column nav-pills" id="settings-tabs" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="company-tab" data-bs-toggle="pill" data-bs-target="#company" type="button" role="tab">Company Info</button>
+            <button class="nav-link" id="invoice-tab" data-bs-toggle="pill" data-bs-target="#invoice" type="button" role="tab">Invoice Template</button>
+            <button class="nav-link" id="tax-tab" data-bs-toggle="pill" data-bs-target="#tax" type="button" role="tab">Tax Settings</button>
+            <button class="nav-link" id="user-tab" data-bs-toggle="pill" data-bs-target="#users" type="button" role="tab">User Management</button>
         </div>
     </div>
 
     <!-- Tab Content -->
-    <div class="col-md-9 tab-content settings-tab-content" id="settings-content">
-        <!-- Company Info -->
-        <div class="tab-pane fade show active" id="company" role="tabpanel">
-            <div class="tab-section-title"><i class="bi bi-building me-2"></i> Company Information</div>
-            <div class="card shadow-sm p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div><h5 class="mb-0 text-primary">Company Info</h5></div>
-                    <div class="d-flex align-items-center gap-3">
-                        @if (Model?.Company != null && !string.IsNullOrEmpty(Model.Company.logoUrl))
-                        {
-                            <img src="@Model.Company.logoUrl" alt="Company Logo" class="company-logo" />
-                        }
-                        <a asp-controller="Settings" asp-action="Edit" class="btn btn-outline-primary"><i class="bi bi-pencil-square me-1"></i> Edit</a>
-                        <a asp-controller="Settings" asp-action="Add" class="btn btn-outline-primary"><i class="bi bi-plus-circle  me-1"></i> Add</a>
-                        <a asp-controller="Settings" asp-action="History" class="btn btn-outline-secondary"><i class="bi bi-clock-history me-1"></i> History</a>
-                    </div>
-                </div>
+    <div class="col-md-9">
+        <div class="tab-content" id="settings-content">
+
+            <!-- Company Info -->
+            <div class="tab-pane fade show active" id="company" role="tabpanel" aria-labelledby="company-tab">
+                <h5>Company Info</h5>
+                <a asp-controller="Settings" asp-action="Edit">Edit</a> |
+                <a asp-controller="Settings" asp-action="Add">Add</a> |
+                <a asp-controller="Settings" asp-action="History">History</a>
 
                 @if (Model?.Company != null)
                 {
-                    <dl class="row">
-                        <dt class="col-sm-4 info-label"><i class="bi bi-building"></i> Company Name</dt>
-                        <dd class="col-sm-8">@Model.Company?.Name</dd>
+                    <dl>
+                        <dt>Company Name</dt>
+                        <dd>@Model.Company?.Name</dd>
 
-                        <dt class="col-sm-4 info-label"><i class="bi bi-geo-alt"></i> Address</dt>
-                        <dd class="col-sm-8">@Model.Company?.Address</dd>
+                        <dt>Address</dt>
+                        <dd>@Model.Company?.Address</dd>
 
-                        <dt class="col-sm-4 info-label"><i class="bi bi-file-earmark-text"></i> Contact</dt>
-                        <dd class="col-sm-8">@Model.Company?.ContactNumber</dd>
+                        <dt>Contact</dt>
+                        <dd>@Model.Company?.ContactNumber</dd>
 
-                        <dt class="col-sm-4 info-label"><i class="bi bi-file-earmark-text"></i> GSTIN</dt>
-                        <dd class="col-sm-8">@Model.Company?.GSTIN</dd>
+                        <dt>GSTIN</dt>
+                        <dd>@Model.Company?.GSTIN</dd>
                     </dl>
                 }
                 else
                 {
-                    <p class="text-muted mb-0">Company details not configured.</p>
+                    <p>No company details available.</p>
                 }
             </div>
-        </div>
 
-        <!-- Invoice Templates Tab -->
-        <div class="tab-pane fade" id="invoice" role="tabpanel">
-            <div class="tab-section-title"><i class="bi bi-file-earmark-text me-2"></i> Invoice Templates</div>
-            <div class="card shadow-sm p-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="mb-0 text-primary">Available Templates</h5>
-                    <a asp-controller="Settings" asp-action="AddTemplate" class="btn btn-outline-primary">
-                        <i class="bi bi-plus-circle me-1"></i> Add Template
-                    </a>
-                </div>
+            <!-- Invoice Template -->
+            <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
+                <h5>Invoice Templates</h5>
+                <a asp-controller="Settings" asp-action="AddTemplate">Add Template</a>
 
                 @if (Model?.Template?.InvoiceTemplates?.Any() == true)
                 {
-                    <table class="table table-bordered table-striped">
+                    <table>
                         <thead>
-                            <tr><th>Layout</th><th>Notes</th><th>Terms &amp; Conditions</th><th>Actions</th></tr>
+                            <tr><th>Layout</th><th>Notes</th><th>Terms</th><th>Actions</th></tr>
                         </thead>
                         <tbody>
-                            @if (Model != null)
-                            {
                             @foreach (var tpl in Model.Template.InvoiceTemplates)
                             {
                                 <tr>
@@ -133,63 +70,41 @@
                                     <td>@tpl.Notes</td>
                                     <td>@tpl.TermsAndConditions</td>
                                     <td>
-                                        <a asp-controller="Settings" asp-action="EditTemplate" asp-route-id="@tpl.Id" class="btn btn-sm btn-outline-primary">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <form asp-controller="Settings" asp-action="DeleteTemplate" asp-route-id="@tpl.Id" method="post" class="d-inline"
-                                              onsubmit="return confirm('Are you sure you want to delete this template?');">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                        <a asp-controller="Settings" asp-action="EditTemplate" asp-route-id="@tpl.Id">Edit</a>
+                                        |
+                                        <form asp-controller="Settings" asp-action="DeleteTemplate" asp-route-id="@tpl.Id" method="post" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+                                            <button type="submit">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
-                            }
                             }
                         </tbody>
                     </table>
                 }
                 else
                 {
-                    <p class="text-muted">No templates available.</p>
+                    <p>No templates available.</p>
                 }
             </div>
-        </div>
 
-
-        <!-- Tax Settings -->
-        <div class="tab-pane fade" id="tax" role="tabpanel">
-            <div class="tab-section-title">
-                <i class="bi bi-percent me-2"></i> Tax Settings
-            </div>
-
-            <div class="card shadow-sm p-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="mb-0 text-primary">Current Tax Rates</h5>
-                    <a asp-controller="Settings" asp-action="AddTaxSetting" class="btn btn-outline-primary">
-                        <i class="bi bi-plus-circle me-1"></i> Add
-                    </a>
-                </div>
+            <!-- Tax Settings -->
+            <div class="tab-pane fade" id="tax" role="tabpanel" aria-labelledby="tax-tab">
+                <h5>Tax Settings</h5>
+                <a asp-controller="Settings" asp-action="AddTaxSetting">Add</a>
 
                 @if (Model?.TaxSetting != null)
                 {
-                    <table class="table table-bordered table-striped w-auto">
-                        <thead class="table-light">
-                            <tr>
-                                <th>CGST&nbsp;(%)</th>
-                                <th>SGST&nbsp;(%)</th>
-                                <th>IGST&nbsp;(%)</th>
-                                <th class="text-center">Actions</th>
-                            </tr>
+                    <table>
+                        <thead>
+                            <tr><th>CGST</th><th>SGST</th><th>IGST</th><th>Actions</th></tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>@Model.TaxSetting.CGST</td>
                                 <td>@Model.TaxSetting.SGST</td>
                                 <td>@Model.TaxSetting.IGST</td>
-                                <td class="text-center">
-                                    <a asp-controller="Settings" asp-action="EditTaxSetting"
-                                       class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
+                                <td>
+                                    <a asp-controller="Settings" asp-action="EditTaxSetting">Edit</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -197,35 +112,24 @@
                 }
                 else
                 {
-                    <p class="text-muted mb-0">No tax settings configured.</p>
+                    <p>No tax settings configured.</p>
                 }
             </div>
-        </div>
 
+            <!-- User Management -->
+            <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="user-tab">
+                <h5>User Management</h5>
+                <ul>
+                    <li><strong>Admin:</strong> Full access</li>
+                    <li><strong>Cashier:</strong> Can bill and view reports</li>
+                    <li><strong>Salesperson:</strong> Limited to sales tasks</li>
+                </ul>
 
-        <!-- User Management -->
-        <div class="tab-pane fade" id="users" role="tabpanel">
-            <div class="tab-section-title"><i class="bi bi-people-fill me-2"></i> User Management</div>
-            <div class="card shadow-sm p-4">
-                <div class="mb-4">
-                    <h6>User Roles</h6>
-                    <ul>
-                        <li><strong>Admin:</strong> Full access</li>
-                        <li><strong>Cashier:</strong> Can bill and view reports</li>
-                        <li><strong>Salesperson:</strong> Limited to sales tasks</li>
-                    </ul>
-                </div>
-
-                <h6 class="mt-3">Account Settings</h6>
-                <div class="d-flex flex-column flex-md-row gap-3">
-                    <a asp-controller="Profile" asp-action="UpdateProfile" class="btn btn-outline-secondary">
-                        <i class="bi bi-person-circle me-1"></i> Edit Profile
-                    </a>
-                    <a asp-controller="Profile" asp-action="ChangePassword" class="btn btn-outline-danger">
-                        <i class="bi bi-key me-1"></i> Change Password
-                    </a>
-                </div>
+                <h6>Account</h6>
+                <a asp-controller="Profile" asp-action="UpdateProfile">Edit Profile</a> |
+                <a asp-controller="Profile" asp-action="ChangePassword">Change Password</a>
             </div>
+
         </div>
     </div>
 </div>
