@@ -381,38 +381,50 @@
         <div class="col-md-5" id="printArea">
             <div class="card shadow-sm rounded-3 border-0">
                 <div class="card-body p-3">
+
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
                         <h5 class="card-title text-success m-0 flex-grow-1">
                             <i class="bi bi-receipt me-2"></i> Cart
                         </h5>
-                        <div class="action-buttons d-flex  gap-2">
 
-                            <!-- Discount Input -->
-                            <div class="input-group input-group-sm" style="max-width: 60px;">
-                                <input type="number"
-                                       id="discountPercent"
-                                       class="form-control no-spinner text-end"
-                                       placeholder="%"
-                                       min="0"
-                                       max="100"
-                                       step="0.1"
-                                       onchange="renderCart()" />
+                        <div class="action-buttons d-flex align-items-center">
+
+                            <!-- Discount Input with right margin -->
+                            <div class="me-2">
+                                <div class="input-group input-group-sm" style="max-width: 60px;">
+                                    <input type="number"
+                                           id="discountPercent"
+                                           class="form-control no-spinner text-end"
+                                           placeholder="%"
+                                           min="0"
+                                           max="100"
+                                           step="0.1"
+                                           onchange="renderCart()" />
+                                </div>
                             </div>
 
-                            <form id="sellForm">
+                            <form id="sellForm" class="me-2">
                                 <input type="hidden" id="cartData" name="cartData" value="" />
-                                <button type="submit" class="btn btn-success" onclick="sellCart(event)">
-                                    <i class="bi bi-currency-rupee me-1"></i> Sell
+                                <button type="submit" class="btn btn-circle btn-sm" onclick="sellCart(event)" title="Sell">
+                                    <i class="fas fa-check me-1"></i>
                                 </button>
                             </form>
-                            <button class="btn btn-outline-dark" onclick="printCart()">
-                                <i class="bi bi-printer me-1"></i> Print
-                            </button>
-                            <button class="btn btn-outline-secondary" onclick="startNextSale()" title="Clear cart">
-                                <i class="bi bi-arrow-clockwise"></i>
-                            </button>
+
+                            <div class="me-2">
+                                <button class="btn btn-circle btn-sm" onclick="printCart()" title="Print">
+                                    <i class="fas fa-print me-1"></i>
+                                </button>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-circle btn-sm text-danger" onclick="startNextSale()" title="Clear cart">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
+
+
                     <table class="table table-hover cart-table text-center" id="cartTable">
                         <thead class="table-light">
                             <tr>

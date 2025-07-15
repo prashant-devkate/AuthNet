@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuthNet.UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37dcfe8916d7332925e6cb7f76e132935d752308")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebcaabf11656fc3727b7c09f75f147fbf2375c46")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuthNet.UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuthNet.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

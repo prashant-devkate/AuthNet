@@ -65,33 +65,37 @@
                     <span>Inventory</span>
                 </a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
                 Orders
             </div>
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Orders Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-file-invoice"></i>
                     <span>Orders</span>
                 </a>
+
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Offboarding</h6>
                         <a class="collapse-item" href="@Url.Action("Index", "Orders")">Orders</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Procurement</h6>
                         <a class="collapse-item" href="@Url.Action("Index", "PurchaseOrders")">Purchase Orders</a>
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Order Items Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrderItems" aria-expanded="true" aria-controls="collapseOrderItems">
                     <i class="fas fa-fw fa-list-ul"></i>
                     <span>Order Items</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseOrderItems" class="collapse" aria-labelledby="headingOrderItems" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Items:</h6>
                         <a class="collapse-item" href="@Url.Action("GroupedItems", "OrderItems")">Order Items</a>
@@ -100,19 +104,20 @@
                     </div>
                 </div>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
                 Addons
             </div>
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Utilities</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="@Url.Action("Index", "Customers")">Customers</a>
@@ -123,6 +128,25 @@
                         <a class="collapse-item" href="@Url.Action("DailySalesReport", "Sales")">Daily Sales Report</a>
                         <a class="collapse-item" href="@Url.Action("MonthlySalesReport", "Sales")">Monthly Sales Report</a>
                         <a class="collapse-item" href="@Url.Action("YearlySalesReport", "Sales")">Yearly Sales Report</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Consumables
+            </div>
+            <!-- Nav Item - Consumables Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConsumables" aria-expanded="true" aria-controls="collapseConsumables">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Disposables</span>
+                </a>
+                <div id="collapseConsumables" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Login Screens:</h6>
+                        <a class="collapse-item" href="@Url.Action("Index", "Customers")">Customers</a>
                     </div>
                 </div>
             </li>

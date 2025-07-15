@@ -90,7 +90,14 @@ namespace AuthNet.UI.Controllers
 
             var availableProducts = products.Where(p => !inventory.Any(i => i.ProductId == p.ProductId)).ToList();
 
-            ViewBag.Products = new SelectList(availableProducts, "ProductId", "Name");
+            if (availableProducts.Any())
+            {
+                ViewBag.Products = new SelectList(availableProducts, "ProductId", "Name");
+            }
+            else
+            {
+                ViewBag.NoProductsMessage = "No product available to add";
+            }
         }
 
         private async Task LoadLookupsAsync()
