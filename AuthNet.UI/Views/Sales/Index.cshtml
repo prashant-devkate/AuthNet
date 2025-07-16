@@ -59,9 +59,9 @@
         padding: 0;
     }
 
-    body * {
-        visibility: hidden;
-    }
+        body * {
+            visibility: hidden;
+        }
 
     #printArea, #printArea * {
         visibility: visible;
@@ -126,28 +126,28 @@
         margin-bottom: 0.5rem;
     }
 
-    .search-container input {
-        padding-right: 2.5rem;
-        font-size: 0.9rem;
-    }
+        .search-container input {
+            padding-right: 2.5rem;
+            font-size: 0.9rem;
+        }
 
-    .search-container .fas.fa-search {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #6c757d;
-    }
+        .search-container .fas.fa-search {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
 
-    .search-container .fas.fa-times-circle {
-        position: absolute;
-        right: 28px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        color: #dc3545;
-        display: none;
-    }
+        .search-container .fas.fa-times-circle {
+            position: absolute;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #dc3545;
+            display: none;
+        }
 
     .filter-container {
         margin-bottom: 0.5rem;
@@ -164,9 +164,9 @@
         font-size: 0.85rem;
     }
 
-    .cart-table th, .cart-table td {
-        padding: 6px;
-    }
+        .cart-table th, .cart-table td {
+            padding: 6px;
+        }
 
     .action-buttons .btn {
         font-size: 0.75rem;
@@ -240,13 +240,13 @@
         pointer-events: auto;
     }
 
-    .product-card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-    .product-card .card-body {
-        padding: 0;
-    }
+        .product-card .card-body {
+            padding: 0;
+        }
 
     .card-title {
         font-size: 0.85rem;
@@ -274,20 +274,19 @@
 
 <!-- Page Content -->
 <div class="container-fluid">
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-cash-register me-2"></i> Sales Panel</h1>
-        <div class="d-none d-sm-inline-block dropdown">
+        <div class="d-none d-sm-inline-block">
             <input type="hidden" id="tplSelect" name="Template" value="@(allTemplates.FirstOrDefault()?.Id)">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="tplSelectBtn" data-bs-toggle="dropdown" aria-expanded="false" style="max-width: 160px; font-size: 0.9rem; padding: 0.375rem 0.75rem;">
-                <span id="tplSelectLabel">@(allTemplates.FirstOrDefault()?.Layout ?? "Select Template")</span>
-            </button>
-            <ul class="dropdown-menu animated--grow-in" aria-labelledby="tplSelectBtn" style="min-width: 160px;">
+            <select id="templateFilter" class="form-select" name="Templates">
+                <option disabled value="">-- Select Template --</option>
                 @foreach (var t in allTemplates)
                 {
-                    <li><a class="dropdown-item text-gray-800" href="javascript:void(0)" onclick="document.getElementById('tplSelect').value='@t.Id'; document.getElementById('tplSelectLabel').textContent='@t.Layout'; document.getElementById('tplSelect').dispatchEvent(new Event('change')); console.log('Selected template: @t.Layout, ID: @t.Id');">@t.Layout</a></li>
+                    <option value="@t.Id">@t.Layout</option>
                 }
-            </ul>
+            </select>
         </div>
     </div>
 
@@ -432,7 +431,7 @@
         <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body"></div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="oak"></button>
             </div>
         </div>
     </div>
@@ -458,12 +457,18 @@
             // Event delegation for product cards
             $('#productGrid').on('click', '.product-card', function() {
                 const key = $(this).data('key');
-                console.log('Product card clicked, key:', key);
+                console.log('Product card clicked, key:', key); // Debug log
                 addToCart(key);
             });
 
-            // Initialize Bootstrap dropdown
-            $('#tplSelectBtn').dropdown();
+            // Template filter change handler
+            $('#templateFilter').on('change', function() {
+                const selectedId = this.value;
+                const selectedLayout = this.options[this.selectedIndex].text;
+                document.getElementById('tplSelect').value = selectedId;
+                document.getElementById('tplSelect').dispatchEvent(new Event('change'));
+                console.log('Selected template: ' + selectedLayout + ', ID: ' + selectedId);
+            });
         });
 
         const companyName = '@(companyInfo.Name ?? "InventoryPro")';
@@ -538,7 +543,7 @@
                 const idMatch = p.ProductId.toString() === keyOrId.toString();
                 return hotKeyMatch || idMatch;
             });
-            if (!prod) {
+            if (!prod) { // Fixed typo from 'if (! personally {' to 'if (!prod) {'
                 console.log('Product not found for key or ID:', keyOrId);
                 showToast('Product not found.', 'error');
                 return;

@@ -5,131 +5,191 @@
     ViewData["Title"] = "Settings";
 }
 
-<h4>Settings</h4>
+<div class="container-fluid">
+    <h1 class="h3 mb-1 text-gray-800">Settings</h1>
 
-<div class="row">
-    <!-- Navigation Pills -->
-    <div class="col-md-3">
-        <div class="nav flex-column nav-pills" id="settings-tabs" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active" id="company-tab" data-bs-toggle="pill" data-bs-target="#company" type="button" role="tab">Company Info</button>
-            <button class="nav-link" id="invoice-tab" data-bs-toggle="pill" data-bs-target="#invoice" type="button" role="tab">Invoice Template</button>
-            <button class="nav-link" id="tax-tab" data-bs-toggle="pill" data-bs-target="#tax" type="button" role="tab">Tax Settings</button>
-            <button class="nav-link" id="user-tab" data-bs-toggle="pill" data-bs-target="#users" type="button" role="tab">User Management</button>
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+            <div class="nav flex-column nav-pills" id="settings-nav" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="company-tab" data-toggle="pill" href="#company" role="tab">Company Info</a>
+                <a class="nav-link" id="tax-tab" data-toggle="pill" href="#tax" role="tab">Tax Settings</a>
+                <a class="nav-link" id="template-tab" data-toggle="pill" href="#template" role="tab">Template</a>
+                <a class="nav-link" id="users-tab" data-toggle="pill" href="#users" role="tab">User Management</a>
+            </div>
         </div>
-    </div>
 
-    <!-- Tab Content -->
-    <div class="col-md-9">
-        <div class="tab-content" id="settings-content">
+        <!-- Main Content -->
+        <div class="col-lg-9">
+            <div class="tab-content" id="settings-content">
+                <!-- Company Info Card -->
+                <div class="tab-pane fade show active" id="company" role="tabpanel" aria-labelledby="company-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Company Info</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="companyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="companyDropdown">
+                                            <a class="dropdown-item" asp-controller="Settings" asp-action="EditCompany" asp-route-returnUrl="#company">Edit</a>
+                                            <a class="dropdown-item" asp-controller="Settings" asp-action="AddCompany" asp-route-returnUrl="#company">Add</a>
+                                            <a class="dropdown-item" asp-controller="Settings" asp-action="CompanyHistory" asp-route-returnUrl="#company">History</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @if (Model?.Company != null)
+                                    {
+                                        <dl class="row mb-0">
+                                            <dt class="col-sm-4 font-weight-bold">Company Name</dt>
+                                            <dd class="col-sm-8">@Model.Company?.Name</dd>
+                                            <dt class="col-sm-4 font-weight-bold">Address</dt>
+                                            <dd class="col-sm-8">@Model.Company?.Address</dd>
+                                            <dt class="col-sm-4 font-weight-bold">Contact</dt>
+                                            <dd class="col-sm-8">@Model.Company?.ContactNumber</dd>
+                                            <dt class="col-sm-4 font-weight-bold">GSTIN</dt>
+                                            <dd class="col-sm-8">@Model.Company?.GSTIN</dd>
+                                        </dl>
+                                    }
+                                    else
+                                    {
+                                        <p class="mb-0">No company details available.</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Company Info -->
-            <div class="tab-pane fade show active" id="company" role="tabpanel" aria-labelledby="company-tab">
-                <h5>Company Info</h5>
-                <a asp-controller="Settings" asp-action="Edit">Edit</a> |
-                <a asp-controller="Settings" asp-action="Add">Add</a> |
-                <a asp-controller="Settings" asp-action="History">History</a>
+                <!-- Tax Settings Card -->
+                <div class="tab-pane fade" id="tax" role="tabpanel" aria-labelledby="tax-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tax Settings</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="taxDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="taxDropdown">
+                                            <a class="dropdown-item" asp-controller="Settings" asp-action="AddTaxSetting" asp-route-returnUrl="#tax">Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @if (Model?.TaxSetting != null)
+                                    {
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr><th>CGST</th><th>SGST</th><th>IGST</th><th>Actions</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>@Model.TaxSetting.CGST</td>
+                                                    <td>@Model.TaxSetting.SGST</td>
+                                                    <td>@Model.TaxSetting.IGST</td>
+                                                    <td>
+                                                        <a asp-controller="Settings" asp-action="EditTaxSetting" asp-route-returnUrl="#tax" class="btn btn-primary btn-sm">Edit</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <p class="mb-0">No tax settings configured.</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                @if (Model?.Company != null)
-                {
-                    <dl>
-                        <dt>Company Name</dt>
-                        <dd>@Model.Company?.Name</dd>
+                <!-- Template Card -->
+                <div class="tab-pane fade" id="template" role="tabpanel" aria-labelledby="template-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Template</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="templateDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="templateDropdown">
+                                            <a class="dropdown-item" asp-controller="Settings" asp-action="AddTemplate" asp-route-returnUrl="#template">Add Template</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    @if (Model?.Template?.InvoiceTemplates?.Any() == true)
+                                    {
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr><th>Layout</th><th>Notes</th><th>Terms</th><th>Actions</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var tpl in Model.Template.InvoiceTemplates)
+                                                {
+                                                    <tr>
+                                                        <td>@tpl.Layout</td>
+                                                        <td>@tpl.Notes</td>
+                                                        <td>@tpl.TermsAndConditions</td>
+                                                        <td>
+                                                            <a asp-controller="Settings" asp-action="EditTemplate" asp-route-id="@tpl.Id" asp-route-returnUrl="#template" class="btn btn-primary btn-sm">Edit</a>
+                                                            |
+                                                            <form asp-controller="Settings" asp-action="DeleteTemplate" asp-route-id="@tpl.Id" method="post" style="display:inline;" asp-route-returnUrl="#template" onsubmit="return confirm('Are you sure?');">
+                                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <p class="mb-0">No templates available.</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        <dt>Address</dt>
-                        <dd>@Model.Company?.Address</dd>
-
-                        <dt>Contact</dt>
-                        <dd>@Model.Company?.ContactNumber</dd>
-
-                        <dt>GSTIN</dt>
-                        <dd>@Model.Company?.GSTIN</dd>
-                    </dl>
-                }
-                else
-                {
-                    <p>No company details available.</p>
-                }
+                <!-- User Management Card -->
+                <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">User Management</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="usersDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="usersDropdown">
+                                            <a class="dropdown-item" asp-controller="Profile" asp-action="UpdateProfile" asp-route-returnUrl="#users">Edit Profile</a>
+                                            <a class="dropdown-item" asp-controller="Profile" asp-action="ChangePassword" asp-route-returnUrl="#users">Change Password</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="mb-0">
+                                        <li><strong>Admin:</strong> Full access</li>
+                                        <li><strong>Cashier:</strong> Can bill and view reports</li>
+                                        <li><strong>Salesperson:</strong> Limited to sales tasks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Invoice Template -->
-            <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
-                <h5>Invoice Templates</h5>
-                <a asp-controller="Settings" asp-action="AddTemplate">Add Template</a>
-
-                @if (Model?.Template?.InvoiceTemplates?.Any() == true)
-                {
-                    <table>
-                        <thead>
-                            <tr><th>Layout</th><th>Notes</th><th>Terms</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var tpl in Model.Template.InvoiceTemplates)
-                            {
-                                <tr>
-                                    <td>@tpl.Layout</td>
-                                    <td>@tpl.Notes</td>
-                                    <td>@tpl.TermsAndConditions</td>
-                                    <td>
-                                        <a asp-controller="Settings" asp-action="EditTemplate" asp-route-id="@tpl.Id">Edit</a>
-                                        |
-                                        <form asp-controller="Settings" asp-action="DeleteTemplate" asp-route-id="@tpl.Id" method="post" style="display:inline;" onsubmit="return confirm('Are you sure?');">
-                                            <button type="submit">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <p>No templates available.</p>
-                }
-            </div>
-
-            <!-- Tax Settings -->
-            <div class="tab-pane fade" id="tax" role="tabpanel" aria-labelledby="tax-tab">
-                <h5>Tax Settings</h5>
-                <a asp-controller="Settings" asp-action="AddTaxSetting">Add</a>
-
-                @if (Model?.TaxSetting != null)
-                {
-                    <table>
-                        <thead>
-                            <tr><th>CGST</th><th>SGST</th><th>IGST</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>@Model.TaxSetting.CGST</td>
-                                <td>@Model.TaxSetting.SGST</td>
-                                <td>@Model.TaxSetting.IGST</td>
-                                <td>
-                                    <a asp-controller="Settings" asp-action="EditTaxSetting">Edit</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <p>No tax settings configured.</p>
-                }
-            </div>
-
-            <!-- User Management -->
-            <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="user-tab">
-                <h5>User Management</h5>
-                <ul>
-                    <li><strong>Admin:</strong> Full access</li>
-                    <li><strong>Cashier:</strong> Can bill and view reports</li>
-                    <li><strong>Salesperson:</strong> Limited to sales tasks</li>
-                </ul>
-
-                <h6>Account</h6>
-                <a asp-controller="Profile" asp-action="UpdateProfile">Edit Profile</a> |
-                <a asp-controller="Profile" asp-action="ChangePassword">Change Password</a>
-            </div>
-
         </div>
     </div>
 </div>
