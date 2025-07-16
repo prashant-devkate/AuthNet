@@ -3,61 +3,111 @@
     ViewData["Title"] = "Suppliers";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-primary mb-0">
-        <i class="bi bi-truck me-2"></i> Suppliers
-    </h3>
-    <a asp-controller="Suppliers" asp-action="Add" class="btn btn-primary rounded-3">
-        <i class="bi bi-plus-circle me-1"></i> Add Supplier
+<!-- Custom CSS for Badges (adapted for Suppliers) -->
+<style>
+    .badge-order-status {
+        background-color: #ebedef;
+        color: #3a3b45;
+        font-weight: 500;
+    }
+</style>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-truck me-2"></i> Suppliers</h1>
+    <a asp-controller="Suppliers" asp-action="Add" class="d-none d-sm-inline-block btn btn-primary btn-icon-split btn-sm shadow-sm">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus-circle"></i>
+        </span>
+        <span class="text">Add Supplier</span>
     </a>
 </div>
 
-<div class="card shadow-sm p-3">
-    <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0">
-            <thead class="table-light">
-                <tr>
-                    <th>Company Name</th>
-                    <th>Contact Name</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th class="text-center" style="width: 160px;">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model != null && Model.Any())
-                {
-                    @foreach (var s in Model)
-                    {
-                        <tr>
-                            <td class="fw-semibold">@s.CompanyName</td>
-                            <td class="text-muted">@s.ContactName</td>
-                            <td class="text-muted">@s.Phone</td>
-                            <td class="text-muted">@s.Address</td>
-                            <td class="text-center">
-                                <a asp-action="Edit" asp-route-id="@s.SupplierId" class="btn btn-sm btn-outline-warning me-1 rounded-2">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <form asp-action="Delete" asp-route-id="@s.SupplierId"
-                                      method="post" class="d-inline"
-                                      onsubmit="return confirm('Delete this supplier?');">
-                                    <button class="btn btn-sm btn-outline-danger rounded-2">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="5" class="text-center text-muted py-4">
-                            <i class="bi bi-info-circle me-2"></i>No suppliers found.
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<!-- Content Row -->
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Suppliers List</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var s in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-semibold">@s.CompanyName</td>
+                                        <td class="text-muted">@s.ContactName</td>
+                                        <td class="text-muted">@s.Phone</td>
+                                        <td class="text-muted">@s.Address</td>
+                                        <td class="text-center">
+                                            <a asp-action="Edit" asp-route-id="@s.SupplierId" class="btn btn-warning btn-icon-split btn-sm me-1">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </span>
+                                            </a>
+                                            <form asp-action="Delete" asp-route-id="@s.SupplierId"
+                                                  method="post" class="d-inline"
+                                                  onsubmit="return confirm('Delete this supplier?');">
+                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">
+                                        <i class="fas fa-info-circle me-2"></i>No suppliers found.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "columnDefs": [
+                    { "orderable": false, "targets": 4 }
+                ]
+            });
+        });
+    </script>
+}
