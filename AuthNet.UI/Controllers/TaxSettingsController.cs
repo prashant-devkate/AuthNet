@@ -49,7 +49,7 @@ namespace AuthNet.UI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Tax settings added successfully.";
-                return RedirectToAction("Index", new { returnUrl = "#tax" });
+                return RedirectToAction("Index");
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -68,8 +68,7 @@ namespace AuthNet.UI.Controllers
         }
 
         [HttpGet]
-        [Route("Settings/EditTaxSetting")]
-        public async Task<IActionResult> Edit(string returnUrl = null)
+        public async Task<IActionResult> Edit()
         {
             var tax = await _httpClient.GetFromJsonAsync<TaxSettingDto>("api/TaxSettings");
             if (tax == null) return NotFound();
@@ -81,17 +80,13 @@ namespace AuthNet.UI.Controllers
                 SGST = tax.SGST,
                 IGST = tax.IGST
             };
-
-            ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
         [HttpPost]
-        [Route("Settings/EditTaxSetting")]
-        public async Task<IActionResult> Edit(EditTaxSettingViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Edit(EditTaxSettingViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.ReturnUrl = returnUrl;
                 return View(model);
             }
 
@@ -100,7 +95,7 @@ namespace AuthNet.UI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Tax settings updated successfully.";
-                return RedirectToAction("Index", new { returnUrl = returnUrl ?? "#tax" });
+                return RedirectToAction("Index");
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -108,7 +103,7 @@ namespace AuthNet.UI.Controllers
             var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update tax setings.";
 
             ModelState.AddModelError("", errorMsg);
-            return View(model);
+            return RedirectToAction("Index");
         }
     }
 }

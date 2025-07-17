@@ -2,7 +2,7 @@
 
 namespace AuthNet.UI.Controllers
 {
-    public class SettingsController : Controller
+    public class UsersController : Controller
     {
         public IActionResult Index()
         {

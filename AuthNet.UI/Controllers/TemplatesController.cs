@@ -107,8 +107,8 @@ namespace AuthNet.UI.Controllers
             return View(model);
         }
 
-        [HttpPost("InvoiceTemplate/Delete/{id}")]
-        public async Task<IActionResult> DeleteTemplate(int id)
+        [HttpPost()]
+        public async Task<IActionResult> Delete(int id)
         {
             var httpResponseMessage = await _httpClient.DeleteAsync($"api/InvoiceTemplates/{id}");
 
@@ -119,7 +119,7 @@ namespace AuthNet.UI.Controllers
                 var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to delete invoice template.";
 
                 TempData["ErrorMessage"] = errorMsg;
-                return RedirectToAction("Index", "Settings");
+                return RedirectToAction("Index", "Templates");
             }
 
             TempData["SuccessMessage"] = "Invoice template deleted successfully.";

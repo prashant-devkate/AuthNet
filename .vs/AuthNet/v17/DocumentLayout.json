@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\prashant-devkate\\authnet\\authnet.ui\\views\\company\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\company\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\prashant-devkate\\authnet\\authnet.ui\\views\\shared\\_companyinfocard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\shared\\_companyinfocard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\prashant-devkate\\authnet\\authnet.ui\\views\\taxsettings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\taxsettings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\prashant-devkate\\authnet\\authnet.ui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Company\\Index.cshtml",
-              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Company\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Company\\Index.cshtml",
-              "RelativeToolTip": "AuthNet.UI\\Views\\Company\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACIAAAAALzMzMzMbwDoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T06:16:48.662Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_CompanyInfoCard.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Shared\\_CompanyInfoCard.cshtml",
-              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Shared\\_CompanyInfoCard.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Shared\\_CompanyInfoCard.cshtml",
-              "RelativeToolTip": "AuthNet.UI\\Views\\Shared\\_CompanyInfoCard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T06:16:21.649Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\TaxSettings\\Index.cshtml",
-              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\TaxSettings\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\TaxSettings\\Index.cshtml",
-              "RelativeToolTip": "AuthNet.UI\\Views\\TaxSettings\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T06:05:06.535Z",
+              "WhenOpened": "2025-07-17T08:05:04.801Z",
               "EditorCaption": ""
             }
           ]
