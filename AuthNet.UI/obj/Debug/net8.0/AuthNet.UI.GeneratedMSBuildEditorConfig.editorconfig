@@ -44,6 +44,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Company/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Company/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Company/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxIaXN0b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Company/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Customers/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -156,38 +172,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNcWWVhcmx5U2FsZXNSZXBvcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcQWRkLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/AddTaxSetting.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcQWRkVGF4U2V0dGluZy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/AddTemplate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcQWRkVGVtcGxhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/EditTaxSetting.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcRWRpdFRheFNldHRpbmcuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/EditTemplate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcRWRpdFRlbXBsYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/History.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcSGlzdG9yeS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Settings/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -196,8 +180,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbGVydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Shared/_CompanyInfoCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21wYW55SW5mb0NhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Shared/_DashboardCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EYXNoYm9hcmRDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Shared/_SettingsLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZXR0aW5nc0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Shared/_SettingsSidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZXR0aW5nc1NpZGViYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Shared/_ValidationScriptsPartial.cshtml]
@@ -222,6 +218,30 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Tasks/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/TaxSettings/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4U2V0dGluZ3NcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/TaxSettings/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4U2V0dGluZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/TaxSettings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4U2V0dGluZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Templates/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Templates/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/Templates/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/source/repos/prashant-devkate/AuthNet/AuthNet.UI/Views/_ViewImports.cshtml]

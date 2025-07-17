@@ -1,0 +1,36 @@
+﻿@model AuthNet.UI.Models.DTO.CompanyInfoViewModel
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Company Info</h6>
+        <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" href="#" role="button" id="companyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="companyDropdown">
+                <a class="dropdown-item" asp-controller="Settings" asp-action="Edit" asp-route-returnUrl="#company">Edit</a>
+                <a class="dropdown-item" asp-controller="Settings" asp-action="Add" asp-route-returnUrl="#company">Add</a>
+                <a class="dropdown-item" asp-controller="Settings" asp-action="History" asp-route-returnUrl="#company">History</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        @if (Model != null)
+        {
+            <dl class="row mb-0">
+                <dt class="col-sm-4 font-weight-bold">Company Name</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+                <dt class="col-sm-4 font-weight-bold">Address</dt>
+                <dd class="col-sm-8">@Model.Address</dd>
+                <dt class="col-sm-4 font-weight-bold">Contact</dt>
+                <dd class="col-sm-8">@Model.ContactNumber</dd>
+                <dt class="col-sm-4 font-weight-bold">GSTIN</dt>
+                <dd class="col-sm-8">@Model.GSTIN</dd>
+            </dl>
+        }
+        else
+        {
+            <p class="mb-0">No company details available.</p>
+        }
+    </div>
+</div>

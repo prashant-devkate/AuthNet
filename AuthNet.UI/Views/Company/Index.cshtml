@@ -1,0 +1,13 @@
+﻿@model AuthNet.UI.Models.DTO.CompanyInfoViewModel
+
+@{
+    Layout = "~/Views/Shared/_SettingsLayout.cshtml";
+    ViewData["Title"] = "Company Info";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_CompanyInfoCard", Model)
+    </div>
+</div>
