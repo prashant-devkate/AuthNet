@@ -118,6 +118,7 @@ namespace AuthNet.UI.Controllers
                 Name = dto.Name,
                 Address = dto.Address,
                 GSTIN = dto.GSTIN,
+                ContactNumber = dto.ContactNumber,
                 LogoFilePath = dto.LogoFilePath,
                 SignFilePath = dto.SignFilePath
             };
@@ -137,6 +138,7 @@ namespace AuthNet.UI.Controllers
             content.Add(new StringContent(model.Name ?? ""), nameof(model.Name));
             content.Add(new StringContent(model.Address ?? ""), nameof(model.Address));
             content.Add(new StringContent(model.GSTIN ?? ""), nameof(model.GSTIN));
+            content.Add(new StringContent(model.ContactNumber ?? ""), nameof(model.ContactNumber));
 
             if (model.LogoUrl != null)
             {
@@ -192,6 +194,7 @@ namespace AuthNet.UI.Controllers
             content.Add(new StringContent(model.Name ?? ""), nameof(model.Name));
             content.Add(new StringContent(model.Address ?? ""), nameof(model.Address));
             content.Add(new StringContent(model.GSTIN ?? ""), nameof(model.GSTIN));
+            content.Add(new StringContent(model.ContactNumber ?? ""), nameof(model.ContactNumber));
 
             if (model.LogoUrl != null)
             {
