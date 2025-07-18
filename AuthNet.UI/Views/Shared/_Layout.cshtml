@@ -329,6 +329,10 @@
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
+                <!-- Toast Container -->
+                <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+                    @await Html.PartialAsync("_Alerts")
+                </div>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @if (!isLoggedIn && currentController == "Home" && currentAction == "Index")
@@ -345,7 +349,6 @@
                     }
                     else
                     {
-                        @await Html.PartialAsync("_Alerts")
                         @RenderBody()
                     }
                 </div>

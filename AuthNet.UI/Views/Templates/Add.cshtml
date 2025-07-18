@@ -5,50 +5,43 @@
     ViewData["Title"] = "Add Invoice Template";
 }
 
-<style>
-    .form-wrapper {
-        max-width: 600px;
-    }
-</style>
-
-<div class="container py-5">
-    <div class="card shadow-sm border-0 mx-auto form-wrapper">
-        <div class="card-body p-4">
-            <h3 class="text-center mb-4 text-primary fw-bold">
-                <i class="bi bi-clipboard me-2"></i>
-                Add Invoice Template
-            </h3>
-
-            <form method="post" asp-action="Add" id="templateForm">
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Layout" class="form-control" placeholder="Layout Name" />
-                    <label asp-for="Layout">Layout Name</label>
-                    <span asp-validation-for="Layout" class="text-danger small"></span>
+<div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card o-hidden border-0 shadow-lg my-4">
+                <div class="card-body p-0">
+                    <div class="p-4">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-3"><i class="bi bi-clipboard me-1"></i> Add Invoice Template</h1>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <form method="post" asp-action="Add" id="templateForm" class="user">
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                <input asp-for="Layout" class="form-control form-control-user" placeholder="Enter Layout Name...">
+                                <span asp-validation-for="Layout" class="text-danger small"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="Notes" class="form-control form-control-user" placeholder="Enter Notes...">
+                                <span asp-validation-for="Notes" class="text-danger small"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="TermsAndConditions" class="form-control form-control-user" placeholder="Enter Terms & Conditions...">
+                                <span asp-validation-for="TermsAndConditions" class="text-danger small"></span>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-user btn-block" type="submit">Save</button>
+                                <a asp-controller="Templates" asp-action="Index" class="btn btn-secondary btn-user btn-block">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Notes" class="form-control" placeholder="Notes" />
-                    <label asp-for="Notes">Notes</label>
-                    <span asp-validation-for="Notes" class="text-danger small"></span>
-                </div>
-
-                <div class="form-floating mb-4">
-                    <input asp-for="TermsAndConditions" class="form-control" placeholder="Terms & Conditions" />
-                    <label asp-for="TermsAndConditions">Terms & Conditions</label>
-                    <span asp-validation-for="TermsAndConditions" class="text-danger small"></span>
-                </div>
-
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button type="submit" class="btn btn-primary px-4">
-                        <i class="bi bi-save me-1"></i> Save
-                    </button>
-
-                    <a asp-controller="Settings" asp-action="Index" class="btn btn-outline-secondary px-4">
-                        <i class="bi bi-arrow-left me-1"></i> Cancel
-                    </a>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
