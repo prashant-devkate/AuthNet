@@ -1089,6 +1089,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "LogoUrl",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
@@ -1151,6 +1156,11 @@
       },
       {
         "Name": "ContactNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
         "Type": "System.String",
         "IsRequired": false
       },

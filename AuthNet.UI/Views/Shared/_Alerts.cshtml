@@ -1,35 +1,64 @@
-﻿<div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
-    <!-- Success toast -->
-    <div id="toastSuccess" class="toast align-items-center bg-success text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="5000">
-        <div class="d-flex">
-            <div class="toast-body">
-                @TempData["SuccessMessage"]
-            </div>
-            <button type="button" class="btn-close me-2 m-auto" data-dismiss="toast" aria-label="Close"></button>
+﻿<!-- Success Toast -->
+<div id="toastSuccess" class="toast custom-toast border-start-success" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+    <div class="d-flex">
+        <div class="toast-body">
+            <strong class="text-success">Success</strong><br />
+            <span id="successMessage">@TempData["SuccessMessage"]</span>
         </div>
-    </div>
-
-    <!-- Error toast -->
-    <div id="toastError" class="toast align-items-center bg-danger text-white border-0" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="5000">
-        <div class="d-flex">
-            <div class="toast-body">
-                @TempData["ErrorMessage"]
-            </div>
-            <button type="button" class="btn-close me-2 m-auto" data-dismiss="toast" aria-label="Close"></button>
-        </div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
 
+<!-- Error Toast -->
+<div id="toastError" class="toast custom-toast border-start-error" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+    <div class="d-flex">
+        <div class="toast-body">
+            <strong class="text-danger">Error</strong><br />
+            <span id="errorMessage">@TempData["ErrorMessage"]</span>
+        </div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+
+<!-- Toast Styling -->
+<style>
+    .custom-toast {
+        background-color: #fff;
+        color: #333;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        border-left: 6px solid;
+        max-width: 350px;
+        margin-bottom: 1rem;
+    }
+
+    .border-start-success {
+        border-left-color: #28a745;
+    }
+
+    .border-start-error {
+        border-left-color: #dc3545;
+    }
+
+    .toast-body {
+        font-size: 0.95rem;
+    }
+</style>
+
+<!-- Toast Script -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const s = document.getElementById('toastSuccess');
-        if (s && s.querySelector('.toast-body')?.textContent.trim()) {
-            new bootstrap.Toast(s).show();
+        const successToast = document.getElementById('toastSuccess');
+        const errorToast = document.getElementById('toastError');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (successMessage && successMessage.textContent.trim()) {
+            new bootstrap.Toast(successToast).show();
         }
 
-        const e = document.getElementById('toastError');
-        if (e && e.querySelector('.toast-body')?.textContent.trim()) {
-            new bootstrap.Toast(e).show();
+        if (errorMessage && errorMessage.textContent.trim()) {
+            new bootstrap.Toast(errorToast).show();
         }
     });
 </script>

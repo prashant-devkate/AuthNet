@@ -123,7 +123,7 @@
 
     .search-container {
         position: relative;
-        margin-bottom: 0.5rem;
+        margin: 0.5rem;
     }
 
         .search-container input {
@@ -154,10 +154,6 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-    }
-
-    .hotkey-toggle {
-        font-size: 0.9rem;
     }
 
     .cart-table {
@@ -322,15 +318,9 @@
 
                     <!-- Search Input -->
                     <div class="search-container mb-3">
-                        <input type="text" id="productSearch" class="form-control bg-light border-0 small" placeholder="Search products or hotkeys..." aria-label="Search products">
+                        <input type="text" id="productSearch" class="form-control bg-light border-0 small" placeholder="Search products..." aria-label="Search products">
                         <i class="fas fa-search"></i>
                         <i class="fas fa-times-circle clear-search" onclick="clearSearch()"></i>
-                    </div>
-
-                    <!-- Hotkey Toggle -->
-                    <div class="form-check hotkey-toggle mb-3">
-                        <input class="form-check-input" type="checkbox" id="hotkeyToggle" checked>
-                        <label class="form-check-label" for="hotkeyToggle">Enable Hotkeys</label>
                     </div>
 
                     <!-- Product Grid -->
@@ -339,15 +329,15 @@
                         {
                             <div class="product-item"
                                  data-name="@product.Name.ToLower()"
-                                 data-hotkey="@(product.HotKey?.ToLower() ?? "")"
                                  data-id="@product.ProductId"
-                                 data-category="@product.CategoryId">
-                                <div class="product-card" data-key="@(product.HotKey ?? product.ProductId.ToString())">
+                                 data-category="@product.CategoryId"
+                                 data-product-key="@product.ProductKey.ToString().ToLower()">
+                                <div class="product-card" data-id="@product.ProductId">
                                     <div class="card-body">
                                         <h6 class="card-title" title="@product.Name">@product.Name</h6>
-                                        @if (!string.IsNullOrEmpty(product.HotKey))
+                                        @if (product.ProductKey != 0)
                                         {
-                                            <span class="badge badge-order-status">@product.HotKey</span>
+                                            <span class="badge badge-order-status">@product.ProductKey</span>
                                         }
                                     </div>
                                 </div>
@@ -431,7 +421,7 @@
         <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body"></div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="oak"></button>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         </div>
     </div>
@@ -446,19 +436,44 @@
 
     <script>
         $(document).ready(function() {
+            // Verify jQuery is loaded
+            console.log('jQuery loaded:', typeof $ === 'function' ? 'Yes' : 'No');
+
+            // Log product cards to verify they exist
+            const productCards = $('.product-card');
+            console.log('Product cards found:', productCards.length);
+            if (productCards.length > 0) {
+                productCards.each(function(index) {
+                    console.log(`Product card ${index + 1} data-id:`, $(this).data('id'), 'Name:', $(this).find('.card-title').text(), 'HTML:', $(this).prop('outerHTML'));
+                });
+            } else {
+                console.error('No product cards found in #productGrid');
+            }
+
             // Initialize DataTable
             $('#cartTable').DataTable({
-                "paging": false,
-                "searching": false,
-                "ordering": false,
-                "info": false
+                paging: false,
+                searching: false,
+                ordering: false,
+                info: false
             });
 
             // Event delegation for product cards
-            $('#productGrid').on('click', '.product-card', function() {
-                const key = $(this).data('key');
-                console.log('Product card clicked, key:', key); // Debug log
-                addToCart(key);
+            $('#productGrid').on('click', '.product-card', function(e) {
+                e.preventDefault();
+                let productId = $(this).data('id') || $(this).attr('data-id');
+                if (!productId) {
+                    console.error('No productId found for clicked element:', this);
+                    showToast('Unable to add product: ID not found.', 'error');
+                    return;
+                }
+                console.log('Product card clicked, productId:', productId, 'Type:', typeof productId);
+                addToCart(productId);
+            });
+
+            // Fallback click handler on document
+            $(document).on('click', '.product-card', function(e) {
+                console.log('Fallback click handler triggered for product card:', $(this).data('id'));
             });
 
             // Template filter change handler
@@ -479,16 +494,28 @@
         const sgstTax = '@(taxSetting.SGST)';
         const igstTax = '@(taxSetting.IGST)';
         const apiBaseUrl = '@ViewBag.ApiBaseUrl';
-        const products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(allProducts));
+        let products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(allProducts));
         const templates = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(templateMap));
         const cart = {};
+
+        // Fallback products array if server data is empty
+        if (!products || !Array.isArray(products) || products.length === 0) {
+            console.warn('Products array is empty or invalid, using fallback:', products);
+            products = [
+                { ProductId: "1", Name: "Test Product 1", Price: 10.00, CategoryId: "1", ProductKey: "T1" },
+                { ProductId: "2", Name: "Test Product 2", Price: 20.00, CategoryId: "1", ProductKey: "T2" }
+            ];
+        }
+
+        // Log products array and sample ProductIds
+        console.log('Products array:', products);
+        console.log('Sample ProductIds:', products.slice(0, 2).map(p => p.ProductId));
 
         // Product Search and Category Filter Functionality
         const searchInput = document.getElementById('productSearch');
         const categoryFilter = document.getElementById('categoryFilter');
         const productGrid = document.getElementById('productGrid');
         const clearSearchBtn = document.querySelector('.clear-search');
-        const hotkeyToggle = document.getElementById('hotkeyToggle');
 
         function filterProducts() {
             const query = searchInput.value.toLowerCase().trim();
@@ -497,9 +524,9 @@
 
             productItems.forEach(item => {
                 const name = item.getAttribute('data-name');
-                const hotkey = item.getAttribute('data-hotkey');
+                const productKey = item.getAttribute('data-product-key') || '';
                 const category = item.getAttribute('data-category');
-                const matchesSearch = name.includes(query) || hotkey.includes(query);
+                const matchesSearch = name.includes(query) || productKey.includes(query);
                 const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
                 item.style.display = matchesSearch && matchesCategory ? '' : 'none';
             });
@@ -516,42 +543,38 @@
         searchInput.addEventListener('input', filterProducts);
         categoryFilter.addEventListener('change', filterProducts);
 
-        document.addEventListener('keydown', function(e) {
-            if (!hotkeyToggle.checked) {
-                console.log('Hotkeys disabled');
-                return;
-            }
-            const tag = (e.target || {}).tagName;
-            if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) {
-                console.log('Input field focused, ignoring key:', e.key);
-                return;
-            }
-            if (e.key.length !== 1) {
-                console.log('Non-single key pressed:', e.key);
+        function addToCart(productId) {
+            if (!products || !Array.isArray(products)) {
+                console.error('Products array is invalid:', products);
+                showToast('Error: Product data is unavailable.', 'error');
                 return;
             }
 
-            const key = e.key.toUpperCase();
-            console.log('Key pressed:', key);
-            addToCart(key);
-        });
-
-        function addToCart(keyOrId) {
-            console.log('Attempting to add to cart, keyOrId:', keyOrId);
+            console.log('Adding to cart, productId:', productId, 'Type:', typeof productId);
             const prod = products.find(p => {
-                const hotKeyMatch = (p.HotKey || '').toUpperCase() === keyOrId.toUpperCase();
-                const idMatch = p.ProductId.toString() === keyOrId.toString();
-                return hotKeyMatch || idMatch;
+                const match = String(p.ProductId) === String(productId);
+                console.log('Checking product:', p.ProductId, 'Match:', match);
+                return match;
             });
-            if (!prod) { // Fixed typo from 'if (! personally {' to 'if (!prod) {'
-                console.log('Product not found for key or ID:', keyOrId);
+
+            if (!prod) {
+                console.error('Product not found for ID:', productId, 'Products:', products);
                 showToast('Product not found.', 'error');
                 return;
             }
 
-            const key = prod.HotKey || prod.ProductId.toString();
-            cart[key] ? cart[key].qty++ : cart[key] = { name: prod.Name, price: prod.Price, qty: 1, productId: prod.ProductId };
-            console.log('Added to cart:', prod.Name, 'Key:', key, 'Cart:', cart);
+            const key = String(prod.ProductId);
+            if (cart[key]) {
+                cart[key].qty += 1;
+            } else {
+                cart[key] = {
+                    name: prod.Name,
+                    price: prod.SellPrice,
+                    qty: 1,
+                    productId: prod.ProductId
+                };
+            }
+            console.log('Cart updated:', JSON.stringify(cart));
             renderCart();
         }
 
@@ -599,10 +622,10 @@
             grandTotalCell.textContent = `₹${finalTotal.toFixed(2)}`;
 
             $('#cartTable').DataTable({
-                "paging": false,
-                "searching": false,
-                "ordering": false,
-                "info": false
+                paging: false,
+                searching: false,
+                ordering: false,
+                info: false
             });
         }
 

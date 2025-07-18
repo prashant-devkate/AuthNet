@@ -12,10 +12,11 @@ namespace AuthNet.Models.Domain
         public string Description { get; set; } = string.Empty;
 
         [Range(0, double.MaxValue)]
-        public decimal Price { get; set; }
-        [RegularExpression(@"^[A-Za-z0-9]$",
-            ErrorMessage = "Enter exactly one letter or one digit.")]
-        public string HotKey { get; set; }
+        public decimal CostPrice { get; set; }
+
+        [Range(0, double.MaxValue)]
+        public decimal SellPrice { get; set; }
+        public int ProductKey { get; set; }
         public string? ProductCode { get; set; }
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }

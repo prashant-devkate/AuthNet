@@ -37,7 +37,8 @@ namespace AuthNet.Services
                     Name = dto.Name,
                     Address = dto.Address,
                     GSTIN = dto.GSTIN,
-                    ContactNumber = dto.ContactNumber
+                    ContactNumber = dto.ContactNumber,
+                    Email = dto.Email
                 };
 
                 string imageFolder = Path.Combine(_webHostEnvironment.ContentRootPath, "Images");
@@ -119,6 +120,7 @@ namespace AuthNet.Services
                 Address = company.Address,
                 GSTIN = company.GSTIN,
                 ContactNumber = company.ContactNumber,
+                Email = company.Email,
                 LogoUrl = company.LogoFilePath,
                 SignatureUrl = company.SignFilePath
             };
@@ -136,6 +138,8 @@ namespace AuthNet.Services
                 ArchivedAt = h.ArchivedAt,
                 Name = h.Name,
                 Address = h.Address,
+                ContactNumber = h.ContactNumber,
+                Email = h.Email,
                 GSTIN = h.GSTIN
             }).ToList();
         }
@@ -156,6 +160,8 @@ namespace AuthNet.Services
                     Name = company.Name,
                     Address = company.Address,
                     GSTIN = company.GSTIN,
+                    ContactNumber = company.ContactNumber,
+                    Email = company.Email,
                     ArchivedAt = DateTime.UtcNow
                 };
                 await _context.CompanyInfoHistories.AddAsync(history);
@@ -164,6 +170,7 @@ namespace AuthNet.Services
                 company.Address = dto.Address;
                 company.GSTIN = dto.GSTIN;
                 company.ContactNumber = dto.ContactNumber;
+                company.Email = dto.Email;
 
                 string imageFolder = Path.Combine(_webHostEnvironment.ContentRootPath, "Images");
                 if (!Directory.Exists(imageFolder))

@@ -89,7 +89,7 @@ namespace AuthNet.UI.Controllers
 
             var productResponse = await _httpClient.GetFromJsonAsync<List<ProductDto>>("api/Products");
             ViewBag.Products = new SelectList(productResponse, "ProductId", "Name");
-            ViewBag.ProductPrices = productResponse.ToDictionary(p => p.ProductId, p => p.Price);
+            ViewBag.ProductPrices = productResponse.ToDictionary(p => p.ProductId, p => p.CostPrice);
 
 
         }

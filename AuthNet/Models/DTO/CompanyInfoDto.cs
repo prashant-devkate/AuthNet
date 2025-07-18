@@ -9,6 +9,7 @@ namespace AuthNet.Models.DTO
         public string Address { get; set; }
         public string GSTIN { get; set; }
         public string ContactNumber { get; set; }
+        public string Email { get; set; }
         public IFormFile? LogoUrl { get; set; }
         public string? LogoName { get; set; }
         public IFormFile? SignatureUrl { get; set; }

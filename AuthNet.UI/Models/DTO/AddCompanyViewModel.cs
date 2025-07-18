@@ -17,6 +17,9 @@ namespace AuthNet.UI.Models.DTO
 
         [Phone, Required(ErrorMessage = "Phone number is required")]
         public string ContactNumber { get; set; }
+
+        [EmailAddress, Required(ErrorMessage = "Email is required")]
+        public string Email { get; set; }
         public IFormFile? LogoUrl { get; set; }
         public IFormFile? SignatureUrl { get; set; }
 

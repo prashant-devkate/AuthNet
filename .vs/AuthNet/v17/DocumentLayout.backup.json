@@ -1,14 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\",
+  "WorkspaceRootPath": "C:\\Users\\Admin\\AuthNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\prashant-devkate\\authnet\\authnet.ui\\views\\company\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\company\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\AuthNet\\AuthNet\\Migrations\\20250718104021_AddEMailInCompanyInfoTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AuthNet\\Migrations\\20250718104021_AddEMailInCompanyInfoTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\prashant-devkate\\authnet\\authnet.ui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\authnet\\authnet.ui\\controllers\\purchaseorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\controllers\\purchaseorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\authnet\\authnet.ui\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\authnet\\authnet.ui\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\authnet\\authnet.ui\\views\\company\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\company\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\authnet\\authnet.ui\\views\\company\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\company\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +39,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Company\\Edit.cshtml",
-              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Company\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Company\\Edit.cshtml",
-              "RelativeToolTip": "AuthNet.UI\\Views\\Company\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-18T02:43:41.849Z",
+              "Title": "20250718104021_AddEMailInCompanyInfoTable.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AuthNet\\AuthNet\\Migrations\\20250718104021_AddEMailInCompanyInfoTable.cs",
+              "RelativeDocumentMoniker": "AuthNet\\Migrations\\20250718104021_AddEMailInCompanyInfoTable.cs",
+              "ToolTip": "C:\\Users\\Admin\\AuthNet\\AuthNet\\Migrations\\20250718104021_AddEMailInCompanyInfoTable.cs",
+              "RelativeToolTip": "AuthNet\\Migrations\\20250718104021_AddEMailInCompanyInfoTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T10:40:22.199Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prashant-devkate\\AuthNet\\AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACIAAAAALzMzMzMbwDoAAAAlAAAAAAAAAA==",
+              "Title": "PurchaseOrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Controllers\\PurchaseOrdersController.cs",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Controllers\\PurchaseOrdersController.cs",
+              "ToolTip": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Controllers\\PurchaseOrdersController.cs",
+              "RelativeToolTip": "AuthNet.UI\\Controllers\\PurchaseOrdersController.cs",
+              "ViewState": "AgIAAFsAAACAYWZmZuYTwFsAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T10:39:03.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "AuthNet.UI\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAGAAAACgYmZmZmYgwHAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T10:38:19.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "AuthNet.UI\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAE4AAABwZmZmZmYgwFsAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T10:37:52.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Add.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Views\\Company\\Add.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Company\\Add.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Views\\Company\\Add.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Company\\Add.cshtml",
+              "ViewState": "AgIAAA0AAACAY2ZmZmYkwB4AAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T08:05:04.801Z",
+              "WhenOpened": "2025-07-18T10:36:46.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Views\\Company\\Index.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Company\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\AuthNet\\AuthNet.UI\\Views\\Company\\Index.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Company\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-18T10:35:43.043Z",
               "EditorCaption": ""
             }
           ]

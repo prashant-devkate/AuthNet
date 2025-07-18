@@ -35,15 +35,15 @@ namespace AuthNet.Services
         {
             try
             {
-                bool hotKeyTaken = await _context.Products
-                                         .AnyAsync(p => p.HotKey == product.HotKey);
+                bool productKeyTaken = await _context.Products
+                                         .AnyAsync(p => p.ProductKey == product.ProductKey);
 
-                if (hotKeyTaken)
+                if (productKeyTaken)
                 {
                     return new OperationResponse
                     {
                         Success = false,
-                        Message = $"HotKey '{product.HotKey}' is already in use. " +
+                        Message = $"ProductKey '{product.ProductKey}' is already in use. " +
                                   "Choose a different one."
                     };
                 }
@@ -78,20 +78,17 @@ namespace AuthNet.Services
                 };
             }
 
-            if (!string.Equals(existing.HotKey, product.HotKey,
-                       StringComparison.OrdinalIgnoreCase))
+            if (existing.ProductKey != product.ProductKey)
             {
-                bool hotKeyTaken = await _context.Products
-                                                 .AnyAsync(p =>
-                                                     p.ProductId != id &&
-                                                     p.HotKey == product.HotKey);
+                bool productKeyTaken = await _context.Products
+                                                 .AnyAsync(p => p.ProductId != id && p.ProductKey == product.ProductKey);
 
-                if (hotKeyTaken)
+                if (productKeyTaken)
                 {
                     return new OperationResponse
                     {
                         Success = false,
-                        Message = $"HotKey '{product.HotKey}' is already in use. " +
+                        Message = $"ProductKey '{product.ProductKey}' is already in use. " +
                                   "Choose a different one."
                     };
                 }

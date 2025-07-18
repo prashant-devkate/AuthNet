@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "JoISfiFiid7CF5xAEzA1HG4QhoVp1HoPZlERA+jBeOQ=",
-  "Source": "AuthNet",
-  "BasePath": "_content/AuthNet",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"JoISfiFiid7CF5xAEzA1HG4QhoVp1HoPZlERA+jBeOQ=","Source":"AuthNet","BasePath":"_content/AuthNet","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

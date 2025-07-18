@@ -25,6 +25,8 @@
                         <th scope="col"><i class="bi bi-calendar-week me-1"></i> Archived At</th>
                         <th scope="col"><i class="bi bi-building me-1"></i> Name</th>
                         <th scope="col"><i class="bi bi-geo-alt me-1"></i> Address</th>
+                        <th scope="col"><i class="fa fa-mobile-phone me-1"></i> Contact</th>
+                        <th scope="col"><i class="fa fa-voicemail me-1"></i> Email</th>
                         <th scope="col"><i class="bi bi-receipt me-1"></i> GSTIN</th>
                     </tr>
                 </thead>
@@ -35,6 +37,8 @@
                             <td>@item.ArchivedAt.ToString("dd MMM yyyy, hh:mm tt")</td>
                             <td>@item.Name</td>
                             <td>@item.Address</td>
+                            <td>@item.ContactNumber</td>
+                            <td>@item.Email</td>
                             <td>@item.GSTIN</td>
                         </tr>
                     }

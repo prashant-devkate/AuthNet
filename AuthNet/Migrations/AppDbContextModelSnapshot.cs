@@ -106,6 +106,10 @@ namespace AuthNet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GSTIN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -161,6 +165,14 @@ namespace AuthNet.Migrations
 
                     b.Property<DateTime>("ArchivedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GSTIN")
                         .IsRequired()
@@ -357,11 +369,10 @@ namespace AuthNet.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("CostPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("HotKey")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -370,11 +381,14 @@ namespace AuthNet.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("ProductCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductKey")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SellPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("SupplierId")
                         .HasColumnType("int");
@@ -646,7 +660,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 7, 13, 4, 10, 54, 709, DateTimeKind.Utc).AddTicks(2057),
+                            CreatedAt = new DateTime(2025, 7, 18, 10, 40, 21, 107, DateTimeKind.Utc).AddTicks(2175),
                             Email = "admin.helpdesk@gmail.com",
                             Firstname = "Admin",
                             Lastname = "Admin",
