@@ -1007,6 +1007,32 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetDailyProfit",
+    "RelativePath": "api/Sales/DailyProfit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetHalfYearlyProfit",
+    "RelativePath": "api/Sales/HalfYearlyProfit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
     "Method": "GetMonthlySales",
     "RelativePath": "api/Sales/Monthly",
     "HttpMethod": "GET",
@@ -1017,8 +1043,44 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetMonthlyProfit",
+    "RelativePath": "api/Sales/MonthlyProfit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetWeeklyProfit",
+    "RelativePath": "api/Sales/WeeklyProfit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
     "Method": "GetYearlySales",
     "RelativePath": "api/Sales/Yearly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetYearlyProfit",
+    "RelativePath": "api/Sales/YearlyProfit",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

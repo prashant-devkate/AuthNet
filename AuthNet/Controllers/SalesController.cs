@@ -91,5 +91,40 @@ namespace AuthNet.Controllers
 
             return Ok(new { result.Message });
         }
+
+        [HttpGet("DailyProfit")]
+        public async Task<IActionResult> GetDailyProfit()
+        {
+            var result = await _reportService.CalculateDailyProfitAsync();
+            return Ok(result);
+        }
+
+        [HttpGet("WeeklyProfit")]
+        public async Task<IActionResult> GetWeeklyProfit()
+        {
+            var result = await _reportService.CalculateWeeklyProfitAsync();
+            return Ok(result);
+        }
+        
+        [HttpGet("MonthlyProfit")]
+        public async Task<IActionResult> GetMonthlyProfit([FromQuery] int? year)
+        {
+            var result = await _reportService.CalculateMonthlyProfitAsync(year);
+            return Ok(result);
+        }
+
+        [HttpGet("HalfYearlyProfit")]
+        public async Task<IActionResult> GetHalfYearlyProfit([FromQuery] int? year)
+        {
+            var result = await _reportService.CalculateHalfYearlyProfitAsync(year);
+            return Ok(result);
+        }
+
+        [HttpGet("YearlyProfit")]
+        public async Task<IActionResult> GetYearlyProfit()
+        {
+            var result = await _reportService.CalculateYearlyProfitAsync();
+            return Ok(result);
+        }
     }
 }

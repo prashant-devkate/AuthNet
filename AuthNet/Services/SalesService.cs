@@ -16,7 +16,7 @@ namespace AuthNet.Services
 
         public async Task<IEnumerable<Sale>> GetAllAsync()
         {
-            return await _context.Sales.ToListAsync();
+            return await _context.Sales.Include(s => s.SaleItems).ToListAsync();
         }
 
         public async Task<Sale?> GetByIdAsync(int id)
@@ -36,6 +36,9 @@ namespace AuthNet.Services
             {
                 InvoiceNo = Guid.NewGuid().ToString().Substring(0, 8).ToUpper(),
                 InvoiceDate = DateTime.Now,
+                PrincipalAmount = saleDto.PrincipalAmount,
+                DiscountedAmount = saleDto.DiscountedAmount,
+                AfterTaxAmount = saleDto.AfterTaxAmount,
                 TotalAmount = saleDto.TotalAmount,
                 Template = saleDto.Template,
                 CreatedAt = DateTime.Now,
@@ -202,6 +205,9 @@ namespace AuthNet.Services
                 {
                     InvoiceNo = s.InvoiceNo,
                     InvoiceDate = s.InvoiceDate,
+                    PrincipalAmount = s.PrincipalAmount,
+                    DiscountedAmount = s.DiscountedAmount,
+                    AfterTaxAmount = s.AfterTaxAmount,
                     TotalAmount = s.TotalAmount,
                     Items = s.SaleItems.Select(i => new ReportSaleItemDto
                     {
@@ -213,5 +219,211 @@ namespace AuthNet.Services
                 }).ToList()
             };
         }
+
+
+        public async Task<DailyProfitDto> CalculateDailyProfitAsync()
+        {
+            DateTime date = DateTime.Today;
+
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .Where(si => si.Sale.InvoiceDate.Date == date.Date)
+                .ToListAsync();
+
+            // Get product cost prices
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            decimal totalProfit = 0;
+
+            foreach (var item in saleItems)
+            {
+                if (products.TryGetValue(item.ProductId, out var product))
+                {
+                    var profitPerItem = item.UnitPrice - product.CostPrice;
+                    totalProfit += profitPerItem * item.Quantity;
+                }
+            }
+
+            return new DailyProfitDto
+            {
+                Date = date.Date,
+                TotalProfit = totalProfit
+            };
+        }
+
+        public async Task<List<DailyProfitDto>> CalculateWeeklyProfitAsync()
+        {
+            DateTime startDate = DateTime.Today.AddDays(-6);
+            DateTime endDate = DateTime.Today;
+
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .Where(si => si.Sale.InvoiceDate.Date >= startDate && si.Sale.InvoiceDate.Date <= endDate)
+                .ToListAsync();
+
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            var grouped = saleItems
+                .GroupBy(si => si.Sale.InvoiceDate.Date)
+                .OrderBy(g => g.Key)
+                .Select(g =>
+                {
+                    decimal profit = 0;
+                    foreach (var item in g)
+                    {
+                        if (products.TryGetValue(item.ProductId, out var product))
+                        {
+                            var profitPerItem = item.UnitPrice - product.CostPrice;
+                            profit += profitPerItem * item.Quantity;
+                        }
+                    }
+
+                    return new DailyProfitDto
+                    {
+                        Date = g.Key,
+                        TotalProfit = profit
+                    };
+                })
+                .ToList();
+
+            return grouped;
+        }
+
+        public async Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null)
+        {
+            year ??= DateTime.Today.Year;
+
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .Where(si => si.Sale.InvoiceDate.Year == year)
+                .ToListAsync();
+
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            var grouped = saleItems
+                .GroupBy(si => new { si.Sale.InvoiceDate.Year, si.Sale.InvoiceDate.Month })
+                .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month)
+                .Select(g =>
+                {
+                    decimal profit = 0;
+                    foreach (var item in g)
+                    {
+                        if (products.TryGetValue(item.ProductId, out var product))
+                        {
+                            var profitPerItem = item.UnitPrice - product.CostPrice;
+                            profit += profitPerItem * item.Quantity;
+                        }
+                    }
+
+                    return new MonthlyProfitDto
+                    {
+                        Year = g.Key.Year,
+                        Month = g.Key.Month,
+                        TotalProfit = profit
+                    };
+                })
+                .ToList();
+
+            return grouped;
+        }
+
+        public async Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null)
+        {
+            year ??= DateTime.Today.Year;
+
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .Where(si => si.Sale.InvoiceDate.Year == year)
+                .ToListAsync();
+
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            var grouped = saleItems
+                .GroupBy(si =>
+                {
+                    var month = si.Sale.InvoiceDate.Month;
+                    var half = (month <= 6) ? "H1" : "H2";
+                    return new { si.Sale.InvoiceDate.Year, Half = half };
+                })
+                .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Half)
+                .Select(g =>
+                {
+                    decimal profit = 0;
+                    foreach (var item in g)
+                    {
+                        if (products.TryGetValue(item.ProductId, out var product))
+                        {
+                            var profitPerItem = item.UnitPrice - product.CostPrice;
+                            profit += profitPerItem * item.Quantity;
+                        }
+                    }
+
+                    return new HalfYearlyProfitDto
+                    {
+                        Year = g.Key.Year,
+                        Half = g.Key.Half,
+                        TotalProfit = profit
+                    };
+                })
+                .ToList();
+
+            return grouped;
+        }
+
+        public async Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync()
+        {
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .ToListAsync();
+
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            var grouped = saleItems
+                .GroupBy(si => si.Sale.InvoiceDate.Year)
+                .OrderBy(g => g.Key)
+                .Select(g =>
+                {
+                    decimal profit = 0;
+                    foreach (var item in g)
+                    {
+                        if (products.TryGetValue(item.ProductId, out var product))
+                        {
+                            var profitPerItem = item.UnitPrice - product.CostPrice;
+                            profit += profitPerItem * item.Quantity;
+                        }
+                    }
+
+                    return new YearlyProfitDto
+                    {
+                        Year = g.Key,
+                        TotalProfit = profit
+                    };
+                })
+                .ToList();
+
+            return grouped;
+        }
+
+
     }
 }

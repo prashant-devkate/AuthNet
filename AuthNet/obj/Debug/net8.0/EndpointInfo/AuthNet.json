@@ -1604,6 +1604,86 @@
         }
       }
     },
+    "/api/Sales/DailyProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sales/WeeklyProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sales/MonthlyProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sales/HalfYearlyProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sales/YearlyProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Settings/Save": {
       "post": {
         "tags": [
@@ -2570,7 +2650,6 @@
             "format": "double"
           },
           "productKey": {
-            "pattern": "^[A-Za-z0-9]$",
             "type": "integer",
             "format": "int32"
           },
@@ -2723,6 +2802,18 @@
             "type": "string",
             "format": "date-time"
           },
+          "principalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountedAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "afterTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
           "totalAmount": {
             "type": "number",
             "format": "double"
@@ -2755,6 +2846,18 @@
           "invoiceDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "principalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountedAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "afterTaxAmount": {
+            "type": "number",
+            "format": "double"
           },
           "totalAmount": {
             "type": "number",

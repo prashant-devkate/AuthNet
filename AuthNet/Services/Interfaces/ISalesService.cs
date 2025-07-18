@@ -14,5 +14,10 @@ namespace AuthNet.Services.Interfaces
         Task<ReportResultDto> GetDailySalesAsync();
         Task<ReportResultDto> GetMonthlySalesAsync();
         Task<ReportResultDto> GetYearlySalesAsync();
+        Task<DailyProfitDto> CalculateDailyProfitAsync();
+        Task<List<DailyProfitDto>> CalculateWeeklyProfitAsync();
+        Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null);
+        Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null);
+        Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync();
     }
 }
