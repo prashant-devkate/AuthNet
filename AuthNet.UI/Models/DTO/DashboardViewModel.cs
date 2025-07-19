@@ -2,12 +2,9 @@
 {
     public class DashboardViewModel
     {
-        public int TotalProducts { get; set; }
-        public int TotalCategories { get; set; }
-        public int TotalSuppliers { get; set; }
-        public int TotalTasks { get; set; }
-        public int TotalOrders { get; set; }
-        public int TotalDailySales { get; set; }
+        public DailyProfitDto DailySales { get; set; }
+        public MonthlyProfitDto MonthlySales { get; set; }
+        public YearlyProfitDto YearlySales { get; set; }
         public List<TaskItemDto> Tasks { get; set; } = new();
     }
 }

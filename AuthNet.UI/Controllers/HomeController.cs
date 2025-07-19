@@ -19,16 +19,14 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
+        ViewBag.ApiBaseUrl = _httpClient.BaseAddress?.ToString() ?? "https://localhost:7165/"; // Fallback
         var model = new DashboardViewModel();
 
         try
         {
-            model.TotalProducts = await GetCountFromApi("api/Products/count");
-            model.TotalCategories = await GetCountFromApi("api/Categories/count");
-            model.TotalSuppliers = await GetCountFromApi("api/Suppliers/count");
-            model.TotalTasks = await GetCountFromApi("api/Tasks/count");
-            model.TotalOrders = await GetCountFromApi("api/Orders/count");
-            model.TotalDailySales = await GetCountFromApi("api/Sales/count");
+            model.DailySales = await _httpClient.GetFromJsonAsync<DailyProfitDto>("api/Sales/DailyProfit");
+            model.MonthlySales = await _httpClient.GetFromJsonAsync<MonthlyProfitDto>("api/Sales/CurrentMonthProfit");
+            model.YearlySales = await _httpClient.GetFromJsonAsync<YearlyProfitDto>("api/Sales/CurrentYearProfit");
             model.Tasks = await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/Tasks");
 
             // Fetch and set company logo
@@ -45,8 +43,16 @@ public class HomeController : Controller
         }
         catch (Exception)
         {
-            // Handle errors or fallback values
-            model.TotalProducts = model.TotalCategories = model.TotalSuppliers = model.TotalTasks = 0;
+            if (model.DailySales == null)
+                model.DailySales = new DailyProfitDto();
+
+            if (model.MonthlySales == null)
+                model.MonthlySales = new MonthlyProfitDto();
+
+            if (model.YearlySales == null)
+                model.YearlySales = new YearlyProfitDto();
+
+            model.DailySales.TotalProfit = model.MonthlySales.TotalProfit = model.YearlySales.TotalProfit = 0;
         }
 
         return View("Index", model);

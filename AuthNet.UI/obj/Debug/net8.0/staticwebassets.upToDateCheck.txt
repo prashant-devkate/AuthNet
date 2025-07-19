@@ -9,8 +9,6 @@ wwwroot\img\undraw_profile_3.svg
 wwwroot\img\undraw_rocket.svg
 wwwroot\invTemplates\invoice-classic.html
 wwwroot\invTemplates\invoice-modern.html
-wwwroot\js\demo\chart-area-demo.js
-wwwroot\js\demo\chart-bar-demo.js
 wwwroot\js\demo\chart-pie-demo.js
 wwwroot\js\demo\datatables-demo.js
 wwwroot\js\sb-admin-2.js

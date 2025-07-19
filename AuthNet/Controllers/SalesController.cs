@@ -113,6 +113,13 @@ namespace AuthNet.Controllers
             return Ok(result);
         }
 
+        [HttpGet("CurrentMonthProfit")]
+        public async Task<IActionResult> GetCurrentMonthProfit()
+        {
+            var result = await _reportService.CalculateCurrentMonthProfitAsync();
+            return Ok(result);
+        }
+
         [HttpGet("HalfYearlyProfit")]
         public async Task<IActionResult> GetHalfYearlyProfit([FromQuery] int? year)
         {
@@ -126,5 +133,14 @@ namespace AuthNet.Controllers
             var result = await _reportService.CalculateYearlyProfitAsync();
             return Ok(result);
         }
+
+        [HttpGet("CurrentYearProfit")]
+        public async Task<IActionResult> GetCurrentYearProfit()
+        {
+            var result = await _reportService.CalculateCurrentYearProfitAsync();
+            return Ok(result);
+        }
+
+
     }
 }

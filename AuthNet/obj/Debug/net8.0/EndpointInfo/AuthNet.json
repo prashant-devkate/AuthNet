@@ -1157,6 +1157,18 @@
         }
       }
     },
+    "/api/Products/CategoryWiseProductCount": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Purchase": {
       "get": {
         "tags": [
@@ -1650,6 +1662,18 @@
         }
       }
     },
+    "/api/Sales/CurrentMonthProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Sales/HalfYearlyProfit": {
       "get": {
         "tags": [
@@ -1673,6 +1697,18 @@
       }
     },
     "/api/Sales/YearlyProfit": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sales/CurrentYearProfit": {
       "get": {
         "tags": [
           "Sales"

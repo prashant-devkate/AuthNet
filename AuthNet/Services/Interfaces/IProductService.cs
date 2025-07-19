@@ -11,5 +11,6 @@ namespace AuthNet.Services.Interfaces
         Task<OperationResponse> AddAsync(Product product);
         Task<OperationResponse> UpdateAsync(int id, Product product);
         Task<OperationResponse> DeleteAsync(int id);
+        Task<List<CategoryProductCountDto>> GetCategoryWiseProductCountAsync();
     }
 }

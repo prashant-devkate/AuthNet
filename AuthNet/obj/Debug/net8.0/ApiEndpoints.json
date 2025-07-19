@@ -720,6 +720,16 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.ProductsController",
+    "Method": "GetCategoryWiseProductCount",
+    "RelativePath": "api/Products/CategoryWiseProductCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.ProductsController",
     "Method": "GetProductCount",
     "RelativePath": "api/Products/count",
     "HttpMethod": "GET",
@@ -989,6 +999,26 @@
     "ContainingType": "AuthNet.Controllers.SalesController",
     "Method": "GetSaleCount",
     "RelativePath": "api/Sales/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetCurrentMonthProfit",
+    "RelativePath": "api/Sales/CurrentMonthProfit",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetCurrentYearProfit",
+    "RelativePath": "api/Sales/CurrentYearProfit",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

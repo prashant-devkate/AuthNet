@@ -257,9 +257,10 @@ namespace AuthNet.Services
 
         public async Task<List<DailyProfitDto>> CalculateWeeklyProfitAsync()
         {
-            DateTime startDate = DateTime.Today.AddDays(-6);
+            DateTime startDate = DateTime.Today.AddDays(-6); // 7 days including today
             DateTime endDate = DateTime.Today;
 
+            // Step 1: Fetch sale items for the past 7 days
             var saleItems = await _context.SaleItems
                 .Include(si => si.Sale)
                 .Where(si => si.Sale.InvoiceDate.Date >= startDate && si.Sale.InvoiceDate.Date <= endDate)
@@ -271,10 +272,10 @@ namespace AuthNet.Services
                 .Where(p => productIds.Contains(p.ProductId))
                 .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            var grouped = saleItems
+            // Step 2: Group profits by date where sales exist
+            var profitByDate = saleItems
                 .GroupBy(si => si.Sale.InvoiceDate.Date)
-                .OrderBy(g => g.Key)
-                .Select(g =>
+                .ToDictionary(g => g.Key, g =>
                 {
                     decimal profit = 0;
                     foreach (var item in g)
@@ -285,17 +286,25 @@ namespace AuthNet.Services
                             profit += profitPerItem * item.Quantity;
                         }
                     }
+                    return profit;
+                });
 
+            // Step 3: Generate full 7-day list including days with 0 profit
+            var result = Enumerable.Range(0, 7)
+                .Select(i =>
+                {
+                    var date = startDate.AddDays(i);
                     return new DailyProfitDto
                     {
-                        Date = g.Key,
-                        TotalProfit = profit
+                        Date = date,
+                        TotalProfit = profitByDate.TryGetValue(date, out var profit) ? profit : 0
                     };
                 })
                 .ToList();
 
-            return grouped;
+            return result;
         }
+
 
         public async Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null)
         {
@@ -338,6 +347,54 @@ namespace AuthNet.Services
 
             return grouped;
         }
+
+        public async Task<MonthlyProfitDto> CalculateCurrentMonthProfitAsync()
+        {
+            var today = DateTime.Today;
+            int currentYear = today.Year;
+            int currentMonth = today.Month;
+
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .Where(si => si.Sale.InvoiceDate.Year == currentYear &&
+                             si.Sale.InvoiceDate.Month == currentMonth)
+                .ToListAsync();
+
+            if (!saleItems.Any())
+            {
+                return new MonthlyProfitDto
+                {
+                    Year = currentYear,
+                    Month = currentMonth,
+                    TotalProfit = 0
+                };
+            }
+
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            decimal totalProfit = 0;
+
+            foreach (var item in saleItems)
+            {
+                if (products.TryGetValue(item.ProductId, out var product))
+                {
+                    var profitPerItem = item.UnitPrice - product.CostPrice;
+                    totalProfit += profitPerItem * item.Quantity;
+                }
+            }
+
+            return new MonthlyProfitDto
+            {
+                Year = currentYear,
+                Month = currentMonth,
+                TotalProfit = totalProfit
+            };
+        }
+
 
         public async Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null)
         {
@@ -423,6 +480,49 @@ namespace AuthNet.Services
 
             return grouped;
         }
+
+        public async Task<YearlyProfitDto> CalculateCurrentYearProfitAsync()
+        {
+            int currentYear = DateTime.Today.Year;
+
+            var saleItems = await _context.SaleItems
+                .Include(si => si.Sale)
+                .Where(si => si.Sale.InvoiceDate.Year == currentYear)
+                .ToListAsync();
+
+            if (!saleItems.Any())
+            {
+                return new YearlyProfitDto
+                {
+                    Year = currentYear,
+                    TotalProfit = 0
+                };
+            }
+
+            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+
+            var products = await _context.Products
+                .Where(p => productIds.Contains(p.ProductId))
+                .ToDictionaryAsync(p => p.ProductId, p => p);
+
+            decimal profit = 0;
+
+            foreach (var item in saleItems)
+            {
+                if (products.TryGetValue(item.ProductId, out var product))
+                {
+                    var profitPerItem = item.UnitPrice - product.CostPrice;
+                    profit += profitPerItem * item.Quantity;
+                }
+            }
+
+            return new YearlyProfitDto
+            {
+                Year = currentYear,
+                TotalProfit = profit
+            };
+        }
+
 
 
     }

@@ -73,6 +73,12 @@ namespace AuthNet.Controllers
 
             return Ok(new { result.Message });
         }
-    }
 
+        [HttpGet("CategoryWiseProductCount")]
+        public async Task<IActionResult> GetCategoryWiseProductCount()
+        {
+            var data = await _service.GetCategoryWiseProductCountAsync();
+            return Ok(data);
+        }
+    }
 }

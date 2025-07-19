@@ -19,5 +19,7 @@ namespace AuthNet.Services.Interfaces
         Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null);
         Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null);
         Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync();
+        Task<MonthlyProfitDto> CalculateCurrentMonthProfitAsync();
+        Task<YearlyProfitDto> CalculateCurrentYearProfitAsync();
     }
 }

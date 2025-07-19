@@ -162,5 +162,21 @@ namespace AuthNet.Services
                 };
             }
         }
+
+        public async Task<List<CategoryProductCountDto>> GetCategoryWiseProductCountAsync()
+        {
+            var result = await _context.Products
+                .Where(p => p.Category != null)
+                .GroupBy(p => p.Category.Name)
+                .Select(g => new CategoryProductCountDto
+                {
+                    CategoryName = g.Key,
+                    ProductCount = g.Count()
+                })
+                .ToListAsync();
+
+            return result;
+        }
+
     }
 }
