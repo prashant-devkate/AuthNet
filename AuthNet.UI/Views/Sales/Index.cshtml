@@ -498,19 +498,6 @@
         const templates = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(templateMap));
         const cart = {};
 
-        // Fallback products array if server data is empty
-        if (!products || !Array.isArray(products) || products.length === 0) {
-            console.warn('Products array is empty or invalid, using fallback:', products);
-            products = [
-                { ProductId: "1", Name: "Test Product 1", Price: 10.00, CategoryId: "1", ProductKey: "T1" },
-                { ProductId: "2", Name: "Test Product 2", Price: 20.00, CategoryId: "1", ProductKey: "T2" }
-            ];
-        }
-
-        // Log products array and sample ProductIds
-        console.log('Products array:', products);
-        console.log('Sample ProductIds:', products.slice(0, 2).map(p => p.ProductId));
-
         // Product Search and Category Filter Functionality
         const searchInput = document.getElementById('productSearch');
         const categoryFilter = document.getElementById('categoryFilter');
@@ -615,10 +602,7 @@
             }
 
             const discountAmount = total * discountPercent / 100;
-            const finalTotalAfterDiscount = Math.max(total - discountAmount, 0);
-            const cgstAmount = finalTotalAfterDiscount * cgstTax / 100;
-            const sgstAmount = finalTotalAfterDiscount * sgstTax / 100;
-            const finalTotal = Math.max(finalTotalAfterDiscount + sgstAmount + cgstAmount, 0);
+            const finalTotal = Math.max(total - discountAmount, 0);
             grandTotalCell.textContent = `₹${finalTotal.toFixed(2)}`;
 
             $('#cartTable').DataTable({
@@ -653,27 +637,42 @@
             return await res.text();
         }
 
-        async function printCart() {
+                async function printCart() {
+            // Get selected template ID
             const tplId = document.getElementById('tplSelect').value;
+            if (!tplId) {
+                showToast('Please select a template.', 'error');
+                console.error('No template selected.');
+                return;
+            }
+
+            // Get template details
             const tpl = templates[tplId];
             if (!tpl) {
                 showToast('Template not found.', 'error');
+                console.error('Template not found for ID:', tplId);
                 return;
             }
 
+            // Construct template filename
             const layout = (tpl.layout || '').toLowerCase();
             const fileName = `invoice-${layout}.html`;
+            console.log('Attempting to load template:', fileName);
 
+            // Load template
             let html;
             try {
                 html = await loadTemplateFromLocal(fileName);
+                console.log('Template loaded successfully:', fileName);
             } catch (err) {
-                showToast("Could not load template file: " + fileName, 'error');
-                console.error(err);
+                showToast(`Could not load template file: ${fileName}`, 'error');
+                console.error('Template load error:', err);
                 return;
             }
 
-            let rows = '', total = 0;
+            // Calculate cart totals and taxes
+            let rows = '';
+            let total = 0;
             for (const k in cart) {
                 const i = cart[k];
                 const amt = i.qty * i.price;
@@ -688,17 +687,13 @@
 
             const discountPercent = parseFloat(document.getElementById('discountPercent')?.value) || 0;
             const discountAmount = total * discountPercent / 100;
-            const finalTotalAfterDiscount = Math.max(total - discountAmount, 0);
-            const cgstAmount = finalTotalAfterDiscount * cgstTax / 100;
-            const sgstAmount = finalTotalAfterDiscount * sgstTax / 100;
-            const igstAmount = finalTotalAfterDiscount * igstTax / 100;
-            const finalTotalAfterDiscountAndTaxes = Math.max(finalTotalAfterDiscount + sgstAmount + cgstAmount, 0);
+            const taxableAmount = Math.max(total - discountAmount, 0);
 
+            // Replace placeholders in the template
             const filledHtml = html
                 .replace('{{rows}}', rows)
-                .replace('{{grandTotal}}', `₹${finalTotalAfterDiscount.toFixed(2)}`)
-                .replace('{{grandTotalAfterDiscountAndTaxes}}', finalTotalAfterDiscountAndTaxes)
-                .replace('{{total}}', total)
+                .replace('{{grandTotal}}', `₹${taxableAmount.toFixed(2)}`)
+                .replace('{{total}}', `₹${total.toFixed(2)}`)
                 .replace('{{notes}}', tpl.notes ?? '')
                 .replace('{{terms}}', tpl.terms ?? '')
                 .replace('{{date}}', new Date().toLocaleDateString())
@@ -706,21 +701,19 @@
                 .replace('{{shopAddress}}', companyAddress)
                 .replace('{{shopContact}}', companyContact)
                 .replace('{{gstNumber}}', companyGstNo)
-                .replace('{{cgst}}', cgstTax)
-                .replace('{{sgst}}', sgstTax)
-                .replace('{{cgstAmount}}', cgstAmount)
-                .replace('{{sgstAmount}}', sgstAmount)
                 .replace('{{discountAmount}}', `₹${discountAmount.toFixed(2)}`)
-                .replace('{{discountPercent}}', discountPercent)
+                .replace('{{discountPercent}}', `${discountPercent.toFixed(1)}%`)
                 .replace('{{customerName}}', 'John Doe')
                 .replace('{{customerPhone}}', '9876543210')
                 .replace('{{invoiceNumber}}', 'INV-1023');
 
+            // Update print area and trigger print
             const area = document.getElementById('printArea');
             const keep = area.innerHTML;
             area.innerHTML = filledHtml;
+            console.log('Print area updated with:', filledHtml.substring(0, 200) + '...'); // Log first 200 chars for debugging
             window.print();
-            area.innerHTML = keep;
+            area.innerHTML = keep; // Restore original content
         }
 
         let invoiceSequence = 1;

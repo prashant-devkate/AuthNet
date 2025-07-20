@@ -24,6 +24,29 @@ namespace AuthNet.Controllers
             return Ok(result);
         }
 
+        [HttpGet("daily-sales-excel")]
+        public async Task<IActionResult> GetDailySalesExcel()
+        {
+            var fileContents = await _reportService.GenerateDailySalesExcelAsync();
+
+            var fileName = $"DailySales_{DateTime.Today:yyyyMMdd}.xlsx";
+            return File(fileContents,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        fileName);
+        }
+
+        [HttpGet("monthly-sales-excel")]
+        public async Task<IActionResult> GetMonthlySalesExcel()
+        {
+            var fileContents = await _reportService.GenerateMonthlySalesExcelAsync();
+
+            var fileName = $"MonthlySales_{DateTime.Today:yyyyMM}.xlsx";
+            return File(fileContents,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        fileName);
+        }
+
+
         [HttpGet("Monthly")]
         public async Task<IActionResult> GetMonthlySales()
         {

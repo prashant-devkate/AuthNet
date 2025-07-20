@@ -1037,6 +1037,16 @@
   },
   {
     "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetDailySalesExcel",
+    "RelativePath": "api/Sales/daily-sales-excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
     "Method": "GetDailyProfit",
     "RelativePath": "api/Sales/DailyProfit",
     "HttpMethod": "GET",
@@ -1065,6 +1075,16 @@
     "ContainingType": "AuthNet.Controllers.SalesController",
     "Method": "GetMonthlySales",
     "RelativePath": "api/Sales/Monthly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.SalesController",
+    "Method": "GetMonthlySalesExcel",
+    "RelativePath": "api/Sales/monthly-sales-excel",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

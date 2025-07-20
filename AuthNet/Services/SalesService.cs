@@ -2,7 +2,11 @@
 using AuthNet.Models.Domain;
 using AuthNet.Models.DTO;
 using AuthNet.Services.Interfaces;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.InkML;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
+using System.Drawing;
 
 namespace AuthNet.Services
 {
@@ -164,6 +168,102 @@ namespace AuthNet.Services
                 .ToListAsync();
 
             return BuildReport("Daily Sales", sales);
+        }
+
+       
+
+    public async Task<byte[]> GenerateDailySalesExcelAsync()
+        {
+            var today = DateTime.Today;
+            var tomorrow = today.AddDays(1);
+
+            var sales = await _context.Sales
+                .Where(s => s.InvoiceDate >= today && s.InvoiceDate < tomorrow)
+                .Include(s => s.SaleItems)
+                .ToListAsync();
+
+            using var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Daily Sales");
+
+            // Header
+            worksheet.Cell(1, 1).Value = "Invoice No";
+            worksheet.Cell(1, 2).Value = "Date";
+            worksheet.Cell(1, 3).Value = "Total Items";
+            worksheet.Cell(1, 4).Value = "Total Amount";
+
+            int row = 2;
+
+            if (sales.Any())
+            {
+                foreach (var sale in sales)
+                {
+                    worksheet.Cell(row, 1).Value = sale.InvoiceNo;
+                    worksheet.Cell(row, 2).Value = sale.InvoiceDate.ToString("yyyy-MM-dd");
+                    worksheet.Cell(row, 3).Value = sale.SaleItems.Count;
+                    worksheet.Cell(row, 4).Value = sale.SaleItems.Sum(item => item.Quantity * item.UnitPrice);
+                    row++;
+                }
+            }
+            else
+            {
+                worksheet.Cell(row, 1).Value = $"No sales data available for {today:yyyy-MM-dd}";
+                worksheet.Range(row, 1, row, 4).Merge();
+                worksheet.Cell(row, 1).Style.Font.Italic = true;
+                worksheet.Cell(row, 1).Style.Font.FontColor = XLColor.Gray;
+            }
+
+            using var stream = new MemoryStream();
+            workbook.SaveAs(stream);
+            return stream.ToArray();
+        }
+
+
+        public async Task<byte[]> GenerateMonthlySalesExcelAsync()
+        {
+            var today = DateTime.Today;
+            var firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
+            var firstDayOfNextMonth = firstDayOfMonth.AddMonths(1);
+
+            var sales = await _context.Sales
+                .Where(s => s.InvoiceDate >= firstDayOfMonth && s.InvoiceDate < firstDayOfNextMonth)
+                .Include(s => s.SaleItems)
+                .ToListAsync();
+
+            using var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Monthly Sales");
+
+            // Header
+            worksheet.Cell(1, 1).Value = "Invoice No";
+            worksheet.Cell(1, 2).Value = "Date";
+            worksheet.Cell(1, 3).Value = "Total Items";
+            worksheet.Cell(1, 4).Value = "Total Amount";
+
+            int row = 2;
+
+            if (sales.Any())
+            {
+                foreach (var sale in sales)
+                {
+                    worksheet.Cell(row, 1).Value = sale.InvoiceNo;
+                    worksheet.Cell(row, 2).Value = sale.InvoiceDate.ToString("yyyy-MM-dd");
+                    worksheet.Cell(row, 3).Value = sale.SaleItems.Count;
+                    worksheet.Cell(row, 4).Value = sale.SaleItems.Sum(item => item.Quantity * item.UnitPrice);
+                    row++;
+                }
+            }
+            else
+            {
+                worksheet.Cell(row, 1).Value = $"No sales data available for {firstDayOfMonth:MMMM yyyy}";
+                worksheet.Range(row, 1, row, 4).Merge();
+                worksheet.Cell(row, 1).Style.Font.Italic = true;
+                worksheet.Cell(row, 1).Style.Font.FontColor = XLColor.Gray;
+            }
+
+            worksheet.Columns().AdjustToContents();
+
+            using var stream = new MemoryStream();
+            workbook.SaveAs(stream);
+            return stream.ToArray();
         }
 
         public async Task<ReportResultDto> GetMonthlySalesAsync()

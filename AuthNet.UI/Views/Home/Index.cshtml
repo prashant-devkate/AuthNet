@@ -10,9 +10,16 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-    </a>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-primary shadow-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+        </button>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in">
+            <a class="dropdown-item" asp-action="DownloadDailySalesReport">Daily Sales Report</a>
+            <a class="dropdown-item" asp-action="DownloadMonthlySalesReport">Monthly Sales Report</a>
+        </div>
+    </div>
 </div>
 
 <!-- Content Row -->
@@ -129,6 +136,44 @@
 </div>
 
 <div class="row mt-4">
+
+
+    <!-- Quick Overview Card -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-success">Quick Overview</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/img/undraw_posting_photo.svg" alt="...">
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Products
+                        <span class="badge text-dark rounded-pill">@Model.TotalProducts</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Categories
+                        <span class="badge text-dark rounded-pill">@Model.TotalCategories</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Suppliers
+                        <span class="badge text-dark rounded-pill">@Model.TotalSuppliers</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Orders
+                        <span class="badge text-dark rounded-pill">@Model.TotalOrders</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Total Customers
+                        <span class="badge text-dark rounded-pill">@Model.TotalCustomers</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- Illustrations Card -->
     <div class="col-lg-6 mb-4">
         <div class="card shadow">
@@ -137,7 +182,7 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/img/undraw_posting_photo.svg" alt="...">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/img/undraw_product-explainer.svg" alt="...">
                 </div>
                 <p class="mb-2">
                     <strong>Our Software at a Glance</strong><br>
@@ -151,39 +196,6 @@
                     <li>Categories & Reporting</li>
                     <li>Interactive Charts & Graphs</li>
                     <li>User Roles & Access Control</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Overview Card -->
-    <div class="col-lg-6 mb-4">
-        <div class="card shadow">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-success">Quick Overview</h6>
-            </div>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total Products
-                        <span class="badge bg-primary rounded-pill">1,250</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Sales Today
-                        <span class="badge bg-success rounded-pill">$2,340</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Low Stock Alerts
-                        <span class="badge bg-warning text-dark rounded-pill">7</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Pending Orders
-                        <span class="badge bg-danger rounded-pill">5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Total Customers
-                        <span class="badge bg-info text-dark rounded-pill">320</span>
-                    </li>
                 </ul>
             </div>
         </div>

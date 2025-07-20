@@ -1,8 +1,9 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using AuthNet.UI.Models;
 using AuthNet.UI.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Diagnostics;
+using System.Net.Http;
 
 namespace AuthNet.UI.Controllers;
 
@@ -27,6 +28,11 @@ public class HomeController : Controller
             model.DailySales = await _httpClient.GetFromJsonAsync<DailyProfitDto>("api/Sales/DailyProfit");
             model.MonthlySales = await _httpClient.GetFromJsonAsync<MonthlyProfitDto>("api/Sales/CurrentMonthProfit");
             model.YearlySales = await _httpClient.GetFromJsonAsync<YearlyProfitDto>("api/Sales/CurrentYearProfit");
+            model.TotalProducts = await GetCountFromApi("api/Products/count");
+            model.TotalSuppliers = await GetCountFromApi("api/Suppliers/count");
+            model.TotalCategories = await GetCountFromApi("api/Categories/count");
+            model.TotalOrders = await GetCountFromApi("api/Orders/count");
+            model.TotalCustomers = await GetCountFromApi("api/Customers/count");
             model.Tasks = await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/Tasks");
 
             // Fetch and set company logo
@@ -52,7 +58,9 @@ public class HomeController : Controller
             if (model.YearlySales == null)
                 model.YearlySales = new YearlyProfitDto();
 
-            model.DailySales.TotalProfit = model.MonthlySales.TotalProfit = model.YearlySales.TotalProfit = 0;
+            model.DailySales.TotalProfit = model.MonthlySales.TotalProfit = model.YearlySales.TotalProfit =
+                model.TotalProducts = model.TotalCategories = model.TotalSuppliers = model.TotalOrders =
+                model.TotalCustomers = 0;
         }
 
         return View("Index", model);
@@ -79,4 +87,49 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [HttpGet]
+    public async Task<IActionResult> DownloadDailySalesReport()
+    {
+        var response = await _httpClient.GetAsync("/api/Sales/daily-sales-excel");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            return StatusCode((int)response.StatusCode, "Failed to fetch report");
+        }
+
+        var content = await response.Content.ReadAsByteArrayAsync();
+
+        // Get filename from Content-Disposition header
+        var fileName = response.Content.Headers.ContentDisposition?.FileName?.Trim('"')
+                       ?? "report.xlsx"; // fallback if header missing
+
+        var contentType = response.Content.Headers.ContentType?.ToString()
+                          ?? "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+        return File(content, contentType, fileName);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> DownloadMonthlySalesReport()
+    {
+        var response = await _httpClient.GetAsync("/api/Sales/monthly-sales-excel");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            return StatusCode((int)response.StatusCode, "Failed to fetch report");
+        }
+
+        var content = await response.Content.ReadAsByteArrayAsync();
+
+        // Get filename from Content-Disposition header
+        var fileName = response.Content.Headers.ContentDisposition?.FileName?.Trim('"')
+                       ?? $"MonthlySales_{DateTime.Today:yyyyMM}.xlsx";
+
+        var contentType = response.Content.Headers.ContentType?.ToString()
+                          ?? "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+        return File(content, contentType, fileName);
+    }
+
 }

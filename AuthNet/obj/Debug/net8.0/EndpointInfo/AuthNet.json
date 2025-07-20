@@ -1455,6 +1455,30 @@
         }
       }
     },
+    "/api/Sales/daily-sales-excel": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Sales/monthly-sales-excel": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Sales/Monthly": {
       "get": {
         "tags": [
