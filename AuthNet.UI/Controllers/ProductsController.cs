@@ -22,12 +22,23 @@ namespace AuthNet.UI.Controllers
             try
             {
                 var response = await _httpClient.GetAsync("api/Products");
+                var categories = await _httpClient.GetFromJsonAsync<List<CategoryViewModel>>("api/categories");
+                var suppliers = await _httpClient.GetFromJsonAsync<List<SupplierViewModel>>("api/suppliers");
+
                 response.EnsureSuccessStatusCode();
 
                 var data = await response.Content.ReadFromJsonAsync<IEnumerable<ProductDto>>();
                 if (data != null)
                 {
                     products.AddRange(data);
+                    foreach (var product in products)
+                    {
+                        var supplier = suppliers.FirstOrDefault(s => s.SupplierId == product.SupplierId);
+                        product.CompanyName = supplier?.CompanyName ?? "Unknown";
+
+                        var category = categories.FirstOrDefault(c => c.CategoryId == product.CategoryId);
+                        product.CategoryName = category?.Name ?? "Unknown";
+                    }
                 }
             }
             catch (Exception)

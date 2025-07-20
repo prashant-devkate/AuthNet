@@ -13,6 +13,8 @@ namespace AuthNet.UI.Models.DTO
         public string ProductCode { get; set; }
         public int CategoryId { get; set; }
         public int SupplierId { get; set; }
+        public string CompanyName { get; set; }
+        public string CategoryName { get; set; }
         //public InventoryData? Inventory { get; set; }
     }
 }

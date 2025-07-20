@@ -1,2 +1,0 @@
-C:\Users\Admin\AuthNet\AuthNet.UI\wwwroot\js\demo\chart-area-demo.js
-C:\Users\Admin\AuthNet\AuthNet.UI\wwwroot\js\demo\chart-bar-demo.js
