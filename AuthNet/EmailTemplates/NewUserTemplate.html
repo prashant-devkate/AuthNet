@@ -1,26 +1,93 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <title>Welcome to Our Platform</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background-color: #f3f4f6;
-            padding: 20px;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0;
         }
 
-        .card {
-            background: white;
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #fcd34d;
+            padding: 24px;
+            text-align: center;
+        }
+
+            .header h1 {
+                margin: 0;
+                color: #1f2937;
+                font-size: 24px;
+            }
+
+        .content {
+            padding: 32px 24px;
+            color: #374151;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+            .content p {
+                margin-bottom: 16px;
+            }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #facc15;
+            color: #1f2937;
             border-radius: 8px;
-            padding: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #eab308;
+            }
+
+        .footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 13px;
+            color: #9ca3af;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h2>Welcome to Our Platform, {{UserName}}!</h2>
-        <p>We're excited to have you on board. You can log in using your email and the password you created.</p>
-        <p>Start exploring our platform now.</p>
-        <p>Cheers,<br />The Team</p>
+
+    <div class="container">
+        <div class="header">
+            <h1>Welcome, {{UserName}}!</h1>
+        </div>
+        <div class="content">
+            <p>We're thrilled to have you on board at <strong>InventoryPro</strong>! You can now log in using your email address and the password you created.</p>
+
+            <p>Start managing your inventory effortlessly and efficiently. Explore features, track sales, generate invoices, and much more.</p>
+
+            <a href="https://localhost:5198/" class="button">Login Now</a>
+
+            <p>Need help getting started? Contact us <a href="{{HelpCenterUrl}}" style="color: #1e40af;">Help Center</a>.</p>
+
+            <p>Cheers,<br>The InventoryPro Team</p>
+        </div>
+        <div class="footer">
+            &copy; 2025 InventoryPro. All rights reserved.
+        </div>
     </div>
+
 </body>
 </html>

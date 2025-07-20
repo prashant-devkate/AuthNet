@@ -53,6 +53,7 @@ namespace AuthNet.UI.Controllers
                 Address = dto.Address,
                 GSTIN = dto.GSTIN,
                 ContactNumber = dto.ContactNumber,
+                AlternateContactNumber = dto.AlternateContactNumber,
                 Email = dto.Email,
                 LogoFilePath = dto.LogoFilePath,
                 SignFilePath = dto.SignFilePath
@@ -74,6 +75,7 @@ namespace AuthNet.UI.Controllers
             content.Add(new StringContent(model.Address ?? ""), nameof(model.Address));
             content.Add(new StringContent(model.GSTIN ?? ""), nameof(model.GSTIN));
             content.Add(new StringContent(model.ContactNumber ?? ""), nameof(model.ContactNumber));
+            content.Add(new StringContent(model.AlternateContactNumber ?? ""), nameof(model.AlternateContactNumber));
             content.Add(new StringContent(model.Email ?? ""), nameof(model.Email));
 
             if (model.LogoUrl != null)
@@ -129,6 +131,7 @@ namespace AuthNet.UI.Controllers
             content.Add(new StringContent(model.Address ?? ""), nameof(model.Address));
             content.Add(new StringContent(model.GSTIN ?? ""), nameof(model.GSTIN));
             content.Add(new StringContent(model.ContactNumber ?? ""), nameof(model.ContactNumber));
+            content.Add(new StringContent(model.AlternateContactNumber ?? ""), nameof(model.AlternateContactNumber));
             content.Add(new StringContent(model.Email ?? ""), nameof(model.Email));
 
             if (model.LogoUrl != null)

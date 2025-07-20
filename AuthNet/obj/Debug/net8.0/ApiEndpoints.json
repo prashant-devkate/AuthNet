@@ -1201,6 +1201,11 @@
         "IsRequired": false
       },
       {
+        "Name": "AlternateContactNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Email",
         "Type": "System.String",
         "IsRequired": false
@@ -1268,6 +1273,11 @@
       },
       {
         "Name": "ContactNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AlternateContactNumber",
         "Type": "System.String",
         "IsRequired": false
       },

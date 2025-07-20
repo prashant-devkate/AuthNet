@@ -1771,6 +1771,9 @@
                   "ContactNumber": {
                     "type": "string"
                   },
+                  "AlternateContactNumber": {
+                    "type": "string"
+                  },
                   "Email": {
                     "type": "string"
                   },
@@ -1804,6 +1807,9 @@
                   "style": "form"
                 },
                 "ContactNumber": {
+                  "style": "form"
+                },
+                "AlternateContactNumber": {
                   "style": "form"
                 },
                 "Email": {
@@ -1883,6 +1889,9 @@
                   "ContactNumber": {
                     "type": "string"
                   },
+                  "AlternateContactNumber": {
+                    "type": "string"
+                  },
                   "Email": {
                     "type": "string"
                   },
@@ -1916,6 +1925,9 @@
                   "style": "form"
                 },
                 "ContactNumber": {
+                  "style": "form"
+                },
+                "AlternateContactNumber": {
                   "style": "form"
                 },
                 "Email": {
@@ -3093,6 +3105,18 @@
             "format": "int32"
           },
           "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstname": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastname": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
             "type": "string",
             "nullable": true
           }

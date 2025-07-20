@@ -38,6 +38,7 @@ namespace AuthNet.Services
                     Address = dto.Address,
                     GSTIN = dto.GSTIN,
                     ContactNumber = dto.ContactNumber,
+                    AlternateContactNumber = dto.AlternateContactNumber,
                     Email = dto.Email
                 };
 
@@ -120,6 +121,7 @@ namespace AuthNet.Services
                 Address = company.Address,
                 GSTIN = company.GSTIN,
                 ContactNumber = company.ContactNumber,
+                AlternateContactNumber = company.AlternateContactNumber,
                 Email = company.Email,
                 LogoUrl = company.LogoFilePath,
                 SignatureUrl = company.SignFilePath
@@ -139,6 +141,7 @@ namespace AuthNet.Services
                 Name = h.Name,
                 Address = h.Address,
                 ContactNumber = h.ContactNumber,
+                AlternateContactNumber = h.AlternateContactNumber,
                 Email = h.Email,
                 GSTIN = h.GSTIN
             }).ToList();
@@ -161,6 +164,7 @@ namespace AuthNet.Services
                     Address = company.Address,
                     GSTIN = company.GSTIN,
                     ContactNumber = company.ContactNumber,
+                    AlternateContactNumber = company.AlternateContactNumber,
                     Email = company.Email,
                     ArchivedAt = DateTime.UtcNow
                 };
@@ -170,6 +174,7 @@ namespace AuthNet.Services
                 company.Address = dto.Address;
                 company.GSTIN = dto.GSTIN;
                 company.ContactNumber = dto.ContactNumber;
+                company.AlternateContactNumber = dto.AlternateContactNumber;
                 company.Email = dto.Email;
 
                 string imageFolder = Path.Combine(_webHostEnvironment.ContentRootPath, "Images");
@@ -270,6 +275,8 @@ namespace AuthNet.Services
             company.Address = string.Empty;
             company.GSTIN = string.Empty;
             company.ContactNumber = string.Empty;
+            company.Email = string.Empty;
+            company.AlternateContactNumber = string.Empty;
 
             company.LogoName = null;
             company.LogoFilePath = null;

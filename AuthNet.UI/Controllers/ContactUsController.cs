@@ -2,7 +2,7 @@
 
 namespace AuthNet.UI.Controllers
 {
-    public class AuditLogsController : Controller
+    public class ContactUsController : Controller
     {
         public IActionResult Index()
         {

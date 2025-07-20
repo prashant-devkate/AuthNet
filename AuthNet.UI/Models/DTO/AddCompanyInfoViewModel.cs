@@ -18,6 +18,9 @@ namespace AuthNet.UI.Models.DTO
         [Phone, Required(ErrorMessage = "Phone number is required")]
         public string ContactNumber { get; set; }
 
+        [Phone, Required(ErrorMessage = "Alternate Phone number is required")]
+        public string AlternateContactNumber { get; set; }
+
         [EmailAddress, Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
 

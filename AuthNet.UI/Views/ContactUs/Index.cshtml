@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pro Version Features</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+            header h1 {
+                margin: 0;
+                font-size: 2rem;
+            }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #6c63ff;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+            .cta button {
+                padding: 12px 24px;
+                font-size: 1rem;
+                background-color: #6c63ff;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .cta button:hover {
+                    background-color: #5a54d1;
+                }
+
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Back Button -->
+        <div class="mb-3">
+            <a href="@Url.Action("Index", "Home")" class="text-primary text-decoration-none">
+                &larr; Back to Dashboard
+            </a>
+        </div>
+        <h1>Upgrade to Pro – Unlock Powerful Features</h1>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <div class="feature-title">Faster Performance</div>
+            <div class="feature-desc">Experience lightning-fast load times and smoother interactions.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <div class="feature-title">Advanced Reports</div>
+            <div class="feature-desc">Get detailed analytics and export custom reports.</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-title">Enhanced Security</div>
+            <div class="feature-desc">Protect your data with role-based access and audit logs.</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section style="padding: 40px 20px; display: flex; justify-content: center;">
+        <div style="max-width: 320px; width: 100%;">
+            <div style="
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 24px;
+            transition: box-shadow 0.3s ease;
+        ">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                    Contact us:                    
+                </div>
+                <div style="font-size: 0.95rem; color: #444; line-height: 1.6;">
+                    <div style="margin-bottom: 6px;">
+                        <i class="fas fa-envelope" style="margin-right: 8px; color: #6c63ff;"></i>
+                        meetprashant1234@gmail.com
+                    </div>
+                    <div>
+                        <i class="fas fa-phone" style="margin-right: 8px; color: #6c63ff;"></i>
+                        +91-9623547652
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

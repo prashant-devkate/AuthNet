@@ -101,6 +101,9 @@ namespace AuthNet.Services
                 }
 
                 user.Username = dto.Username;
+                user.Firstname = dto.Firstname;
+                user.Lastname = dto.Lastname;
+                user.Email = dto.Email;
                 await _context.SaveChangesAsync();
 
                 response.Status = "Success";

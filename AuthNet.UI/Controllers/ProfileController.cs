@@ -1,5 +1,6 @@
 ﻿using AuthNet.UI.Models.DTO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -20,6 +21,9 @@ namespace AuthNet.UI.Controllers
             var vm = new ProfileViewModel
             {
                 Username = HttpContext.Session.GetString("Username"),
+                Firstname = HttpContext.Session.GetString("Firstname"),
+                Lastname = HttpContext.Session.GetString("Lastname"),
+                Email = HttpContext.Session.GetString("Email"),
                 Role = HttpContext.Session.GetString("Role")
             };
             return View(vm);
@@ -32,7 +36,10 @@ namespace AuthNet.UI.Controllers
             return View(new UpdateProfileDTO
             {
                 UserId = HttpContext.Session.GetInt32("UserId") ?? 0,
-                Username = HttpContext.Session.GetString("Username")
+                Username = HttpContext.Session.GetString("Username"),
+                Firstname = HttpContext.Session.GetString("Firstname"),
+                Lastname = HttpContext.Session.GetString("Lastname"),
+                Email = HttpContext.Session.GetString("Email")
             });
         }
 
@@ -53,6 +60,9 @@ namespace AuthNet.UI.Controllers
             {
                 TempData["SuccessMessage"] = message;
                 HttpContext.Session.SetString("Username", dto.Username);
+                HttpContext.Session.SetString("Firstname", dto.Firstname);
+                HttpContext.Session.SetString("Lastname", dto.Lastname);
+                HttpContext.Session.SetString("Email", dto.Email);
             }
             else
             {

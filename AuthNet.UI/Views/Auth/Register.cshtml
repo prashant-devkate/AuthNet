@@ -6,22 +6,29 @@
 }
 
 <style>
+    body {
+        background-color: #fffbea;
+        font-family: "Segoe UI", sans-serif;
+    }
+
     .form-label {
         font-weight: 500;
+        color: #5a4f3a;
     }
 
     .form-control, .form-select {
         font-size: 0.92rem;
         padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
     }
 
-    .btn-primary {
-        background-color: #1e3a8a;
+    .btn-warning {
+        background-color: #f0b429;
         border: none;
     }
 
-        .btn-primary:hover {
-            background-color: #2b46a1;
+        .btn-warning:hover {
+            background-color: #e0a800;
         }
 
     .form-text-link {
@@ -31,12 +38,18 @@
 
         .form-text-link a {
             text-decoration: none;
-            color: #1e3a8a;
+            color: #b7791f;
         }
 
             .form-text-link a:hover {
                 text-decoration: underline;
             }
+
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 0.15rem 1.75rem rgba(58, 59, 69, 0.15);
+    }
 
     @@media (max-width: 576px) {
         .form-inline .col
@@ -49,21 +62,14 @@
     }
 </style>
 
-<div class="container py-4">
+<div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-            <div class="card shadow-sm border-0 rounded-4">
+            <div class="card bg-white">
                 <div class="card-body px-4 py-4">
-                    <h5 class="text-center mb-4">Create Account</h5>
+                    <h5 class="text-center mb-4 text-dark">Create Account</h5>
 
                     <form asp-action="Register" method="post" novalidate>
-
-                        <div class="mb-3">
-                            <label asp-for="Username" class="form-label"></label>
-                            <input asp-for="Username" class="form-control" placeholder="Username" />
-                            <span asp-validation-for="Username" class="text-danger small"></span>
-                        </div>
-
                         <div class="row g-2 mb-3">
                             <div class="col">
                                 <label asp-for="Firstname" class="form-label"></label>
@@ -77,29 +83,40 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Email" class="form-label"></label>
-                            <input asp-for="Email" class="form-control" placeholder="Email address" />
-                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        <div class="row g-2 mb-3">
+                            <div class="col">
+                                <label asp-for="Username" class="form-label"></label>
+                                <input asp-for="Username" class="form-control" placeholder="Username" />
+                                <span asp-validation-for="Username" class="text-danger small"></span>
+                            </div>
+                            <div class="col">
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Email address" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Role" class="form-label d-block">Role</label>
+                                <select asp-for="Role" class="form-select">
+                                    <option value="">Select Role</option>
+                                    <option>Admin</option>
+                                    <option>User</option>
+                                </select>
+                                <span asp-validation-for="Role" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Password" class="form-label d-block">Password</label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                                <span asp-validation-for="Password" class="text-danger small"></span>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Password" class="form-label"></label>
-                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
-                            <span asp-validation-for="Password" class="text-danger small"></span>
-                        </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Role" class="form-label"></label>
-                            <select asp-for="Role" class="form-select">
-                                <option value="">Select Role</option>
-                                <option>Admin</option>
-                                <option>User</option>
-                            </select>
-                            <span asp-validation-for="Role" class="text-danger small"></span>
-                        </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+
+                        <button type="submit" class="btn btn-warning w-100 text-white">Register</button>
                     </form>
 
                     <div class="form-text-link text-center mt-3">
