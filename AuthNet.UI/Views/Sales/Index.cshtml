@@ -639,7 +639,7 @@
 
         async function loadTemplateFromLocal(filename) {
             console.log('Loading template:', filename);
-            const res = await fetch(`/invoiceTemplates/${filename}`);
+            const res = await fetch(`/Invoices/${filename}`);
             if (!res.ok) throw new Error("Failed to load template: " + res.status);
             return await res.text();
         }

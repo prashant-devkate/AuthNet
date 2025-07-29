@@ -8,8 +8,8 @@ wwwroot\img\undraw_profile_1.svg
 wwwroot\img\undraw_profile_2.svg
 wwwroot\img\undraw_profile_3.svg
 wwwroot\img\undraw_rocket.svg
-wwwroot\invoiceTemplates\invoice-classic.html
-wwwroot\invoiceTemplates\invoice-modern.html
+wwwroot\Invoices\invoice-classic.html
+wwwroot\Invoices\invoice-modern.html
 wwwroot\js\demo\chart-pie-demo.js
 wwwroot\js\demo\datatables-demo.js
 wwwroot\js\sb-admin-2.js

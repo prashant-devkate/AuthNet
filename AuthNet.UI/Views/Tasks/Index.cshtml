@@ -1,0 +1,96 @@
+﻿@model List<AuthNet.UI.Models.DTO.TaskItemDto>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-tasks me-2"></i> Tasks</h1>
+    <a asp-controller="Tasks" asp-action="Add" class="d-none d-sm-inline-block btn btn-primary btn-icon-split btn-sm shadow-sm">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus-circle"></i>
+        </span>
+        <span class="text">Add Task</span>
+    </a>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Task List</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var p in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-semibold">@p.Title</td>
+                                        <td class="text-muted">@p.DueDate.ToString("dd MMM yyyy")</td>
+                                        <td>
+                                            <span class="badge bg-@p.BadgeColor">@p.DueLabel</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-warning btn-icon-split btn-sm me-1">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </span>
+                                            </a>
+                                            <form asp-action="Delete" asp-route-id="@p.Id"
+                                                  method="post" class="d-inline"
+                                                  onsubmit="return confirm('Delete this task?');">
+                                                <button class="btn btn-danger btn-icon-split btn-sm">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-4">
+                                        <i class="fas fa-info-circle me-2"></i>No tasks found.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                columnDefs: [
+                    { orderable: false, targets: 3 } // Disable ordering on Actions
+                ]
+            });
+        });
+    </script>
+}

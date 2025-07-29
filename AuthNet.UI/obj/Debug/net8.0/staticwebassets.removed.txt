@@ -1,0 +1,2 @@
+C:\Users\Admin\Source\Repos\AuthNet\AuthNet.UI\wwwroot\Inv\invoice-classic.html
+C:\Users\Admin\Source\Repos\AuthNet\AuthNet.UI\wwwroot\Inv\invoice-modern.html

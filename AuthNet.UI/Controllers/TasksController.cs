@@ -17,6 +17,50 @@ namespace AuthNet.UI.Controllers
             _httpClient = httpClientFactory.CreateClient("ApiClient");
         }
 
+        public async Task<IActionResult> Index()
+        {
+            var tasksResponse = await _httpClient.GetAsync("/api/Tasks");
+
+            var tasksList = new List<TaskItemDto>();
+
+            if (tasksResponse.IsSuccessStatusCode)
+            {
+                var tasksContent = await tasksResponse.Content.ReadAsStringAsync();
+                var tasks = JsonConvert.DeserializeObject<List<TaskItemDto>>(tasksContent);
+
+                tasksList = tasks.Select(t => new TaskItemDto
+                {
+                    Id = t.Id,
+                    Title = t.Title,
+                    DueDate = t.DueDate,
+                    BadgeColor = GetBadgeColor(t.DueDate),
+                    DueLabel = GetDueLabel(t.DueDate)
+                }).ToList();
+            }
+
+            return View(tasksList);
+        }
+
+        private string GetBadgeColor(DateTime dueDate)
+        {
+            if (dueDate.Date < DateTime.Today)
+                return "danger"; // Red
+            else if (dueDate.Date == DateTime.Today)
+                return "warning"; // Orange
+            else
+                return "success"; // Green
+        }
+
+        private string GetDueLabel(DateTime dueDate)
+        {
+            if (dueDate.Date < DateTime.Today)
+                return "Overdue";
+            else if (dueDate.Date == DateTime.Today)
+                return "Due Today";
+            else
+                return "Upcoming";
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -34,7 +78,7 @@ namespace AuthNet.UI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Task added successfully.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Tasks");
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -75,7 +119,7 @@ namespace AuthNet.UI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 TempData["SuccessMessage"] = "Task updated successfully.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Tasks");
             }
 
             var content = await response.Content.ReadAsStringAsync();
@@ -98,11 +142,11 @@ namespace AuthNet.UI.Controllers
                 var errorMsg = errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to delete task.";
 
                 TempData["ErrorMessage"] = errorMsg;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Tasks");
             }
 
             TempData["SuccessMessage"] = "Task deleted successfully.";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Tasks");
 
         }
 
