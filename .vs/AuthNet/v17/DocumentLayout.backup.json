@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\AuthNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\wwwroot\\invoices\\invoice-classic.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\wwwroot\\invoices\\invoice-classic.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\views\\sales\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\sales\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -23,27 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "invoice-classic.html",
-              "DocumentMoniker": "C:\\Users\\Admin\\Source\\Repos\\AuthNet\\AuthNet.UI\\wwwroot\\Invoices\\invoice-classic.html",
-              "RelativeDocumentMoniker": "AuthNet.UI\\wwwroot\\Invoices\\invoice-classic.html",
-              "ToolTip": "C:\\Users\\Admin\\Source\\Repos\\AuthNet\\AuthNet.UI\\wwwroot\\Invoices\\invoice-classic.html",
-              "RelativeToolTip": "AuthNet.UI\\wwwroot\\Invoices\\invoice-classic.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-07-29T16:59:29.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Sales\\Index.cshtml",
               "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Sales\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Sales\\Index.cshtml",
               "RelativeToolTip": "AuthNet.UI\\Views\\Sales\\Index.cshtml",
-              "ViewState": "AgIAAHECAAAAAAAAAAAvwIECAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAG4CAAAA8P7//38ZwIECAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-29T16:56:00.376Z",
+              "WhenOpened": "2025-07-30T03:00:33.417Z",
               "EditorCaption": ""
             }
           ]
