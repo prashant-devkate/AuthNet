@@ -9,7 +9,6 @@ wwwroot\img\undraw_profile_2.svg
 wwwroot\img\undraw_profile_3.svg
 wwwroot\img\undraw_rocket.svg
 wwwroot\InvoiceTemplates\invoice-classic.html
-wwwroot\InvoiceTemplates\invoice-modern.html
 wwwroot\js\demo\chart-pie-demo.js
 wwwroot\js\demo\datatables-demo.js
 wwwroot\js\sb-admin-2.js
@@ -1913,3 +1912,4 @@ wwwroot\vendor\jquery\jquery.min.map
 wwwroot\vendor\jquery\jquery.slim.js
 wwwroot\vendor\jquery\jquery.slim.min.js
 wwwroot\vendor\jquery\jquery.slim.min.map
+wwwroot\InvoiceTemplates\invoice-modern.html
