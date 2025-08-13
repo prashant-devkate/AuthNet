@@ -1196,6 +1196,11 @@
         "IsRequired": false
       },
       {
+        "Name": "IsGSTINActive",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
         "Name": "ContactNumber",
         "Type": "System.String",
         "IsRequired": false
@@ -1269,6 +1274,11 @@
       {
         "Name": "GSTIN",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsGSTINActive",
+        "Type": "System.Boolean",
         "IsRequired": false
       },
       {

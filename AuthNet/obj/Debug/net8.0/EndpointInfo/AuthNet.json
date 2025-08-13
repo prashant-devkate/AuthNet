@@ -1768,6 +1768,9 @@
                   "GSTIN": {
                     "type": "string"
                   },
+                  "IsGSTINActive": {
+                    "type": "boolean"
+                  },
                   "ContactNumber": {
                     "type": "string"
                   },
@@ -1804,6 +1807,9 @@
                   "style": "form"
                 },
                 "GSTIN": {
+                  "style": "form"
+                },
+                "IsGSTINActive": {
                   "style": "form"
                 },
                 "ContactNumber": {
@@ -1886,6 +1892,9 @@
                   "GSTIN": {
                     "type": "string"
                   },
+                  "IsGSTINActive": {
+                    "type": "boolean"
+                  },
                   "ContactNumber": {
                     "type": "string"
                   },
@@ -1922,6 +1931,9 @@
                   "style": "form"
                 },
                 "GSTIN": {
+                  "style": "form"
+                },
+                "IsGSTINActive": {
                   "style": "form"
                 },
                 "ContactNumber": {

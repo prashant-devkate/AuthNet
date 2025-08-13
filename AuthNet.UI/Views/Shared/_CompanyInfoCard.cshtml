@@ -29,7 +29,10 @@
                 <dt class="col-sm-4 font-weight-bold">Email</dt>
                 <dd class="col-sm-8">@Model.Email</dd>
                 <dt class="col-sm-4 font-weight-bold">GSTIN</dt>
-                <dd class="col-sm-8">@Model.GSTIN</dd>
+                <dd class="col-sm-8">
+                    <span id="gstinDisplay">@Model.GSTIN</span>
+                    <span class="gst-status-dot @(Model.IsGSTINActive ? "active" : "inactive")"></span>
+                </dd>
             </dl>
         }
         else
@@ -38,3 +41,22 @@
         }
     </div>
 </div>
+
+<style>
+    .gst-status-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+
+        .gst-status-dot.active {
+            background-color: #28a745; /* Green for active */
+        }
+
+        .gst-status-dot.inactive {
+            background-color: #6c757d; /* Grey for inactive */
+        }
+</style>

@@ -1,0 +1,184 @@
+2025-08-05 09:38:11.266 +05:30 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-08-05 09:38:17.759 +05:30 [INF] Now listening on: https://localhost:7165
+2025-08-05 09:38:17.761 +05:30 [INF] Now listening on: http://localhost:5008
+2025-08-05 09:38:19.095 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-08-05 09:38:19.096 +05:30 [INF] Hosting environment: Development
+2025-08-05 09:38:19.096 +05:30 [INF] Content root path: C:\Users\Admin\Source\Repos\AuthNet\AuthNet
+2025-08-05 09:38:21.046 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/index.html - null null
+2025-08-05 09:38:21.671 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Sales/DailyProfit - null null
+2025-08-05 09:38:21.960 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SalesController.GetDailyProfit (AuthNet)'
+2025-08-05 09:38:22.052 +05:30 [INF] Route matched with {action = "GetDailyProfit", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDailyProfit() on controller AuthNet.Controllers.SalesController (AuthNet).
+2025-08-05 09:38:22.067 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/index.html - 200 null text/html;charset=utf-8 1055.2084ms
+2025-08-05 09:38:22.269 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/_framework/aspnetcore-browser-refresh.js - null null
+2025-08-05 09:38:22.300 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 31.8366ms
+2025-08-05 09:38:22.326 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/_vs/browserLink - null null
+2025-08-05 09:38:23.092 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/_vs/browserLink - 200 null text/javascript; charset=UTF-8 765.7975ms
+2025-08-05 09:38:23.582 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/swagger/v1/swagger.json - null null
+2025-08-05 09:38:23.869 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 286.388ms
+2025-08-05 09:38:26.050 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.052 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.055 +05:30 [WRN] No store type was specified for the decimal property 'CostPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.055 +05:30 [WRN] No store type was specified for the decimal property 'SellPrice' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'PurchaseOrder'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'PurchaseOrderItems'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'AfterTaxAmount' on entity type 'Sale'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'DiscountedAmount' on entity type 'Sale'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'PrincipalAmount' on entity type 'Sale'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'TotalAmount' on entity type 'Sale'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'TotalPrice' on entity type 'SaleItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'UnitPrice' on entity type 'SaleItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.056 +05:30 [WRN] No store type was specified for the decimal property 'CGST' on entity type 'TaxSetting'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.057 +05:30 [WRN] No store type was specified for the decimal property 'IGST' on entity type 'TaxSetting'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:26.057 +05:30 [WRN] No store type was specified for the decimal property 'SGST' on entity type 'TaxSetting'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-08-05 09:38:29.684 +05:30 [INF] Executed DbCommand (300ms) [Parameters=[@__date_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[ProductId], [s].[ProductName], [s].[Quantity], [s].[SaleId], [s].[TotalPrice], [s].[UnitPrice], [s0].[Id], [s0].[AfterTaxAmount], [s0].[CreatedAt], [s0].[DiscountedAmount], [s0].[InvoiceDate], [s0].[InvoiceNo], [s0].[PrincipalAmount], [s0].[Template], [s0].[TotalAmount]
+FROM [SaleItems] AS [s]
+INNER JOIN [Sales] AS [s0] ON [s].[SaleId] = [s0].[Id]
+WHERE CONVERT(date, [s0].[InvoiceDate]) = @__date_Date_0
+2025-08-05 09:38:29.999 +05:30 [INF] Executed DbCommand (74ms) [Parameters=[@__productIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[CostPrice], [p].[Description], [p].[Name], [p].[ProductCode], [p].[ProductKey], [p].[SellPrice], [p].[SupplierId]
+FROM [Products] AS [p]
+WHERE [p].[ProductId] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__productIds_0) WITH ([value] int '$') AS [p0]
+)
+2025-08-05 09:38:30.016 +05:30 [INF] Executing OkObjectResult, writing value of type 'AuthNet.Models.DTO.DailyProfitDto'.
+2025-08-05 09:38:30.093 +05:30 [INF] Executed action AuthNet.Controllers.SalesController.GetDailyProfit (AuthNet) in 8026.5496ms
+2025-08-05 09:38:30.095 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SalesController.GetDailyProfit (AuthNet)'
+2025-08-05 09:38:30.125 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Sales/DailyProfit - 200 null application/json; charset=utf-8 8456.9816ms
+2025-08-05 09:38:30.214 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Sales/CurrentMonthProfit - null null
+2025-08-05 09:38:30.235 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SalesController.GetCurrentMonthProfit (AuthNet)'
+2025-08-05 09:38:30.249 +05:30 [INF] Route matched with {action = "GetCurrentMonthProfit", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentMonthProfit() on controller AuthNet.Controllers.SalesController (AuthNet).
+2025-08-05 09:38:30.802 +05:30 [INF] Executed DbCommand (411ms) [Parameters=[@__currentYear_0='?' (DbType = Int32), @__currentMonth_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[ProductId], [s].[ProductName], [s].[Quantity], [s].[SaleId], [s].[TotalPrice], [s].[UnitPrice], [s0].[Id], [s0].[AfterTaxAmount], [s0].[CreatedAt], [s0].[DiscountedAmount], [s0].[InvoiceDate], [s0].[InvoiceNo], [s0].[PrincipalAmount], [s0].[Template], [s0].[TotalAmount]
+FROM [SaleItems] AS [s]
+INNER JOIN [Sales] AS [s0] ON [s].[SaleId] = [s0].[Id]
+WHERE DATEPART(year, [s0].[InvoiceDate]) = @__currentYear_0 AND DATEPART(month, [s0].[InvoiceDate]) = @__currentMonth_1
+2025-08-05 09:38:30.808 +05:30 [INF] Executing OkObjectResult, writing value of type 'AuthNet.Models.DTO.MonthlyProfitDto'.
+2025-08-05 09:38:30.818 +05:30 [INF] Executed action AuthNet.Controllers.SalesController.GetCurrentMonthProfit (AuthNet) in 569.374ms
+2025-08-05 09:38:30.824 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SalesController.GetCurrentMonthProfit (AuthNet)'
+2025-08-05 09:38:30.827 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Sales/CurrentMonthProfit - 200 null application/json; charset=utf-8 614.3448ms
+2025-08-05 09:38:30.883 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Sales/CurrentYearProfit - null null
+2025-08-05 09:38:30.898 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SalesController.GetCurrentYearProfit (AuthNet)'
+2025-08-05 09:38:30.911 +05:30 [INF] Route matched with {action = "GetCurrentYearProfit", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCurrentYearProfit() on controller AuthNet.Controllers.SalesController (AuthNet).
+2025-08-05 09:38:31.211 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__currentYear_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[ProductId], [s].[ProductName], [s].[Quantity], [s].[SaleId], [s].[TotalPrice], [s].[UnitPrice], [s0].[Id], [s0].[AfterTaxAmount], [s0].[CreatedAt], [s0].[DiscountedAmount], [s0].[InvoiceDate], [s0].[InvoiceNo], [s0].[PrincipalAmount], [s0].[Template], [s0].[TotalAmount]
+FROM [SaleItems] AS [s]
+INNER JOIN [Sales] AS [s0] ON [s].[SaleId] = [s0].[Id]
+WHERE DATEPART(year, [s0].[InvoiceDate]) = @__currentYear_0
+2025-08-05 09:38:31.458 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__productIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[CostPrice], [p].[Description], [p].[Name], [p].[ProductCode], [p].[ProductKey], [p].[SellPrice], [p].[SupplierId]
+FROM [Products] AS [p]
+WHERE [p].[ProductId] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__productIds_0) WITH ([value] int '$') AS [p0]
+)
+2025-08-05 09:38:31.509 +05:30 [INF] Executing OkObjectResult, writing value of type 'AuthNet.Models.DTO.YearlyProfitDto'.
+2025-08-05 09:38:31.512 +05:30 [INF] Executed action AuthNet.Controllers.SalesController.GetCurrentYearProfit (AuthNet) in 600.6174ms
+2025-08-05 09:38:31.512 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SalesController.GetCurrentYearProfit (AuthNet)'
+2025-08-05 09:38:31.513 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Sales/CurrentYearProfit - 200 null application/json; charset=utf-8 630.0534ms
+2025-08-05 09:38:31.539 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Products/count - null null
+2025-08-05 09:38:31.540 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-08-05 09:38:31.548 +05:30 [INF] Route matched with {action = "GetProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-08-05 09:38:31.598 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-08-05 09:38:31.606 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-08-05 09:38:31.612 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetProductCount (AuthNet) in 63.4179ms
+2025-08-05 09:38:31.612 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetProductCount (AuthNet)'
+2025-08-05 09:38:31.613 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Products/count - 200 null application/json; charset=utf-8 73.829ms
+2025-08-05 09:38:31.662 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Suppliers/count - null null
+2025-08-05 09:38:31.662 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-08-05 09:38:31.671 +05:30 [INF] Route matched with {action = "GetSupplierCount", controller = "Suppliers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSupplierCount() on controller AuthNet.Controllers.SuppliersController (AuthNet).
+2025-08-05 09:38:31.689 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Suppliers] AS [s]
+2025-08-05 09:38:31.690 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-08-05 09:38:31.690 +05:30 [INF] Executed action AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet) in 19.2271ms
+2025-08-05 09:38:31.690 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SuppliersController.GetSupplierCount (AuthNet)'
+2025-08-05 09:38:31.691 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Suppliers/count - 200 null application/json; charset=utf-8 29.1332ms
+2025-08-05 09:38:31.770 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Categories/count - null null
+2025-08-05 09:38:31.771 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-08-05 09:38:31.779 +05:30 [INF] Route matched with {action = "GetCategoryCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryCount() on controller AuthNet.Controllers.CategoriesController (AuthNet).
+2025-08-05 09:38:31.841 +05:30 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+2025-08-05 09:38:31.842 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-08-05 09:38:31.842 +05:30 [INF] Executed action AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet) in 62.9311ms
+2025-08-05 09:38:31.842 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CategoriesController.GetCategoryCount (AuthNet)'
+2025-08-05 09:38:31.843 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Categories/count - 200 null application/json; charset=utf-8 72.6625ms
+2025-08-05 09:38:31.905 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Orders/count - null null
+2025-08-05 09:38:31.905 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-08-05 09:38:31.911 +05:30 [INF] Route matched with {action = "GetOrderCount", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderCount() on controller AuthNet.Controllers.OrdersController (AuthNet).
+2025-08-05 09:38:31.926 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-08-05 09:38:31.927 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-08-05 09:38:31.927 +05:30 [INF] Executed action AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet) in 15.9313ms
+2025-08-05 09:38:31.927 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.OrdersController.GetOrderCount (AuthNet)'
+2025-08-05 09:38:31.928 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Orders/count - 200 null application/json; charset=utf-8 23.1435ms
+2025-08-05 09:38:31.948 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Customers/count - null null
+2025-08-05 09:38:31.949 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.CustomersController.GetCustomerCount (AuthNet)'
+2025-08-05 09:38:31.955 +05:30 [INF] Route matched with {action = "GetCustomerCount", controller = "Customers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCustomerCount() on controller AuthNet.Controllers.CustomersController (AuthNet).
+2025-08-05 09:38:32.038 +05:30 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Customers] AS [c]
+2025-08-05 09:38:32.039 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Int32'.
+2025-08-05 09:38:32.040 +05:30 [INF] Executed action AuthNet.Controllers.CustomersController.GetCustomerCount (AuthNet) in 84.2808ms
+2025-08-05 09:38:32.040 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.CustomersController.GetCustomerCount (AuthNet)'
+2025-08-05 09:38:32.040 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Customers/count - 200 null application/json; charset=utf-8 92.2609ms
+2025-08-05 09:38:32.123 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Tasks - null null
+2025-08-05 09:38:32.124 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-08-05 09:38:32.126 +05:30 [INF] Route matched with {action = "GetTasks", controller = "Tasks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTasks() on controller AuthNet.Controllers.TasksController (AuthNet).
+2025-08-05 09:38:32.168 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[DueDate]
+FROM [Tasks] AS [t]
+2025-08-05 09:38:32.179 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.TaskItemDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-05 09:38:32.194 +05:30 [INF] Executed action AuthNet.Controllers.TasksController.GetTasks (AuthNet) in 67.1332ms
+2025-08-05 09:38:32.194 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.TasksController.GetTasks (AuthNet)'
+2025-08-05 09:38:32.195 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Tasks - 200 null application/json; charset=utf-8 71.2619ms
+2025-08-05 09:38:32.346 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7165/api/Settings/Get - null null
+2025-08-05 09:38:32.347 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SettingsController.GetCompanyInfo (AuthNet)'
+2025-08-05 09:38:32.361 +05:30 [INF] Route matched with {action = "GetCompanyInfo", controller = "Settings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCompanyInfo() on controller AuthNet.Controllers.SettingsController (AuthNet).
+2025-08-05 09:38:32.384 +05:30 [WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+2025-08-05 09:38:32.417 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Address], [c].[AlternateContactNumber], [c].[ContactNumber], [c].[Email], [c].[GSTIN], [c].[LogoFileExtension], [c].[LogoFilePath], [c].[LogoFileSizeInBytes], [c].[LogoName], [c].[Name], [c].[SignFileExtension], [c].[SignFilePath], [c].[SignFileSizeInBytes], [c].[SignName]
+FROM [CompanyInfos] AS [c]
+2025-08-05 09:38:32.516 +05:30 [INF] Executing OkObjectResult, writing value of type 'AuthNet.Models.DTO.CompanyInfoResponseDto'.
+2025-08-05 09:38:32.523 +05:30 [INF] Executed action AuthNet.Controllers.SettingsController.GetCompanyInfo (AuthNet) in 162.211ms
+2025-08-05 09:38:32.524 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SettingsController.GetCompanyInfo (AuthNet)'
+2025-08-05 09:38:32.524 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7165/api/Settings/Get - 200 null application/json; charset=utf-8 178.1624ms
+2025-08-05 09:38:35.209 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/api/Products/CategoryWiseProductCount - null null
+2025-08-05 09:38:35.209 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7165/api/Sales/WeeklyProfit - null null
+2025-08-05 09:38:35.214 +05:30 [INF] CORS policy execution successful.
+2025-08-05 09:38:35.214 +05:30 [INF] CORS policy execution successful.
+2025-08-05 09:38:35.217 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.SalesController.GetWeeklyProfit (AuthNet)'
+2025-08-05 09:38:35.217 +05:30 [INF] Executing endpoint 'AuthNet.Controllers.ProductsController.GetCategoryWiseProductCount (AuthNet)'
+2025-08-05 09:38:35.225 +05:30 [INF] Route matched with {action = "GetWeeklyProfit", controller = "Sales"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetWeeklyProfit() on controller AuthNet.Controllers.SalesController (AuthNet).
+2025-08-05 09:38:35.225 +05:30 [INF] Route matched with {action = "GetCategoryWiseProductCount", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryWiseProductCount() on controller AuthNet.Controllers.ProductsController (AuthNet).
+2025-08-05 09:38:35.275 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__startDate_0='?' (DbType = DateTime2), @__endDate_1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[ProductId], [s].[ProductName], [s].[Quantity], [s].[SaleId], [s].[TotalPrice], [s].[UnitPrice], [s0].[Id], [s0].[AfterTaxAmount], [s0].[CreatedAt], [s0].[DiscountedAmount], [s0].[InvoiceDate], [s0].[InvoiceNo], [s0].[PrincipalAmount], [s0].[Template], [s0].[TotalAmount]
+FROM [SaleItems] AS [s]
+INNER JOIN [Sales] AS [s0] ON [s].[SaleId] = [s0].[Id]
+WHERE CONVERT(date, [s0].[InvoiceDate]) >= @__startDate_0 AND CONVERT(date, [s0].[InvoiceDate]) <= @__endDate_1
+2025-08-05 09:38:35.291 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__productIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[CostPrice], [p].[Description], [p].[Name], [p].[ProductCode], [p].[ProductKey], [p].[SellPrice], [p].[SupplierId]
+FROM [Products] AS [p]
+WHERE [p].[ProductId] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__productIds_0) WITH ([value] int '$') AS [p0]
+)
+2025-08-05 09:38:35.314 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.DailyProfitDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-05 09:38:35.317 +05:30 [INF] Executed action AuthNet.Controllers.SalesController.GetWeeklyProfit (AuthNet) in 91.8062ms
+2025-08-05 09:38:35.317 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.SalesController.GetWeeklyProfit (AuthNet)'
+2025-08-05 09:38:35.318 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/api/Sales/WeeklyProfit - 200 null application/json; charset=utf-8 110.0057ms
+2025-08-05 09:38:35.406 +05:30 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COUNT(*) AS [ProductCount]
+FROM [Products] AS [p]
+LEFT JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[CategoryId]
+WHERE [c].[CategoryId] IS NOT NULL
+GROUP BY [c].[Name]
+2025-08-05 09:38:35.407 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[AuthNet.Models.DTO.CategoryProductCountDto, AuthNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-08-05 09:38:35.410 +05:30 [INF] Executed action AuthNet.Controllers.ProductsController.GetCategoryWiseProductCount (AuthNet) in 184.6238ms
+2025-08-05 09:38:35.410 +05:30 [INF] Executed endpoint 'AuthNet.Controllers.ProductsController.GetCategoryWiseProductCount (AuthNet)'
+2025-08-05 09:38:35.411 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7165/api/Products/CategoryWiseProductCount - 200 null application/json; charset=utf-8 202.3526ms

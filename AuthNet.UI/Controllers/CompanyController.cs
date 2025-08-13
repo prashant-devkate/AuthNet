@@ -52,6 +52,7 @@ namespace AuthNet.UI.Controllers
                 Name = dto.Name,
                 Address = dto.Address,
                 GSTIN = dto.GSTIN,
+                IsGSTINActive = dto.IsGSTINActive,
                 ContactNumber = dto.ContactNumber,
                 AlternateContactNumber = dto.AlternateContactNumber,
                 Email = dto.Email,
@@ -74,6 +75,7 @@ namespace AuthNet.UI.Controllers
             content.Add(new StringContent(model.Name ?? ""), nameof(model.Name));
             content.Add(new StringContent(model.Address ?? ""), nameof(model.Address));
             content.Add(new StringContent(model.GSTIN ?? ""), nameof(model.GSTIN));
+            content.Add(new StringContent(model.IsGSTINActive.ToString().ToLower()), nameof(model.IsGSTINActive));
             content.Add(new StringContent(model.ContactNumber ?? ""), nameof(model.ContactNumber));
             content.Add(new StringContent(model.AlternateContactNumber ?? ""), nameof(model.AlternateContactNumber));
             content.Add(new StringContent(model.Email ?? ""), nameof(model.Email));
@@ -130,6 +132,7 @@ namespace AuthNet.UI.Controllers
             content.Add(new StringContent(model.Name ?? ""), nameof(model.Name));
             content.Add(new StringContent(model.Address ?? ""), nameof(model.Address));
             content.Add(new StringContent(model.GSTIN ?? ""), nameof(model.GSTIN));
+            content.Add(new StringContent(model.IsGSTINActive.ToString().ToLower()), nameof(model.IsGSTINActive));
             content.Add(new StringContent(model.ContactNumber ?? ""), nameof(model.ContactNumber));
             content.Add(new StringContent(model.AlternateContactNumber ?? ""), nameof(model.AlternateContactNumber));
             content.Add(new StringContent(model.Email ?? ""), nameof(model.Email));

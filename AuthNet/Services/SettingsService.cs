@@ -37,6 +37,7 @@ namespace AuthNet.Services
                     Name = dto.Name,
                     Address = dto.Address,
                     GSTIN = dto.GSTIN,
+                    IsGSTINActive = dto.IsGSTINActive,
                     ContactNumber = dto.ContactNumber,
                     AlternateContactNumber = dto.AlternateContactNumber,
                     Email = dto.Email
@@ -120,6 +121,7 @@ namespace AuthNet.Services
                 Name = company.Name,
                 Address = company.Address,
                 GSTIN = company.GSTIN,
+                IsGSTINActive = company.IsGSTINActive,
                 ContactNumber = company.ContactNumber,
                 AlternateContactNumber = company.AlternateContactNumber,
                 Email = company.Email,
@@ -173,6 +175,7 @@ namespace AuthNet.Services
                 company.Name = dto.Name;
                 company.Address = dto.Address;
                 company.GSTIN = dto.GSTIN;
+                company.IsGSTINActive = dto.IsGSTINActive;
                 company.ContactNumber = dto.ContactNumber;
                 company.AlternateContactNumber = dto.AlternateContactNumber;
                 company.Email = dto.Email;

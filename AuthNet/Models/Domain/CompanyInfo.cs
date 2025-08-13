@@ -8,6 +8,7 @@ namespace AuthNet.Models.Domain
         public string Name { get; set; }
         public string Address { get; set; }
         public string GSTIN { get; set; }
+        public bool IsGSTINActive { get; set; }
         public string ContactNumber { get; set; }
         public string AlternateContactNumber { get; set; }
         public string Email { get; set; }
