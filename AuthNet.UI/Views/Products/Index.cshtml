@@ -36,26 +36,34 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Desc</th>
+                                <th>Description</th>
                                 <th>Cost Price</th>
                                 <th>Sell Price</th>
-                                <th>Key</th>
-                                <th>Code</th>
+                                <th>Product Key</th>
+                                <th>Product Code</th>
+                                <th>Bar Code</th>
                                 <th>Category</th>
                                 <th>Supplier</th>
+                                <th>CGST</th>
+                                <th>SGST</th>
+                                <th>IGST</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Name</th>
-                                <th>Desc</th>
+                                <th>Description</th>
                                 <th>Cost Price</th>
                                 <th>Sell Price</th>
-                                <th>Key</th>
-                                <th>Code</th>
+                                <th>Product Key</th>
+                                <th>Product Code</th>
+                                <th>Bar Code</th>
                                 <th>Category</th>
                                 <th>Supplier</th>
+                                <th>CGST</th>
+                                <th>SGST</th>
+                                <th>IGST</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </tfoot>
@@ -71,8 +79,12 @@
                                         <td>₹@p.SellPrice</td>
                                         <td class="text-muted">@p.ProductKey</td>
                                         <td><span class="badge badge-product-code">@p.ProductCode</span></td>
+                                        <td>Dummy Data</td>
                                         <td>@p.CategoryName</td>
                                         <td>@p.CompanyName</td>
+                                        <td>Dummy Data</td>
+                                        <td>Dummy Data</td>
+                                        <td>Dummy Data</td>
                                         <td class="text-center">
                                             <a asp-action="Edit" asp-route-id="@p.ProductId" class="btn btn-warning btn-icon-split btn-sm me-1">
                                                 <span class="icon text-white-50">
@@ -119,7 +131,7 @@
                 "ordering": true,
                 "info": true,
                 "columnDefs": [
-                    { "orderable": false, "targets": 8 } // Disable sorting on Actions column
+                    { "orderable": false, "targets": 12 } // Disable sorting on Actions column
                 ]
             });
         });

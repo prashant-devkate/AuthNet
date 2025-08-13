@@ -39,6 +39,7 @@
                                 <th>Salesman</th>
                                 <th>Order Date</th>
                                 <th>Total Amount (₹)</th>
+                                <th>Status</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 <th>Salesman</th>
                                 <th>Order Date</th>
                                 <th>Total Amount (₹)</th>
+                                <th>Status</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </tfoot>
@@ -60,7 +62,8 @@
                                         <td class="fw-semibold">@order.Suppliername</td>
                                         <td class="text-muted">@order.Username</td>
                                         <td class="text-muted">@order.OrderDate.ToString("yyyy-MM-dd HH:mm")</td>
-                                        <td class="fw-semibold">@order.TotalAmount</td>
+                                        <td class="fw-semibold">₹ @order.TotalAmount</td>
+                                        <td>Dummy Data(toggle button)</td>
                                         <td class="text-center">
                                             <a asp-action="Edit" asp-route-id="@order.PurchaseOrderId" class="btn btn-warning btn-icon-split btn-sm me-1">
                                                 <span class="icon text-white-50">
@@ -105,7 +108,7 @@
                 "ordering": true,
                 "info": true,
                 "columnDefs": [
-                    { "orderable": false, "targets": 4 }
+                    { "orderable": false, "targets": 5 }
                 ]
             });
         });
