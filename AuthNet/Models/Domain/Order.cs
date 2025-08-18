@@ -1,4 +1,6 @@
-﻿namespace AuthNet.Models.Domain
+﻿using AuthNet.Enums;
+
+namespace AuthNet.Models.Domain
 {
     public class Order
     {
@@ -12,6 +14,7 @@
 
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public decimal TotalAmount { get; set; }
+        public DeliveryStatus IsDelivered { get; set; }
 
         public ICollection<OrderItem>? OrderItems { get; set; }
     }

@@ -1,2 +1,0 @@
-C:\Users\Admin\Source\Repos\AuthNet\AuthNet.UI\wwwroot\Templates\invoice-classic.html
-C:\Users\Admin\Source\Repos\AuthNet\AuthNet.UI\wwwroot\Templates\invoice-modern.html

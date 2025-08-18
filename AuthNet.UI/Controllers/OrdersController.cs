@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace AuthNet.UI.Controllers
 {
@@ -194,6 +195,26 @@ namespace AuthNet.UI.Controllers
             }
 
             TempData["SuccessMessage"] = "Order deleted successfully.";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStatus(int id, DeliveryStatus isDelivered)
+        {
+            var url = $"api/Orders/StatusUpdate/{id}?isDelivered={(int)isDelivered}";
+            var response = await _httpClient.PutAsync(url, null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Status updated successfully.";
+                return RedirectToAction("Index");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj != null && errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update status.";
+
+            TempData["ErrorMessage"] = errorMsg;
             return RedirectToAction("Index");
         }
     }

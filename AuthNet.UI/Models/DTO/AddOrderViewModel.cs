@@ -11,6 +11,7 @@ namespace AuthNet.UI.Models.DTO
 
         [Required(ErrorMessage = "Total Amount is required")]
         public decimal TotalAmount { get; set; }
+        public DeliveryStatus IsDelivered { get; set; }
         public List<AddOrderItemViewModel> OrderItems { get; set; } = new();
     }
 

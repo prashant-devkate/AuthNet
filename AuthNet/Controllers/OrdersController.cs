@@ -1,4 +1,5 @@
-﻿using AuthNet.Models.Domain;
+﻿using AuthNet.Enums;
+using AuthNet.Models.Domain;
 using AuthNet.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -72,6 +73,19 @@ namespace AuthNet.Controllers
                 return BadRequest(new { result.Message });
             }
             return Ok(new { result.Message });
+        }
+
+        [HttpPut("StatusUpdate/{id}")]
+        public async Task<IActionResult> UpdateStatus(int id, DeliveryStatus isDelivered)
+        {
+            var result = await _service.UpdateIsDeliveredAsync(id, isDelivered);
+
+            if (!result.response.Success)
+            {
+                return NotFound(new { result.response.Message });
+            }
+
+            return Ok(new { result.response.Message });
         }
     }
 }

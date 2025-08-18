@@ -1020,6 +1020,36 @@
         }
       }
     },
+    "/api/Orders/StatusUpdate/{id}": {
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "isDelivered",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/DeliveryStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Products": {
       "get": {
         "tags": [
@@ -1298,6 +1328,36 @@
       "get": {
         "tags": [
           "Purchase"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Purchase/StatusUpdate/{id}": {
+      "put": {
+        "tags": [
+          "Purchase"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "isDelivered",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/DeliveryStatus"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -2531,6 +2591,14 @@
         },
         "additionalProperties": false
       },
+      "DeliveryStatus": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "EmailRequestDto": {
         "type": "object",
         "properties": {
@@ -2657,6 +2725,9 @@
             "type": "number",
             "format": "double"
           },
+          "isDelivered": {
+            "$ref": "#/components/schemas/DeliveryStatus"
+          },
           "orderItems": {
             "type": "array",
             "items": {
@@ -2741,6 +2812,10 @@
             "type": "string",
             "nullable": true
           },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
           "categoryId": {
             "type": "integer",
             "format": "int32",
@@ -2756,6 +2831,18 @@
           },
           "supplier": {
             "$ref": "#/components/schemas/Supplier"
+          },
+          "cgst": {
+            "type": "number",
+            "format": "double"
+          },
+          "sgst": {
+            "type": "number",
+            "format": "double"
+          },
+          "igst": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
@@ -2793,6 +2880,9 @@
           },
           "createdByUser": {
             "$ref": "#/components/schemas/User"
+          },
+          "isDelivered": {
+            "$ref": "#/components/schemas/DeliveryStatus"
           },
           "orderItems": {
             "type": "array",

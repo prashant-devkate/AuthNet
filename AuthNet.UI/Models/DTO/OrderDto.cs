@@ -7,6 +7,7 @@
         public int UserId { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public decimal TotalAmount { get; set; }
+        public DeliveryStatus IsDelivered { get; set; }
         public string Username { get; set; }
         public string Customername { get; set; }
 

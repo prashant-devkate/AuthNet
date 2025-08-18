@@ -9,6 +9,7 @@
         public decimal TotalAmount { get; set; }
         public string Username { get; set; }
         public string Suppliername { get; set; }
+        public DeliveryStatus IsDelivered { get; set; }
 
         public List<OrderItemDto> OrderItems { get; set; } = new();
     }

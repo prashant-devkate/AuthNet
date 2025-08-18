@@ -5,62 +5,87 @@
 }
 
 <div class="container">
-    <!-- Outer Row -->
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
-            <div class="card o-hidden border-0 shadow-lg my-4">
+            <div class="card o-hidden border-0 shadow-lg my-2">
                 <div class="card-body p-0">
-                    <div class="p-4">
+                    <div class="p-2">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-3"><i class="fas fa-boxes me-1"></i> Edit Product</h1>
+                            <h1 class="h6 text-gray-900 mb-1"><i class="fas fa-boxes me-1"></i> Edit Product</h1>
                         </div>
-                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-1"></div>
                         <form class="user" asp-action="Edit" method="post">
                             @Html.AntiForgeryToken()
                             <input asp-for="ProductId" hidden />
-                            <div class="form-group">
-                                <input asp-for="Name" class="form-control form-control-user" placeholder="Enter Product Name...">
+                            <div class="form-group mb-1">
+                                <input asp-for="Name" class="form-control form-control-sm form-control-user" placeholder="Name">
                                 <span asp-validation-for="Name" class="text-danger small"></span>
                             </div>
-                            <div class="form-group">
-                                <input asp-for="Description" class="form-control form-control-user" placeholder="Enter Description...">
+                            <div class="form-group mb-1">
+                                <input asp-for="Description" class="form-control form-control-sm form-control-user" placeholder="Description">
                                 <span asp-validation-for="Description" class="text-danger small"></span>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-2 mb-sm-0">
-                                    <input asp-for="CostPrice" class="form-control form-control-user" placeholder="Enter Cost Price...">
+                            <div class="form-group row mb-1">
+                                <div class="col-sm-6 pe-sm-0">
+                                    <input asp-for="CostPrice" class="form-control form-control-sm form-control-user" placeholder="Cost Price">
                                     <span asp-validation-for="CostPrice" class="text-danger small"></span>
                                 </div>
-                                <div class="col-sm-6">
-                                    <input asp-for="SellPrice" class="form-control form-control-user" placeholder="Enter Sell Price...">
+                                <div class="col-sm-6 ps-sm-0">
+                                    <input asp-for="SellPrice" class="form-control form-control-sm form-control-user" placeholder="Sell Price">
                                     <span asp-validation-for="SellPrice" class="text-danger small"></span>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-2 mb-sm-0">
-                                    <input asp-for="ProductKey" class="form-control form-control-user" placeholder="Enter Product Key...">
+                            <div class="form-group row mb-1">
+                                <div class="col-sm-6 pe-sm-0">
+                                    <input asp-for="ProductKey" class="form-control form-control-sm form-control-user" placeholder="Key">
                                     <span asp-validation-for="ProductKey" class="text-danger small"></span>
                                 </div>
-                                <div class="col-sm-6">
-                                    <input asp-for="ProductCode" class="form-control form-control-user" placeholder="Enter Product Code...">
+                                <div class="col-sm-6 ps-sm-0">
+                                    <input asp-for="ProductCode" class="form-control form-control-sm form-control-user" placeholder="Code">
                                     <span asp-validation-for="ProductCode" class="text-danger small"></span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control">
-                                    <option value="">-- Select Category --</option>
-                                </select>
-                                <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                            <div class="form-group row mb-1">
+                                <div class="col-sm-6 pe-sm-0">
+                                    <input asp-for="Barcode" class="form-control form-control-sm form-control-user" placeholder="Barcode">
+                                    <span asp-validation-for="Barcode" class="text-danger small"></span>
+                                </div>
+                                <div class="col-sm-6 ps-sm-0">
+                                    <input asp-for="CGST" class="form-control form-control-sm form-control-user" placeholder="CGST %">
+                                    <span asp-validation-for="CGST" class="text-danger small"></span>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <select asp-for="SupplierId" asp-items="ViewBag.Suppliers" class="form-control">
-                                    <option value="">-- Select Supplier --</option>
-                                </select>
-                                <span asp-validation-for="SupplierId" class="text-danger small"></span>
+                            <div class="form-group row mb-1">
+                                <div class="col-sm-6 pe-sm-0">
+                                    <input asp-for="SGST" class="form-control form-control-sm form-control-user" placeholder="SGST %">
+                                    <span asp-validation-for="SGST" class="text-danger small"></span>
+                                </div>
+                                <div class="col-sm-6 ps-sm-0">
+                                    <input asp-for="IGST" class="form-control form-control-sm form-control-user" placeholder="IGST %">
+                                    <span asp-validation-for="IGST" class="text-danger small"></span>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-user btn-block" type="submit">Save</button>
-                                <a asp-action="Index" class="btn btn-secondary btn-user btn-block">Cancel</a>
+                            <div class="form-group row mb-1">
+                                <div class="col-sm-6 pe-sm-0">
+                                    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control form-control-sm">
+                                        <option value="">-- Select Category --</option>
+                                    </select>
+                                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                                </div>
+                                <div class="col-sm-6 ps-sm-0">
+                                    <select asp-for="SupplierId" asp-items="ViewBag.Suppliers" class="form-control form-control-sm">
+                                        <option value="">-- Select Supplier --</option>
+                                    </select>
+                                    <span asp-validation-for="SupplierId" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-0">
+                                <div class="col-sm-6 pe-sm-0">
+                                    <button class="btn btn-primary btn-sm btn-user btn-block" type="submit">Save</button>
+                                </div>
+                                <div class="col-sm-6 ps-sm-0">
+                                    <a asp-action="Index" class="btn btn-secondary btn-sm btn-user btn-block">Cancel</a>
+                                </div>
                             </div>
                         </form>
                     </div>

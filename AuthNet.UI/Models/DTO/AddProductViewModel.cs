@@ -8,14 +8,18 @@ namespace AuthNet.UI.Models.DTO
         [Required] public string Name { get; set; } = string.Empty;
         [Required] public string Description { get; set; } = string.Empty;
 
-        [Required, Range(0.01, double.MaxValue, ErrorMessage = "Cost Price must be greater than 0")]
+        [Required]
         public decimal CostPrice { get; set; }
-        [Required, Range(0.01, double.MaxValue, ErrorMessage = "Sell Price must be greater than 0")]
+        [Required]
         public decimal SellPrice { get; set; }
         [Required] public int ProductKey { get; set; }
         [Required] public string ProductCode { get; set; } = string.Empty;
+        public string Barcode { get; set; }
         [Required] public int? CategoryId { get; set; }
         [Required] public int? SupplierId { get; set; }
+        public decimal CGST { get; set; }
+        public decimal SGST { get; set; }
+        public decimal IGST { get; set; }
 
         //public InventoryData Inventory { get; set; } = new();
     }

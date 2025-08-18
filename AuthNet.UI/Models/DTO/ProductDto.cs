@@ -11,10 +11,14 @@ namespace AuthNet.UI.Models.DTO
         public decimal SellPrice { get; set; }
         public int ProductKey { get; set; }
         public string ProductCode { get; set; }
+        public string Barcode { get; set; }
         public int CategoryId { get; set; }
         public int SupplierId { get; set; }
         public string CompanyName { get; set; }
         public string CategoryName { get; set; }
+        public decimal CGST { get; set; }
+        public decimal SGST { get; set; }
+        public decimal IGST { get; set; }
         //public InventoryData? Inventory { get; set; }
     }
 }

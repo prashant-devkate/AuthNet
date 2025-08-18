@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\AuthNet\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\views\\orders\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\orders\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Orders\\Index.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Orders\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Orders\\Index.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Orders\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-18T08:42:30.568Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

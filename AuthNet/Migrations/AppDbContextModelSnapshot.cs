@@ -322,6 +322,9 @@ namespace AuthNet.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("IsDelivered")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
@@ -377,6 +380,13 @@ namespace AuthNet.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
+                    b.Property<string>("Barcode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("CGST")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
@@ -386,6 +396,9 @@ namespace AuthNet.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("IGST")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -397,6 +410,9 @@ namespace AuthNet.Migrations
 
                     b.Property<int>("ProductKey")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("SGST")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("SellPrice")
                         .HasColumnType("decimal(18,2)");
@@ -422,6 +438,9 @@ namespace AuthNet.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PurchaseOrderId"));
 
                     b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsDelivered")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
@@ -680,7 +699,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 8, 13, 8, 8, 39, 904, DateTimeKind.Utc).AddTicks(7280),
+                            CreatedAt = new DateTime(2025, 8, 18, 8, 22, 40, 736, DateTimeKind.Utc).AddTicks(5875),
                             Email = "admin.helpdesk@gmail.com",
                             Firstname = "Admin",
                             Lastname = "Admin",

@@ -123,8 +123,12 @@ namespace AuthNet.UI.Controllers
                 SellPrice = product.SellPrice,
                 ProductKey = product.ProductKey,
                 ProductCode = product.ProductCode,
+                Barcode = product.Barcode,
                 CategoryId = product.CategoryId,
                 SupplierId = product.SupplierId,
+                CGST = product.CGST,
+                SGST = product.SGST,
+                IGST = product.IGST
                 //Inventory = new InventoryData
                 //{
                 //    QuantityInStock = product.Inventory?.QuantityInStock ?? 0,

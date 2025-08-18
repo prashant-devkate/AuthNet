@@ -196,5 +196,25 @@ namespace AuthNet.UI.Controllers
             TempData["SuccessMessage"] = "Purchase order deleted successfully.";
             return RedirectToAction("Index", "PurchaseOrders");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStatus(int id, DeliveryStatus isDelivered)
+        {
+            var url = $"api/Purchase/StatusUpdate/{id}?isDelivered={(int)isDelivered}";
+            var response = await _httpClient.PutAsync(url, null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["SuccessMessage"] = "Status updated successfully.";
+                return RedirectToAction("Index");
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+            var errorObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            var errorMsg = errorObj != null && errorObj.ContainsKey("message") ? errorObj["message"] : "Failed to update status.";
+
+            TempData["ErrorMessage"] = errorMsg;
+            return RedirectToAction("Index");
+        }
     }
 }

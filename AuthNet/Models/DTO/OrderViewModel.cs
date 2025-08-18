@@ -1,4 +1,5 @@
-﻿using AuthNet.Models.Domain;
+﻿using AuthNet.Enums;
+using AuthNet.Models.Domain;
 
 namespace AuthNet.Models.DTO
 {
@@ -9,5 +10,6 @@ namespace AuthNet.Models.DTO
         public int UserId { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public decimal TotalAmount { get; set; }
+        public DeliveryStatus IsDelivered { get; set; }
     }
 }

@@ -18,10 +18,14 @@ namespace AuthNet.Models.Domain
         public decimal SellPrice { get; set; }
         public int ProductKey { get; set; }
         public string? ProductCode { get; set; }
+        public string Barcode { get; set; }
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
         public int? SupplierId { get; set; }
         public Supplier? Supplier { get; set; }
+        public decimal CGST { get; set; }
+        public decimal SGST { get; set; }
+        public decimal IGST { get; set; }
 
         //public Inventory? Inventory { get; set; }
         //public ICollection<OrderItem>? OrderItems { get; set; }

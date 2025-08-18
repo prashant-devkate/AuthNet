@@ -1,4 +1,5 @@
 ﻿using AuthNet.Data;
+using AuthNet.Enums;
 using AuthNet.Models.Domain;
 using AuthNet.Models.DTO;
 using AuthNet.Services.Interfaces;
@@ -25,7 +26,8 @@ namespace AuthNet.Services
                         SupplierId = s.SupplierId,
                         CreatedByUserId = s.CreatedByUserId,
                         OrderDate = s.OrderDate,
-                        TotalAmount = s.TotalAmount
+                        TotalAmount = s.TotalAmount,
+                        IsDelivered = s.IsDelivered
                     }).ToListAsync();
             }
             catch (Exception ex)
@@ -94,6 +96,7 @@ namespace AuthNet.Services
                 existing.CreatedByUserId = purchase.CreatedByUserId;
                 existing.OrderDate = purchase.OrderDate;
                 existing.TotalAmount = purchase.OrderItems.Sum(i => i.UnitPrice * i.Quantity);
+                existing.IsDelivered = purchase.IsDelivered;
 
                 var incomingItemIds = purchase.OrderItems?.Where(i => i.PurchaseOrderItemId != 0).Select(i => i.PurchaseOrderItemId).ToList() ?? new List<int>();
 
@@ -190,5 +193,47 @@ namespace AuthNet.Services
                 };
             }
         }
+
+        public async Task<(PurchaseOrder? order, OperationResponse response)> UpdateIsDeliveredAsync(int id, DeliveryStatus isDelivered)
+        {
+            var existing = await _context.purchaseOrders.FindAsync(id);
+            if (existing == null)
+            {
+                return (null, new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Purchase Order with ID {id} not found."
+                });
+            }
+
+            try
+            {
+                existing.IsDelivered = isDelivered;
+                await _context.SaveChangesAsync();
+
+                return (existing, new OperationResponse
+                {
+                    Success = true,
+                    Message = $"Purchase Order with ID {id} delivery status updated to {isDelivered} successfully."
+                });
+            }
+            catch (DbUpdateException ex)
+            {
+                return (null, new OperationResponse
+                {
+                    Success = false,
+                    Message = $"Database update error: {ex.Message}"
+                });
+            }
+            catch (Exception ex)
+            {
+                return (null, new OperationResponse
+                {
+                    Success = false,
+                    Message = $"An unexpected error occurred: {ex.Message}"
+                });
+            }
+        }
+
     }
 }

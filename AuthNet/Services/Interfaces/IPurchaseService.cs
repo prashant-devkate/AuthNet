@@ -1,4 +1,5 @@
-﻿using AuthNet.Models.Domain;
+﻿using AuthNet.Enums;
+using AuthNet.Models.Domain;
 using AuthNet.Models.DTO;
 
 namespace AuthNet.Services.Interfaces
@@ -11,5 +12,7 @@ namespace AuthNet.Services.Interfaces
         Task<OperationResponse> AddAsync(PurchaseOrder purchase);
         Task<OperationResponse> UpdateAsync(int id, PurchaseOrder purchase);
         Task<OperationResponse> DeleteAsync(int id);
+        Task<(PurchaseOrder? order, OperationResponse response)> UpdateIsDeliveredAsync(int id, DeliveryStatus isDelivered);
     }
+
 }

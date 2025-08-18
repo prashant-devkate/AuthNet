@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AuthNet.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace AuthNet.Models.Domain
 {
@@ -15,6 +16,7 @@ namespace AuthNet.Models.Domain
         public decimal TotalAmount { get; set; }
         public int? CreatedByUserId { get; set; }
         public User? CreatedByUser { get; set; }
+        public DeliveryStatus IsDelivered { get; set; }
 
         public ICollection<PurchaseOrderItems>? OrderItems { get; set; }
     }
