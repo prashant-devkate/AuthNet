@@ -258,6 +258,53 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AuthNet.Controllers.ForecastController",
+    "Method": "Get",
+    "RelativePath": "api/Forecast/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "days",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "historyDays",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthNet.Controllers.ForecastController",
+    "Method": "GetForecast",
+    "RelativePath": "api/Forecast/forecast/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "days",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthNet.Controllers.ImagesController",
     "Method": "Upload",
     "RelativePath": "api/Images/Upload",
