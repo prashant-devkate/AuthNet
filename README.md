@@ -4,7 +4,6 @@
 ![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework-Core%208.0-green)
 ![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-red)
 ![MVC](https://img.shields.io/badge/Frontend-ASP.NET%20MVC-blue)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 A full-stack **Sales & Inventory Management System** built with **.NET Core Web API**, **Entity Framework Core**, **SQL Server**, and **ASP.NET MVC**.  
 Mudraa simplifies product tracking, order processing, and analytics through a clean dashboard with charts and reports.
