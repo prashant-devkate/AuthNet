@@ -1,4 +1,4 @@
-````markdown
+```markdown
 # Mudraa - Integrated Sales & Inventory Management System
 
 ![.NET](https://img.shields.io/badge/.NET%208.0-blueviolet?logo=dotnet)
