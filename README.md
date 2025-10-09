@@ -1,4 +1,3 @@
-```markdown
 # Mudraa - Integrated Sales & Inventory Management System
 
 ![.NET](https://img.shields.io/badge/.NET%208.0-blueviolet?logo=dotnet)
@@ -108,5 +107,3 @@ Mudraa/
 **Prashant Devkate**
 .NET Core | Web API | EF Core | SQL Server | Azure | GCP
 [[meetprashant1234@gmail.com](mailto:meetprashant1234@gmail.com)]
-
-```
