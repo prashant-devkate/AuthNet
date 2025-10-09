@@ -90,7 +90,8 @@ Mudraa/
 
 ## Dashboard Preview
 
-<img width="1366" height="679" alt="image" src="https://github.com/user-attachments/assets/8f3e6085-e542-4fe5-b706-705c3dc592c2" />
+<img width="1360" height="730" alt="image" src="https://github.com/user-attachments/assets/cfa35156-1f70-479f-943e-66c319fda78d" />
+<img width="1360" height="730" alt="image" src="https://github.com/user-attachments/assets/eb74f1e0-a336-4d4b-aebd-142a36b7dc41" />
 
 ---
 
@@ -109,9 +110,9 @@ Mudraa/
 [[meetprashant1234@gmail.com](mailto:meetprashant1234@gmail.com)]
 
 
-  ![image](https://github.com/user-attachments/assets/eb74f1e0-a336-4d4b-aebd-142a36b7dc41)
+  ![image]()
 
-  <img width="1360" height="730" alt="image" src="https://github.com/user-attachments/assets/cfa35156-1f70-479f-943e-66c319fda78d" />
+  
 
 
 
