@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\AuthNet\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\views\\sales\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\sales\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\views\\shared\\_dashboardcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\shared\\_dashboardcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|c:\\users\\admin\\source\\repos\\authnet\\authnet.ui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{642A2681-2430-4A52-855C-43E8713DA0D7}|AuthNet.UI\\AuthNet.UI.csproj|solutionrelative:authnet.ui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
@@ -14,20 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAEgAAAAAJzMzM5MwwGYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T11:42:53.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_DashboardCard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Shared\\_DashboardCard.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Shared\\_DashboardCard.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Shared\\_DashboardCard.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Shared\\_DashboardCard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T11:42:23.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Sales\\Index.cshtml",
+              "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Sales\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Sales\\Index.cshtml",
+              "RelativeToolTip": "AuthNet.UI\\Views\\Sales\\Index.cshtml",
+              "ViewState": "AgIAALcBAAAAAAAAAAAUwMEBAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T09:44:34.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\AuthNet\\AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "AuthNet.UI\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEoAAAAA/P////8QwGgAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAACAzMzMzMwkwGgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-20T14:18:40.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-20T14:18:40.49Z"
             }
           ]
         }
