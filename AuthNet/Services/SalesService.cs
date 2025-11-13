@@ -36,39 +36,102 @@ namespace AuthNet.Services
 
         public async Task<OperationResponse> AddAsync(SaleDto saleDto)
         {
-            var sale = new Sale
-            {
-                InvoiceNo = Guid.NewGuid().ToString().Substring(0, 8).ToUpper(),
-                InvoiceDate = DateTime.Now,
-                PrincipalAmount = saleDto.PrincipalAmount,
-                DiscountedAmount = saleDto.DiscountedAmount,
-                AfterTaxAmount = saleDto.AfterTaxAmount,
-                TotalAmount = saleDto.TotalAmount,
-                Template = saleDto.Template,
-                CreatedAt = DateTime.Now,
-                SaleItems = saleDto.SaleItems.Select(i => new SaleItem
-                {
-                    ProductId = i.ProductId,
-                    ProductName = i.ProductName,
-                    Quantity = i.Quantity,
-                    UnitPrice = i.UnitPrice,
-                    TotalPrice = i.TotalPrice > 0 ? i.TotalPrice : i.Quantity * i.UnitPrice
-                }).ToList()
-            };
+            using var transaction = await _context.Database.BeginTransactionAsync(); // ensures atomicity
 
             try
             {
-                await _context.Sales.AddAsync(sale);
-                await _context.SaveChangesAsync();
 
+                //Get last invoice number from DB
+                var lastSale = await _context.Sales
+                    .OrderByDescending(s => s.Id)
+                    .FirstOrDefaultAsync();
+
+                string nextInvoiceNo;
+
+                if (lastSale == null || string.IsNullOrEmpty(lastSale.InvoiceNo))
+                {
+                    // Start fresh
+                    nextInvoiceNo = "INV-1001";
+                }
+
+                else
+                {
+                    // Extract numeric part safely
+                    var match = System.Text.RegularExpressions.Regex.Match(lastSale.InvoiceNo, @"\d+");
+                    int lastNumber = match.Success ? int.Parse(match.Value) : 1000;
+                    nextInvoiceNo = $"INV-{lastNumber + 1}";
+                }
+
+                var sale = new Sale
+                {
+                    InvoiceNo = nextInvoiceNo,
+                    InvoiceDate = DateTime.Now,
+                    Customername = saleDto.Customername,
+                    Address = saleDto.Address,
+                    PhoneNumber = saleDto.PhoneNumber,
+                    PrincipalAmount = saleDto.PrincipalAmount,
+                    DiscountedAmount = saleDto.DiscountedAmount,
+                    AfterTaxAmount = saleDto.AfterTaxAmount,
+                    TotalAmount = saleDto.TotalAmount,
+                    Template = saleDto.Template,
+                    CreatedAt = DateTime.Now,
+                    SaleItems = saleDto.SaleItems.Select(i => new SaleItem
+                    {
+                        ProductId = i.ProductId,
+                        ProductName = i.ProductName,
+                        Quantity = i.Quantity,
+                        UnitPrice = i.UnitPrice,
+                        TotalPrice = i.TotalPrice > 0 ? i.TotalPrice : i.Quantity * i.UnitPrice
+                    }).ToList()
+                };
+                    
+                await _context.Sales.AddAsync(sale);
+
+
+                // Reduce inventory stock for each product sold
+                foreach (var item in sale.SaleItems)
+                {
+                    var inventory = await _context.Inventories
+                        .FirstOrDefaultAsync(inv => inv.ProductId == item.ProductId);
+
+                    if (inventory != null)
+                    {
+                        // Check if sufficient stock exists
+                        if (inventory.QuantityInStock < item.Quantity)
+                        {
+                            await transaction.RollbackAsync();
+                            return new OperationResponse
+                            {
+                                Success = false,
+                                Message = $"Insufficient stock for product: {item.ProductName}"
+                            };
+                        }
+
+                        // Reduce quantity
+                        inventory.QuantityInStock -= item.Quantity;
+                        inventory.LastUpdated = DateTime.Now;
+
+                        _context.Inventories.Update(inventory);
+                    }
+                }
+
+
+
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                //Return invoice number in the response
                 return new OperationResponse
                 {
                     Success = true,
-                    Message = "Sale added successfully."
+                    Message = $"Sale added successfully.  Invoice No: {sale.InvoiceNo}",
+                    Data = new { InvoiceNo = sale.InvoiceNo}
                 };
             }
             catch (Exception ex)
             {
+                await transaction.RollbackAsync();
                 return new OperationResponse
                 {
                     Success = false,
@@ -305,6 +368,9 @@ namespace AuthNet.Services
                 {
                     InvoiceNo = s.InvoiceNo,
                     InvoiceDate = s.InvoiceDate,
+                    Customername = s.Customername,
+                    Address = s.Address,
+                    PhoneNumber = s.PhoneNumber,
                     PrincipalAmount = s.PrincipalAmount,
                     DiscountedAmount = s.DiscountedAmount,
                     AfterTaxAmount = s.AfterTaxAmount,
@@ -325,27 +391,46 @@ namespace AuthNet.Services
         {
             DateTime date = DateTime.Today;
 
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .Where(si => si.Sale.InvoiceDate.Date == date.Date)
+            // Load all sales for today with their items
+            var sales = await _context.Sales
+                .Include(s => s.SaleItems)
+                .Where(s => s.InvoiceDate.Date == date.Date)
                 .ToListAsync();
 
-            // Get product cost prices
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+            // Collect all product ids used in today's sales
+            var productIds = sales
+                .SelectMany(s => s.SaleItems)
+                .Select(i => i.ProductId)
+                .Distinct()
+                .ToList();
 
+            // Load product cost prices into a dictionary for fast lookup
             var products = await _context.Products
                 .Where(p => productIds.Contains(p.ProductId))
                 .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            decimal totalProfit = 0;
+            decimal totalProfit = 0m;
 
-            foreach (var item in saleItems)
+            foreach (var sale in sales)
             {
-                if (products.TryGetValue(item.ProductId, out var product))
+                // Sum of cost for this sale (costPrice * quantity)
+                decimal saleCost = 0m;
+
+                foreach (var item in sale.SaleItems)
                 {
-                    var profitPerItem = item.UnitPrice - product.CostPrice;
-                    totalProfit += profitPerItem * item.Quantity;
+                    if (products.TryGetValue(item.ProductId, out var product) && product.CostPrice > 0)
+                    {
+                        saleCost += product.CostPrice * item.Quantity;
+                    }
+                    // if product not found or cost price missing, we treat cost as 0.
+                    // Optionally you can log or handle missing cost prices differently.
                 }
+
+                // Use sale.TotalAmount (after discounts/taxes) as revenue for profit calculation
+                decimal saleRevenue = sale.TotalAmount;
+
+                decimal saleProfit = saleRevenue - saleCost;
+                totalProfit += saleProfit;
             }
 
             return new DailyProfitDto
@@ -355,41 +440,57 @@ namespace AuthNet.Services
             };
         }
 
+
         public async Task<List<DailyProfitDto>> CalculateWeeklyProfitAsync()
         {
-            DateTime startDate = DateTime.Today.AddDays(-6); // 7 days including today
+            DateTime startDate = DateTime.Today.AddDays(-6); // last 7 days (including today)
             DateTime endDate = DateTime.Today;
 
-            // Step 1: Fetch sale items for the past 7 days
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .Where(si => si.Sale.InvoiceDate.Date >= startDate && si.Sale.InvoiceDate.Date <= endDate)
+            // Load sales for the last 7 days (with items)
+            var sales = await _context.Sales
+                .Include(s => s.SaleItems)
+                .Where(s => s.InvoiceDate.Date >= startDate && s.InvoiceDate.Date <= endDate)
                 .ToListAsync();
 
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+            // Collect all unique product IDs
+            var productIds = sales
+                .SelectMany(s => s.SaleItems)
+                .Select(i => i.ProductId)
+                .Distinct()
+                .ToList();
 
+            // Fetch product cost prices
             var products = await _context.Products
                 .Where(p => productIds.Contains(p.ProductId))
                 .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            // Step 2: Group profits by date where sales exist
-            var profitByDate = saleItems
-                .GroupBy(si => si.Sale.InvoiceDate.Date)
-                .ToDictionary(g => g.Key, g =>
-                {
-                    decimal profit = 0;
-                    foreach (var item in g)
-                    {
-                        if (products.TryGetValue(item.ProductId, out var product))
-                        {
-                            var profitPerItem = item.UnitPrice - product.CostPrice;
-                            profit += profitPerItem * item.Quantity;
-                        }
-                    }
-                    return profit;
-                });
+            // Calculate profit per day
+            var profitByDate = new Dictionary<DateTime, decimal>();
 
-            // Step 3: Generate full 7-day list including days with 0 profit
+            foreach (var sale in sales)
+            {
+                decimal saleCost = 0m;
+
+                foreach (var item in sale.SaleItems)
+                {
+                    if (products.TryGetValue(item.ProductId, out var product))
+                    {
+                        saleCost += product.CostPrice * item.Quantity;
+                    }
+                }
+
+                // Revenue after discounts/tax
+                decimal saleRevenue = sale.TotalAmount;
+                decimal saleProfit = saleRevenue - saleCost;
+
+                DateTime saleDate = sale.InvoiceDate.Date;
+                if (profitByDate.ContainsKey(saleDate))
+                    profitByDate[saleDate] += saleProfit;
+                else
+                    profitByDate[saleDate] = saleProfit;
+            }
+
+            // Generate 7-day list including days with no sales
             var result = Enumerable.Range(0, 7)
                 .Select(i =>
                 {
@@ -397,7 +498,7 @@ namespace AuthNet.Services
                     return new DailyProfitDto
                     {
                         Date = date,
-                        TotalProfit = profitByDate.TryGetValue(date, out var profit) ? profit : 0
+                        TotalProfit = profitByDate.TryGetValue(date, out var profit) ? profit : 0m
                     };
                 })
                 .ToList();
@@ -405,48 +506,48 @@ namespace AuthNet.Services
             return result;
         }
 
+        //Wrong logic
+        //public async Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null)
+        //{
+        //    year ??= DateTime.Today.Year;
 
-        public async Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null)
-        {
-            year ??= DateTime.Today.Year;
+        //    var saleItems = await _context.SaleItems
+        //        .Include(si => si.Sale)
+        //        .Where(si => si.Sale.InvoiceDate.Year == year)
+        //        .ToListAsync();
 
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .Where(si => si.Sale.InvoiceDate.Year == year)
-                .ToListAsync();
+        //    var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
 
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+        //    var products = await _context.Products
+        //        .Where(p => productIds.Contains(p.ProductId))
+        //        .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            var products = await _context.Products
-                .Where(p => productIds.Contains(p.ProductId))
-                .ToDictionaryAsync(p => p.ProductId, p => p);
+        //    var grouped = saleItems
+        //        .GroupBy(si => new { si.Sale.InvoiceDate.Year, si.Sale.InvoiceDate.Month })
+        //        .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month)
+        //        .Select(g =>
+        //        {
+        //            decimal profit = 0;
+        //            foreach (var item in g)
+        //            {
+        //                if (products.TryGetValue(item.ProductId, out var product))
+        //                {
+        //                    var profitPerItem = item.UnitPrice - product.CostPrice;
+        //                    profit += profitPerItem * item.Quantity;
+        //                }
+        //            }
 
-            var grouped = saleItems
-                .GroupBy(si => new { si.Sale.InvoiceDate.Year, si.Sale.InvoiceDate.Month })
-                .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month)
-                .Select(g =>
-                {
-                    decimal profit = 0;
-                    foreach (var item in g)
-                    {
-                        if (products.TryGetValue(item.ProductId, out var product))
-                        {
-                            var profitPerItem = item.UnitPrice - product.CostPrice;
-                            profit += profitPerItem * item.Quantity;
-                        }
-                    }
+        //            return new MonthlyProfitDto
+        //            {
+        //                Year = g.Key.Year,
+        //                Month = g.Key.Month,
+        //                TotalProfit = profit
+        //            };
+        //        })
+        //        .ToList();
 
-                    return new MonthlyProfitDto
-                    {
-                        Year = g.Key.Year,
-                        Month = g.Key.Month,
-                        TotalProfit = profit
-                    };
-                })
-                .ToList();
-
-            return grouped;
-        }
+        //    return grouped;
+        //}
 
         public async Task<MonthlyProfitDto> CalculateCurrentMonthProfitAsync()
         {
@@ -454,37 +555,52 @@ namespace AuthNet.Services
             int currentYear = today.Year;
             int currentMonth = today.Month;
 
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .Where(si => si.Sale.InvoiceDate.Year == currentYear &&
-                             si.Sale.InvoiceDate.Month == currentMonth)
+            // Load sales for the current month with their items
+            var sales = await _context.Sales
+                .Include(s => s.SaleItems)
+                .Where(s => s.InvoiceDate.Year == currentYear &&
+                            s.InvoiceDate.Month == currentMonth)
                 .ToListAsync();
 
-            if (!saleItems.Any())
+            if (!sales.Any())
             {
                 return new MonthlyProfitDto
                 {
                     Year = currentYear,
                     Month = currentMonth,
-                    TotalProfit = 0
+                    TotalProfit = 0m
                 };
             }
 
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+            // Collect all unique product IDs
+            var productIds = sales
+                .SelectMany(s => s.SaleItems)
+                .Select(i => i.ProductId)
+                .Distinct()
+                .ToList();
 
+            // Load products for cost prices
             var products = await _context.Products
                 .Where(p => productIds.Contains(p.ProductId))
                 .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            decimal totalProfit = 0;
+            decimal totalProfit = 0m;
 
-            foreach (var item in saleItems)
+            foreach (var sale in sales)
             {
-                if (products.TryGetValue(item.ProductId, out var product))
+                decimal saleCost = 0m;
+
+                foreach (var item in sale.SaleItems)
                 {
-                    var profitPerItem = item.UnitPrice - product.CostPrice;
-                    totalProfit += profitPerItem * item.Quantity;
+                    if (products.TryGetValue(item.ProductId, out var product))
+                    {
+                        saleCost += product.CostPrice * item.Quantity;
+                    }
                 }
+
+                // Revenue after discount/tax
+                decimal saleRevenue = sale.TotalAmount;
+                totalProfit += (saleRevenue - saleCost);
             }
 
             return new MonthlyProfitDto
@@ -495,133 +611,151 @@ namespace AuthNet.Services
             };
         }
 
+        //Wrong logic
+        //public async Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null)
+        //{
+        //    year ??= DateTime.Today.Year;
 
-        public async Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null)
-        {
-            year ??= DateTime.Today.Year;
+        //    var saleItems = await _context.SaleItems
+        //        .Include(si => si.Sale)
+        //        .Where(si => si.Sale.InvoiceDate.Year == year)
+        //        .ToListAsync();
 
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .Where(si => si.Sale.InvoiceDate.Year == year)
-                .ToListAsync();
+        //    var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
 
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+        //    var products = await _context.Products
+        //        .Where(p => productIds.Contains(p.ProductId))
+        //        .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            var products = await _context.Products
-                .Where(p => productIds.Contains(p.ProductId))
-                .ToDictionaryAsync(p => p.ProductId, p => p);
+        //    var grouped = saleItems
+        //        .GroupBy(si =>
+        //        {
+        //            var month = si.Sale.InvoiceDate.Month;
+        //            var half = (month <= 6) ? "H1" : "H2";
+        //            return new { si.Sale.InvoiceDate.Year, Half = half };
+        //        })
+        //        .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Half)
+        //        .Select(g =>
+        //        {
+        //            decimal profit = 0;
+        //            foreach (var item in g)
+        //            {
+        //                if (products.TryGetValue(item.ProductId, out var product))
+        //                {
+        //                    var profitPerItem = item.UnitPrice - product.CostPrice;
+        //                    profit += profitPerItem * item.Quantity;
+        //                }
+        //            }
 
-            var grouped = saleItems
-                .GroupBy(si =>
-                {
-                    var month = si.Sale.InvoiceDate.Month;
-                    var half = (month <= 6) ? "H1" : "H2";
-                    return new { si.Sale.InvoiceDate.Year, Half = half };
-                })
-                .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Half)
-                .Select(g =>
-                {
-                    decimal profit = 0;
-                    foreach (var item in g)
-                    {
-                        if (products.TryGetValue(item.ProductId, out var product))
-                        {
-                            var profitPerItem = item.UnitPrice - product.CostPrice;
-                            profit += profitPerItem * item.Quantity;
-                        }
-                    }
+        //            return new HalfYearlyProfitDto
+        //            {
+        //                Year = g.Key.Year,
+        //                Half = g.Key.Half,
+        //                TotalProfit = profit
+        //            };
+        //        })
+        //        .ToList();
 
-                    return new HalfYearlyProfitDto
-                    {
-                        Year = g.Key.Year,
-                        Half = g.Key.Half,
-                        TotalProfit = profit
-                    };
-                })
-                .ToList();
+        //    return grouped;
+        //}
 
-            return grouped;
-        }
 
-        public async Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync()
-        {
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .ToListAsync();
+        //Wrong logic
+        //public async Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync()
+        //{
+        //    var saleItems = await _context.SaleItems
+        //        .Include(si => si.Sale)
+        //        .ToListAsync();
 
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+        //    var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
 
-            var products = await _context.Products
-                .Where(p => productIds.Contains(p.ProductId))
-                .ToDictionaryAsync(p => p.ProductId, p => p);
+        //    var products = await _context.Products
+        //        .Where(p => productIds.Contains(p.ProductId))
+        //        .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            var grouped = saleItems
-                .GroupBy(si => si.Sale.InvoiceDate.Year)
-                .OrderBy(g => g.Key)
-                .Select(g =>
-                {
-                    decimal profit = 0;
-                    foreach (var item in g)
-                    {
-                        if (products.TryGetValue(item.ProductId, out var product))
-                        {
-                            var profitPerItem = item.UnitPrice - product.CostPrice;
-                            profit += profitPerItem * item.Quantity;
-                        }
-                    }
+        //    var grouped = saleItems
+        //        .GroupBy(si => si.Sale.InvoiceDate.Year)
+        //        .OrderBy(g => g.Key)
+        //        .Select(g =>
+        //        {
+        //            decimal profit = 0;
+        //            foreach (var item in g)
+        //            {
+        //                if (products.TryGetValue(item.ProductId, out var product))
+        //                {
+        //                    var profitPerItem = item.UnitPrice - product.CostPrice;
+        //                    profit += profitPerItem * item.Quantity;
+        //                }
+        //            }
 
-                    return new YearlyProfitDto
-                    {
-                        Year = g.Key,
-                        TotalProfit = profit
-                    };
-                })
-                .ToList();
+        //            return new YearlyProfitDto
+        //            {
+        //                Year = g.Key,
+        //                TotalProfit = profit
+        //            };
+        //        })
+        //        .ToList();
 
-            return grouped;
-        }
+        //    return grouped;
+        //}
 
         public async Task<YearlyProfitDto> CalculateCurrentYearProfitAsync()
         {
             int currentYear = DateTime.Today.Year;
 
-            var saleItems = await _context.SaleItems
-                .Include(si => si.Sale)
-                .Where(si => si.Sale.InvoiceDate.Year == currentYear)
+            // Load all sales for the current year including their items
+            var sales = await _context.Sales
+                .Include(s => s.SaleItems)
+                .Where(s => s.InvoiceDate.Year == currentYear)
                 .ToListAsync();
 
-            if (!saleItems.Any())
+            if (!sales.Any())
             {
                 return new YearlyProfitDto
                 {
                     Year = currentYear,
-                    TotalProfit = 0
+                    TotalProfit = 0m
                 };
             }
 
-            var productIds = saleItems.Select(si => si.ProductId).Distinct().ToList();
+            // Collect all unique product IDs from the sales
+            var productIds = sales
+                .SelectMany(s => s.SaleItems)
+                .Select(i => i.ProductId)
+                .Distinct()
+                .ToList();
 
+            // Fetch product cost prices
             var products = await _context.Products
                 .Where(p => productIds.Contains(p.ProductId))
                 .ToDictionaryAsync(p => p.ProductId, p => p);
 
-            decimal profit = 0;
+            decimal totalProfit = 0m;
 
-            foreach (var item in saleItems)
+            foreach (var sale in sales)
             {
-                if (products.TryGetValue(item.ProductId, out var product))
+                decimal saleCost = 0m;
+
+                foreach (var item in sale.SaleItems)
                 {
-                    var profitPerItem = item.UnitPrice - product.CostPrice;
-                    profit += profitPerItem * item.Quantity;
+                    if (products.TryGetValue(item.ProductId, out var product))
+                    {
+                        saleCost += product.CostPrice * item.Quantity;
+                    }
                 }
+
+                // Revenue after discount/tax
+                decimal saleRevenue = sale.TotalAmount;
+                totalProfit += (saleRevenue - saleCost);
             }
 
             return new YearlyProfitDto
             {
                 Year = currentYear,
-                TotalProfit = profit
+                TotalProfit = totalProfit
             };
         }
+
 
 
 

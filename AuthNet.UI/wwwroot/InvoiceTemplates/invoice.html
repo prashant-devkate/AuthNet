@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Entry</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f8f9fb;
+            margin: 0;
+            padding: 30px;
+            color: #2d3748;
+        }
+
+        .invoice-container {
+            max-width: 850px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 35px 40px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+            .invoice-header img {
+                width: 80px;
+                height: 80px;
+                object-fit: contain;
+                border-radius: 8px;
+            }
+
+        .shop-info {
+            text-align: right;
+        }
+
+            .shop-info input {
+                display: block;
+                width: 100%;
+                font-size: 13px;
+                margin: 2px 0;
+                padding: 2px 4px;
+            }
+
+        .invoice-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
+            text-transform: uppercase;
+            margin: 20px 0 10px;
+        }
+
+        .bill-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+            .bill-details div input {
+                width: 100%;
+                margin: 2px 0;
+                padding: 2px 4px;
+                font-size: 13px;
+            }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+            .items-table th, .items-table td {
+                padding: 8px;
+                border: 1px solid #e2e8f0;
+            }
+
+            .items-table th {
+                background-color: #edf2f7;
+                font-weight: 600;
+                text-align: left;
+            }
+
+            .items-table td input {
+                width: 100%;
+                border: none;
+                padding: 2px;
+                font-size: 13px;
+            }
+
+        .summary {
+            width: 100%;
+            margin-top: 25px;
+            border-top: 2px solid #e2e8f0;
+            padding-top: 10px;
+        }
+
+            .summary table {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .summary td input {
+                width: 100%;
+                text-align: right;
+                border: none;
+                padding: 2px;
+                font-size: 14px;
+            }
+
+            .summary .total input {
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+            .signature p {
+                margin: 0;
+            }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #4a5568;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .invoice-container {
+                box-shadow: none;
+                border: none;
+            }
+
+            input {
+                border: none;
+            }
+
+            button {
+                display: none;
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <img src="../img/Gadiwala.jpg" alt="Shop Logo" />
+            <div class="shop-info">
+                <input type="text" placeholder="Shop Name" id="shopName" />
+                <input type="text" placeholder="Address Line 1" />
+                <input type="text" placeholder="Address Line 2" />
+                <input type="text" placeholder="Mob: XXXXXXXXX / XXXXXXXXX" />
+            </div>
+        </div>
+
+        <div class="invoice-title">Tax Invoice</div>
+
+        <div class="bill-details">
+            <div>
+                <input type="text" placeholder="Bill No" id="invoiceNumber" />
+                <input type="text" placeholder="Date" id="invoiceDate" />
+            </div>
+            <div style="text-align: right;">
+                <input type="text" placeholder="Customer Name" id="customerName" />
+                <input type="text" placeholder="Contact" id="customerPhone" />
+                <input type="text" placeholder="Address" id="customerAddress" />
+            </div>
+        </div>
+
+        <table class="items-table" id="itemsTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Rate (₹)</th>
+                    <th>Amount (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="Item Name" /></td>
+                    <td><input type="number" value="1" /></td>
+                    <td><input type="number" value="0" /></td>
+                    <td><input type="number" value="0" readonly /></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="addRow()">Add Item</button>
+
+        <div class="summary">
+            <table>
+                <tr>
+                    <td>Bill:</td>
+                    <td><input type="number" id="total" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Mode:</td>
+                    <td>CASH</td>
+                </tr>
+                <tr>
+                    <td>Discount:</td>
+                    <td><input type="number" id="discountAmount" value="0" /></td>
+                </tr>
+                <tr class="total">
+                    <td>Net Amount:</td>
+                    <td><input type="number" id="grandTotal" readonly /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="signature">
+            <p>For <span id="signShopName">Shop Name</span>:</p>
+            <p style="margin-top: 60px;">__________________________</p>
+            <p><strong>Authorized Signatory</strong></p>
+        </div>
+
+        <div class="footer">
+            Thank you for your business! Visit Again.<br />
+            <span style="font-size: 12px; color: #a0aec0;">Powered by InventoryPro</span>
+        </div>
+
+        <button onclick="printInvoice()">Print Invoice</button>
+    </div>
+
+    <script>
+        function addRow() {
+            const table = document.getElementById('itemsTable').getElementsByTagName('tbody')[0];
+            const newRow = table.rows[0].cloneNode(true);
+            newRow.querySelectorAll('input').forEach(i => i.value = i.type === 'number' ? 0 : '');
+            table.appendChild(newRow);
+        }
+
+        function printInvoice() {
+            // Calculate totals
+            let total = 0;
+            document.querySelectorAll('#itemsTable tbody tr').forEach(row => {
+                const qty = parseFloat(row.cells[1].querySelector('input').value) || 0;
+                const rate = parseFloat(row.cells[2].querySelector('input').value) || 0;
+                const amount = qty * rate;
+                row.cells[3].querySelector('input').value = amount.toFixed(2);
+                total += amount;
+            });
+            document.getElementById('total').value = total.toFixed(2);
+
+            const discount = parseFloat(document.getElementById('discountAmount').value) || 0;
+            document.getElementById('grandTotal').value = (total - discount).toFixed(2);
+
+            // Update signature shop name
+            document.getElementById('signShopName').textContent = document.getElementById('shopName').value || 'Shop Name';
+
+            window.print();
+        }
+    </script>
+</body>
+</html>

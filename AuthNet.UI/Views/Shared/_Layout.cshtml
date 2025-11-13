@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Mudraa - @ViewBag.Title</title>
+    <title>InventoryPro - @ViewBag.Title</title>
     <!-- Custom fonts for this template-->
     <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -14,6 +14,15 @@
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
     <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        footer a:hover i {
+            opacity: 0.8;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+
+    </style>
 </head>
 <body id="page-top">
     @using Microsoft.AspNetCore.Http
@@ -35,10 +44,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="@(isLoggedIn ? "" : "display: none;")">
             <!-- Sidebar content (brand, nav items, toggler, etc.) -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "Home")">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon">
                     <i class="fas fa-warehouse"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Mudraa</div>
+                <div class="sidebar-brand-text mx-3" style="font-family: 'Segoe UI', sans-serif; font-weight: 600; letter-spacing: 0.5px;">
+                    <span style="color: #fff;">Inventory</span><span style="color: #ffd700;">Pro</span>
+                </div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
@@ -66,29 +77,23 @@
                 </a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Orders
-            </div>
-            <!-- Nav Item - Orders Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "Orders")">
                     <i class="fas fa-fw fa-file-invoice"></i>
                     <span>Orders</span>
                 </a>
-
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Offboarding</h6>
-                        <a class="collapse-item" href="@Url.Action("Index", "Orders")">Orders</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Procurement</h6>
-                        <a class="collapse-item" href="@Url.Action("Index", "PurchaseOrders")">Purchase Orders</a>
-                    </div>
-                </div>
             </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "PurchaseOrders")">
+                    <i class="fas fa-fw fa-file-archive"></i>
+                    <span>Purchase Orders</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+                       
             <!-- Nav Item - Order Items Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrderItems" aria-expanded="true" aria-controls="collapseOrderItems">
@@ -100,7 +105,6 @@
                         <h6 class="collapse-header">Items:</h6>
                         <a class="collapse-item" href="@Url.Action("GroupedItems", "OrderItems")">Order Items</a>
                         <a class="collapse-item" href="@Url.Action("GroupedItems", "PurchaseItems")">Purchase Order Items</a>
-                        <a class="collapse-item" href="@Url.Action("Index", "Forecast")">Sales Forecast</a>
                     </div>
                 </div>
             </li>
@@ -123,18 +127,17 @@
                         <a class="collapse-item" href="@Url.Action("Index", "Customers")">Customers</a>
                         <a class="collapse-item" href="@Url.Action("Index", "Suppliers")">Suppliers</a>
                         <a class="collapse-item" href="@Url.Action("Index", "Categories")">Categories</a>
+                        <a class="collapse-item" href="@Url.Action("Index", "Tasks")">Tasks</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Forecast")">Sales Forecast</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Reports/Logs:</h6>
                         <a class="collapse-item" href="@Url.Action("DailySalesReport", "Sales")">Daily Sales Report</a>
                         <a class="collapse-item" href="@Url.Action("MonthlySalesReport", "Sales")">Monthly Sales Report</a>
-                        <a class="collapse-item" href="@Url.Action("YearlySalesReport", "Sales")">Yearly Sales Report</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Tasks:</h6>
-                        <a class="collapse-item" href="@Url.Action("Index", "Tasks")">Tasks</a>
+                        @* <a class="collapse-item" href="@Url.Action("YearlySalesReport", "Sales")">Yearly Sales Report</a> *@
                     </div>
                 </div>
             </li>
-          
+            
             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -143,7 +146,6 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <p class="text-center mb-2"><strong>Inventory Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="@Url.Action("Index", "ContactUs")">Upgrade to Pro!</a>
             </div>
 
         </ul>
@@ -189,6 +191,28 @@
                                 </form>
                             </div>
                         </li>
+
+
+                        <!-- Nav Item - Print Invoice -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="printInvoiceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-print fa-fw"></i>
+                            </a>
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="printInvoiceDropdown">
+                                <a class="dropdown-item d-flex align-items-center" href="#" onclick="openInvoice()">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-print text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="font-weight-bold">Print Custom Invoice</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+
+
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -279,7 +303,37 @@
             <footer class="sticky-footer bg-white" style="@(isLoggedIn ? "" : "display: none;")">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright © InventoryPro 2025</span>
+                        <span>Copyright © InventoryPro 2025 | Developed by <strong>PDSoft Labs</strong> | Follow us online </span>
+
+                        <br/> <br/>
+
+                        <!-- Social Media Links -->
+                        <div style="margin-top: 5px;">
+
+                            <a href="https://github.com/pdsoftlabs" target="_blank" title="GitHub"
+                               style="color: #000000; text-decoration: none; margin: 0 10px;">
+                                <i class="fab fa-github fa-lg me-1"></i>
+                                GitHub
+                            </a>
+
+                            <a href="https://www.linkedin.com/company/pdsoft-labs" target="_blank" title="LinkedIn"
+                               style="color: #0e76a8; text-decoration: none; margin: 0 10px;">
+                                <i class="fab fa-linkedin fa-lg me-1"></i>
+                                LinkedIn
+                            </a>
+
+                            <a href="https://www.instagram.com/pd" target="_blank" title="Instagram"
+                               style="color: #E1306C; text-decoration: none; margin: 0 10px;">
+                                <i class="fab fa-instagram fa-lg me-1"></i>
+                                Instagram
+                            </a>
+
+                            <a href="https://www.youtube.com/@@pd-softlabs" target="_blank" title="YouTube"
+                               style="color: #FF0000; text-decoration: none; margin: 0 10px;">
+                                <i class="fab fa-youtube fa-lg me-1"></i>
+                                Youtube
+                            </a>   
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -323,6 +377,12 @@
     <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
     <script src="~/js/demo/chart-pie-demo.js"></script>
+    <script>
+        function openInvoice() {
+            // Opens invoice.html in a new tab
+            window.open('invoiceTemplates/invoice.html', '_blank');
+        }
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

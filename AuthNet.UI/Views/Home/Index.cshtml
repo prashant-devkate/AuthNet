@@ -16,8 +16,8 @@
             <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
         </button>
         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in">
-            <a class="dropdown-item" asp-action="DownloadDailySalesReport">Daily Sales Report</a>
-            <a class="dropdown-item" asp-action="DownloadMonthlySalesReport">Monthly Sales Report</a>
+            <a class="dropdown-item" asp-action="GenerateSalesReportPdf">Daily Sales Report</a>
+            <a class="dropdown-item" asp-action="GenerateCurrentMonthSalesReportPdf">Monthly Sales Report</a>
         </div>
     </div>
 </div>
@@ -53,7 +53,7 @@
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Earnings (Daily)
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹ @Model.MonthlySales.TotalProfit</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹ @Model.DailySale.TotalSales</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-rupee-sign fa-2x text-gray-300"></i>
@@ -91,10 +91,10 @@
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Earnings (Monthly)
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹ @Model.MonthlySales.TotalProfit</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">₹ @Model.MonthlySale.TotalSales</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-rupee-sign fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>

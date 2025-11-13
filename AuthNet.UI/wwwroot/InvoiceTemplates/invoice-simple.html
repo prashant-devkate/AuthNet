@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f8f9fb;
+            margin: 0;
+            padding: 30px;
+            color: #2d3748;
+        }
+
+        .invoice-container {
+            max-width: 850px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 35px 40px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+            .invoice-header img {
+                width: 80px;
+                height: 80px;
+                object-fit: contain;
+                border-radius: 8px;
+            }
+
+        .shop-info {
+            text-align: right;
+        }
+
+            .shop-info h2 {
+                margin: 0;
+                color: #1a202c;
+                font-size: 22px;
+                font-weight: 700;
+            }
+
+            .shop-info p {
+                margin: 3px 0;
+                color: #4a5568;
+                font-size: 13px;
+            }
+
+        .invoice-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
+            text-transform: uppercase;
+            margin: 20px 0 10px;
+        }
+
+        .bill-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+            .bill-details div {
+                width: 48%;
+            }
+
+            .bill-details strong {
+                color: #1a202c;
+            }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+            .items-table th {
+                background-color: #edf2f7;
+                color: #2d3748;
+                text-align: left;
+                padding: 10px;
+                border: 1px solid #e2e8f0;
+                font-weight: 600;
+            }
+
+            .items-table td {
+                padding: 10px;
+                border: 1px solid #e2e8f0;
+                color: #4a5568;
+            }
+
+                .items-table th:nth-child(2),
+                .items-table td:nth-child(2) {
+                    text-align: center;
+                }
+
+                .items-table th:nth-child(3),
+                .items-table td:nth-child(3),
+                .items-table th:nth-child(4),
+                .items-table td:nth-child(4) {
+                    text-align: right;
+                }
+
+        .summary {
+            width: 100%;
+            margin-top: 25px;
+            border-top: 2px solid #e2e8f0;
+            padding-top: 10px;
+        }
+
+            .summary table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 14px;
+            }
+
+            .summary td {
+                padding: 6px 0;
+            }
+
+            .summary .total {
+                font-weight: bold;
+                font-size: 16px;
+                color: #1a202c;
+                border-top: 1px solid #e2e8f0;
+                padding-top: 8px;
+            }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #4a5568;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 14px;
+            color: #2d3748;
+        }
+
+            .signature p {
+                margin: 0;
+            }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .invoice-container {
+                box-shadow: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <img src="https://localhost:7165/Images/gadiwala.jpg" alt="Shop Logo" />
+            <div class="shop-info">
+                <h2>{{shopName}}</h2>
+                <p>XXXXXXXXX XXX XXXXXXXX XXXXXXXX</p>
+                <p>XXXXX XXXXXXX XXXX, AHILYANAGAR</p>
+                <p>Mob: {{shopContact}} / {{shopAlternateContact}}</p>
+            </div>
+        </div>
+
+        <div class="invoice-title">Tax Invoice</div>
+
+        <div class="bill-details">
+            <div>
+                <strong>Bill No:</strong> {{invoiceNumber}}<br />
+                <strong>Date:</strong> {{invoiceDate}}<br />
+            </div>
+            <div style="text-align: right;">
+                <strong>Customer:</strong> {{customerName}}<br />
+                <strong>Contact:</strong> {{customerPhone}}<br />
+                <strong>Address:</strong> {{customerAddress}}</br>
+            </div>
+        </div>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Rate (₹)</th>
+                    <th>Amount (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{rows}}
+            </tbody>
+        </table>
+
+        <div class="summary">
+            <table>
+                <tr>
+                    <td>Bill:</td>
+                    <td style="text-align: right;">{{total}}</td>
+                </tr>
+                <tr>
+                    <td>Mode:</td>
+                    <td style="text-align: right;">CASH</td>
+                </tr>
+                <tr>
+                    <td>Discount:</td>
+                    <td style="text-align: right;">{{discountAmount}}</td>
+                </tr>
+                <tr class="total">
+                    <td>Net Amount:</td>
+                    <td style="text-align: right;">{{grandTotal}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="signature">
+            <p>For {{shopName}}:</p>
+            <p style="margin-top: 60px;">__________________________</p>
+            <p><strong>Authorized Signatory</strong></p>
+        </div>
+
+        <div class="footer">
+            Thank you for your business! Visit Again.<br />
+            <span style="font-size: 12px; color: #a0aec0;">Powered by InventoryPro</span>
+        </div>
+    </div>
+</body>
+</html>

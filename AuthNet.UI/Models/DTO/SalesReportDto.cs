@@ -12,6 +12,9 @@
     {
         public string InvoiceNo { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public string Customername { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
         public decimal TotalAmount { get; set; }
         public List<SaleItemSummaryDto> Items { get; set; }
     }

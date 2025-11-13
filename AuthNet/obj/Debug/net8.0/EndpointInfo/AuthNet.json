@@ -1797,63 +1797,7 @@
         }
       }
     },
-    "/api/Sales/MonthlyProfit": {
-      "get": {
-        "tags": [
-          "Sales"
-        ],
-        "parameters": [
-          {
-            "name": "year",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Sales/CurrentMonthProfit": {
-      "get": {
-        "tags": [
-          "Sales"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Sales/HalfYearlyProfit": {
-      "get": {
-        "tags": [
-          "Sales"
-        ],
-        "parameters": [
-          {
-            "name": "year",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Sales/YearlyProfit": {
       "get": {
         "tags": [
           "Sales"
@@ -3049,6 +2993,25 @@
             "type": "string",
             "format": "date-time"
           },
+          "customername": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "maxLength": 250,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "maxLength": 15,
+            "minLength": 0,
+            "type": "string",
+            "format": "tel",
+            "nullable": true
+          },
           "principalAmount": {
             "type": "number",
             "format": "double"
@@ -3093,6 +3056,18 @@
           "invoiceDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "customername": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
           },
           "principalAmount": {
             "type": "number",

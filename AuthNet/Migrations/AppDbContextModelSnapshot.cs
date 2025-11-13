@@ -498,11 +498,21 @@ namespace AuthNet.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<decimal>("AfterTaxAmount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Customername")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("DiscountedAmount")
                         .HasColumnType("decimal(18,2)");
@@ -513,6 +523,11 @@ namespace AuthNet.Migrations
                     b.Property<string>("InvoiceNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<decimal>("PrincipalAmount")
                         .HasColumnType("decimal(18,2)");
@@ -699,7 +714,7 @@ namespace AuthNet.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2025, 8, 18, 8, 22, 40, 736, DateTimeKind.Utc).AddTicks(5875),
+                            CreatedAt = new DateTime(2025, 11, 13, 3, 35, 57, 9, DateTimeKind.Utc).AddTicks(4197),
                             Email = "admin.helpdesk@gmail.com",
                             Firstname = "Admin",
                             Lastname = "Admin",

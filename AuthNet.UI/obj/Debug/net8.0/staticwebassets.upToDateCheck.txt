@@ -1,6 +1,7 @@
 wwwroot\css\sb-admin-2.css
 wwwroot\css\sb-admin-2.min.css
 wwwroot\favicon.ico
+wwwroot\img\Gadiwala.jpg
 wwwroot\img\undraw_posting_photo.svg
 wwwroot\img\undraw_product-explainer.svg
 wwwroot\img\undraw_profile.svg
@@ -9,7 +10,8 @@ wwwroot\img\undraw_profile_2.svg
 wwwroot\img\undraw_profile_3.svg
 wwwroot\img\undraw_rocket.svg
 wwwroot\InvoiceTemplates\invoice-classic.html
-wwwroot\InvoiceTemplates\invoice-modern.html
+wwwroot\InvoiceTemplates\invoice-simple.html
+wwwroot\InvoiceTemplates\invoice.html
 wwwroot\js\demo\chart-pie-demo.js
 wwwroot\js\demo\datatables-demo.js
 wwwroot\js\sb-admin-2.js

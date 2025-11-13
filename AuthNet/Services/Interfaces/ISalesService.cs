@@ -18,9 +18,9 @@ namespace AuthNet.Services.Interfaces
         Task<byte[]> GenerateMonthlySalesExcelAsync();
         Task<DailyProfitDto> CalculateDailyProfitAsync();
         Task<List<DailyProfitDto>> CalculateWeeklyProfitAsync();
-        Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null);
-        Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null);
-        Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync();
+        //Task<List<MonthlyProfitDto>> CalculateMonthlyProfitAsync(int? year = null);
+        //Task<List<HalfYearlyProfitDto>> CalculateHalfYearlyProfitAsync(int? year = null);
+        //Task<List<YearlyProfitDto>> CalculateYearlyProfitAsync();
         Task<MonthlyProfitDto> CalculateCurrentMonthProfitAsync();
         Task<YearlyProfitDto> CalculateCurrentYearProfitAsync();
     }
